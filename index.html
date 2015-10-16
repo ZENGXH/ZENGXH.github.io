@@ -120,6 +120,14 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分類
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             <i class="menu-item-icon icon-next-archives"></i> <br />
@@ -151,6 +159,122 @@
       <div class="main-inner">
         <div id="content" class="content"> 
   <section id="posts" class="posts-expand">
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/17/MLE/" itemprop="url">
+                Maximum likelihood estimator MLE
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2015-10-17T00:16:43+02:00" content="2015-10-17">
+            2015-10-17
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>notebook: machine learning<br>tags: ml MLE</p>
+<h3 id="linear_regression_-_basis_function_expansion">linear regression - basis function expansion</h3><ul>
+<li>任意一个函数 可以放到 ${1,x,x^2,x^3….}$所张成的函数空间，如果是有限个基的话就称为欧式空间，无穷的话 就是 Hilbert空间，</li>
+<li>Polynomial Fitting 是一个线性model， 这里Model是w的函数,w是线性的：</li>
+<li>in linear regression: take $\phi$ as veriable – linear; but the $\phi$ function itself can be nonliear</li>
+<li>functional analysis</li>
+<li><a href="http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png" target="_blank" rel="external">http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png</a><h3 id="least_square">least square</h3></li>
+<li>The method of least squares is a standard approach in regression analysis to the approximate solution of overdetermined systems, i.e., sets of equations in which there are more equations than unknowns.</li>
+<li>if all residual are linear, then it is linear least square: The linear least-squares problem occurs in statistical regression analysis; it has a closed-form solution.</li>
+</ul>
+<h3 id="fisher_information">fisher information</h3><ul>
+<li><p>Fisher information (sometimes simply called information[1]) is a way of measuring the amount of information that an observable random variable X carries about an unknown parameter θ of a distribution that models X. Formally, it is the variance of the score, or the expected value of the observed information. </p>
+</li>
+<li><p>The likelihood </p>
+<ul>
+<li>defined as the joint density or probability of the outcomes, with the roles of the values of the outcomesyand the values of the parameters θ interchanged. </li>
+<li>score function is calculated by taking the derivative of the log-likelihood:</li>
+<li>find the maximum likelihood estimator, set the score function equal to zero</li>
+</ul>
+</li>
+<li>maximum likelihood estimator<ul>
+<li>The maximum likelihood estimator of θ for the model given by the joint densities or probabilities $f(y;θ)$, with $$θ∈Θ$$, is defined <strong>as the value of θ at which the corresponding likelihood L(θ;y) attains its maximum</strong></li>
+<li>$\hat \thelta<em>{ML} = argmax</em>{\thelta} L(\thelta;y)$</li>
+<li>efficiency of the maximum likelihood estimators<ul>
+<li>relate to asymptotic settings</li>
+<li>A ubiquitous caveat associated with all the results is that the model has to be valid; </li>
+<li>it has to contain the distribution according to which the outcomes are generated.</li>
+</ul>
+</li>
+<li><strong>Consistency</strong> is a property of an estimator <ul>
+<li>that it would recover the value of the target if it were based on many observations. </li>
+<li>ie.  we refer to the sequence of (univariate) estimators $\hat θ_n$ based on thenth set of observations yn as a single estimator. Consistency of such an estimator ˆ θ of a target θ is defined as convergence of ˆ θnto the target θ as n→+∞. </li>
+<li>for MLE:<ul>
+<li>An important result about maximum likelihood estimators is that under some regularity conditions they are consistent. The regularity conditions include smoothness of the likelihood, its distinctness for each vector of model parameters and finite dimensionality of the parameter space, independent of the sample size. </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Asymptotic Efficiency and Normality<ul>
+<li>The qualifier asymptoticrefers to properties in the limit as the sample size increases above all bounds. </li>
+<li>For a set of many conditionally independent outcomes (large sample size n), given covariates and a finite-dimensional set of parametersθ, the maximum likelihood estimator is approximately unbiased, and its distribution is well approximated by the normal distribution with sampling variance matrix equal to the inverse of the expected information matrix. This result is referred to as asymptotic normality. Further, the maximum likelihood estimator isasymptotically efficientand, asymptotically, the sampling variance of the estimator is equal to the corresponding diagonal element of the inverse of the expected information matrix. That is, for largen, there are no estimators substantially more efficient than the maximum likelihood estimator.<br><a href="http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-10.png" target="_blank" rel="external">http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-10.png</a></li>
+<li>TheCram´er–Rao inequalityis a powerful result that relates to all unbiased estimators. It gives a lower bound for the variance of an unbiased estimator.</li>
+<li>Asymptotic normality and efficiency of the maximum likelihood estimator confer the central role on the normal distribution in statistics.</li>
+<li><a href="http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-10.png" target="_blank" rel="external">http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-10.png</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Instead of $L(\thelta; y,X)$ it is more convenient to work with its logarithm, called the log-likelihood – product convert into summation</li>
+</ul>
+<h3 id="information_matrix/_fisher_information">information matrix/ fisher information</h3><ul>
+<li>Fisher information is used to determine the sample size with which we design an experiment; second, in the Bayesian paradigm, Fisher information is used to define a default parameter prior; finally, in the minimum description length paradigm, Fisher information is used to measure model complexi</li>
+<li></li>
+</ul>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -509,16 +633,16 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
-            
+            <a href="/categories">
               <span class="site-state-item-count">0</span>
               <span class="site-state-item-name">分類</span>
-              
+              </a>
           </div>
 
           <div class="site-state-item site-state-tags">
@@ -627,6 +751,27 @@
   </script>
 
   
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 
   
   
