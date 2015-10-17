@@ -171,6 +171,278 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/17/learning-wireshark/" itemprop="url">
+                learning wireshark
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2015-10-17T09:44:43+02:00" content="2015-10-17">
+            2015-10-17
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><ul>
+<li>setting:<ul>
+<li>filter: HTTP, TCP…..<ul>
+<li>At the HTTP protocol level exchanged messages are : GET HTTP/1.1 from the web browser to get the content from a web server, and HTTP/1.1 responses from the server containing the content of the web site. </li>
+<li>at the TCP protocol level exchanged messages are : SYN (to initiate a TCP connection), SYN ACK, data packets, FIN (to end a connection) and FIN ACK.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li></li>
+</ul>
+</li>
+<li>start capturing: set HTTP filter:<ul>
+<li>analyze one HTTP message:<ul>
+<li><h1 id="of_bytes_the_HTTP_message_contain:">of bytes the HTTP message contain:</h1><ul>
+<li>: Transmission Control Portocol - TCP Segment Len: 166</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h1 id="of_bytes_TCP_and_IP_headers_together_add_to_the_HTTP_message">of bytes TCP and IP headers together add to the HTTP message</h1><ul>
+<li>: </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Ethernet frame size</li>
+<li>IP packet size = length of HTTP message data + TCP header + IP header</li>
+<li><img src="https://sites.google.com/site/com208computernetworks/_/rsrc/1442653514777/schedule/exercises-1-solutions/enc_unit.png" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/17/networking/" itemprop="url">
+                networking
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2015-10-17T07:32:03+02:00" content="2015-10-17">
+            2015-10-17
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/17/network transport layer/" itemprop="url">
+                network transport layer
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2015-10-17T07:32:03+02:00" content="2015-10-17">
+            2015-10-17
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><ul>
+<li><p>two type of network app:</p>
+<ul>
+<li>client and server programs are created by different programmer, follow the rules</li>
+<li><p>.. same: client-server application</p>
+</li>
+<li><p>a transport-layer protocol provides logical communication between processesrunning on different hosts, a network-layer protocol provides logical communication between hosts</p>
+</li>
+<li>TCP congestion control prevents any one TCP connection from swamping the links and routers between communicating hosts with an excessive amount of traffic.</li>
+</ul>
+</li>
+<li>transport layer nultiplexing and demultiplexing<ul>
+<li>demultiplexing<ul>
+<li>delivering the data in a transport-layer segment to the correct socket  </li>
+</ul>
+</li>
+<li>multiplexing<ul>
+<li>gathering data, encapsulation, pass segment to network layer</li>
+<li>note that port number are examined by the transport</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>transport layer protocol<ul>
+<li>UDP<ul>
+<li>socket is identified by: dest IP + dest port num<ul>
+<li>diff source IP+port + same dest IP+port =&gt; same pocket in server        </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>TCP<ul>
+<li>socket is identified by: dest-IP+port num + source-IP+port </li>
+<li>have two socket in one communication:<ul>
+<li>welcome socket: common use?</li>
+<li>connection socket: for paricular client; close after server send reply</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>some abbr   <ul>
+<li>RFC: <ul>
+<li>request for comments: some standard documents    - </li>
+</ul>
+</li>
+<li>FTP:</li>
+<li>HTTP:</li>
+</ul>
+</li>
+</ul>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/17/MLE/" itemprop="url">
                 Maximum likelihood estimator MLE
               </a>
@@ -633,7 +905,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -647,7 +919,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
