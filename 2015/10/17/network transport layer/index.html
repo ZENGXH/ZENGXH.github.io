@@ -55,7 +55,7 @@ client and server programs are created by different programmer, follow the rules
 .. same: client-server application
 
 a transport-layer protocol provides logical communication">
-<meta property="og:updated_time" content="2015-10-17T06:03:34.661Z">
+<meta property="og:updated_time" content="2015-10-17T09:54:03.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="network transport layer">
 <meta name="twitter:description" content="two type of network app:
@@ -240,7 +240,8 @@ a transport-layer protocol provides logical communication">
 <li>transport layer protocol<ul>
 <li>UDP<ul>
 <li>socket is identified by: dest IP + dest port num<ul>
-<li>diff source IP+port + same dest IP+port =&gt; same pocket in server        </li>
+<li>diff source IP+port + same dest IP+port =&gt; same pocket in server</li>
+<li>The TCP segment has 20 bytes of header overhead in every segment, whereas UDP has only 8 bytes of overhead.        </li>
 </ul>
 </li>
 </ul>
@@ -262,10 +263,14 @@ a transport-layer protocol provides logical communication">
 </ul>
 </li>
 <li>FTP:</li>
-<li>HTTP:</li>
+<li>HTTP:<ul>
+<li>use TCP protocol</li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<hr>
 </span>
       
     </div>
@@ -351,7 +356,7 @@ a transport-layer protocol provides logical communication">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

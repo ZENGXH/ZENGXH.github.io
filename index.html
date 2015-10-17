@@ -172,7 +172,7 @@
           
             
               <a class="post-title-link" href="/2015/10/17/learning-wireshark/" itemprop="url">
-                learning wireshark
+                handon-networking
               </a>
             
           
@@ -204,10 +204,36 @@
       
         
           <span itemprop="articleBody"><ul>
-<li>setting:<ul>
-<li>filter: HTTP, TCP…..<ul>
-<li>At the HTTP protocol level exchanged messages are : GET HTTP/1.1 from the web browser to get the content from a web server, and HTTP/1.1 responses from the server containing the content of the web site. </li>
-<li>at the TCP protocol level exchanged messages are : SYN (to initiate a TCP connection), SYN ACK, data packets, FIN (to end a connection) and FIN ACK.</li>
+<li><p>start capture:</p>
+<ul>
+<li>!()[/enc_unit.png]<ul>
+<li>from the image we can verify that<ul>
+<li>an Ethernet frame[Data link layer] encapsulates an IP datagram(Internet Protocol)[Network layer]. </li>
+<li>an IP datagram encapulates a TCP segment(Transmission Contorl protocol)[transport layer]. </li>
+<li>a TCP segment encapsulates an HTTP message(<code>hypertext transfer protocol</code>).<ul>
+<li>if use UDP then the 4th line is: <code>User Datagram Protocol</code></li>
+</ul>
+</li>
+<li>noted that the <code>Frame</code> on top is nor a real protocol but used by Wireshrk as a base for all the protocols showing some info from capturing</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>filter: <code>HTTP</code>(can also apply TCP…..)</p>
+<ul>
+<li><p>At the HTTP protocol level exchanged messages are : </p>
+<ul>
+<li>GET HTTP/1.1 from the web browser to get the content from a web server</li>
+<li>HTTP/1.1 responses from the server containing the content of the web site. <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">104</span> <span class="number">4.435759000</span> vpn-<span class="number">252</span>-<span class="number">095</span><span class="class">.epfl</span><span class="class">.ch</span> icvmwebsrv2<span class="class">.epfl</span><span class="class">.ch</span> HTTP    <span class="number">610</span> GET /favicon<span class="class">.ico</span> HTTP/<span class="number">1.1</span> </span><br><span class="line"><span class="number">105</span> <span class="number">4.442593000</span> icvmwebsrv2<span class="class">.epfl</span><span class="class">.ch</span> vpn-<span class="number">252</span>-<span class="number">095</span><span class="class">.epfl</span><span class="class">.ch</span> HTTP    <span class="number">463</span> HTTP/<span class="number">1.1</span> <span class="number">404</span> Not Found  (text/html)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>at the TCP protocol level exchanged messages are: </p>
+<ul>
+<li>SYN (to initiate a TCP connection), SYN ACK, data packets, FIN (to end a connection) and FIN ACK.<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">9</span>  <span class="number">3.855667000</span> vpn-<span class="number">252</span>-<span class="number">095.</span>epfl.ch icvmwebsrv2.epfl.ch TCP <span class="number">66</span>  <span class="number">52449</span>→http [SYN] Seq=<span class="number">0</span> Win=<span class="number">8192</span> Len=<span class="number">0</span> MSS=<span class="number">1160</span> WS=<span class="number">256</span> SACK_PERM=<span class="number">1</span>`</span><br><span class="line"><span class="number">11</span>  <span class="number">3.861081000</span> icvmwebsrv2.epfl.ch vpn-<span class="number">252</span>-<span class="number">095.</span>epfl.ch TCP <span class="number">66</span>  http→<span class="number">52449</span> [SYN, ACK] Seq=<span class="number">0</span> Ack=<span class="number">1</span> Win=<span class="number">14600</span> Len=<span class="number">0</span> MSS=<span class="number">1160</span> SACK_PERM=<span class="number">1</span> WS=<span class="number">128</span></span><br><span class="line"><span class="number">12</span>  <span class="number">3.861318000</span> vpn-<span class="number">252</span>-<span class="number">095.</span>epfl.ch icvmwebsrv2.epfl.ch TCP <span class="number">54</span>  <span class="number">52449</span>→http [ACK] Seq=<span class="number">1</span> Ack=<span class="number">1</span> Win=<span class="number">16384</span> Len=<span class="number">0</span></span><br><span class="line"><span class="number">114</span> <span class="number">14.021210000</span>    vpn-<span class="number">252</span>-<span class="number">095.</span>epfl.ch icvmwebsrv2.epfl.ch TCP <span class="number">54</span>  <span class="number">52449</span>→http [FIN, ACK] Seq=<span class="number">1211</span> Ack=<span class="number">8243</span> Win=<span class="number">16384</span> Len=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -215,28 +241,356 @@
 <li></li>
 </ul>
 </li>
-<li>start capturing: set HTTP filter:<ul>
-<li>analyze one HTTP message:<ul>
+<li>set HTTP filter:<ul>
+<li>analyze one HTTP message: the encapsulation of HTTP protocol data units<ul>
+<li>!()[/enc_unit2.png]</li>
 <li><h1 id="of_bytes_the_HTTP_message_contain:">of bytes the HTTP message contain:</h1><ul>
-<li>: Transmission Control Portocol - TCP Segment Len: 166</li>
+<li>: Transmission Control Portocol - TCP Segment Len: 287</li>
 </ul>
 </li>
 </ul>
 <ul>
 <li><h1 id="of_bytes_TCP_and_IP_headers_together_add_to_the_HTTP_message">of bytes TCP and IP headers together add to the HTTP message</h1><ul>
-<li>: </li>
+<li>: Internet Prorocol - Header length: 20 bytes</li>
+<li>: TCP - Header length: 32 bytes</li>
+<li>intotal: 52 bytes</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>Ethernet frame size</li>
-<li>IP packet size = length of HTTP message data + TCP header + IP header</li>
-<li><img src="https://sites.google.com/site/com208computernetworks/_/rsrc/1442653514777/schedule/exercises-1-solutions/enc_unit.png" alt=""></li>
+<li>Ethernet frame size<ul>
+<li>Frame - frame length: 353 bytes</li>
+</ul>
+</li>
+<li>IP packet size = length of HTTP message data + TCP header + IP header<ul>
+<li>IP - total length: 339 bytes</li>
+<li>note that Ethernet frame encapsulates the IP packet, which is  = IP packet + Ethernet header, so it is always larger than IP packet size</li>
+</ul>
+</li>
+<li><h1 id="of_HTTP_sessions_were_established_when_the_Web_page_was_loaded?_Check_on_and_#_servers_the_content_of_the_web_page_is_stored">of HTTP sessions were established when the Web page was loaded? Check on and # servers the content of the web page is stored</h1><ul>
+<li>http filter -&gt; Statistics -&gt; Conversation -&gt; Limit to disply filter</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<hr>
+<h2 id="EXERCISE_1">EXERCISE 1</h2><p><code>nslookup</code>, <code>dig</code>, and <code>host</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// get the server and address of a website</span></span><br><span class="line"><span class="preprocessor"># nslookup www.google.com</span></span><br><span class="line"><span class="comment">// The address 127.0.0.1 is always the IP address of every computer.</span></span><br><span class="line">xizeng@icivrgsrv1:~$ nslookup localhost</span><br><span class="line">Server:         <span class="number">128.178</span><span class="number">.15</span><span class="number">.7</span></span><br><span class="line">Address:        <span class="number">128.178</span><span class="number">.15</span><span class="number">.7</span><span class="preprocessor">#<span class="number">53</span></span></span><br><span class="line"></span><br><span class="line">Name:   localhost.epfl.ch</span><br><span class="line">Address: <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"></span><br><span class="line">$ ifconfig</span><br><span class="line"><span class="comment">// get IP address and interface(ethernet, local loopback) of my </span></span><br><span class="line"><span class="comment">// tation</span></span><br><span class="line"></span><br><span class="line">$ ping &lt;url&gt;</span><br><span class="line"><span class="comment">// check whether the following machine is reachable</span></span><br><span class="line"><span class="comment">// check minimum, average, and maximum round trip time</span></span><br><span class="line"></span><br><span class="line">$ traceroute &lt;url&gt;</span><br><span class="line"><span class="comment">// check the routers between my station and host of &lt;url&gt;</span></span><br><span class="line"><span class="comment">// RETURN RTT: round trip time</span></span><br><span class="line"><span class="comment">// ping returns as output whether a destination is reachable </span></span><br><span class="line"><span class="comment">// along with statistics about packet loss and RTT, traceroute </span></span><br><span class="line"><span class="comment">// shows all the hops in the routing path from source to </span></span><br><span class="line"><span class="comment">// destination along with RTT results for each hop.</span></span><br><span class="line"></span><br><span class="line">$ xizeng@icivrgsrv1:~$ grep <span class="string">"ssh"</span> /etc/services</span><br><span class="line">ssh             <span class="number">22</span>/tcp                          <span class="preprocessor"># SSH Remote Login Protocol</span></span><br><span class="line">ssh             <span class="number">22</span>/udp</span><br><span class="line"></span><br><span class="line">$ netstat -t</span><br><span class="line"><span class="comment">// TCP connections that are up and running on your system</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="Exercise_2：">Exercise 2：</h2><ul>
+<li><code>traceroute</code> to different destination, can find that all of the connection diverge at perticular router<ul>
+<li>if in EPFL network, than this special router is the one connects EPFL and SWITCH, and for the trace of the route, the next router should belong ro SEITCH education network</li>
+<li>also notes that the number of hops is not proportional to the physical distance.</li>
+<li>if traceroute from A to B and then from B to A, we can verify that<ul>
+<li>routes on the Internet do not need to be symmetric<ul>
+<li>the forward path and reverse path do not pass the same router<ul>
+<li>may choose seperate routers for ingoing and outgoing connections for load balancing</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>for the common routers between the forward and the reverse path, the IP adress may be different: <ul>
+<li>both IP addresses indeed belong to the same router, but have been allocated to different interfaces of it</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>if we for each packet size = [50,150,500,1000,1500], we send 50 packet by <code>ping</code> to www.google.com and plot it:<ul>
+<li>for same size of packet, delay randomly varies over time. This is mostly due to the variability of processing and queuing delays. The degree of variability is related to the quality of the connection, and it does not necessarily depend on the physical distance or even the number of hops.</li>
+<li>for different size, delay may or may not depends on the size of the ping packets for all destinations<ul>
+<li>if the transmission delay is the major factor in the overall delay, the dependence is strong</li>
+<li>if not, it is weak:<ul>
+<li>the destination is far away, and therefore the propagation delay (independent from the packet size) is significantly higher than the transmission delay (dependent on the packet size) </li>
+<li>queueing delay (rather than the transmission delay) is the one to have the most significant part in the total delay sur to the high congestion in the network (high congestion can explain the “unexpected” drops as the size increase)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>analyze of delay<ul>
+<li>estimation of the delay:<ul>
+<li>given </li>
+<li>www.google.com_avg.txt : (for each packet size send 50 packets)</li>
+<li>packet size/ minimumu delay/ max delay(for a packet in # packet size)<br>  50 4.638 <em>4.386</em><br>  250 4.700 4.480<br>  500 4.764 4.574<br>  750 4.861 4.776<br>  1000 4.937 4.810<br>  1250 5.211 4.963<br>  1500 5.237 <em>5.056</em></li>
+</ul>
+</li>
+<li>The propagation delay <ul>
+<li>does not depend on the packet size. It’s related to the link and, in general, does not vary (except if the link varies: cable, satellite, etc.)</li>
+<li></li>
+</ul>
+</li>
+<li>The queuing delay <ul>
+<li>only depends on the congestion of the network. It will increase with the amount of traffic on the network (the more traffic there is, the more our packet will wait to be treated at a router).</li>
+<li>avarage ~= average difference between the average and the minimum delays, taking into account all the packet sizes, for this example it is: 1/7 * ( (4.638-4.386) + (4.700-4.480) + (4.764-4.574) + (4.861-4.776) + (4.937-4.810) + (5.211-4.963) + (5.237-5.056) ) = 0.1861 [ms]</li>
+</ul>
+</li>
+<li>The transmission delay <ul>
+<li>almost proportional to the packet size; for a fixed packet size, it is constant.</li>
+<li>assume that the other delay for the mimi delay of different packet size is the same; </li>
+<li>~= difference between the minimum delays for the largest packet and the smallest packet: 5.056 - 4.386 = 0.67 [ms] for 1500-50 = 1450 byte packets, 1 Byte = 8 bits</li>
+<li><code>link throughput</code> = 8<em>1450/[0.67</em>10^(-3)] Mbps or Bit/s</li>
+</ul>
+</li>
+<li>The processing delay <ul>
+<li>can depend on the packet size, but to a much smaller degree than transmission delay; for a fixed packet size, it is reasonably constant.</li>
+<li>for packet in same size, assume the transmission+propagetion+processing delay is the same</li>
+<li>process + propage dalay ~= minimum delay among all minimum delays (usually it is the min delay for the smallest packet) = 4.386 ms</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><em>telnet</em><br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">telnet&gt; o www.google.ch <span class="number">80</span></span><br><span class="line">Trying <span class="number">173.194</span><span class="number">.112</span><span class="number">.87</span>...</span><br><span class="line">Connected to www.google.ch.</span><br><span class="line">Escape character is <span class="string">'^]'</span>.</span><br><span class="line">GET <span class="regexp">/ HTTP/</span><span class="number">1.1</span></span><br><span class="line"><span class="string">host:</span> www.google.ch</span><br><span class="line"></span><br><span class="line"><span class="comment">// below is output </span></span><br><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line"><span class="string">Date:</span> Sat, <span class="number">17</span> Oct <span class="number">2015</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">32</span> GMT</span><br><span class="line"><span class="string">Expires:</span> -<span class="number">1</span></span><br><span class="line">Cache-<span class="string">Control:</span> <span class="keyword">private</span>, max-age=<span class="number">0</span></span><br><span class="line">Content-<span class="string">Type:</span> text/html; charset=ISO-<span class="number">8859</span>-<span class="number">1</span></span><br><span class="line"><span class="string">P3P:</span> CP=<span class="string">"This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&amp;answer=151657 for more info."</span></span><br><span class="line"><span class="string">Server:</span> gws</span><br><span class="line">X-XSS-<span class="string">Protection:</span> <span class="number">1</span>; mode=block</span><br><span class="line">X-Frame-<span class="string">Options:</span> SAMEORIGIN</span><br><span class="line"></span><br><span class="line"><span class="comment">// two cookie is stored by www.google.ch</span></span><br><span class="line">Set-<span class="string">Cookie:</span> PREF=ID=<span class="number">1111111111111111</span>:FF=<span class="number">0</span>:TM=<span class="number">1445100992</span>:LM=<span class="number">1445100992</span>:V=<span class="number">1</span>:S=<span class="number">1</span>eJR j9kphnaCmoih; expires=Thu, <span class="number">31</span>-Dec-<span class="number">2015</span> <span class="number">16</span>:<span class="number">02</span>:<span class="number">17</span> GMT; path=/; domain=.google.ch</span><br><span class="line"></span><br><span class="line">Set-<span class="string">Cookie:</span> NID=<span class="number">72</span>=v6MxR_2MLSDmKT0EyV6qrIddaWKZ6FdL-zOEhz-DoRiCqqi8w8u8QBdpq-</span><br><span class="line">fa6cpkDGAmqTiIQYOhSVNsy01hrc3cBzx3C7Ef9KzArtRCiwX-pNIdhMIyMe8bpPAt7rDGLagPsCP4; expires=Sun, <span class="number">17</span>-Apr-<span class="number">2016</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">32</span> GMT; path=/; domain=.google.ch; HttpOnly</span><br><span class="line"></span><br><span class="line">Accept-<span class="string">Ranges:</span> none</span><br><span class="line"><span class="string">Vary:</span> Accept-Encoding</span><br><span class="line">Transfer-<span class="string">Encoding:</span> chunked</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><em>simple email client: SMTP</em><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$ grep smtp /etc/services</span><br><span class="line">PORT <span class="number">25</span></span><br><span class="line"><span class="comment">// SMTP use port 25</span></span><br><span class="line"></span><br><span class="line">$ telnet test.smtp.org <span class="number">25</span></span><br><span class="line"><span class="comment">// test SMTP server </span></span><br><span class="line"></span><br><span class="line">$ help</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span> This is sendmail version <span class="number">8.15</span><span class="number">.2</span></span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span> Topics:</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span>       HELO    EHLO    MAIL    RCPT    DATA</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span>       RSET    NOOP    QUIT    HELP    VRFY</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span>       EXPN    VERB    ETRN    DSN     AUTH</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span>       STARTTLS</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span> For more info use <span class="string">"HELP &lt;topic&gt;"</span>.</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span> To report bugs in the implementation see</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span>       http:<span class="comment">//www.sendmail.org/email-addresses.html</span></span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span> For local information send email to Postmaster at your site.</span><br><span class="line"><span class="number">214</span> <span class="number">2.0</span><span class="number">.0</span> End of HELP info</span><br><span class="line"><span class="comment">// check if the email addresses are vaild</span></span><br><span class="line">$ VRFY admin@test.smtp.org</span><br><span class="line"><span class="number">553</span> <span class="number">5.3</span><span class="number">.0</span> admin@test.smtp.org... No such user</span><br><span class="line"></span><br><span class="line">$ VRFY bouncer@test.smtp.org</span><br><span class="line"><span class="number">553</span> <span class="number">5.3</span><span class="number">.0</span> bouncer@test.smtp.org... Disabled due to abuse</span><br><span class="line"></span><br><span class="line">$ VERY bit-bucket@test.smtp.org</span><br><span class="line"><span class="number">500</span> <span class="number">5.5</span><span class="number">.1</span> Command unrecognized: <span class="string">"VERY bit-bucket@test.smtp.org"</span></span><br><span class="line">VRFY bit-bucket@test.smtp.org</span><br><span class="line"><span class="number">250</span> <span class="number">2.1</span><span class="number">.5</span> &lt;bit-bucket@test.smtp.org&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">xizeng@icivrgsrv1:~$ telnet mail<span class="class">.epfl</span><span class="class">.ch</span> <span class="number">25</span></span><br><span class="line">Trying <span class="number">128.178</span>.<span class="number">222.71</span>...</span><br><span class="line">Connected to mail<span class="class">.epfl</span><span class="class">.ch</span>.</span><br><span class="line">Escape character is <span class="string">'^]'</span>.</span><br><span class="line"><span class="number">220</span> mail<span class="class">.epfl</span><span class="class">.ch</span> AngelmatoPhylax SMTP proxy</span><br><span class="line">$ helo</span><br><span class="line"><span class="number">250</span> mail<span class="class">.epfl</span><span class="class">.ch</span></span><br><span class="line">$ mail from: &lt;anyname@gmail.com&gt;</span><br><span class="line">...</span><br><span class="line">$ rcpt to: &lt;firstname.lastname@epfl.ch&gt;</span><br><span class="line"><span class="number">503</span> successful MAIL needed before RCPT</span><br><span class="line">$ data</span><br><span class="line"><span class="number">503</span> successful RCPT needed before DATA</span><br><span class="line">$ subject: hhhhh</span><br><span class="line">write something here!!!</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.</span><br><span class="line"><span class="comment">// end</span></span><br><span class="line">$ quit</span><br><span class="line"><span class="number">221</span> bye bye</span><br><span class="line">Connection closed by foreign host.</span><br></pre></td></tr></table></figure>
+<p>And then you will receive the email!<br>notice that only ordered instruction will be recognized</p>
+<hr>
+<p><em>use firefox to track the network</em><br>!()[/firefox.png]</p>
+<ul>
+<li>info:</li>
+<li>application protocol: HTTP 1.1</li>
+<li>content type: audio/mpeg</li>
+<li>contene size: 8315297 bytes</li>
+<li>transport protocol: TCP</li>
+</ul>
+<hr>
+<p>by the way, the website <a href="https://soundcloud.com/relaxdaily/instrumental-music-to-relax" target="_blank" rel="external">https://soundcloud.com/relaxdaily/instrumental-music-to-relax</a> is really good!</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/17/handon-networking/" itemprop="url">
+                handon-networking
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          發表於
+          <time itemprop="dateCreated" datetime="2015-10-17T09:44:43+02:00" content="2015-10-17">
+            2015-10-17
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><ul>
+<li><p>start capture:</p>
+<ul>
+<li>!()[/enc_unit.png]<ul>
+<li>from the image we can verify that<ul>
+<li>an Ethernet frame[Data link layer] encapsulates an IP datagram(Internet Protocol)[Network layer]. </li>
+<li>an IP datagram encapulates a TCP segment(Transmission Contorl protocol)[transport layer]. </li>
+<li>a TCP segment encapsulates an HTTP message(<code>hypertext transfer protocol</code>).<ul>
+<li>if use UDP then the 4th line is: <code>User Datagram Protocol</code></li>
+</ul>
+</li>
+<li>noted that the <code>Frame</code> on top is nor a real protocol but used by Wireshrk as a base for all the protocols showing some info from capturing</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>filter: <code>HTTP</code>(can also apply TCP…..)</p>
+<ul>
+<li><p>At the HTTP protocol level exchanged messages are : </p>
+<ul>
+<li>GET HTTP/1.1 from the web browser to get the content from a web server</li>
+<li>HTTP/1.1 responses from the server containing the content of the web site. <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">104</span> <span class="number">4.435759000</span> vpn-<span class="number">252</span>-<span class="number">095</span><span class="class">.epfl</span><span class="class">.ch</span> icvmwebsrv2<span class="class">.epfl</span><span class="class">.ch</span> HTTP    <span class="number">610</span> GET /favicon<span class="class">.ico</span> HTTP/<span class="number">1.1</span> </span><br><span class="line"><span class="number">105</span> <span class="number">4.442593000</span> icvmwebsrv2<span class="class">.epfl</span><span class="class">.ch</span> vpn-<span class="number">252</span>-<span class="number">095</span><span class="class">.epfl</span><span class="class">.ch</span> HTTP    <span class="number">463</span> HTTP/<span class="number">1.1</span> <span class="number">404</span> Not Found  (text/html)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>at the TCP protocol level exchanged messages are: </p>
+<ul>
+<li>SYN (to initiate a TCP connection), SYN ACK, data packets, FIN (to end a connection) and FIN ACK.<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">9</span>  <span class="number">3.855667000</span> vpn-<span class="number">252</span>-<span class="number">095.</span>epfl.ch icvmwebsrv2.epfl.ch TCP <span class="number">66</span>  <span class="number">52449</span>→http [SYN] Seq=<span class="number">0</span> Win=<span class="number">8192</span> Len=<span class="number">0</span> MSS=<span class="number">1160</span> WS=<span class="number">256</span> SACK_PERM=<span class="number">1</span>`</span><br><span class="line"><span class="number">11</span>  <span class="number">3.861081000</span> icvmwebsrv2.epfl.ch vpn-<span class="number">252</span>-<span class="number">095.</span>epfl.ch TCP <span class="number">66</span>  http→<span class="number">52449</span> [SYN, ACK] Seq=<span class="number">0</span> Ack=<span class="number">1</span> Win=<span class="number">14600</span> Len=<span class="number">0</span> MSS=<span class="number">1160</span> SACK_PERM=<span class="number">1</span> WS=<span class="number">128</span></span><br><span class="line"><span class="number">12</span>  <span class="number">3.861318000</span> vpn-<span class="number">252</span>-<span class="number">095.</span>epfl.ch icvmwebsrv2.epfl.ch TCP <span class="number">54</span>  <span class="number">52449</span>→http [ACK] Seq=<span class="number">1</span> Ack=<span class="number">1</span> Win=<span class="number">16384</span> Len=<span class="number">0</span></span><br><span class="line"><span class="number">114</span> <span class="number">14.021210000</span>    vpn-<span class="number">252</span>-<span class="number">095.</span>epfl.ch icvmwebsrv2.epfl.ch TCP <span class="number">54</span>  <span class="number">52449</span>→http [FIN, ACK] Seq=<span class="number">1211</span> Ack=<span class="number">8243</span> Win=<span class="number">16384</span> Len=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li></li>
+</ul>
+</li>
+<li>set HTTP filter:<ul>
+<li>analyze one HTTP message: the encapsulation of HTTP protocol data units<ul>
+<li>!()[/enc_unit2.png]</li>
+<li><h1 id="of_bytes_the_HTTP_message_contain:">of bytes the HTTP message contain:</h1><ul>
+<li>: Transmission Control Portocol - TCP Segment Len: 287</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h1 id="of_bytes_TCP_and_IP_headers_together_add_to_the_HTTP_message">of bytes TCP and IP headers together add to the HTTP message</h1><ul>
+<li>: Internet Prorocol - Header length: 20 bytes</li>
+<li>: TCP - Header length: 32 bytes</li>
+<li>intotal: 52 bytes</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Ethernet frame size<ul>
+<li>Frame - frame length: 353 bytes</li>
+</ul>
+</li>
+<li>IP packet size = length of HTTP message data + TCP header + IP header<ul>
+<li>IP - total length: 339 bytes</li>
+<li>note that Ethernet frame encapsulates the IP packet, which is  = IP packet + Ethernet header, so it is always larger than IP packet size</li>
+</ul>
+</li>
+<li><h1 id="of_HTTP_sessions_were_established_when_the_Web_page_was_loaded?_Check_on_and_#_servers_the_content_of_the_web_page_is_stored">of HTTP sessions were established when the Web page was loaded? Check on and # servers the content of the web page is stored</h1><ul>
+<li>http filter -&gt; Statistics -&gt; Conversation -&gt; Limit to disply filter</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="EXERCISE_1">EXERCISE 1</h2><p><code>nslookup</code>, <code>dig</code>, and <code>host</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// get the server and address of a website</span></span><br><span class="line"><span class="preprocessor"># nslookup www.google.com</span></span><br><span class="line"><span class="comment">// The address 127.0.0.1 is always the IP address of every computer.</span></span><br><span class="line">xizeng@icivrgsrv1:~$ nslookup localhost</span><br><span class="line">Server:         <span class="number">128.178</span><span class="number">.15</span><span class="number">.7</span></span><br><span class="line">Address:        <span class="number">128.178</span><span class="number">.15</span><span class="number">.7</span><span class="preprocessor">#<span class="number">53</span></span></span><br><span class="line"></span><br><span class="line">Name:   localhost.epfl.ch</span><br><span class="line">Address: <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line"></span><br><span class="line">$ ifconfig</span><br><span class="line"><span class="comment">// get IP address and interface(ethernet, local loopback) of my </span></span><br><span class="line"><span class="comment">// tation</span></span><br><span class="line"></span><br><span class="line">$ ping &lt;url&gt;</span><br><span class="line"><span class="comment">// check whether the following machine is reachable</span></span><br><span class="line"><span class="comment">// check minimum, average, and maximum round trip time</span></span><br><span class="line"></span><br><span class="line">$ traceroute &lt;url&gt;</span><br><span class="line"><span class="comment">// check the routers between my station and host of &lt;url&gt;</span></span><br><span class="line"><span class="comment">// RETURN RTT: round trip time</span></span><br><span class="line"><span class="comment">// ping returns as output whether a destination is reachable </span></span><br><span class="line"><span class="comment">// along with statistics about packet loss and RTT, traceroute </span></span><br><span class="line"><span class="comment">// shows all the hops in the routing path from source to </span></span><br><span class="line"><span class="comment">// destination along with RTT results for each hop.</span></span><br><span class="line"></span><br><span class="line">$ xizeng@icivrgsrv1:~$ grep <span class="string">"ssh"</span> /etc/services</span><br><span class="line">ssh             <span class="number">22</span>/tcp                          <span class="preprocessor"># SSH Remote Login Protocol</span></span><br><span class="line">ssh             <span class="number">22</span>/udp</span><br><span class="line"></span><br><span class="line">$ netstat -t</span><br><span class="line"><span class="comment">// TCP connections that are up and running on your system</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="Exercise_2：">Exercise 2：</h2><ul>
+<li><code>traceroute</code> to different destination, can find that all of the connection diverge at perticular router<ul>
+<li>if in EPFL network, than this special router is the one connects EPFL and SWITCH, and for the trace of the route, the next router should belong ro SEITCH education network</li>
+<li>also notes that the number of hops is not proportional to the physical distance.</li>
+<li>if traceroute from A to B and then from B to A, we can verify that<ul>
+<li>routes on the Internet do not need to be symmetric<ul>
+<li>the forward path and reverse path do not pass the same router<ul>
+<li>may choose seperate routers for ingoing and outgoing connections for load balancing</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>for the common routers between the forward and the reverse path, the IP adress may be different: <ul>
+<li>both IP addresses indeed belong to the same router, but have been allocated to different interfaces of it</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>if we for each packet size = [50,150,500,1000,1500], we send 50 packet by <code>ping</code> to www.google.com and plot it:<ul>
+<li>for same size of packet, delay randomly varies over time. This is mostly due to the variability of processing and queuing delays. The degree of variability is related to the quality of the connection, and it does not necessarily depend on the physical distance or even the number of hops.</li>
+<li>for different size, delay may or may not depends on the size of the ping packets for all destinations<ul>
+<li>if the transmission delay is the major factor in the overall delay, the dependence is strong</li>
+<li>if not, it is weak:<ul>
+<li>the destination is far away, and therefore the propagation delay (independent from the packet size) is significantly higher than the transmission delay (dependent on the packet size) </li>
+<li>queueing delay (rather than the transmission delay) is the one to have the most significant part in the total delay sur to the high congestion in the network (high congestion can explain the “unexpected” drops as the size increase)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>analyze of delay<ul>
+<li>estimation of the delay:<ul>
+<li>given </li>
+<li>www.google.com_avg.txt : (for each packet size send 50 packets)</li>
+<li>packet size/ minimumu delay/ max delay(for a packet in # packet size)<br>  50 4.638 <em>4.386</em><br>  250 4.700 4.480<br>  500 4.764 4.574<br>  750 4.861 4.776<br>  1000 4.937 4.810<br>  1250 5.211 4.963<br>  1500 5.237 <em>5.056</em></li>
+</ul>
+</li>
+<li>The propagation delay <ul>
+<li>does not depend on the packet size. It’s related to the link and, in general, does not vary (except if the link varies: cable, satellite, etc.)</li>
+<li></li>
+</ul>
+</li>
+<li>The queuing delay <ul>
+<li>only depends on the congestion of the network. It will increase with the amount of traffic on the network (the more traffic there is, the more our packet will wait to be treated at a router).</li>
+<li>avarage ~= average difference between the average and the minimum delays, taking into account all the packet sizes, for this example it is: 1/7 * ( (4.638-4.386) + (4.700-4.480) + (4.764-4.574) + (4.861-4.776) + (4.937-4.810) + (5.211-4.963) + (5.237-5.056) ) = 0.1861 [ms]</li>
+</ul>
+</li>
+<li>The transmission delay <ul>
+<li>almost proportional to the packet size; for a fixed packet size, it is constant.</li>
+<li>assume that the other delay for the mimi delay of different packet size is the same; </li>
+<li>~= difference between the minimum delays for the largest packet and the smallest packet: 5.056 - 4.386 = 0.67 [ms] for 1500-50 = 1450 byte packets, 1 Byte = 8 bits</li>
+<li><code>link throughput</code> = 8<em>1450/[0.67</em>10^(-3)] Mbps or Bit/s</li>
+</ul>
+</li>
+<li>The processing delay <ul>
+<li>can depend on the packet size, but to a much smaller degree than transmission delay; for a fixed packet size, it is reasonably constant.</li>
+<li>for packet in same size, assume the transmission+propagetion+processing delay is the same</li>
+<li>process + propage dalay ~= minimum delay among all minimum delays (usually it is the min delay for the smallest packet) = 4.386 ms</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><em>telnet</em><br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">telnet&gt; o www.google.ch <span class="number">80</span></span><br><span class="line">Trying <span class="number">173.194</span><span class="number">.112</span><span class="number">.87</span>...</span><br><span class="line">Connected to www.google.ch.</span><br><span class="line">Escape character is <span class="string">'^]'</span>.</span><br><span class="line">GET <span class="regexp">/ HTTP/</span><span class="number">1.1</span></span><br><span class="line"><span class="string">host:</span> www.google.ch</span><br><span class="line"></span><br><span class="line"><span class="comment">// below is output </span></span><br><span class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</span><br><span class="line"><span class="string">Date:</span> Sat, <span class="number">17</span> Oct <span class="number">2015</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">32</span> GMT</span><br><span class="line"><span class="string">Expires:</span> -<span class="number">1</span></span><br><span class="line">Cache-<span class="string">Control:</span> <span class="keyword">private</span>, max-age=<span class="number">0</span></span><br><span class="line">Content-<span class="string">Type:</span> text/html; charset=ISO-<span class="number">8859</span>-<span class="number">1</span></span><br><span class="line"><span class="string">P3P:</span> CP=<span class="string">"This is not a P3P policy! See http://www.google.com/support/accounts/bin/answer.py?hl=en&amp;answer=151657 for more info."</span></span><br><span class="line"><span class="string">Server:</span> gws</span><br><span class="line">X-XSS-<span class="string">Protection:</span> <span class="number">1</span>; mode=block</span><br><span class="line">X-Frame-<span class="string">Options:</span> SAMEORIGIN</span><br><span class="line"></span><br><span class="line"><span class="comment">// two cookie is stored by www.google.ch</span></span><br><span class="line">Set-<span class="string">Cookie:</span> PREF=ID=<span class="number">1111111111111111</span>:FF=<span class="number">0</span>:TM=<span class="number">1445100992</span>:LM=<span class="number">1445100992</span>:V=<span class="number">1</span>:S=<span class="number">1</span>eJR j9kphnaCmoih; expires=Thu, <span class="number">31</span>-Dec-<span class="number">2015</span> <span class="number">16</span>:<span class="number">02</span>:<span class="number">17</span> GMT; path=/; domain=.google.ch</span><br><span class="line"></span><br><span class="line">Set-<span class="string">Cookie:</span> NID=<span class="number">72</span>=v6MxR_2MLSDmKT0EyV6qrIddaWKZ6FdL-zOEhz-DoRiCqqi8w8u8QBdpq-</span><br><span class="line">fa6cpkDGAmqTiIQYOhSVNsy01hrc3cBzx3C7Ef9KzArtRCiwX-pNIdhMIyMe8bpPAt7rDGLagPsCP4; expires=Sun, <span class="number">17</span>-Apr-<span class="number">2016</span> <span class="number">16</span>:<span class="number">56</span>:<span class="number">32</span> GMT; path=/; domain=.google.ch; HttpOnly</span><br><span class="line"></span><br><span class="line">Accept-<span class="string">Ranges:</span> none</span><br><span class="line"><span class="string">Vary:</span> Accept-Encoding</span><br><span class="line">Transfer-<span class="string">Encoding:</span> chunked</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><em>simple email client: SMTP</em><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">$ grep smtp /etc/services</span><br><span class="line">PORT <span class="number">25</span></span><br><span class="line"><span class="comment">// SMTP use port 25</span></span><br><span class="line"></span><br><span class="line">$ telnet test.smtp.org <span class="number">25</span></span><br><span class="line"><span class="comment">// test SMTP server </span></span><br><span class="line"></span><br><span class="line">$ help</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span> This is sendmail version <span class="number">8.15</span><span class="number">.2</span></span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span> Topics:</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span>       HELO    EHLO    MAIL    RCPT    DATA</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span>       RSET    NOOP    QUIT    HELP    VRFY</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span>       EXPN    VERB    ETRN    DSN     AUTH</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span>       STARTTLS</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span> For more info use <span class="string">"HELP &lt;topic&gt;"</span>.</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span> To report bugs in the implementation see</span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span>       http:<span class="comment">//www.sendmail.org/email-addresses.html</span></span><br><span class="line"><span class="number">214</span>-<span class="number">2.0</span><span class="number">.0</span> For local information send email to Postmaster at your site.</span><br><span class="line"><span class="number">214</span> <span class="number">2.0</span><span class="number">.0</span> End of HELP info</span><br><span class="line"><span class="comment">// check if the email addresses are vaild</span></span><br><span class="line">$ VRFY admin@test.smtp.org</span><br><span class="line"><span class="number">553</span> <span class="number">5.3</span><span class="number">.0</span> admin@test.smtp.org... No such user</span><br><span class="line"></span><br><span class="line">$ VRFY bouncer@test.smtp.org</span><br><span class="line"><span class="number">553</span> <span class="number">5.3</span><span class="number">.0</span> bouncer@test.smtp.org... Disabled due to abuse</span><br><span class="line"></span><br><span class="line">$ VERY bit-bucket@test.smtp.org</span><br><span class="line"><span class="number">500</span> <span class="number">5.5</span><span class="number">.1</span> Command unrecognized: <span class="string">"VERY bit-bucket@test.smtp.org"</span></span><br><span class="line">VRFY bit-bucket@test.smtp.org</span><br><span class="line"><span class="number">250</span> <span class="number">2.1</span><span class="number">.5</span> &lt;bit-bucket@test.smtp.org&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">xizeng@icivrgsrv1:~$ telnet mail<span class="class">.epfl</span><span class="class">.ch</span> <span class="number">25</span></span><br><span class="line">Trying <span class="number">128.178</span>.<span class="number">222.71</span>...</span><br><span class="line">Connected to mail<span class="class">.epfl</span><span class="class">.ch</span>.</span><br><span class="line">Escape character is <span class="string">'^]'</span>.</span><br><span class="line"><span class="number">220</span> mail<span class="class">.epfl</span><span class="class">.ch</span> AngelmatoPhylax SMTP proxy</span><br><span class="line">$ helo</span><br><span class="line"><span class="number">250</span> mail<span class="class">.epfl</span><span class="class">.ch</span></span><br><span class="line">$ mail from: &lt;anyname@gmail.com&gt;</span><br><span class="line">...</span><br><span class="line">$ rcpt to: &lt;firstname.lastname@epfl.ch&gt;</span><br><span class="line"><span class="number">503</span> successful MAIL needed before RCPT</span><br><span class="line">$ data</span><br><span class="line"><span class="number">503</span> successful RCPT needed before DATA</span><br><span class="line">$ subject: hhhhh</span><br><span class="line">write something here!!!</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.</span><br><span class="line"><span class="comment">// end</span></span><br><span class="line">$ quit</span><br><span class="line"><span class="number">221</span> bye bye</span><br><span class="line">Connection closed by foreign host.</span><br></pre></td></tr></table></figure>
+<p>And then you will receive the email!<br>notice that only ordered instruction will be recognized</p>
+<hr>
+<p><em>use firefox to track the network</em><br>!()[/firefox.png]</p>
+<ul>
+<li>info:</li>
+<li>application protocol: HTTP 1.1</li>
+<li>content type: audio/mpeg</li>
+<li>contene size: 8315297 bytes</li>
+<li>transport protocol: TCP</li>
+</ul>
+<hr>
+<p>by the way, the website <a href="https://soundcloud.com/relaxdaily/instrumental-music-to-relax" target="_blank" rel="external">https://soundcloud.com/relaxdaily/instrumental-music-to-relax</a> is really good!</p>
 </span>
         
       
@@ -387,7 +741,8 @@
 <li>transport layer protocol<ul>
 <li>UDP<ul>
 <li>socket is identified by: dest IP + dest port num<ul>
-<li>diff source IP+port + same dest IP+port =&gt; same pocket in server        </li>
+<li>diff source IP+port + same dest IP+port =&gt; same pocket in server</li>
+<li>The TCP segment has 20 bytes of header overhead in every segment, whereas UDP has only 8 bytes of overhead.        </li>
 </ul>
 </li>
 </ul>
@@ -409,10 +764,14 @@
 </ul>
 </li>
 <li>FTP:</li>
-<li>HTTP:</li>
+<li>HTTP:<ul>
+<li>use TCP protocol</li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<hr>
 </span>
         
       
@@ -905,7 +1264,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
