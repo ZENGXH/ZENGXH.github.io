@@ -1,0 +1,729 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="caffe deeplearning," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="layer
+definition12345678910111213141516// 前四行-层属性name:&quot;conv1&quot;type:CONVOLUTION// the link structurebottom:&quot;data&quot;top:&quot;conv1&quot;// parameter of the layerconvolution_param&amp;#123;    num_output:&amp;lt;span&amp;gt;20">
+<meta property="og:type" content="article">
+<meta property="og:title" content="caffe document">
+<meta property="og:url" content="http://yoursite.com/2015/10/17/caffe document/index.html">
+<meta property="og:site_name" content="XXXH">
+<meta property="og:description" content="layer
+definition12345678910111213141516// 前四行-层属性name:&quot;conv1&quot;type:CONVOLUTION// the link structurebottom:&quot;data&quot;top:&quot;conv1&quot;// parameter of the layerconvolution_param&amp;#123;    num_output:&amp;lt;span&amp;gt;20">
+<meta property="og:image" content="http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png">
+<meta property="og:image" content="http://img.ptcms.csdn.net/article/201501/22/54c07168613b6.jpg">
+<meta property="og:updated_time" content="2015-10-17T19:13:27.336Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="caffe document">
+<meta name="twitter:description" content="layer
+definition12345678910111213141516// 前四行-层属性name:&quot;conv1&quot;type:CONVOLUTION// the link structurebottom:&quot;data&quot;top:&quot;conv1&quot;// parameter of the layerconvolution_param&amp;#123;    num_output:&amp;lt;span&amp;gt;20">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+
+
+  <title> caffe document | XXXH </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">XXXH</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              caffe document
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-10-17T21:44:43+02:00" content="2015-10-17">
+            2015-10-17
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="layer">layer</h1><p><img src="http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png" alt="alt text"></p>
+<h2 id="definition">definition</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前四行-层属性</span></span><br><span class="line">name:<span class="string">"conv1"</span></span><br><span class="line">type:CONVOLUTION</span><br><span class="line"><span class="comment">// the link structure</span></span><br><span class="line">bottom:<span class="string">"data"</span></span><br><span class="line">top:<span class="string">"conv1"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// parameter of the layer</span></span><br><span class="line">convolution_param&#123;</span><br><span class="line">    num_output:&lt;span&gt;<span class="number">20</span></span><br><span class="line">    kernel_size:<span class="number">5</span></span><br><span class="line">    stride:<span class="number">1</span></span><br><span class="line">    weight_filler&#123;</span><br><span class="line">        type: <span class="string">"&lt;span style="</span>color: <span class="preprocessor">#c0504d;<span class="string">"&gt;xavier&lt;/span&gt;"</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Blob">Blob</h1><ul>
+<li>4 dimension array<ul>
+<li>data: number/N(batch size of the data), channel/K, height, width</li>
+<li>convolution weight: output, input, height, wifth</li>
+<li>convoluion bias: output 1 1 1</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>#structure of caffe#<br><img src="http://img.ptcms.csdn.net/article/201501/22/54c07168613b6.jpg" alt="alt text"></p>
+<p>1.预处理图像的leveldb构建<br>    输入：一批图像和label （2和3）<br>    输出：leveldb （4）<br>    指令里包含如下信息：<br>    conver_imageset （构建leveldb的可运行程序）<br>    train/ （此目录放处理的jpg或者其他格式的图像)<br>    label.txt (图像文件名及其label信息)<br>    输出的leveldb文件夹的名字<br>    CPU/GPU (指定是在cpu上还是在gpu上运行code)<br>    CNN网络配置文件</p>
+<ol>
+<li>network prototxt<br> Imagenet_solver.prototxt （包含全局参数的配置的文件）<br> Imagenet.prototxt （包含训练网络的配置的文件）<br> Imagenet_val.prototxt （包含测试网络的配置文件）<br>refer: <a href="http://www.csdn.net/article/2015-01-22/2823663" target="_blank" rel="external">http://www.csdn.net/article/2015-01-22/2823663</a></li>
+</ol>
+<p>#train your own model on your own data#</p>
+<ol>
+<li>data preparation: <ol>
+<li>The training and validation input are described in <code>train.txt</code> and <code>val.txt</code> as text listing all the files and their labels</li>
+<li>create the leveldbs with <code>examples/imagenet/create_imagenet.sh</code></li>
+</ol>
+</li>
+<li>Compute Image Mean:<br> The model requires us to subtract the image mean from each image, so we have to compute the mean. <code>tools/compute_image_mean.cpp</code><br> the mean computation can be carried out as:<br> <code>./examples/imagenet/make_imagenet_mean.sh</code><br> make <code>data/ilsvrc12/imagenet_mean.binaryproto</code></li>
+<li>Model Definition<br> <code>models/bvlc_reference_caffenet/train_val.prototxt</code><br> noticed that the train and test network are both defined in this file and only the input layers and one output layer are different:<pre><code><span class="keyword">for</span> training, data <span class="string">input:</span> `examples<span class="regexp">/imagenet/</span>ilsvrc12_train_leveldb`
+<span class="keyword">for</span> testing, data <span class="string">input:</span> `examples<span class="regexp">/imagenet/</span>ilsvrc12_val_leveldb` 
+</code></pre> lay out a protocol buffer for running the solver<pre><code>in <span class="escape">`m</span>odels/bvlc_reference_caffenet/solver.prototxt<span class="escape">`.</span>    
+</code></pre></li>
+</ol>
+<hr>
+<h1 id="file_system">file system</h1><h2 id="leveldb">leveldb</h2><ol>
+<li>leveldb中数据按key/value形式存储。</li>
+<li>leveldb的使用介绍： <a href="http://zh.wikipedia.org/wiki/LevelDB" target="_blank" rel="external">http://zh.wikipedia.org/wiki/LevelDB</a><br>3.将图像以及标注信息，先经过Datum序列化成字符串，再存到leveldb数据库中。见tools/convert_imageset.cpp</li>
+<li>leveldb学习资料：   <a href="http://blog.csdn.net/hzqhbc/article/details/9367327" target="_blank" rel="external">http://blog.csdn.net/hzqhbc/article/details/9367327</a></li>
+</ol>
+<h2 id="-py_file">.py file</h2><p>\python\caffe\classifier.py:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p><code>caffe.Net</code> is the central interface for loading, configuring, and running models. caffe.Classsifier and caffe.Detector provide convenience interfaces for common tasks.<br><code>caffe.SGDSolver</code> exposes the solving interface.<br><code>caffe.io</code> handles input / output with preprocessing and protocol buffers.<br><code>caffe.draw</code> visualizes network architectures.<br>Caffe blobs are exposed as numpy ndarrays for ease-of-use and efficiency.</p>
+<p><code>callable python file:</code><br><code>classify.py</code></p>
+<pre><code>- argumen<span class="variable">t:</span>
+    <span class="built_in">input</span> image,directory <span class="built_in">or</span> npy 
+    output npy filename
+    model-def <span class="keyword">file</span>, default ../models/bvlc_reference_caffenet/deploy.prototxt
+    pretrain model -- trained model weight <span class="keyword">file</span>
+         default ../models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel
+    --gpu switch <span class="keyword">to</span> gpu <span class="built_in">mode</span> 
+    --<span class="keyword">center</span> <span class="keyword">only</span>, switch <span class="keyword">for</span> prediction from <span class="keyword">center</span> crop alone instead of averaging prediction across crops
+    -- image dim, default <span class="number">256</span>,<span class="number">256</span>
+    mean_file default caffe/imagenet/ilsvrc_2012_mean.npy
+    --<span class="built_in">input</span> scale, multiplly <span class="built_in">input</span> features by this scale <span class="keyword">to</span> <span class="keyword">finish</span> preprocessing
+    --raw scale, multiply raw <span class="built_in">input</span> by this scale before preprocessing
+    --channel_swap RGB-BGR since BGR <span class="keyword">is</span> the caffe default by way of opencv
+    --ext default jpg, image <span class="keyword">file</span> <span class="keyword">to</span> take <span class="keyword">as</span> <span class="built_in">input</span>
+    --<span class="keyword">print</span>-result, weite ourpur text <span class="built_in">or</span> serializing <span class="keyword">to</span> <span class="keyword">a</span> <span class="keyword">file</span>
+- <span class="built_in">call</span> classifier with
+&lt;!--￼<span class="number">2</span>--&gt;
+
+- Load numpy array (.npy), directory <span class="built_in">glob</span> (*.jpg), <span class="built_in">or</span> image <span class="keyword">file</span>.
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inputs = [caffe<span class="class">.io</span><span class="class">.load_image</span>(args.input_file)]</span><br></pre></td></tr></table></figure>
+<pre><code>-<span class="ruby"> classify <span class="keyword">and</span> store</span>
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">predictions = classifier.<span class="function"><span class="title">predict</span><span class="params">(inputs, not args.center_only)</span></span></span><br><span class="line">np.<span class="function"><span class="title">save</span><span class="params">(args.output_file, predictions)</span></span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="for_-proto_file:">for .proto file:</h2><ol>
+<li>write a .proto file</li>
+<li>compile with protoc</li>
+<li>command:<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">protoc--proto_path=IMPORT_PATH --cpp_out=DST_DIR --java_out=DST_DIR--python_out=DST_DIR path/to/file.proto</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">--proto_path 也可以简写成-I 是.proto所在的路径 输出路径： --cpp_out 要生成C++可用的头文件，分别是<span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>.pb.h（包含申明类）<span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>.pb.cc（包含可执行类），使用的时候只要include <span class="string">"***.pb.h"</span> --java_out 生成java可用的头文件 --python_out 生成python可用的头文件，<span class="keyword">*</span><span class="keyword">*</span>_pb2.py，使用的时候import<span class="keyword">*</span><span class="keyword">*</span>_pb2.py即可 最后一个参数就是你的.proto文件完整路径。</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="type_of_prototxt">type of prototxt</h1><figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// examples/feature_extraction/imaget_val.prototxt</span><br><span class="line"><span class="keyword">define</span> <span class="title">the</span> layers</span><br></pre></td></tr></table></figure>
+<p><a href="http://htmlpreview.github.io/?https://github.com/google/leveldb/blob/master/doc/index.html" target="_blank" rel="external">http://htmlpreview.github.io/?https://github.com/google/leveldb/blob/master/doc/index.html</a><br>documentation of leveldb<br>try to run lmdb2mat but say db.Get(‘$d’ $(im_indx)) not exist?</p>
+<p>how to run plt in ssh? use xwin<br><a href="http://www.arsc.edu/arsc/knowledge-base/ssh-and-x11-forwarding-us/index.xml" target="_blank" rel="external">http://www.arsc.edu/arsc/knowledge-base/ssh-and-x11-forwarding-us/index.xml</a></p>
+<hr>
+<p>run 00classification, need:</p>
+<p>#.caffemodel file#</p>
+<p>read weights and biases for a caffemodel given the prototxt would be to just load the network in Python and read the weights.<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import caffe</span><br><span class="line"><span class="keyword">net</span> = caffe.<span class="keyword">Net</span>(&lt;prototxt-<span class="keyword">file</span>&gt;,&lt;model-<span class="keyword">file</span>&gt;,&lt;phase&gt;);</span><br></pre></td></tr></table></figure></p>
+<p>and access the params from net.params</p>
+<p>#READ DEPLOTTXT#</p>
+<h2 id="type_of_layer">type of layer</h2><p><a href="http://cs231n.github.io/convolutional-networks/" target="_blank" rel="external">http://cs231n.github.io/convolutional-networks/</a><br>QQQQQ: why need mean of image</p>
+<ul>
+<li>data</li>
+<li><p>conv1</p>
+<ul>
+<li>Just like normal Hidden Layer</li>
+<li>Connect neurons to the input in a local receptive field</li>
+<li>All neurons in a single depth slice share weights</li>
+</ul>
+</li>
+<li><p>relu</p>
+</li>
+<li>norm</li>
+<li>pool</li>
+<li>fc: fully connect</li>
+<li>drop</li>
+</ul>
+<p>Read the code! Two most important files:<br><a href="http://vision.stanford.edu/teaching/cs231n/slides/caffe_tutorial.pdf" target="_blank" rel="external">http://vision.stanford.edu/teaching/cs231n/slides/caffe_tutorial.pdf</a><br>● caffe/python/caffe/_caffe.cpp:<br>○ Exports Blob, Layer, Net, and Solver classes<br>● caffe/python/caffe/pycaffe.py<br>○ Adds extra methods to Net class</p>
+<p>name: “AlexNet”</p>
+<p>input: “data”<br>input_shape {<br>  dim: 10<br>  dim: 3<br>  dim: 227<br>  dim: 227<br>}</p>
+<hr>
+<p>layer {<br>  name: “conv1”<br>  type: “Convolution”<br>  bottom: “data”<br>  top: “conv1”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  convolution_param {<br>    num_output: 96<br>    kernel_size: 11<br>    stride: 4<br>  }</p>
+<h2 id="}">}</h2><p>layer {<br>  name: “relu1”<br>  type: “ReLU”<br>  bottom: “conv1”<br>  top: “conv1”<br>}</p>
+<hr>
+<p>layer {<br>  name: “norm1”<br>  type: “LRN”<br>  bottom: “conv1”<br>  top: “norm1”<br>  lrn_param {<br>    local_size: 5<br>    alpha: 0.0001<br>    beta: 0.75<br>  }<br>}</p>
+<hr>
+<p>layer {<br>  name: “pool1”<br>  type: “Pooling”<br>  bottom: “norm1”<br>  top: “pool1”<br>  pooling_param {<br>    pool: MAX<br>    kernel_size: 3<br>    stride: 2<br>  }<br>}</p>
+<hr>
+<p>layer {<br>  name: “conv2”<br>  type: “Convolution”<br>  bottom: “pool1”<br>  top: “conv2”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  convolution_param {<br>    num_output: 256<br>    pad: 2<br>    kernel_size: 5<br>    group: 2<br>  }<br>}</p>
+<hr>
+<p>layer {<br>  name: “relu2”<br>  type: “ReLU”<br>  bottom: “conv2”<br>  top: “conv2”<br>}</p>
+<hr>
+<p>layer {<br>  name: “norm2”<br>  type: “LRN”<br>  bottom: “conv2”<br>  top: “norm2”<br>  lrn_param {<br>    local_size: 5<br>    alpha: 0.0001<br>    beta: 0.75<br>  }<br>}</p>
+<hr>
+<p>layer {<br>  name: “pool2”<br>  type: “Pooling”<br>  bottom: “norm2”<br>  top: “pool2”<br>  pooling_param {<br>    pool: MAX<br>    kernel_size: 3<br>    stride: 2<br>  }</p>
+<h2 id="}-1">}</h2><p>layer {<br>  name: “conv3”<br>  type: “Convolution”<br>  bottom: “pool2”<br>  top: “conv3”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  convolution_param {<br>    num_output: 384<br>    pad: 1<br>    kernel_size: 3<br>  }</p>
+<h2 id="}-2">}</h2><p>layer {<br>  name: “relu3”<br>  type: “ReLU”<br>  bottom: “conv3”<br>  top: “conv3”<br>}<br>layer {<br>  name: “conv4”<br>  type: “Convolution”<br>  bottom: “conv3”<br>  top: “conv4”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  convolution_param {<br>    num_output: 384<br>    pad: 1<br>    kernel_size: 3<br>    group: 2<br>  }<br>}<br>layer {<br>  name: “relu4”<br>  type: “ReLU”<br>  bottom: “conv4”<br>  top: “conv4”<br>}<br>layer {<br>  name: “conv5”<br>  type: “Convolution”<br>  bottom: “conv4”<br>  top: “conv5”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  convolution_param {<br>    num_output: 256<br>    pad: 1<br>    kernel_size: 3<br>    group: 2<br>  }<br>}<br>layer {<br>  name: “relu5”<br>  type: “ReLU”<br>  bottom: “conv5”<br>  top: “conv5”<br>}<br>layer {<br>  name: “pool5”<br>  type: “Pooling”<br>  bottom: “conv5”<br>  top: “pool5”<br>  pooling_param {<br>    pool: MAX<br>    kernel_size: 3<br>    stride: 2<br>  }<br>}<br>layer {<br>  name: “fc6”<br>  type: “InnerProduct”<br>  bottom: “pool5”<br>  top: “fc6”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  inner_product_param {<br>    num_output: 4096<br>  }<br>}<br>layer {<br>  name: “relu6”<br>  type: “ReLU”<br>  bottom: “fc6”<br>  top: “fc6”<br>}<br>layer {<br>  name: “drop6”<br>  type: “Dropout”<br>  bottom: “fc6”<br>  top: “fc6”<br>  dropout_param {<br>    dropout_ratio: 0.5<br>  }<br>}<br>layer {<br>  name: “fc7”<br>  type: “InnerProduct”<br>  bottom: “fc6”<br>  top: “fc7”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  inner_product_param {<br>    num_output: 4096<br>  }<br>}<br>layer {<br>  name: “relu7”<br>  type: “ReLU”<br>  bottom: “fc7”<br>  top: “fc7”<br>}<br>layer {<br>  name: “drop7”<br>  type: “Dropout”<br>  bottom: “fc7”<br>  top: “fc7”<br>  dropout_param {<br>    dropout_ratio: 0.5<br>  }<br>}<br>layer {<br>  name: “fc8”<br>  type: “InnerProduct”<br>  bottom: “fc7”<br>  top: “fc8”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  inner_product_param {<br>    num_output: 1000<br>  }<br>}<br>layer {<br>  name: “prob”<br>  type: “Softmax”<br>  bottom: “fc8”<br>  top: “prob”<br>}</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/caffe-deeplearning/" rel="tag">#caffe deeplearning</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/18/useful-git-command/" rel="prev">useful git command</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/17/handon-networking/" rel="next">handon-networking</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/xx.jpg" alt="XXXH" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">XXXH</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#layer"><span class="nav-number">1.</span> <span class="nav-text">layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#definition"><span class="nav-number">1.1.</span> <span class="nav-text">definition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Blob"><span class="nav-number">2.</span> <span class="nav-text">Blob</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#file_system"><span class="nav-number">3.</span> <span class="nav-text">file system</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#leveldb"><span class="nav-number">3.1.</span> <span class="nav-text">leveldb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-py_file"><span class="nav-number">3.2.</span> <span class="nav-text">.py file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for_-proto_file:"><span class="nav-number">3.3.</span> <span class="nav-text">for .proto file:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#type_of_prototxt"><span class="nav-number">4.</span> <span class="nav-text">type of prototxt</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#type_of_layer"><span class="nav-number">4.1.</span> <span class="nav-text">type of layer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#}"><span class="nav-number">4.2.</span> <span class="nav-text">}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#}-1"><span class="nav-number">4.3.</span> <span class="nav-text">}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#}-2"><span class="nav-number">4.4.</span> <span class="nav-text">}</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XXXH</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
