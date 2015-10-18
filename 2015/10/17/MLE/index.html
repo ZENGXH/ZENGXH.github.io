@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="ml MLE," />
 
 
 
@@ -39,25 +39,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="notebook: machine learningtags: ml MLE
-linear regression - basis function expansion
-任意一个函数 可以放到 ${1,x,x^2,x^3….}$所张成的函数空间，如果是有限个基的话就称为欧式空间，无穷的话 就是 Hilbert空间，
-Polynomial Fitting 是一个线性model， 这里Model是w的函">
+<meta name="description" content="least square
+The method of least squares is a standard approach in regression analysis to the approximate solution of overdetermined systems, i.e., sets of equations in which there are more equations">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maximum likelihood estimator MLE">
 <meta property="og:url" content="http://yoursite.com/2015/10/17/MLE/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="notebook: machine learningtags: ml MLE
-linear regression - basis function expansion
-任意一个函数 可以放到 ${1,x,x^2,x^3….}$所张成的函数空间，如果是有限个基的话就称为欧式空间，无穷的话 就是 Hilbert空间，
-Polynomial Fitting 是一个线性model， 这里Model是w的函">
-<meta property="og:updated_time" content="2015-10-16T22:16:43.678Z">
+<meta property="og:description" content="least square
+The method of least squares is a standard approach in regression analysis to the approximate solution of overdetermined systems, i.e., sets of equations in which there are more equations">
+<meta property="og:updated_time" content="2015-10-18T18:22:07.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maximum likelihood estimator MLE">
-<meta name="twitter:description" content="notebook: machine learningtags: ml MLE
-linear regression - basis function expansion
-任意一个函数 可以放到 ${1,x,x^2,x^3….}$所张成的函数空间，如果是有限个基的话就称为欧式空间，无穷的话 就是 Hilbert空间，
-Polynomial Fitting 是一个线性model， 这里Model是w的函">
+<meta name="twitter:description" content="least square
+The method of least squares is a standard approach in regression analysis to the approximate solution of overdetermined systems, i.e., sets of equations in which there are more equations">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -188,7 +182,7 @@ Polynomial Fitting 是一个线性model， 这里Model是w的函">
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-10-17T00:16:43+02:00" content="2015-10-17">
+          <time itemprop="dateCreated" datetime="2015-10-17T21:32:03+02:00" content="2015-10-17">
             2015-10-17
           </time>
         </span>
@@ -208,42 +202,34 @@ Polynomial Fitting 是一个线性model， 这里Model是w的函">
       
 
       
-        <span itemprop="articleBody"><p>notebook: machine learning<br>tags: ml MLE</p>
-<h3 id="linear_regression_-_basis_function_expansion">linear regression - basis function expansion</h3><ul>
-<li>任意一个函数 可以放到 ${1,x,x^2,x^3….}$所张成的函数空间，如果是有限个基的话就称为欧式空间，无穷的话 就是 Hilbert空间，</li>
-<li>Polynomial Fitting 是一个线性model， 这里Model是w的函数,w是线性的：</li>
-<li>in linear regression: take $\phi$ as veriable – linear; but the $\phi$ function itself can be nonliear</li>
-<li>functional analysis</li>
-<li><a href="http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png" target="_blank" rel="external">http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png</a><h3 id="least_square">least square</h3></li>
-<li>The method of least squares is a standard approach in regression analysis to the approximate solution of overdetermined systems, i.e., sets of equations in which there are more equations than unknowns.</li>
-<li>if all residual are linear, then it is linear least square: The linear least-squares problem occurs in statistical regression analysis; it has a closed-form solution.</li>
+        <span itemprop="articleBody"><h2 id="least_square">least square</h2><ul>
+<li>The method of least squares is a standard approach in regression analysis to the <strong>approximate solution of overdetermined systems</strong>, i.e., sets of equations in which there are more equations than unknowns.</li>
+<li>if all residual are linear, then it is linear least square: </li>
+<li>The linear least-squares problem occurs in statistical regression analysis;</li>
+<li>it has a closed-form solution.</li>
 </ul>
-<h3 id="fisher_information">fisher information</h3><ul>
-<li><p>Fisher information (sometimes simply called information[1]) is a way of measuring the amount of information that an observable random variable X carries about an unknown parameter θ of a distribution that models X. Formally, it is the variance of the score, or the expected value of the observed information. </p>
-</li>
-<li><p>The likelihood </p>
-<ul>
-<li>defined as the joint density or probability of the outcomes, with the roles of the values of the outcomesyand the values of the parameters θ interchanged. </li>
-<li>score function is calculated by taking the derivative of the log-likelihood:</li>
-<li>find the maximum likelihood estimator, set the score function equal to zero</li>
+<h2 id="fisher_information">fisher information</h2><ul>
+<li>Fisher information is a way of <strong>measuring the amount of information that an observable random variable X carries about an unknown parameter θ of a distribution that models X</strong>. Formally, it is the variance of the <strong>score</strong>, or the expected value of the observed information. </li>
+</ul>
+<h2 id="The_likelihood">The likelihood</h2><ul>
+<li>defined as the <strong>joint density or probability of the outcomes</strong>, with the roles of the values of the outcomes y and the values of the parameters θ interchanged. $p(y|x,\thelta)$, $p(\thelta|y)$</li>
+<li><code>score function</code> = <code>derivative of the log-likelihood</code>:<ul>
+<li>find the maximum likelihood estimator, set the score function equal to zero<h3 id="maximum_likelihood_estimator">maximum likelihood estimator</h3></li>
 </ul>
 </li>
-<li>maximum likelihood estimator<ul>
-<li>The maximum likelihood estimator of θ for the model given by the joint densities or probabilities $f(y;θ)$, with $$θ∈Θ$$, is defined <strong>as the value of θ at which the corresponding likelihood L(θ;y) attains its maximum</strong></li>
+<li>The maximum likelihood estimator of θ for the model given by the joint densities or probabilities $f(y;\thelta)$, with $\thelta \in Θ$, is defined <strong>as the value of θ at which the corresponding likelihood L(θ;y) attains its maximum</strong></li>
 <li>$\hat \thelta<em>{ML} = argmax</em>{\thelta} L(\thelta;y)$</li>
-<li>efficiency of the maximum likelihood estimators<ul>
+</ul>
+<h4 id="efficiency_of_the_maximum_likelihood_estimators">efficiency of the maximum likelihood estimators</h4><ul>
 <li>relate to asymptotic settings</li>
 <li>A ubiquitous caveat associated with all the results is that the model has to be valid; </li>
 <li>it has to contain the distribution according to which the outcomes are generated.</li>
-</ul>
-</li>
-<li><strong>Consistency</strong> is a property of an estimator <ul>
+<li><strong>Consistency</strong> <ul>
+<li>a property of an estimator </li>
 <li>that it would recover the value of the target if it were based on many observations. </li>
 <li>ie.  we refer to the sequence of (univariate) estimators $\hat θ_n$ based on thenth set of observations yn as a single estimator. Consistency of such an estimator ˆ θ of a target θ is defined as convergence of ˆ θnto the target θ as n→+∞. </li>
 <li>for MLE:<ul>
 <li>An important result about maximum likelihood estimators is that under some regularity conditions they are consistent. The regularity conditions include smoothness of the likelihood, its distinctness for each vector of model parameters and finite dimensionality of the parameter space, independent of the sample size. </li>
-</ul>
-</li>
 </ul>
 </li>
 <li>Asymptotic Efficiency and Normality<ul>
@@ -258,9 +244,13 @@ Polynomial Fitting 是一个线性model， 这里Model是w的函">
 </li>
 <li>Instead of $L(\thelta; y,X)$ it is more convenient to work with its logarithm, called the log-likelihood – product convert into summation</li>
 </ul>
-<h3 id="information_matrix/_fisher_information">information matrix/ fisher information</h3><ul>
-<li>Fisher information is used to determine the sample size with which we design an experiment; second, in the Bayesian paradigm, Fisher information is used to define a default parameter prior; finally, in the minimum description length paradigm, Fisher information is used to measure model complexi</li>
-<li></li>
+<h2 id="information_matrix/_fisher_information">information matrix/ fisher information</h2><ul>
+<li>Fisher information is used to determine the sample size with which we design an experiment; second, in the Bayesian paradigm, Fisher information is used to define a default parameter prior; finally, in the minimum description length paradigm, Fisher information is used to measure model complexity</li>
+</ul>
+<hr>
+<ul>
+<li>任意一个函数 可以放到 ${1,x,x^2,x^3….}$所张成的函数空间，如果是有限个基的话就称为欧式空间，无穷的话 就是 Hilbert空间</li>
+<li><a href="http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png" target="_blank" rel="external">http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png</a></li>
 </ul>
 </span>
       
@@ -268,16 +258,24 @@ Polynomial Fitting 是一个线性model， 这里Model是w的函">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/ml-MLE/" rel="tag">#ml MLE</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/17/network transport layer/" rel="prev">network transport layer</a>
+              <a href="/2015/10/17/caffe document/" rel="prev">caffe document</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/17/prml/" rel="next">prml</a>
             
           </div>
         </div>
@@ -353,7 +351,7 @@ Polynomial Fitting 是一个线性model， 这里Model是w的函">
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -381,7 +379,7 @@ Polynomial Fitting 是一个线性model， 这里Model是w的函">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#linear_regression_-_basis_function_expansion"><span class="nav-number">1.</span> <span class="nav-text">linear regression - basis function expansion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#least_square"><span class="nav-number">2.</span> <span class="nav-text">least square</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fisher_information"><span class="nav-number">3.</span> <span class="nav-text">fisher information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#information_matrix/_fisher_information"><span class="nav-number">4.</span> <span class="nav-text">information matrix/ fisher information</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#least_square"><span class="nav-number">1.</span> <span class="nav-text">least square</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fisher_information"><span class="nav-number">2.</span> <span class="nav-text">fisher information</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The_likelihood"><span class="nav-number">3.</span> <span class="nav-text">The likelihood</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#maximum_likelihood_estimator"><span class="nav-number">3.1.</span> <span class="nav-text">maximum likelihood estimator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#efficiency_of_the_maximum_likelihood_estimators"><span class="nav-number">3.1.1.</span> <span class="nav-text">efficiency of the maximum likelihood estimators</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#information_matrix/_fisher_information"><span class="nav-number">4.</span> <span class="nav-text">information matrix/ fisher information</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

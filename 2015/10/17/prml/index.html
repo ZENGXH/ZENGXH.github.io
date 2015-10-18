@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="ml MLE," />
 
 
 
@@ -39,40 +39,37 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="for input may be preprocessed
+<meta name="description" content="preprocessedfor input may be preprocessed
 - like fixed size of the image
 - also called feature extraction
 - speed up computation
 - easier to solve problem
-
+index
 supervised learning
-classification- discrete output
-gene">
+classification- dis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="prml">
-<meta property="og:url" content="http://yoursite.com/2015/10/18/prml/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/10/17/prml/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="for input may be preprocessed
+<meta property="og:description" content="preprocessedfor input may be preprocessed
 - like fixed size of the image
 - also called feature extraction
 - speed up computation
 - easier to solve problem
-
+index
 supervised learning
-classification- discrete output
-gene">
-<meta property="og:updated_time" content="2015-10-18T17:47:48.365Z">
+classification- dis">
+<meta property="og:updated_time" content="2015-10-18T18:22:09.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="prml">
-<meta name="twitter:description" content="for input may be preprocessed
+<meta name="twitter:description" content="preprocessedfor input may be preprocessed
 - like fixed size of the image
 - also called feature extraction
 - speed up computation
 - easier to solve problem
-
+index
 supervised learning
-classification- discrete output
-gene">
+classification- dis">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -203,8 +200,8 @@ gene">
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-10-18T19:47:48+02:00" content="2015-10-18">
-            2015-10-18
+          <time itemprop="dateCreated" datetime="2015-10-17T21:32:03+02:00" content="2015-10-17">
+            2015-10-17
           </time>
         </span>
 
@@ -223,21 +220,20 @@ gene">
       
 
       
-        <span itemprop="articleBody"><p>for input may be <em>preprocessed</em></p>
+        <span itemprop="articleBody"><h2 id="preprocessed">preprocessed</h2><p>for input may be <em>preprocessed</em></p>
 <pre><code>-<span class="ruby"> like fixed size of the image
 </span>-<span class="ruby"> also called feature extraction
 </span>-<span class="ruby"> speed up computation
 </span>-<span class="ruby"> easier to solve problem</span>
-</code></pre><ul>
+</code></pre><h1 id="index">index</h1><ul>
 <li>supervised learning<ul>
-<li>classification- discrete output<ul>
-<li>generalization:= make predictions on novel input<ul>
+<li>classification- discrete output</li>
+<li>regression- continues output</li>
+<li><code>generalization</code> – analyzing model<ul>
+<li>:= make predictions on novel input</li>
 <li>generalization error = expected value of the misclassification rate when averaged over future data, can never know but can be approximate by:  misclassification rate on a large independenttest set</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>regression- continues output</li>
 </ul>
 </li>
 <li>unsupervised learning<ul>
@@ -246,43 +242,33 @@ gene">
 <ul>
 <li>visualization</li>
 <li>clustering</li>
-<li>density estimation<br>…</li>
+<li>density estimation<br>…<br>-reinforcement learning</li>
+<li>find suirable actions to take in a given stituation in order to maximized the reward</li>
 </ul>
 </li>
 </ul>
-<p>#reinforcement learning#</p>
-<pre><code>- find suirable actions <span class="keyword">to</span> <span class="keyword">take</span> <span class="keyword">in</span> a given stituation <span class="keyword">in</span> <span class="keyword">order</span> <span class="keyword">to</span> maximized the reward
-</code></pre><ul>
-<li>function which is linear in unknow parameters are called linear model<ul>
-<li>for the polynomial model: $y(x, \mathbf{\beta}) = \beta^0 + \beta_1 x + \beta_2 x^2 + …. + \beta_M x^M$ is <em>nonliear</em> in input x but linear in unknow parameter $\beta$</li>
-<li>implement issue:<ul>
+<h2 id="linear_model">linear model</h2><ul>
+<li>function which is linear in unknow parameters are called <code>linear model</code><ul>
+<li>for the <code>polynomial model</code>: </li>
+<li>$y(x, \mathbf{\beta}) = \beta^0 + \beta_1 x + \beta_2 x^2 + …. + \beta_M x^M$ </li>
+<li>notices that the basis function(polynomial function) is <em>nonliear</em> in input x but linear in unknow parameter $\beta$</li>
+<li>implement issue/ model selection:[detail in <em>ovrifitting</em> part]<ul>
 <li>choose the value of coefficents/parameters/weights is determined by fitting data - minimizing error function - <em>cost function</em></li>
-<li>choose the order M - model selection/comparision<ul>
-<li>overfitting</li>
-<li>FACT: as M increases, the magnitude of the coefficients typically gets larger</li>
-<li>regulazation to fight overfitting<ul>
-<li>involves adding a penalty term to the error function (1.2) in order to discourage the coefficients from reaching large values</li>
-<li>add $\lambda / 2 | \mathbf{\beta} |^2$ $\lambda$ is the importance of the regulazation term; <ul>
-<li>if use quadric regularizer - call <em>ridge regression</em></li>
-</ul>
-</li>
-<li><em>weight decay?</em> in neural network </li>
-<li>$\lambda$ can suppressed over-fitting, reduce value of weight, but if $\lambda$ too large, weight goes to 0, will lead to poor fit</li>
+<li>choose the order/degree M - model selection/comparision<ul>
+<li>overfitting </li>
+<li>regulazation</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
+<li>in linear regression: take $\phi$ as veriable – linear; but the $\phi$ function itself can be nonliear</li>
 </ul>
 <hr>
-<p>#probability theory#</p>
-<ul>
+<h1 id="probability_theory">probability theory</h1><ul>
 <li>提出probability 是想更加科学一些</li>
-<li><p><em>expectation</em> </p>
-<ul>
+<li><em>expectation</em> <ul>
 <li>def: weighted averages of funtions</li>
 <li>if we are given a finite number N of points drawn from the probability distribution or probability density<ul>
 <li>$E[f] ~- 1/N sum_{n=1,2…N}f(x_n)$       </li>
@@ -295,8 +281,7 @@ gene">
 </li>
 </ul>
 </li>
-<li><p>variance: $Var[x] = E[x^2] - E[x]^2$</p>
-<ul>
+<li>variance: $Var[x] = E[x^2] - E[x]^2$<ul>
 <li>consider functions of several variables eg f(x,y)<ul>
 <li><em>covariance</em>: $cov[x,y] = E_{x,y}[{x - E[x]}{y^T - E[y^T]}]$  </li>
 </ul>
@@ -304,61 +289,39 @@ gene">
 </ul>
 </li>
 </ul>
-<p>#interpretation of probabilities#</p>
-<p>##frequentist interpretation##</p>
-<ul>
+<h2 id="background:_interpretation_of_probabilities">background: interpretation of probabilities</h2><h3 id="frequentist_interpretation">frequentist interpretation</h3><ul>
 <li>popular: <em>classical or frequentist way</em><ul>
 <li>the probability P of an uncertain event A, P(A) is defined by the frequency of that event based on previous observations</li>
 </ul>
 </li>
 </ul>
-<p>##Bayesian interpretation##</p>
-<ul>
-<li>another point of view: <em>Bayesian view</em> - probability provide a quanrification of uncertainty<ul>
+<h3 id="Bayesian_interpretation">Bayesian interpretation</h3><ul>
+<li>another point of view: <em>Bayesian view</em> - <code>probability provide a quanrification of uncertainty</code><ul>
 <li>ads: can be used to model our uncertainty of the event without long term frequency</li>
 <li>for future event, we do not have historical database thus can not count the frequency.</li>
-<li>but can measure the belief in a statement $a$ based on some ‘knowledge’, denote as P(a|K), different K can generate different P(a|K) and even same K can have different P(a|K) – the belief is subjective </li>
+<li>can measure the belief in a statement $a$ based on some ‘knowledge’, denote as P(a|K), different K can generate different P(a|K) and even same K can have different P(a|K) – the belief is subjective </li>
 </ul>
 </li>
-<li><em>Bayes rule</em><ul>
-<li>consider conditional probabilities </li>
-<li>$P(A|B) = P(B|A) P(A)/P(B)$<ul>
+</ul>
+<h4 id="Bayes_rule">Bayes rule</h4><ul>
+<li>consider <code>conditional probabilities</code> </li>
+<li>$P(A|B) = \frac {P(B|A) P(A)}{P(B)}$<ul>
 <li>interpretation: updating our belief about a hypothesis A in the light of new evidence B<ul>
-<li>in likelihood, it is, output brief of y/A given B/input values+paramters </li>
+<li>in <code>likelihood</code>, it is, output brief of y/A given B/input values+paramters </li>
 </ul>
 </li>
 <li>P(A|B): posterior belief</li>
 <li>P(A): prior belief</li>
 <li>P(B|A): likelihood, ie the B(our model) will occur if A(the output value of the sample data) is true.</li>
-<li>P(B) is computed by: $sum_{i=1,2,…}P(B|A_i)P(A_i)$ by <em>marginalisation</em>.</li>
+<li>P(B) is computed by: $\sum_{i=1,2,…}P(B|A_i)P(A_i)$ by <em>marginalisation</em>.</li>
 <li>if you still remember the ‘cancer-test examples’ in statistic course, then p(A) is p(cancer), p(B|A) is p(positive|cancer), p(A|B) is p(cancer|positive) which is the value patient care for(but in fact we dont know) </li>
 </ul>
 </li>
-<li>in machine learning, Bayes theorem is used to convert a priot ptobability $P(A) = P(\mathbf{\beta})$ into a porterior probability $P(A|B) = P(\mathbf{\beta}|y)$ by incorpoating the evidence provided by the observed data   <ul>
-<li>for $\mathbf{\beta}$ in the polynormial curve fitting model, we can take an approach with Bayes theorem:</li>
-<li>$P(\mathbf{\beta} | \mathbf{y}) =\frac{ P(\mathbf{y}|\mathbf{\beta}) p(\mathbf{\beta})}{P(\mathbf{y})} $<ul>
-<li>given data {y_1,y_2,…}, we want to know the $\beta$, cant get directly. $P(\mathbf{\beta} | \mathbf{y})$:= <em>posterior probability</em></li>
-<li>$P(\beta)$:= prior probability; our assumption of $\beta$</li>
-<li>${P(\mathbf{y})}$:= normalization constant since the given data is fixed</li>
-<li>$P(\mathbf{y}|\mathbf{\beta})$:= <em>likelihood function</em>;<ul>
-<li>can be view as function of parameter $\beta$ </li>
-<li>not a probability distrubution, so intergral w.r.t $\beta$ not nessary = 1</li>
 </ul>
-</li>
-<li>state Bayes theorem as : posterior 8 likelihood × prior, consider all of these as function of parameters $\beta$</li>
-<li>intergrate both side base on $\beta$: $p(y)= \intergral p(y|\beta)p(\beta)d\beta$</li>
-<li>issue: particularly the need to marginalize (sum or integrate) over the whole of parameter space</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>#different view of likelihood function#</p>
-<ul>
+<h2 id="different_view_of_likelihood_function">different view of likelihood function</h2><ul>
 <li>likelihood function: $P(\mathbf{y}|\mathbf{\beta})$</li>
-<li>from frequentist way of interpretation:<ul>
+</ul>
+<h3 id="from_frequentist_way_of_interpretation:">from frequentist way of interpretation:</h3><ul>
 <li>parameter $\beta$ is a fixed parameter, the value is determined by ‘estimator’</li>
 <li>A widely used frequentist estimator is <em>maximum likelihood</em>, in which wis set to the value that maximizes the likelihood function </li>
 <li>ie. choosing $\beta$ s.t. probability of the observed data is maximized</li>
@@ -370,22 +333,35 @@ gene">
 </li>
 <li>drawback: may lead to extreme conclusion if the dataset is bad, eg, a fair-looking coin is tossed three times and lands heads each time. in this case, we will generate parameter $\beta$ to make P(lands head) = 1   </li>
 </ul>
+<h3 id="from_Bayesian_viewpoint:">from Bayesian viewpoint:</h3><ul>
+<li>in machine learning, Bayes theorem is used to convert a priot ptobability $P(A) = P(\mathbf{\beta})$ into a porterior probability $P(A|B) = P(\mathbf{\beta}|y)$ by incorpoating the evidence provided by the observed data <ul>
+<li>for $\mathbf{\beta}$ in the polynormial curve fitting model, we can take an approach with Bayes theorem:</li>
+<li>$P(\mathbf{\beta} | \mathbf{y}) =\frac{ P(\mathbf{y}|\mathbf{\beta}) p(\mathbf{\beta})}{P(\mathbf{y})} $<ul>
+<li>given data {y_1,y_2,…}, we want to know the $\beta$, cant get directly. $P(\mathbf{\beta} | \mathbf{y})$:= <strong>posterior probability</strong></li>
+<li>$P(\beta)$:= prior probability; our assumption of $\beta$</li>
+<li>${P(\mathbf{y})}$:= normalization constant since the given data is fixed</li>
+<li>$P(\mathbf{y}|\mathbf{\beta})$:= <strong>likelihood function</strong>;<ul>
+<li>can be view as function of parameter $\beta$ </li>
+<li>not a probability distrubution, so intergral w.r.t $\beta$ not nessary = 1</li>
+</ul>
 </li>
-<li>from Bayesian viewpoint:<ul>
-<li></li>
+<li>state Bayes theorem as : <code>posterior 8 likelihood × prior</code>, consider all of these as function of parameters $\beta$</li>
+<li>intergrate both side base on $\beta$: $p(y)= \integral p(y|\beta)p(\beta)d\beta$</li>
+<li>issue: particularly the need to marginalize (sum or integrate) over the whole of parameter space</li>
 </ul>
 </li>
 </ul>
-<p>#Murphy’s explanation – MAP estimate#</p>
-<ul>
+</li>
+</ul>
+<h2 id="Murphy’s_explanation_–_MAP_estimate">Murphy’s explanation – MAP estimate</h2><ul>
 <li>look at probability is conditional on the test input x, as well as the training set D, and the form of model M that we use to make predictions</li>
 <li>Given a probabilistic output, we can always compute our “best guess” as to the “true label” using: </li>
 <li>$\hat y = \hat f(\mathbf{x} = argmax_{c=1..C} p(y = c|\mathbf{x},D,M)$</li>
 <li>This corresponds to the most probable class label, and is called themodeof the distribution p(y|x,D); it is also known as a <em>MAP</em> estimate(MAP stands for maximum a posteriori).</li>
 <li>note that p(y|x,D) is the probrbility distribution of y given x and D (and M in case of in the situation of model selection, M should also be clearified)</li>
 </ul>
-<p>#Murphy’s definition of probabilistic model in machine learning#</p>
-<ul>
+<hr>
+<h2 id="Murphy’s_definition_of_probabilistic_model_in_machine_learning">Murphy’s definition of probabilistic model in machine learning</h2><ul>
 <li>when defining a models, if the number of parameter is:<ol>
 <li>grow with the amount of training data :=. non-parametric model<ul>
 <li>flexible but computation cost high</li>
@@ -443,39 +419,50 @@ gene">
 </ol>
 </li>
 </ul>
-<p>#overfitting and model selection#</p>
-<ul>
+<hr>
+<h2 id="overfitting_and_model_selection">overfitting and model selection</h2><ul>
 <li>overfit is an issue raised in both unsurpervised learning and surpervised learning during the selection of model</li>
-<li>examples is:<ul>
+<li>PRML said <code>by adopting Bayesian approach, the overfitting problem can be avoided and the num of parameters can even greatlt exceed the num of data point</code></li>
+<li><code>overfitting problam can be regards as a general property of maximum likelihood</code>, the matrix tend to be always in ill-condition since that the data points can not be completely in linear relation in reality.</li>
+</ul>
+<h3 id="overfitting_in_linear_regression">overfitting in linear regression</h3><ul>
 <li>in linear regression, if choose polynormial as basis function, then the degress of the polynormial function distinct the model, the higher the degree is, it is more likely to overfit, which will lead to high error on the test set, since we use this error to estimate the generalization error, it means that the generalization increase<ul>
 <li>as the degree raise, the complexity of the model increase, the matrx will tend to be <code>ill condition</code>, and the solution of parameters will become more sensitive to the training data, which is really bad! </li>
 <li>also notice the fact that, as degree increase, the value of parameter also increase dramatically, in the example of PRML, D=1,w0=0.19 while for D=9,w9=125201 !</li>
 <li><code>commend</code> someone said when we are not sure about the model, we should always choose the simplier model to fit the data</li>
 <li><code>commend</code> we can still have some way to use complex model and reduce the generalization error</li>
-<li><code>overfitting problam can be regards as a general property of maximum likelihood</code>, the matrix tend to be always in ill-condition since that the data points can not be completely in linear relation in reality.</li>
-<li>PRML said <code>by adopting Bayesian approach, the overfitting problem can be avoided and the num of parameters can even greatlt exceed the num of data point</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="solution1:_shrinkage_method_/_regularization_to_fight_with_overfitting">solution1: <code>shrinkage method</code> / <code>regularization</code> to fight with overfitting</h4><ul>
+<li><p>usually we will try to penilize the parameters of the model, which perform <code>lift of the eigrnvalue</code>, in this way, we are actually trying to simplify the models, (thinking that when the panelized parameter $\lambda$ bacomre very large, the parameters, except $\w_0$ which is nor panelized, are all going to zero, so we are using a very simple model in fact). </p>
+<ul>
+<li>involves adding a penalty term to the error function (1.2) in order to discourage the coefficients from reaching large values</li>
 </ul>
 <ul>
-<li>solution1: <code>shrinkage method</code> / <code>regularization</code> to fight with overfitting, usually we will try to penilize the parameters of the model, which perform <code>lift of the eigrnvalue</code>, in this way, we are actually trying to simplify the models, (thinking that when the panelized parameter $\lambda$ bacomre very large, the parameters, except $\w_0$ which is nor panelized, are all going to zero, so we are using a very simple model in fact). <ul>
-<li>if add regularization, the complexity of the model should not be measured simply by the number of parameters or the degrees</li>
-<li>the method above is called <em>ridge regression</em></li>
+<li>add $\lambda / 2 | \mathbf{\beta} |^2$ $\lambda$ is the importance of the regulazation term; <ul>
+<li>if use quadric regularizer - call <em>ridge regression</em></li>
+<li>other regulazation such as <em>weight decay</em> in neural network </li>
+</ul>
+</li>
+<li>$\lambda$ can suppressed over-fitting, reduce value of weight, but if $\lambda$ too large, weight goes to 0, will lead to poor fit</li>
+</ul>
+<ul>
 <li>we should also notice that the panelized parameter $\lambda$ could very a lot with the change the degree, from my experiment, it can very in the 1 ~ 10^7 range as the degree goes from about 2 to 10. So when perform cross validation on the selection of the model, more specifically, on the decision of penalized perameter and the degree, we need to pay attention about this</li>
+<li>after adding regularization, the complexity of the model should not be measured simply by the number of parameters or the degrees</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>in KNN, it also happens that when K is small, it tends to overfit.</li>
-</ul>
-</li>
+<h3 id="overfitting_in_KNN,">overfitting in KNN,</h3><ul>
+<li>it also happens that when K is small, it tends to overfit.</li>
 </ul>
 <hr>
-<p><em>speed-accuracy-complexity tradeoff</em><br>in the following notes, I will focus on the comparison of the tradeoff</p>
+<h2 id="speed-accuracy-complexity_tradeoff">speed-accuracy-complexity tradeoff</h2><p>in the following notes, I will focus on the comparison of the tradeoff</p>
 <ul>
 <li>indicator function: $II(e)=1,if e is true; =2 if e is false$</li>
 </ul>
 <hr>
-<p>#multinomial distribution#</p>
-<ul>
+<h2 id="distribution">distribution</h2><h3 id="multinomial_distribution">multinomial distribution</h3><ul>
 <li>MODEL: tossing K side die </li>
 <li>$\mathbf{x}=(x_1,…,x_D)$, $x_j$ the number of times side x of the die occurs</li>
 <li>notice that $N = sum(x_1,x_2,…x_D)$</li>
@@ -483,17 +470,15 @@ gene">
 <li>$Mu(\mathbf{x}|N,\mathbf(\theta)) := \binom{N}{x_1} \binom{N-x_1}{x_2}..\binom{N-x_1-x_2-…}{x_D} * \theta_1^{x_1} \theta_2^{x_2}…\theta_D^{x_D}$</li>
 <li>$= \binom{N}{x_1 x_2 ..x_D} \prod{\substack{j=1,2,…D}} \theta_j^{x_j}$</li>
 </ul>
-<p>#multi-noulli#</p>
-<ul>
+<h3 id="multi-noulli">multi-noulli</h3><ul>
 <li>simply let N = 1;</li>
 <li>$Mu(\mathbf{x}|1,\mathbf(\theta)) := \prod{\substack{j=1,2,…D}} \theta_j^{II(x_j=1)}$ II for 0,1 case</li>
 </ul>
 <hr>
-<p>#information theory#</p>
-<ul>
+<h2 id="information_theory">information theory</h2><ul>
 <li>deta compression/ source coding, concerned with: compact data representation and errorless transmission and storing </li>
 </ul>
-<h2 id="entropy">entropy</h2><ul>
+<h3 id="entropy">entropy</h3><ul>
 <li>for a random variable Y(with K state) with ditribution p, the entropy of Y is denoted by </li>
 <li>$\mathbb{H}(Y)$ or $\mathbb{H}(p)$ </li>
 <li>$:= - \sum_{\substack{k=1,2,….K}} p(Y=k) log_2 p(Y=k)$</li>
@@ -510,16 +495,24 @@ gene">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/ml-MLE/" rel="tag">#ml MLE</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2015/10/17/MLE/" rel="prev">Maximum likelihood estimator MLE</a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/18/useful-git-command/" rel="next">useful git command</a>
+              <a href="/2015/10/17/handon-networking/" rel="next">handon-networking</a>
             
           </div>
         </div>
@@ -595,7 +588,7 @@ gene">
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -623,7 +616,7 @@ gene">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#entropy"><span class="nav-number">1.</span> <span class="nav-text">entropy</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#preprocessed"><span class="nav-number">1.</span> <span class="nav-text">preprocessed</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#index"><span class="nav-number"></span> <span class="nav-text">index</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear_model"><span class="nav-number">1.</span> <span class="nav-text">linear model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#probability_theory"><span class="nav-number"></span> <span class="nav-text">probability theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#background:_interpretation_of_probabilities"><span class="nav-number">1.</span> <span class="nav-text">background: interpretation of probabilities</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#frequentist_interpretation"><span class="nav-number">1.1.</span> <span class="nav-text">frequentist interpretation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bayesian_interpretation"><span class="nav-number">1.2.</span> <span class="nav-text">Bayesian interpretation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bayes_rule"><span class="nav-number">1.2.1.</span> <span class="nav-text">Bayes rule</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#different_view_of_likelihood_function"><span class="nav-number">2.</span> <span class="nav-text">different view of likelihood function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#from_frequentist_way_of_interpretation:"><span class="nav-number">2.1.</span> <span class="nav-text">from frequentist way of interpretation:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from_Bayesian_viewpoint:"><span class="nav-number">2.2.</span> <span class="nav-text">from Bayesian viewpoint:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Murphy’s_explanation_–_MAP_estimate"><span class="nav-number">3.</span> <span class="nav-text">Murphy’s explanation – MAP estimate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Murphy’s_definition_of_probabilistic_model_in_machine_learning"><span class="nav-number">4.</span> <span class="nav-text">Murphy’s definition of probabilistic model in machine learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overfitting_and_model_selection"><span class="nav-number">5.</span> <span class="nav-text">overfitting and model selection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#overfitting_in_linear_regression"><span class="nav-number">5.1.</span> <span class="nav-text">overfitting in linear regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#solution1:_shrinkage_method_/_regularization_to_fight_with_overfitting"><span class="nav-number">5.1.1.</span> <span class="nav-text">solution1: shrinkage method / regularization to fight with overfitting</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overfitting_in_KNN,"><span class="nav-number">5.2.</span> <span class="nav-text">overfitting in KNN,</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#speed-accuracy-complexity_tradeoff"><span class="nav-number">6.</span> <span class="nav-text">speed-accuracy-complexity tradeoff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#distribution"><span class="nav-number">7.</span> <span class="nav-text">distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multinomial_distribution"><span class="nav-number">7.1.</span> <span class="nav-text">multinomial distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multi-noulli"><span class="nav-number">7.2.</span> <span class="nav-text">multi-noulli</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#information_theory"><span class="nav-number">8.</span> <span class="nav-text">information theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#entropy"><span class="nav-number">8.1.</span> <span class="nav-text">entropy</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
