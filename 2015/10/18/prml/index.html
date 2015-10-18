@@ -47,10 +47,10 @@
 
 supervised learning
 classification- discrete output
-regr">
+gene">
 <meta property="og:type" content="article">
 <meta property="og:title" content="prml">
-<meta property="og:url" content="http://yoursite.com/2015/10/16/prml/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/10/18/prml/index.html">
 <meta property="og:site_name" content="XXXH">
 <meta property="og:description" content="for input may be preprocessed
 - like fixed size of the image
@@ -60,8 +60,8 @@ regr">
 
 supervised learning
 classification- discrete output
-regr">
-<meta property="og:updated_time" content="2015-10-16T20:55:29.810Z">
+gene">
+<meta property="og:updated_time" content="2015-10-18T17:47:48.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="prml">
 <meta name="twitter:description" content="for input may be preprocessed
@@ -72,7 +72,7 @@ regr">
 
 supervised learning
 classification- discrete output
-regr">
+gene">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -203,8 +203,8 @@ regr">
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-10-16T22:55:29+02:00" content="2015-10-16">
-            2015-10-16
+          <time itemprop="dateCreated" datetime="2015-10-18T19:47:48+02:00" content="2015-10-18">
+            2015-10-18
           </time>
         </span>
 
@@ -223,28 +223,37 @@ regr">
       
 
       
-        <span itemprop="articleBody"><p>for input may be preprocessed</p>
+        <span itemprop="articleBody"><p>for input may be <em>preprocessed</em></p>
 <pre><code>-<span class="ruby"> like fixed size of the image
 </span>-<span class="ruby"> also called feature extraction
 </span>-<span class="ruby"> speed up computation
 </span>-<span class="ruby"> easier to solve problem</span>
 </code></pre><ul>
 <li>supervised learning<ul>
-<li>classification- discrete output</li>
+<li>classification- discrete output<ul>
+<li>generalization:= make predictions on novel input<ul>
+<li>generalization error = expected value of the misclassification rate when averaged over future data, can never know but can be approximate by:  misclassification rate on a large independenttest set</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>regression- continues output</li>
 </ul>
 </li>
-<li><p>unsupervised learning</p>
+<li>unsupervised learning<ul>
+<li>goal: knowledge discovery or discover interesting sreuctre in data in murphy</li>
+</ul>
 <ul>
 <li>visualization</li>
 <li>clustering</li>
 <li>density estimation<br>…</li>
 </ul>
 </li>
-<li><p>technique of reinforcement learning : find suirable actions to take in a given stituation in order to maximized the reward</p>
-</li>
-<li><p>function which is linear in unknow parameters are called linear model</p>
-<ul>
+</ul>
+<p>#reinforcement learning#</p>
+<pre><code>- find suirable actions <span class="keyword">to</span> <span class="keyword">take</span> <span class="keyword">in</span> a given stituation <span class="keyword">in</span> <span class="keyword">order</span> <span class="keyword">to</span> maximized the reward
+</code></pre><ul>
+<li>function which is linear in unknow parameters are called linear model<ul>
 <li>for the polynomial model: $y(x, \mathbf{\beta}) = \beta^0 + \beta_1 x + \beta_2 x^2 + …. + \beta_M x^M$ is <em>nonliear</em> in input x but linear in unknow parameter $\beta$</li>
 <li>implement issue:<ul>
 <li>choose the value of coefficents/parameters/weights is determined by fitting data - minimizing error function - <em>cost function</em></li>
@@ -258,7 +267,7 @@ regr">
 </ul>
 </li>
 <li><em>weight decay?</em> in neural network </li>
-<li>$\lambda$ can suppressed over-fitting, reduce value of weight, but if $\lambda$ too large, weight goes to 0, will lead to poor fit<br>#probability theory#</li>
+<li>$\lambda$ can suppressed over-fitting, reduce value of weight, but if $\lambda$ too large, weight goes to 0, will lead to poor fit</li>
 </ul>
 </li>
 </ul>
@@ -267,8 +276,13 @@ regr">
 </li>
 </ul>
 </li>
+</ul>
+<hr>
+<p>#probability theory#</p>
+<ul>
 <li>提出probability 是想更加科学一些</li>
-<li><em>expectation</em> <ul>
+<li><p><em>expectation</em> </p>
+<ul>
 <li>def: weighted averages of funtions</li>
 <li>if we are given a finite number N of points drawn from the probability distribution or probability density<ul>
 <li>$E[f] ~- 1/N sum_{n=1,2…N}f(x_n)$       </li>
@@ -281,18 +295,27 @@ regr">
 </li>
 </ul>
 </li>
-<li>variance: $Var[x] = E[x^2] - E[x]^2$<ul>
+<li><p>variance: $Var[x] = E[x^2] - E[x]^2$</p>
+<ul>
 <li>consider functions of several variables eg f(x,y)<ul>
-<li><em>covariance</em>: $cov[x,y] = E_{x,y}[{x - E[x]}{y^T - E[y^T]}]$<br>#interpretation of probabilities#</li>
+<li><em>covariance</em>: $cov[x,y] = E_{x,y}[{x - E[x]}{y^T - E[y^T]}]$  </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>popular: classical or frequentist way<ul>
+</ul>
+<p>#interpretation of probabilities#</p>
+<p>##frequentist interpretation##</p>
+<ul>
+<li>popular: <em>classical or frequentist way</em><ul>
 <li>the probability P of an uncertain event A, P(A) is defined by the frequency of that event based on previous observations</li>
 </ul>
 </li>
+</ul>
+<p>##Bayesian interpretation##</p>
+<ul>
 <li>another point of view: <em>Bayesian view</em> - probability provide a quanrification of uncertainty<ul>
+<li>ads: can be used to model our uncertainty of the event without long term frequency</li>
 <li>for future event, we do not have historical database thus can not count the frequency.</li>
 <li>but can measure the belief in a statement $a$ based on some ‘knowledge’, denote as P(a|K), different K can generate different P(a|K) and even same K can have different P(a|K) – the belief is subjective </li>
 </ul>
@@ -308,6 +331,7 @@ regr">
 <li>P(A): prior belief</li>
 <li>P(B|A): likelihood, ie the B(our model) will occur if A(the output value of the sample data) is true.</li>
 <li>P(B) is computed by: $sum_{i=1,2,…}P(B|A_i)P(A_i)$ by <em>marginalisation</em>.</li>
+<li>if you still remember the ‘cancer-test examples’ in statistic course, then p(A) is p(cancer), p(B|A) is p(positive|cancer), p(A|B) is p(cancer|positive) which is the value patient care for(but in fact we dont know) </li>
 </ul>
 </li>
 <li>in machine learning, Bayes theorem is used to convert a priot ptobability $P(A) = P(\mathbf{\beta})$ into a porterior probability $P(A|B) = P(\mathbf{\beta}|y)$ by incorpoating the evidence provided by the observed data   <ul>
@@ -323,13 +347,16 @@ regr">
 </li>
 <li>state Bayes theorem as : posterior 8 likelihood × prior, consider all of these as function of parameters $\beta$</li>
 <li>intergrate both side base on $\beta$: $p(y)= \intergral p(y|\beta)p(\beta)d\beta$</li>
-<li>issue: particularly the need to marginalize (sum or integrate) over the whole of parameter space<br>#different view of likelihood function#</li>
+<li>issue: particularly the need to marginalize (sum or integrate) over the whole of parameter space</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+<p>#different view of likelihood function#</p>
+<ul>
 <li>likelihood function: $P(\mathbf{y}|\mathbf{\beta})$</li>
 <li>from frequentist way of interpretation:<ul>
 <li>parameter $\beta$ is a fixed parameter, the value is determined by ‘estimator’</li>
@@ -349,6 +376,134 @@ regr">
 </ul>
 </li>
 </ul>
+<p>#Murphy’s explanation – MAP estimate#</p>
+<ul>
+<li>look at probability is conditional on the test input x, as well as the training set D, and the form of model M that we use to make predictions</li>
+<li>Given a probabilistic output, we can always compute our “best guess” as to the “true label” using: </li>
+<li>$\hat y = \hat f(\mathbf{x} = argmax_{c=1..C} p(y = c|\mathbf{x},D,M)$</li>
+<li>This corresponds to the most probable class label, and is called themodeof the distribution p(y|x,D); it is also known as a <em>MAP</em> estimate(MAP stands for maximum a posteriori).</li>
+<li>note that p(y|x,D) is the probrbility distribution of y given x and D (and M in case of in the situation of model selection, M should also be clearified)</li>
+</ul>
+<p>#Murphy’s definition of probabilistic model in machine learning#</p>
+<ul>
+<li>when defining a models, if the number of parameter is:<ol>
+<li>grow with the amount of training data :=. non-parametric model<ul>
+<li>flexible but computation cost high</li>
+<li>eg: KNN<ul>
+<li>KNN probabilistic model: </li>
+<li>$p(y=c|\mathbf{x},D,K) = 1/K \Sigma_{i in N_K(x,D)} II(y_i=c)$</li>
+<li>NK(x,D)are the (indices of the)Knearest points toxin DandI(e)is the indicator function </li>
+<li>issure: fail to work in high D use to below:<ul>
+<li>the curse of dimensionality (murphy ch1)</li>
+</ul>
+</li>
+<li>explanation:<ul>
+<li>lets say, apply KNN to uniformly distributed points in 3 dimensional unit cube grow a hyper-cube around x untill it contain 0.5 of the data points, $V(hyper-cube)=e_3(0.5)^3=0.5$, $e_3(0.5) = 0.5^{1/3}$, </li>
+<li>for D dimension, given disired faction f, length of cube around x is $e_D(f)=f^{1/D}$</li>
+</ul>
+<ul>
+<li>$e_{10}(0.1)=0.8$: D=10, want 0.1 of the datas, length=0.8, ie, need to extend the cube 80% along each dimension around x, which means that, the ‘nearest nerighbor’ is indeed not that near since that on any dimendion, their distance can be 0.8 and the largest distance is only 1; </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>combat by making assumption about the nature of data distribution – know as <em>inductive bias</em> embodied in parametric model</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>fixed :=&gt; paramteric <ul>
+<li>ads: fast to apply</li>
+<li>dis: strong assumption about the nature of data distribute</li>
+<li>regression<ul>
+<li>linear regression:<ul>
+<li>model: $y(x)=w^Tx + \episilon$</li>
+</ul>
+<ul>
+<li>assume $e~N(\mu,\sigma^2)$ connect linear regre and Gaussian:<ul>
+<li>model: $p(y|\mathbf{x},\mathbf{w},\sigma^2)=N(t|\mathbf{w}^T \phi(\mathbf{x}),\sigma^2(x))$</li>
+<li>$\phi(\mathbf{x})$ basis function expansion, usually it is a vector of different degree of x – in polynomial regression</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>classification:<ul>
+<li>logistic regression, ber distribute, use sigmoid function as basis function. <ul>
+<li>define decision rule + basi function expansion -&gt;create decision boundary </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>#overfitting and model selection#</p>
+<ul>
+<li>overfit is an issue raised in both unsurpervised learning and surpervised learning during the selection of model</li>
+<li>examples is:<ul>
+<li>in linear regression, if choose polynormial as basis function, then the degress of the polynormial function distinct the model, the higher the degree is, it is more likely to overfit, which will lead to high error on the test set, since we use this error to estimate the generalization error, it means that the generalization increase<ul>
+<li>as the degree raise, the complexity of the model increase, the matrx will tend to be <code>ill condition</code>, and the solution of parameters will become more sensitive to the training data, which is really bad! </li>
+<li>also notice the fact that, as degree increase, the value of parameter also increase dramatically, in the example of PRML, D=1,w0=0.19 while for D=9,w9=125201 !</li>
+<li><code>commend</code> someone said when we are not sure about the model, we should always choose the simplier model to fit the data</li>
+<li><code>commend</code> we can still have some way to use complex model and reduce the generalization error</li>
+<li><code>overfitting problam can be regards as a general property of maximum likelihood</code>, the matrix tend to be always in ill-condition since that the data points can not be completely in linear relation in reality.</li>
+<li>PRML said <code>by adopting Bayesian approach, the overfitting problem can be avoided and the num of parameters can even greatlt exceed the num of data point</code></li>
+</ul>
+<ul>
+<li>solution1: <code>shrinkage method</code> / <code>regularization</code> to fight with overfitting, usually we will try to penilize the parameters of the model, which perform <code>lift of the eigrnvalue</code>, in this way, we are actually trying to simplify the models, (thinking that when the panelized parameter $\lambda$ bacomre very large, the parameters, except $\w_0$ which is nor panelized, are all going to zero, so we are using a very simple model in fact). <ul>
+<li>if add regularization, the complexity of the model should not be measured simply by the number of parameters or the degrees</li>
+<li>the method above is called <em>ridge regression</em></li>
+<li>we should also notice that the panelized parameter $\lambda$ could very a lot with the change the degree, from my experiment, it can very in the 1 ~ 10^7 range as the degree goes from about 2 to 10. So when perform cross validation on the selection of the model, more specifically, on the decision of penalized perameter and the degree, we need to pay attention about this</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>in KNN, it also happens that when K is small, it tends to overfit.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><em>speed-accuracy-complexity tradeoff</em><br>in the following notes, I will focus on the comparison of the tradeoff</p>
+<ul>
+<li>indicator function: $II(e)=1,if e is true; =2 if e is false$</li>
+</ul>
+<hr>
+<p>#multinomial distribution#</p>
+<ul>
+<li>MODEL: tossing K side die </li>
+<li>$\mathbf{x}=(x_1,…,x_D)$, $x_j$ the number of times side x of the die occurs</li>
+<li>notice that $N = sum(x_1,x_2,…x_D)$</li>
+<li>ANOTHER MODEL: from D color, choose fill in N place(not consider the order, ie,red in place1+blue in place2=red in 2+blue in 1), $x_j$ the number of color j shows in the image. probability that j is chosen = $\theta_j$</li>
+<li>$Mu(\mathbf{x}|N,\mathbf(\theta)) := \binom{N}{x_1} \binom{N-x_1}{x_2}..\binom{N-x_1-x_2-…}{x_D} * \theta_1^{x_1} \theta_2^{x_2}…\theta_D^{x_D}$</li>
+<li>$= \binom{N}{x_1 x_2 ..x_D} \prod{\substack{j=1,2,…D}} \theta_j^{x_j}$</li>
+</ul>
+<p>#multi-noulli#</p>
+<ul>
+<li>simply let N = 1;</li>
+<li>$Mu(\mathbf{x}|1,\mathbf(\theta)) := \prod{\substack{j=1,2,…D}} \theta_j^{II(x_j=1)}$ II for 0,1 case</li>
+</ul>
+<hr>
+<p>#information theory#</p>
+<ul>
+<li>deta compression/ source coding, concerned with: compact data representation and errorless transmission and storing </li>
+</ul>
+<h2 id="entropy">entropy</h2><ul>
+<li>for a random variable Y(with K state) with ditribution p, the entropy of Y is denoted by </li>
+<li>$\mathbb{H}(Y)$ or $\mathbb{H}(p)$ </li>
+<li>$:= - \sum_{\substack{k=1,2,….K}} p(Y=k) log_2 p(Y=k)$</li>
+<li>is a measure of its uncertainty<ul>
+<li>say if $X \in {1,…,5}$ then if p = [1/5,1/5,1/5,1/5,1/5] the abs(entropy) reach maximum and in this case, entropy(&lt;0) is minimum, therefore uncertainty is largest when p = [1,0,0,0,0] the netropy reach minimum - no uncertainty</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>regular expression help to replace the wrong mathjex:<br>eg find: (mathbf)((.))<br>replace with \1{\2}</p>
 </span>
       
     </div>
@@ -360,11 +515,11 @@ regr">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/17/MLE/" rel="prev">Maximum likelihood estimator MLE</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/18/useful-git-command/" rel="next">useful git command</a>
             
           </div>
         </div>
@@ -468,7 +623,7 @@ regr">
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#entropy"><span class="nav-number">1.</span> <span class="nav-text">entropy</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

@@ -171,6 +171,349 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/18/prml/" itemprop="url">
+                prml
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-10-18T19:47:48+02:00" content="2015-10-18">
+            2015-10-18
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>for input may be <em>preprocessed</em></p>
+<pre><code>-<span class="ruby"> like fixed size of the image
+</span>-<span class="ruby"> also called feature extraction
+</span>-<span class="ruby"> speed up computation
+</span>-<span class="ruby"> easier to solve problem</span>
+</code></pre><ul>
+<li>supervised learning<ul>
+<li>classification- discrete output<ul>
+<li>generalization:= make predictions on novel input<ul>
+<li>generalization error = expected value of the misclassification rate when averaged over future data, can never know but can be approximate by:  misclassification rate on a large independenttest set</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>regression- continues output</li>
+</ul>
+</li>
+<li>unsupervised learning<ul>
+<li>goal: knowledge discovery or discover interesting sreuctre in data in murphy</li>
+</ul>
+<ul>
+<li>visualization</li>
+<li>clustering</li>
+<li>density estimation<br>…</li>
+</ul>
+</li>
+</ul>
+<p>#reinforcement learning#</p>
+<pre><code>- find suirable actions <span class="keyword">to</span> <span class="keyword">take</span> <span class="keyword">in</span> a given stituation <span class="keyword">in</span> <span class="keyword">order</span> <span class="keyword">to</span> maximized the reward
+</code></pre><ul>
+<li>function which is linear in unknow parameters are called linear model<ul>
+<li>for the polynomial model: $y(x, \mathbf{\beta}) = \beta^0 + \beta_1 x + \beta_2 x^2 + …. + \beta_M x^M$ is <em>nonliear</em> in input x but linear in unknow parameter $\beta$</li>
+<li>implement issue:<ul>
+<li>choose the value of coefficents/parameters/weights is determined by fitting data - minimizing error function - <em>cost function</em></li>
+<li>choose the order M - model selection/comparision<ul>
+<li>overfitting</li>
+<li>FACT: as M increases, the magnitude of the coefficients typically gets larger</li>
+<li>regulazation to fight overfitting<ul>
+<li>involves adding a penalty term to the error function (1.2) in order to discourage the coefficients from reaching large values</li>
+<li>add $\lambda / 2 | \mathbf{\beta} |^2$ $\lambda$ is the importance of the regulazation term; <ul>
+<li>if use quadric regularizer - call <em>ridge regression</em></li>
+</ul>
+</li>
+<li><em>weight decay?</em> in neural network </li>
+<li>$\lambda$ can suppressed over-fitting, reduce value of weight, but if $\lambda$ too large, weight goes to 0, will lead to poor fit</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>#probability theory#</p>
+<ul>
+<li>提出probability 是想更加科学一些</li>
+<li><p><em>expectation</em> </p>
+<ul>
+<li>def: weighted averages of funtions</li>
+<li>if we are given a finite number N of points drawn from the probability distribution or probability density<ul>
+<li>$E[f] ~- 1/N sum_{n=1,2…N}f(x_n)$       </li>
+</ul>
+</li>
+<li>consider expectation of functions of several variables eg f(x,y)<ul>
+<li>expectation have subscript with repesct to different variable:</li>
+<li>$E_x[f(x,y)]$ and $E_y[f(x,y)]$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>variance: $Var[x] = E[x^2] - E[x]^2$</p>
+<ul>
+<li>consider functions of several variables eg f(x,y)<ul>
+<li><em>covariance</em>: $cov[x,y] = E_{x,y}[{x - E[x]}{y^T - E[y^T]}]$  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>#interpretation of probabilities#</p>
+<p>##frequentist interpretation##</p>
+<ul>
+<li>popular: <em>classical or frequentist way</em><ul>
+<li>the probability P of an uncertain event A, P(A) is defined by the frequency of that event based on previous observations</li>
+</ul>
+</li>
+</ul>
+<p>##Bayesian interpretation##</p>
+<ul>
+<li>another point of view: <em>Bayesian view</em> - probability provide a quanrification of uncertainty<ul>
+<li>ads: can be used to model our uncertainty of the event without long term frequency</li>
+<li>for future event, we do not have historical database thus can not count the frequency.</li>
+<li>but can measure the belief in a statement $a$ based on some ‘knowledge’, denote as P(a|K), different K can generate different P(a|K) and even same K can have different P(a|K) – the belief is subjective </li>
+</ul>
+</li>
+<li><em>Bayes rule</em><ul>
+<li>consider conditional probabilities </li>
+<li>$P(A|B) = P(B|A) P(A)/P(B)$<ul>
+<li>interpretation: updating our belief about a hypothesis A in the light of new evidence B<ul>
+<li>in likelihood, it is, output brief of y/A given B/input values+paramters </li>
+</ul>
+</li>
+<li>P(A|B): posterior belief</li>
+<li>P(A): prior belief</li>
+<li>P(B|A): likelihood, ie the B(our model) will occur if A(the output value of the sample data) is true.</li>
+<li>P(B) is computed by: $sum_{i=1,2,…}P(B|A_i)P(A_i)$ by <em>marginalisation</em>.</li>
+<li>if you still remember the ‘cancer-test examples’ in statistic course, then p(A) is p(cancer), p(B|A) is p(positive|cancer), p(A|B) is p(cancer|positive) which is the value patient care for(but in fact we dont know) </li>
+</ul>
+</li>
+<li>in machine learning, Bayes theorem is used to convert a priot ptobability $P(A) = P(\mathbf{\beta})$ into a porterior probability $P(A|B) = P(\mathbf{\beta}|y)$ by incorpoating the evidence provided by the observed data   <ul>
+<li>for $\mathbf{\beta}$ in the polynormial curve fitting model, we can take an approach with Bayes theorem:</li>
+<li>$P(\mathbf{\beta} | \mathbf{y}) =\frac{ P(\mathbf{y}|\mathbf{\beta}) p(\mathbf{\beta})}{P(\mathbf{y})} $<ul>
+<li>given data {y_1,y_2,…}, we want to know the $\beta$, cant get directly. $P(\mathbf{\beta} | \mathbf{y})$:= <em>posterior probability</em></li>
+<li>$P(\beta)$:= prior probability; our assumption of $\beta$</li>
+<li>${P(\mathbf{y})}$:= normalization constant since the given data is fixed</li>
+<li>$P(\mathbf{y}|\mathbf{\beta})$:= <em>likelihood function</em>;<ul>
+<li>can be view as function of parameter $\beta$ </li>
+<li>not a probability distrubution, so intergral w.r.t $\beta$ not nessary = 1</li>
+</ul>
+</li>
+<li>state Bayes theorem as : posterior 8 likelihood × prior, consider all of these as function of parameters $\beta$</li>
+<li>intergrate both side base on $\beta$: $p(y)= \intergral p(y|\beta)p(\beta)d\beta$</li>
+<li>issue: particularly the need to marginalize (sum or integrate) over the whole of parameter space</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>#different view of likelihood function#</p>
+<ul>
+<li>likelihood function: $P(\mathbf{y}|\mathbf{\beta})$</li>
+<li>from frequentist way of interpretation:<ul>
+<li>parameter $\beta$ is a fixed parameter, the value is determined by ‘estimator’</li>
+<li>A widely used frequentist estimator is <em>maximum likelihood</em>, in which wis set to the value that maximizes the likelihood function </li>
+<li>ie. choosing $\beta$ s.t. probability of the observed data is maximized</li>
+<li>in practice, use negative log of likelihood function = log-likelihood:= error function(monotonically decreasing)</li>
+<li><strong>One approach to determining frequentist error bars is the bootstrap</strong>, <ul>
+<li>s1: 就是在已有的dataset(size N)里面random弄出L个dataset(size N) by drawing data from 已有的dataset(抽取方式是，可以重复抽，可以有的没有被抽中)</li>
+<li>s2: looking at the variability of predictions between the different bootstrap data sets. then evaluate the accuracy of the estimates of the parameter</li>
+</ul>
+</li>
+<li>drawback: may lead to extreme conclusion if the dataset is bad, eg, a fair-looking coin is tossed three times and lands heads each time. in this case, we will generate parameter $\beta$ to make P(lands head) = 1   </li>
+</ul>
+</li>
+<li>from Bayesian viewpoint:<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<p>#Murphy’s explanation – MAP estimate#</p>
+<ul>
+<li>look at probability is conditional on the test input x, as well as the training set D, and the form of model M that we use to make predictions</li>
+<li>Given a probabilistic output, we can always compute our “best guess” as to the “true label” using: </li>
+<li>$\hat y = \hat f(\mathbf{x} = argmax_{c=1..C} p(y = c|\mathbf{x},D,M)$</li>
+<li>This corresponds to the most probable class label, and is called themodeof the distribution p(y|x,D); it is also known as a <em>MAP</em> estimate(MAP stands for maximum a posteriori).</li>
+<li>note that p(y|x,D) is the probrbility distribution of y given x and D (and M in case of in the situation of model selection, M should also be clearified)</li>
+</ul>
+<p>#Murphy’s definition of probabilistic model in machine learning#</p>
+<ul>
+<li>when defining a models, if the number of parameter is:<ol>
+<li>grow with the amount of training data :=. non-parametric model<ul>
+<li>flexible but computation cost high</li>
+<li>eg: KNN<ul>
+<li>KNN probabilistic model: </li>
+<li>$p(y=c|\mathbf{x},D,K) = 1/K \Sigma_{i in N_K(x,D)} II(y_i=c)$</li>
+<li>NK(x,D)are the (indices of the)Knearest points toxin DandI(e)is the indicator function </li>
+<li>issure: fail to work in high D use to below:<ul>
+<li>the curse of dimensionality (murphy ch1)</li>
+</ul>
+</li>
+<li>explanation:<ul>
+<li>lets say, apply KNN to uniformly distributed points in 3 dimensional unit cube grow a hyper-cube around x untill it contain 0.5 of the data points, $V(hyper-cube)=e_3(0.5)^3=0.5$, $e_3(0.5) = 0.5^{1/3}$, </li>
+<li>for D dimension, given disired faction f, length of cube around x is $e_D(f)=f^{1/D}$</li>
+</ul>
+<ul>
+<li>$e_{10}(0.1)=0.8$: D=10, want 0.1 of the datas, length=0.8, ie, need to extend the cube 80% along each dimension around x, which means that, the ‘nearest nerighbor’ is indeed not that near since that on any dimendion, their distance can be 0.8 and the largest distance is only 1; </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>combat by making assumption about the nature of data distribution – know as <em>inductive bias</em> embodied in parametric model</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>fixed :=&gt; paramteric <ul>
+<li>ads: fast to apply</li>
+<li>dis: strong assumption about the nature of data distribute</li>
+<li>regression<ul>
+<li>linear regression:<ul>
+<li>model: $y(x)=w^Tx + \episilon$</li>
+</ul>
+<ul>
+<li>assume $e~N(\mu,\sigma^2)$ connect linear regre and Gaussian:<ul>
+<li>model: $p(y|\mathbf{x},\mathbf{w},\sigma^2)=N(t|\mathbf{w}^T \phi(\mathbf{x}),\sigma^2(x))$</li>
+<li>$\phi(\mathbf{x})$ basis function expansion, usually it is a vector of different degree of x – in polynomial regression</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>classification:<ul>
+<li>logistic regression, ber distribute, use sigmoid function as basis function. <ul>
+<li>define decision rule + basi function expansion -&gt;create decision boundary </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>#overfitting and model selection#</p>
+<ul>
+<li>overfit is an issue raised in both unsurpervised learning and surpervised learning during the selection of model</li>
+<li>examples is:<ul>
+<li>in linear regression, if choose polynormial as basis function, then the degress of the polynormial function distinct the model, the higher the degree is, it is more likely to overfit, which will lead to high error on the test set, since we use this error to estimate the generalization error, it means that the generalization increase<ul>
+<li>as the degree raise, the complexity of the model increase, the matrx will tend to be <code>ill condition</code>, and the solution of parameters will become more sensitive to the training data, which is really bad! </li>
+<li>also notice the fact that, as degree increase, the value of parameter also increase dramatically, in the example of PRML, D=1,w0=0.19 while for D=9,w9=125201 !</li>
+<li><code>commend</code> someone said when we are not sure about the model, we should always choose the simplier model to fit the data</li>
+<li><code>commend</code> we can still have some way to use complex model and reduce the generalization error</li>
+<li><code>overfitting problam can be regards as a general property of maximum likelihood</code>, the matrix tend to be always in ill-condition since that the data points can not be completely in linear relation in reality.</li>
+<li>PRML said <code>by adopting Bayesian approach, the overfitting problem can be avoided and the num of parameters can even greatlt exceed the num of data point</code></li>
+</ul>
+<ul>
+<li>solution1: <code>shrinkage method</code> / <code>regularization</code> to fight with overfitting, usually we will try to penilize the parameters of the model, which perform <code>lift of the eigrnvalue</code>, in this way, we are actually trying to simplify the models, (thinking that when the panelized parameter $\lambda$ bacomre very large, the parameters, except $\w_0$ which is nor panelized, are all going to zero, so we are using a very simple model in fact). <ul>
+<li>if add regularization, the complexity of the model should not be measured simply by the number of parameters or the degrees</li>
+<li>the method above is called <em>ridge regression</em></li>
+<li>we should also notice that the panelized parameter $\lambda$ could very a lot with the change the degree, from my experiment, it can very in the 1 ~ 10^7 range as the degree goes from about 2 to 10. So when perform cross validation on the selection of the model, more specifically, on the decision of penalized perameter and the degree, we need to pay attention about this</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>in KNN, it also happens that when K is small, it tends to overfit.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><em>speed-accuracy-complexity tradeoff</em><br>in the following notes, I will focus on the comparison of the tradeoff</p>
+<ul>
+<li>indicator function: $II(e)=1,if e is true; =2 if e is false$</li>
+</ul>
+<hr>
+<p>#multinomial distribution#</p>
+<ul>
+<li>MODEL: tossing K side die </li>
+<li>$\mathbf{x}=(x_1,…,x_D)$, $x_j$ the number of times side x of the die occurs</li>
+<li>notice that $N = sum(x_1,x_2,…x_D)$</li>
+<li>ANOTHER MODEL: from D color, choose fill in N place(not consider the order, ie,red in place1+blue in place2=red in 2+blue in 1), $x_j$ the number of color j shows in the image. probability that j is chosen = $\theta_j$</li>
+<li>$Mu(\mathbf{x}|N,\mathbf(\theta)) := \binom{N}{x_1} \binom{N-x_1}{x_2}..\binom{N-x_1-x_2-…}{x_D} * \theta_1^{x_1} \theta_2^{x_2}…\theta_D^{x_D}$</li>
+<li>$= \binom{N}{x_1 x_2 ..x_D} \prod{\substack{j=1,2,…D}} \theta_j^{x_j}$</li>
+</ul>
+<p>#multi-noulli#</p>
+<ul>
+<li>simply let N = 1;</li>
+<li>$Mu(\mathbf{x}|1,\mathbf(\theta)) := \prod{\substack{j=1,2,…D}} \theta_j^{II(x_j=1)}$ II for 0,1 case</li>
+</ul>
+<hr>
+<p>#information theory#</p>
+<ul>
+<li>deta compression/ source coding, concerned with: compact data representation and errorless transmission and storing </li>
+</ul>
+<h2 id="entropy">entropy</h2><ul>
+<li>for a random variable Y(with K state) with ditribution p, the entropy of Y is denoted by </li>
+<li>$\mathbb{H}(Y)$ or $\mathbb{H}(p)$ </li>
+<li>$:= - \sum_{\substack{k=1,2,….K}} p(Y=k) log_2 p(Y=k)$</li>
+<li>is a measure of its uncertainty<ul>
+<li>say if $X \in {1,…,5}$ then if p = [1/5,1/5,1/5,1/5,1/5] the abs(entropy) reach maximum and in this case, entropy(&lt;0) is minimum, therefore uncertainty is largest when p = [1,0,0,0,0] the netropy reach minimum - no uncertainty</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>regular expression help to replace the wrong mathjex:<br>eg find: (mathbf)((.))<br>replace with \1{\2}</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/18/useful-git-command/" itemprop="url">
                 useful git command
               </a>
@@ -274,15 +617,53 @@
 
       
         
-          <span itemprop="articleBody"><h1 id="layer">layer</h1><p><img src="http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png" alt="alt text"></p>
-<h2 id="definition">definition</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前四行-层属性</span></span><br><span class="line">name:<span class="string">"conv1"</span></span><br><span class="line">type:CONVOLUTION</span><br><span class="line"><span class="comment">// the link structure</span></span><br><span class="line">bottom:<span class="string">"data"</span></span><br><span class="line">top:<span class="string">"conv1"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// parameter of the layer</span></span><br><span class="line">convolution_param&#123;</span><br><span class="line">    num_output:&lt;span&gt;<span class="number">20</span></span><br><span class="line">    kernel_size:<span class="number">5</span></span><br><span class="line">    stride:<span class="number">1</span></span><br><span class="line">    weight_filler&#123;</span><br><span class="line">        type: <span class="string">"&lt;span style="</span>color: <span class="preprocessor">#c0504d;<span class="string">"&gt;xavier&lt;/span&gt;"</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Blob">Blob</h1><ul>
+          <span itemprop="articleBody"><h1 id="official_caffe_tour">official caffe tour</h1><ul>
+<li>nets, layers and blobs</li>
+<li>forward/backwards</li>
+<li>loss</li>
+<li>solver</li>
+<li>layer catalogue</li>
+<li>interfaces</li>
+<li>data</li>
+</ul>
+<hr>
+<h1 id="nets,_layers_and_blobs">nets, layers and blobs</h1><h2 id="layer">layer</h2><ul>
+<li>layer categories: <a href="http://caffe.berkeleyvision.org/tutorial/layers.html" target="_blank" rel="external">http://caffe.berkeleyvision.org/tutorial/layers.html</a></li>
+<li>each layer have 3 computation:<ul>
+<li>setup<ul>
+<li>initialization of the layer and its connections is done at model initialization.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>forward: bottom -(input)-&gt; … -(output)-&gt; top</li>
+<li>backward: top -(gradient wrt output)-&gt; …compute gradient wrt parameters.. -(gradient)-&gt; bottom <ul>
+<li>takes the gradient with respect to the output, and computes the gradients with respect to the parameters and to the inputs</li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<p><img src="http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png" alt="alt text"></p>
+<h3 id="definition">definition</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前四行-层属性</span></span><br><span class="line">name:<span class="string">"conv1"</span></span><br><span class="line">type:CONVOLUTION</span><br><span class="line"><span class="comment">// the link structure</span></span><br><span class="line">bottom:<span class="string">"data"</span></span><br><span class="line">top:<span class="string">"conv1"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// parameter of the layer</span></span><br><span class="line">convolution_param&#123;</span><br><span class="line">    num_output:&lt;span&gt;<span class="number">20</span></span><br><span class="line">    kernel_size:<span class="number">5</span></span><br><span class="line">    stride:<span class="number">1</span></span><br><span class="line">    weight_filler&#123;</span><br><span class="line">        type: <span class="string">"&lt;span style="</span>color: <span class="preprocessor">#c0504d;<span class="string">"&gt;xavier&lt;/span&gt;"</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="net">net</h2><h2 id="Blob">Blob</h2><ul>
+<li>defined in caffe_pb2.BlobProto</li>
+<li>attribute:<ul>
+<li>data; diff; num; channels; height; width</li>
+</ul>
+</li>
 <li>4 dimension array<ul>
 <li>data: number/N(batch size of the data), channel/K, height, width</li>
 <li>convolution weight: output, input, height, wifth</li>
 <li>convoluion bias: output 1 1 1</li>
 </ul>
 </li>
+</ul>
+<h2 id="datum">datum</h2><ul>
+<li>defined in caffe_pb2.BlobProto</li>
+<li>attribute: shape, channels, height, width, data, </li>
+<li>3 dimensional array can be converted to datum by io.array_to_datum</li>
 </ul>
 <hr>
 <p>#structure of caffe#<br><img src="http://img.ptcms.csdn.net/article/201501/22/54c07168613b6.jpg" alt="alt text"></p>
@@ -378,15 +759,34 @@
 <hr>
 <p>layer {<br>  name: “pool1”<br>  type: “Pooling”<br>  bottom: “norm1”<br>  top: “pool1”<br>  pooling_param {<br>    pool: MAX<br>    kernel_size: 3<br>    stride: 2<br>  }<br>}</p>
 <hr>
-<p>layer {<br>  name: “conv2”<br>  type: “Convolution”<br>  bottom: “pool1”<br>  top: “conv2”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  convolution_param {<br>    num_output: 256<br>    pad: 2<br>    kernel_size: 5<br>    group: 2<br>  }<br>}</p>
-<hr>
-<p>layer {<br>  name: “relu2”<br>  type: “ReLU”<br>  bottom: “conv2”<br>  top: “conv2”<br>}</p>
-<hr>
-<p>layer {<br>  name: “norm2”<br>  type: “LRN”<br>  bottom: “conv2”<br>  top: “norm2”<br>  lrn_param {<br>    local_size: 5<br>    alpha: 0.0001<br>    beta: 0.75<br>  }<br>}</p>
-<hr>
 <p>layer {<br>  name: “pool2”<br>  type: “Pooling”<br>  bottom: “norm2”<br>  top: “pool2”<br>  pooling_param {<br>    pool: MAX<br>    kernel_size: 3<br>    stride: 2<br>  }</p>
-<h2 id="}-1">}</h2><p>layer {<br>  name: “conv3”<br>  type: “Convolution”<br>  bottom: “pool2”<br>  top: “conv3”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  convolution_param {<br>    num_output: 384<br>    pad: 1<br>    kernel_size: 3<br>  }</p>
-<h2 id="}-2">}</h2><p>layer {<br>  name: “relu3”<br>  type: “ReLU”<br>  bottom: “conv3”<br>  top: “conv3”<br>}<br>layer {<br>  name: “conv4”<br>  type: “Convolution”<br>  bottom: “conv3”<br>  top: “conv4”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  convolution_param {<br>    num_output: 384<br>    pad: 1<br>    kernel_size: 3<br>    group: 2<br>  }<br>}<br>layer {<br>  name: “relu4”<br>  type: “ReLU”<br>  bottom: “conv4”<br>  top: “conv4”<br>}<br>layer {<br>  name: “conv5”<br>  type: “Convolution”<br>  bottom: “conv4”<br>  top: “conv5”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  convolution_param {<br>    num_output: 256<br>    pad: 1<br>    kernel_size: 3<br>    group: 2<br>  }<br>}<br>layer {<br>  name: “relu5”<br>  type: “ReLU”<br>  bottom: “conv5”<br>  top: “conv5”<br>}<br>layer {<br>  name: “pool5”<br>  type: “Pooling”<br>  bottom: “conv5”<br>  top: “pool5”<br>  pooling_param {<br>    pool: MAX<br>    kernel_size: 3<br>    stride: 2<br>  }<br>}<br>layer {<br>  name: “fc6”<br>  type: “InnerProduct”<br>  bottom: “pool5”<br>  top: “fc6”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  inner_product_param {<br>    num_output: 4096<br>  }<br>}<br>layer {<br>  name: “relu6”<br>  type: “ReLU”<br>  bottom: “fc6”<br>  top: “fc6”<br>}<br>layer {<br>  name: “drop6”<br>  type: “Dropout”<br>  bottom: “fc6”<br>  top: “fc6”<br>  dropout_param {<br>    dropout_ratio: 0.5<br>  }<br>}<br>layer {<br>  name: “fc7”<br>  type: “InnerProduct”<br>  bottom: “fc6”<br>  top: “fc7”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  inner_product_param {<br>    num_output: 4096<br>  }<br>}<br>layer {<br>  name: “relu7”<br>  type: “ReLU”<br>  bottom: “fc7”<br>  top: “fc7”<br>}<br>layer {<br>  name: “drop7”<br>  type: “Dropout”<br>  bottom: “fc7”<br>  top: “fc7”<br>  dropout_param {<br>    dropout_ratio: 0.5<br>  }<br>}<br>layer {<br>  name: “fc8”<br>  type: “InnerProduct”<br>  bottom: “fc7”<br>  top: “fc8”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  inner_product_param {<br>    num_output: 1000<br>  }<br>}<br>layer {<br>  name: “prob”<br>  type: “Softmax”<br>  bottom: “fc8”<br>  top: “prob”<br>}</p>
+<h2 id="}-1">}</h2><p>…<br>layer {<br>  name: “fc7”<br>  type: “InnerProduct”<br>  bottom: “fc6”<br>  top: “fc7”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  inner_product_param {<br>    num_output: 4096<br>  }<br>}<br>…<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  inner_product_param {<br>    num_output: 1000<br>  }<br>}<br>layer {<br>  name: “prob”<br>  type: “Softmax”<br>  bottom: “fc8”<br>  top: “prob”</p>
+<h2 id="}-2">}</h2><h1 id="pipline_for_python">pipline for python</h1><p><code>\python\caffe\io.py</code>: </p>
+<ul>
+<li>conversion between datum, narray and proto(blob)</li>
+<li>preprocessing</li>
+<li>image IO</li>
+</ul>
+<p><code>\python\caffe\net_spec.py</code></p>
+<ul>
+<li><p><code>\python\caffe\draw.py</code></p>
+</li>
+<li></li>
+</ul>
+<p><code>\examples\pycaffe\caffenet.py</code></p>
+<ul>
+<li>def conv_relu, fc_relu, max_pool, caffenet(the net itself), make_net</li>
+</ul>
+<ul>
+<li>preprocessing<ul>
+<li>\python\caffe\io.py <ul>
+<li>class Transformer, </li>
+<li>oversample</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </span>
         
       
@@ -847,194 +1247,6 @@
 <h3 id="information_matrix/_fisher_information">information matrix/ fisher information</h3><ul>
 <li>Fisher information is used to determine the sample size with which we design an experiment; second, in the Bayesian paradigm, Fisher information is used to define a default parameter prior; finally, in the minimum description length paradigm, Fisher information is used to measure model complexi</li>
 <li></li>
-</ul>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/16/prml/" itemprop="url">
-                prml
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-10-16T22:55:29+02:00" content="2015-10-16">
-            2015-10-16
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>for input may be preprocessed</p>
-<pre><code>-<span class="ruby"> like fixed size of the image
-</span>-<span class="ruby"> also called feature extraction
-</span>-<span class="ruby"> speed up computation
-</span>-<span class="ruby"> easier to solve problem</span>
-</code></pre><ul>
-<li>supervised learning<ul>
-<li>classification- discrete output</li>
-<li>regression- continues output</li>
-</ul>
-</li>
-<li><p>unsupervised learning</p>
-<ul>
-<li>visualization</li>
-<li>clustering</li>
-<li>density estimation<br>…</li>
-</ul>
-</li>
-<li><p>technique of reinforcement learning : find suirable actions to take in a given stituation in order to maximized the reward</p>
-</li>
-<li><p>function which is linear in unknow parameters are called linear model</p>
-<ul>
-<li>for the polynomial model: $y(x, \mathbf{\beta}) = \beta^0 + \beta_1 x + \beta_2 x^2 + …. + \beta_M x^M$ is <em>nonliear</em> in input x but linear in unknow parameter $\beta$</li>
-<li>implement issue:<ul>
-<li>choose the value of coefficents/parameters/weights is determined by fitting data - minimizing error function - <em>cost function</em></li>
-<li>choose the order M - model selection/comparision<ul>
-<li>overfitting</li>
-<li>FACT: as M increases, the magnitude of the coefficients typically gets larger</li>
-<li>regulazation to fight overfitting<ul>
-<li>involves adding a penalty term to the error function (1.2) in order to discourage the coefficients from reaching large values</li>
-<li>add $\lambda / 2 | \mathbf{\beta} |^2$ $\lambda$ is the importance of the regulazation term; <ul>
-<li>if use quadric regularizer - call <em>ridge regression</em></li>
-</ul>
-</li>
-<li><em>weight decay?</em> in neural network </li>
-<li>$\lambda$ can suppressed over-fitting, reduce value of weight, but if $\lambda$ too large, weight goes to 0, will lead to poor fit<br>#probability theory#</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>提出probability 是想更加科学一些</li>
-<li><em>expectation</em> <ul>
-<li>def: weighted averages of funtions</li>
-<li>if we are given a finite number N of points drawn from the probability distribution or probability density<ul>
-<li>$E[f] ~- 1/N sum_{n=1,2…N}f(x_n)$       </li>
-</ul>
-</li>
-<li>consider expectation of functions of several variables eg f(x,y)<ul>
-<li>expectation have subscript with repesct to different variable:</li>
-<li>$E_x[f(x,y)]$ and $E_y[f(x,y)]$</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>variance: $Var[x] = E[x^2] - E[x]^2$<ul>
-<li>consider functions of several variables eg f(x,y)<ul>
-<li><em>covariance</em>: $cov[x,y] = E_{x,y}[{x - E[x]}{y^T - E[y^T]}]$<br>#interpretation of probabilities#</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>popular: classical or frequentist way<ul>
-<li>the probability P of an uncertain event A, P(A) is defined by the frequency of that event based on previous observations</li>
-</ul>
-</li>
-<li>another point of view: <em>Bayesian view</em> - probability provide a quanrification of uncertainty<ul>
-<li>for future event, we do not have historical database thus can not count the frequency.</li>
-<li>but can measure the belief in a statement $a$ based on some ‘knowledge’, denote as P(a|K), different K can generate different P(a|K) and even same K can have different P(a|K) – the belief is subjective </li>
-</ul>
-</li>
-<li><em>Bayes rule</em><ul>
-<li>consider conditional probabilities </li>
-<li>$P(A|B) = P(B|A) P(A)/P(B)$<ul>
-<li>interpretation: updating our belief about a hypothesis A in the light of new evidence B<ul>
-<li>in likelihood, it is, output brief of y/A given B/input values+paramters </li>
-</ul>
-</li>
-<li>P(A|B): posterior belief</li>
-<li>P(A): prior belief</li>
-<li>P(B|A): likelihood, ie the B(our model) will occur if A(the output value of the sample data) is true.</li>
-<li>P(B) is computed by: $sum_{i=1,2,…}P(B|A_i)P(A_i)$ by <em>marginalisation</em>.</li>
-</ul>
-</li>
-<li>in machine learning, Bayes theorem is used to convert a priot ptobability $P(A) = P(\mathbf{\beta})$ into a porterior probability $P(A|B) = P(\mathbf{\beta}|y)$ by incorpoating the evidence provided by the observed data   <ul>
-<li>for $\mathbf{\beta}$ in the polynormial curve fitting model, we can take an approach with Bayes theorem:</li>
-<li>$P(\mathbf{\beta} | \mathbf{y}) =\frac{ P(\mathbf{y}|\mathbf{\beta}) p(\mathbf{\beta})}{P(\mathbf{y})} $<ul>
-<li>given data {y_1,y_2,…}, we want to know the $\beta$, cant get directly. $P(\mathbf{\beta} | \mathbf{y})$:= <em>posterior probability</em></li>
-<li>$P(\beta)$:= prior probability; our assumption of $\beta$</li>
-<li>${P(\mathbf{y})}$:= normalization constant since the given data is fixed</li>
-<li>$P(\mathbf{y}|\mathbf{\beta})$:= <em>likelihood function</em>;<ul>
-<li>can be view as function of parameter $\beta$ </li>
-<li>not a probability distrubution, so intergral w.r.t $\beta$ not nessary = 1</li>
-</ul>
-</li>
-<li>state Bayes theorem as : posterior 8 likelihood × prior, consider all of these as function of parameters $\beta$</li>
-<li>intergrate both side base on $\beta$: $p(y)= \intergral p(y|\beta)p(\beta)d\beta$</li>
-<li>issue: particularly the need to marginalize (sum or integrate) over the whole of parameter space<br>#different view of likelihood function#</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>likelihood function: $P(\mathbf{y}|\mathbf{\beta})$</li>
-<li>from frequentist way of interpretation:<ul>
-<li>parameter $\beta$ is a fixed parameter, the value is determined by ‘estimator’</li>
-<li>A widely used frequentist estimator is <em>maximum likelihood</em>, in which wis set to the value that maximizes the likelihood function </li>
-<li>ie. choosing $\beta$ s.t. probability of the observed data is maximized</li>
-<li>in practice, use negative log of likelihood function = log-likelihood:= error function(monotonically decreasing)</li>
-<li><strong>One approach to determining frequentist error bars is the bootstrap</strong>, <ul>
-<li>s1: 就是在已有的dataset(size N)里面random弄出L个dataset(size N) by drawing data from 已有的dataset(抽取方式是，可以重复抽，可以有的没有被抽中)</li>
-<li>s2: looking at the variability of predictions between the different bootstrap data sets. then evaluate the accuracy of the estimates of the parameter</li>
-</ul>
-</li>
-<li>drawback: may lead to extreme conclusion if the dataset is bad, eg, a fair-looking coin is tossed three times and lands heads each time. in this case, we will generate parameter $\beta$ to make P(lands head) = 1   </li>
-</ul>
-</li>
-<li>from Bayesian viewpoint:<ul>
-<li></li>
-</ul>
-</li>
 </ul>
 </span>
         
