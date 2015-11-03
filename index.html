@@ -171,6 +171,479 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/31/Pattern-classification-and-machine-learning/" itemprop="url">
+                Pattern classification and machine learning project I
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-10-31T21:32:03+01:00" content="2015-10-31">
+            2015-10-31
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>In project I, we are given two dataset for regression and classification. In both of the dataset, there are (x_train, y_train) pair and x_test which is left for us to make prediction. Both of the x_train in two dataset are in high dimension(71 and 37 respectively). We need to perform data analysis, feature processing and model selection on the dataset. Also noticed that we are not provided any description on the data, ie, the data do not have any semantic meaning for us. </p>
+<h2 id="This_notes_is_to_mark_down_the_detail_of_the_project_for_reference">This notes is to mark down the detail of the project for reference</h2><h1 id="regression">regression</h1><h2 id="data_description:">data description:</h2><p>x_train: 2800x71 dimension, ie, 2800 samples in 71 dimension<br>y_train: 2800x1<br>x_test: 1200x71, ie there are 1200 input for the predition</p>
+<h1 id="classification">classification</h1><h2 id="data_description:-1">data description:</h2><p>x_train: 1500x37 dimension<br>y_train: 1500 binary {-1,1}<br>x_test: 800x37</p>
+<p>comment: projectI 做完的感觉的就是，数据在手里的时候，很多theory的东西都fail了.比如说degree增大的时候lambda反而更小了，test error不是永远比train error小的。 logistic regression假设是input 是gaussian分布的但是实际上input可以很极端很skew。bias variance analysis倒还好，感觉用来解释error分布还是说得通的。但是lambda就很说不通…lambda的取值不太稳定感觉还是有点tricky.<br>这次的regression和classification都用了model split的方法，都是有一两个feature分布很典型，regression里用到了先做classification分成三个model再做regression的方法，error从500+一直降到了个位数。开心得晚上差点就通宵了。<br>还有dummy encoding用在两个dataset上面都是没什么效果。就是feature selection这种东西真的是很难有通用的方法啊。还有就是师姐太厉害了要在这里膜拜一下！</p>
+<p>Below is what I planned to do at the beginning of the project.<br>Later I found that the most important things should be: </p>
+<h3 id="First_apply_simple_model-">First apply simple model.</h3><h4 id="Then_really_look_at_the_data_plot!_such_as_histogram_and_scatter">Then really look at the data plot! such as histogram and scatter</h4><hr>
+<ol>
+<li>Exploratory data analysis: to learn about the characteristics of the data.<br>To have a general idea of the data, there are several things we can do:<br>1) try to plot the data to view the distribution of the data<br>2) try to use linear regression to fit the dataset(it is better to choose with the simplest approach as the start point)<br>3) base on what we find on step1 and step2, it is time to perform some feature processing on the dataset, <img src="" alt="Why feature processing is so important"><br>4) test on different models, it can be: a. linear regression with basis function expansion(polynormial is one the most simplest one, it can also be some special function such as sigmoid, sin, cos, exp and so on). b. as the complexity of the model increase, overfitting may arise, so we may consider perform regulization on the model, ie, try to penalize the weights, in this case, we can try ridge regression which use l2 regulization. (Notice that we can also use l1 regulization, however, according to what I read, people said that l2 is more stable then l1 while l1 can penalized the weights of the unuseful features to zero significantlt which may be helpful for us to figure the relation or information the features. However I have not look into the detail and proof yet, just mentioned here for future reference)<br>5) for the regulazation part, cross validation can be perform for parameters choice. another information cross validation can provide is the stability of our model, ie, if the performance/test error/train error have large variance on different cross fold, it may means the models are not that stable(my guess…), since that the performance is highly depend on the training data we choose. (overfitting with high variance? <em>not sure</em>) and<br>6) <img src="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf" alt="bias-variance analysis"> ie, estimate the true test error by decomposite it into bias + variance part. and model comparision</li>
+</ol>
+<ol>
+<li><p>Feature processing: cleaning your input and ouput variables, i.e. rescaling, transformation, removing outliers etc.</p>
+</li>
+<li><p>Applying methods and visualizing.<br> least square - regression without penelized</p>
+<pre><code>worked <span class="keyword">or</span> <span class="keyword">not</span> worked
+reason?
+what <span class="keyword">is</span> beta, what beta shows us? <span class="keyword">the</span> weight?
+</code></pre><p> ridge regression - how to choose lambda</p>
+<pre><code>corss-validation
+</code></pre></li>
+<li>Determining whether a method overfits or underfits.</li>
+<li>Cross-validation to estimate test errors.</li>
+</ol>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/31/what-Bias-Variance-decomposition-brings-to-us/" itemprop="url">
+                what Bias-Variance decomposition(BVD) brings to us
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-10-31T09:32:03+01:00" content="2015-10-31">
+            2015-10-31
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>During project I finally gain more insight of what BVD means.<br>In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.<br>First of all, there are several question we need to pay attention to: </p>
+<h2 id="what_is_the_measurement_of_the_model_complexity?">what is the measurement of the model complexity?</h2><ul>
+<li>we may simply think that in linear regression with polynormial basis function expansion, as the degree increase, the model complecity increase. However, if the regulization is added, things change! Degree is not the only measument. when the regulization term is large, the weights are tend to zero(expect beta0), so the model is indeed simple even if the degree may be high.<ul>
+<li>in a word, when measure the complexity of the model, it is better to keep one variable(ie, the degree or the regulazation) fixed. More specifically, for linear regression, it is simply depend on degree, for ridge regression, we usually fix the degree and vary lambda.</li>
+</ul>
+</li>
+</ul>
+<h2 id="what_the_definition_of_the_bias?">what the definition of the bias?</h2><ul>
+<li>intuitively, if we mannully add our assumption(which may come from experience or the truth we know, it can be correct or wrong, benifit or harm to the model) to the model, the model will tend to depend less on the data we collect, then we will say the bias is high. The extreme case is that, we choose a large regulization term and all weights(expect beta0) go to zero, the models do not ‘listen’ to the data(the truth) and it is high bias.</li>
+<li>specifically, the definition of bias is $bias^2 = (\mu(h<em>{hypothesis}(x^*)) - f</em>{truemodel}(x^*))^2$<ul>
+<li>describe the average error of the hypothesis</li>
+</ul>
+</li>
+</ul>
+<h2 id="what_the_definition_of_variance?">what the definition of variance?</h2><ul>
+<li>def: $variance = E[(h<em>{hypothesis}(x^*) - \mu(h</em>{hypothesis}(x^*)))^2]$<ul>
+<li>it is the stability/variance of our model/hypothesis, if our model do not ‘listen’ to the data, then no matter what tranining set it use, it do not variant a lot and the value is low. On the other hand, if the model is overfitting(high complexity), then the variance is high.</li>
+<li>in other word, it describe how much $h(x^*)$ differ from others</li>
+</ul>
+</li>
+</ul>
+<h2 id="under_what_assumption_do_we_perform_the_BVD?">under what assumption do we perform the BVD?</h2><ul>
+<li>we assume that there exist a true model, even though we can nerver generate/get it.</li>
+<li>also assume that there is some noise in the data we collect, ie $y^<em> = f(x^</em>) + e$(e: noise)<ul>
+<li>notice that under this assumption, $E(y^<em>) = f(x^</em>) = \mu(y^*)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="why_BVD_is_important_for_model_selecton?">why BVD is important for model selecton?</h2><ul>
+<li>the measurement of whether a model is good is based on the test error, since that we do not know the true value of the data we need to predict, we can not compute the test error directly and we need to extimate it by testing on the sample data. <ul>
+<li>the Estimation can be decomposited into three term: $bias$ + $variance^2$ + $noise^2$, <img src="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf" alt="detail"></li>
+<li>therefore the tradeoff between B and V is important</li>
+</ul>
+</li>
+</ul>
+<h2 id="how_the_tradeoff_happens?">how the tradeoff happens?</h2><ul>
+<li>when the complexity of the model increase, in general, the trainning error will decrease since it tend to highly fitting into the trainning set(overfitting) and the test error will increase. <ul>
+<li>Reason: when the input is away from the exact line(ie, there is some noise in the input), the output will become very different from the true value(ie, the noise will have huge impact on our prediction, also if there are noises in the trainning set, our model will be vary a lot and very different from the true model)<br>In this case, the bias is low(refer to the def of bias here), more specifically, the trainning error is ‘always’ low. </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="So_how_do_we_measure_B_and_D_in_practice_??_[not_finish]">So how do we measure B and D in practice ?? [not finish]</h2><p>to get $E(h(x^<em>))$ need more than one traning set. but only one indead, so need to simulate multiplr trainning sets by </em>bootstrap repicates* ie, randomly split the sample data into trainning and test for many times with different seeds(in MATLAB)</p>
+<ul>
+<li>algorithm:</li>
+</ul>
+<ol>
+<li>given training sample S, set s seeds to split it</li>
+<li>genarate multiple hypothesis h1,h2,h3,….hs</li>
+<li>(option) determining corresponding weights w1,w2,…wL, here we view each h qually, ie. no weights for different hypothesis</li>
+<li>classify new points by $y_{pred} = h<em>i(x</em>{new})$<br>$E(h(x^<em>)) = \mu(h(x^</em>)) = mean(\sum (h_i(x^<em>)) ) = \frac{1}{s}\sum (h_i(x^</em>))$,<br>$i \in {1,2,3,…s}$</li>
+</ol>
+<p>since that<br>$bias^2 = (\mu(h(x^<em>)) - f_{truemodel}(x^</em>))^2$<br>$bias = (\mu(h(x^<em>)) - f_{truemodel}(x^</em>))$</p>
+<p>$$variance = E[(h(x^<em>) - \mu(h(x^</em>)))^2] =Var(h(x^<em>)) = Var(h(x_1^</em>)) + Var(h(x_2^<em>)) + …=  \frac{1}{s} </em>\Sum{E[(h_i(x^<em>) - \mu(h(x^</em>)))^2]}$$<br>when shown in the figure, it is the variance of different result(test error) of different seeds.</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> s = 1,2,3....</span><br><span class="line">	S = (Tr(s),<span class="keyword">Te</span>(s));</span><br><span class="line">	traning <span class="keyword">on</span> Tr(s)</span><br><span class="line">		compute errorTr(s)</span><br><span class="line">		<span class="comment">// for traning the parameters</span></span><br><span class="line">	<span class="keyword">test</span> <span class="keyword">on</span> <span class="keyword">Te</span>(s)</span><br><span class="line">		compute errorTr(s) </span><br><span class="line">		<span class="comment">// expect train(on all the sample we have) error E[(h(x^*) - y^*)^2]</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="how_to_reduce_variance:">how to reduce variance:</h1><p>bagging and other resampling technique, one typical example is random forest<br>it means we preduce many times choosing different training set and get the average prediction as the result</p>
+<hr>
+<h1 id="insight">insight</h1><ol>
+<li>bagging of a flexible(overfitting) models may reduce the variance and benift from low bias</li>
+</ol>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/19/learning theory/" itemprop="url">
+                learning theory - bias-variance tradeoff
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-10-19T21:32:03+02:00" content="2015-10-19">
+            2015-10-19
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>看learning theory的时候，关注的是这个hypothesis怎么样， 而不是specific parameterization of hypotheses or whether it is linear classification<br>so we define <strong>hypothesis class H</strong></p>
+<ul>
+<li><strong>training error/empirical risk/empirical error</strong> of hypothesis h<ul>
+<li>training set have size N, </li>
+<li>assumption 1: (one of PAC assumption)<ul>
+<li>training examples $(x^{(i)},y^{(i)})$ are drawn iid from some probability distribution D<br>$\hat{e}(h) = 1/N \sum_{i=1,2…N} (e_i)$<br>then we can have</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>generalization error</strong> </p>
+<ul>
+<li>DEF: under assum1, it is the probability that, if we now draw a new example (x, y) from the distribution D, h will misclassify it.</li>
+<li>have two component: bias and variance</li>
+</ul>
+</li>
+<li><p><strong>training error</strong></p>
+<ul>
+<li>the process of minimizing training error: empirical risk minimization (ERM)<ul>
+<li>think of ERM as the most “basic” learning algorithm</li>
+<li>logistic regression is approxi of ERM</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>expected train error</p>
+<ul>
+<li>by taking expectation over all possible training datasets of size N.</li>
+<li>which is means we train for infinite datasets and take the average, but we cant, so we estimate by say, having m training datasets in size N then avarage the training error of each set</li>
+</ul>
+</li>
+<li><p>in-sample test error</p>
+<ul>
+<li>for one given test-pair</li>
+</ul>
+</li>
+<li><p>test error </p>
+<ul>
+<li>taking expectation over the test-data(all in-sample test error)</li>
+</ul>
+</li>
+<li><p>expected test error</p>
+<ul>
+<li>average over all possible training data of size N, again we cant, so esitimate it by our limited test set</li>
+</ul>
+</li>
+</ul>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/19/classification/" itemprop="url">
+                classification
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-10-19T21:32:03+02:00" content="2015-10-19">
+            2015-10-19
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h2 id="logistic_regression">logistic regression</h2><ul>
+<li>hypotheses $h_{\theta}(x) = \sigma(\theta^Tx)$ </li>
+<li>$\sigma(x)$ is the logistic function/sigmoid function</li>
+<li>we can assume:　<ul>
+<li>$P(y = 1 | x; θ) =h_{\theta}(x)$</li>
+<li>$P(y = 0 | x; θ) =1 - h_{\theta}(x)$</li>
+<li>it can be written compactly</li>
+</ul>
+</li>
+<li><code>Assuming that the m training examples were generated independently</code><ul>
+<li>we can write $L(\theta) = p(\mathbf{y}|X;\theta)$ as joint probability of p(y1)p(y2)… then take log, get log likehood function of $\theta$<ul>
+<li>maximize it (mini its negative) by ..</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="by_gradient_descent_or_least_square">by gradient descent or least square</h3><ul>
+<li>one thing to mention: the update rule for stochastic gradient rule here $$\theta_j := \theta<em>j + \alpha y^{(i)} − h</em>{\theta}(x^{(i)})x<em>j^{(i)}$$ it is almost the same as we saw in linear regression, but, $h</em>{\theta}(x^{(i)})$ here is a non-linear function of $\theta^Tx^{(i)}$ </li>
+</ul>
+<h3 id="by_newtom_method">by newtom method</h3><ul>
+<li>find zero of first derivative</li>
+<li>$\theta := \theta - H^{-1}∇_{\theta}l{\theta}$</li>
+<li>Newton’s method typically enjoys faster convergence than (batch) gradient descent, and requires many fewer iterations to get very close to the minimum. One iteration of Newton’s can, however, be more expensive than one iteration of gradient descent, since it requires finding and inverting an n-by-n Hessian; </li>
+<li>When Newton’s method is applied to maximize the logistic regression<br>log likelihood function ℓ(θ), the resulting method is also called <strong>Fisher<br>scoring</strong></li>
+</ul>
+<hr>
+<h1 id="perceptron_learning_algorithm">perceptron learning algorithm</h1><p>Consider modifying the logistic regression method to “force” it to output values that are either 0 or 1 or exactly. instead of sigmoid(x) we now use: threshold function g(x) = 1,if x&gt;0 | 0,if x&lt;0</p>
+<ul>
+<li>notice that it is a very different type of algorithm than logistic regression</li>
+</ul>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/19/read-caffe/" itemprop="url">
+                read caffe
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-10-19T08:59:41+02:00" content="2015-10-19">
+            2015-10-19
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h2 id="content">content</h2><p>the source code of caffe:<br>Blobs</p>
+<p>Layers</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/18/useful-git-command/" itemprop="url">
                 useful git command
               </a>
@@ -209,9 +682,10 @@
 </li>
 </ul>
 <hr>
-<ul>
-<li>after clone a repo from others, we may want to build up our work on it without push our work to others’ repo<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// first<span class="instruction"> check </span>the origin</span><br><span class="line">$ git remote -v</span><br><span class="line">origin  &lt;other repo&gt;.....</span><br><span class="line"></span><br><span class="line">// then change the origin into ours</span><br><span class="line">$ git remote set-url origin &lt;https://github.com/ZENGXH/caff&gt;</span><br><span class="line"></span><br><span class="line">//<span class="instruction"> check </span>again:</span><br><span class="line">$ git remote -v</span><br><span class="line"><span class="string">""</span><span class="string">"</span><br><span class="line">origin  https://github.com/ZENGXH/caff (fetch)</span><br><span class="line">origin  https://github.com/ZENGXH/caff (push)</span><br><span class="line">"</span><span class="string">""</span></span><br><span class="line"></span><br><span class="line">!done</span><br></pre></td></tr></table></figure></li>
-</ul>
+<p>after clone a repo from others, we may want to build up our work on it without push our work to others’ repo<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// first<span class="instruction"> check </span>the origin</span><br><span class="line">$ git remote -v</span><br><span class="line">origin  &lt;other repo&gt;.....</span><br><span class="line"></span><br><span class="line">// then change the origin into ours</span><br><span class="line">$ git remote set-url origin &lt;https://github.com/ZENGXH/caff&gt;</span><br><span class="line"></span><br><span class="line">//<span class="instruction"> check </span>again:</span><br><span class="line">$ git remote -v</span><br><span class="line"><span class="string">""</span><span class="string">"</span><br><span class="line">origin  https://github.com/ZENGXH/caff (fetch)</span><br><span class="line">origin  https://github.com/ZENGXH/caff (push)</span><br><span class="line">"</span><span class="string">""</span></span><br><span class="line"></span><br><span class="line">!done</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>2015/11/2<br>git真的是要好好学<br>比如说：<br>在不确定自己的branch的情况下不要随便add和commit。<br>不add和commit的话checkout new branch不会失去本地文件的。</p>
+<p>以后要注意多和master merge要不分支越走越远，很容易就回不去了…T T</p>
 </span>
         
       
@@ -274,177 +748,19 @@
 
       
         
-          <span itemprop="articleBody"><h1 id="official_caffe_tour">official caffe tour</h1><ul>
+          <h1 id="official_caffe_tour">official caffe tour</h1><ul>
 <li>nets, layers and blobs</li>
 <li>forward/backwards</li>
 <li>loss</li>
 <li>solver</li>
 <li>layer catalogue</li>
 <li>interfaces</li>
-<li>data</li>
-</ul>
-<hr>
-<h1 id="nets,_layers_and_blobs">nets, layers and blobs</h1><h2 id="layer">layer</h2><ul>
-<li>layer categories: <a href="http://caffe.berkeleyvision.org/tutorial/layers.html" target="_blank" rel="external">http://caffe.berkeleyvision.org/tutorial/layers.html</a></li>
-<li>each layer have 3 computation:<ul>
-<li>setup<ul>
-<li>initialization of the layer and its connections is done at model initialization.</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>forward: bottom -(input)-&gt; … -(output)-&gt; top</li>
-<li>backward: top -(gradient wrt output)-&gt; …compute gradient wrt parameters.. -(gradient)-&gt; bottom <ul>
-<li>takes the gradient with respect to the output, and computes the gradients with respect to the parameters and to the inputs</li>
-</ul>
-</li>
-</ul>
-</li>
-<li></li>
-</ul>
-<p><img src="http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png" alt="alt text"></p>
-<h3 id="definition">definition</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前四行-层属性</span></span><br><span class="line">name:<span class="string">"conv1"</span></span><br><span class="line">type:CONVOLUTION</span><br><span class="line"><span class="comment">// the link structure</span></span><br><span class="line">bottom:<span class="string">"data"</span></span><br><span class="line">top:<span class="string">"conv1"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// parameter of the layer</span></span><br><span class="line">convolution_param&#123;</span><br><span class="line">    num_output:&lt;span&gt;<span class="number">20</span></span><br><span class="line">    kernel_size:<span class="number">5</span></span><br><span class="line">    stride:<span class="number">1</span></span><br><span class="line">    weight_filler&#123;</span><br><span class="line">        type: <span class="string">"&lt;span style="</span>color: <span class="preprocessor">#c0504d;<span class="string">"&gt;xavier&lt;/span&gt;"</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="net">net</h2><h2 id="Blob">Blob</h2><ul>
-<li>defined in caffe_pb2.BlobProto</li>
-<li>attribute:<ul>
-<li>data; diff; num; channels; height; width</li>
-</ul>
-</li>
-<li>4 dimension array<ul>
-<li>data: number/N(batch size of the data), channel/K, height, width</li>
-<li>convolution weight: output, input, height, wifth</li>
-<li>convoluion bias: output 1 1 1</li>
-</ul>
-</li>
-</ul>
-<h2 id="datum">datum</h2><ul>
-<li>defined in caffe_pb2.BlobProto</li>
-<li>attribute: shape, channels, height, width, data, </li>
-<li>3 dimensional array can be converted to datum by io.array_to_datum</li>
-</ul>
-<hr>
-<p>#structure of caffe#<br><img src="http://img.ptcms.csdn.net/article/201501/22/54c07168613b6.jpg" alt="alt text"></p>
-<p>1.预处理图像的leveldb构建<br>    输入：一批图像和label （2和3）<br>    输出：leveldb （4）<br>    指令里包含如下信息：<br>    conver_imageset （构建leveldb的可运行程序）<br>    train/ （此目录放处理的jpg或者其他格式的图像)<br>    label.txt (图像文件名及其label信息)<br>    输出的leveldb文件夹的名字<br>    CPU/GPU (指定是在cpu上还是在gpu上运行code)<br>    CNN网络配置文件</p>
-<ol>
-<li>network prototxt<br> Imagenet_solver.prototxt （包含全局参数的配置的文件）<br> Imagenet.prototxt （包含训练网络的配置的文件）<br> Imagenet_val.prototxt （包含测试网络的配置文件）<br>refer: <a href="http://www.csdn.net/article/2015-01-22/2823663" target="_blank" rel="external">http://www.csdn.net/article/2015-01-22/2823663</a></li>
-</ol>
-<p>#train your own model on your own data#</p>
-<ol>
-<li>data preparation: <ol>
-<li>The training and validation input are described in <code>train.txt</code> and <code>val.txt</code> as text listing all the files and their labels</li>
-<li>create the leveldbs with <code>examples/imagenet/create_imagenet.sh</code></li>
-</ol>
-</li>
-<li>Compute Image Mean:<br> The model requires us to subtract the image mean from each image, so we have to compute the mean. <code>tools/compute_image_mean.cpp</code><br> the mean computation can be carried out as:<br> <code>./examples/imagenet/make_imagenet_mean.sh</code><br> make <code>data/ilsvrc12/imagenet_mean.binaryproto</code></li>
-<li>Model Definition<br> <code>models/bvlc_reference_caffenet/train_val.prototxt</code><br> noticed that the train and test network are both defined in this file and only the input layers and one output layer are different:<pre><code><span class="keyword">for</span> training, data <span class="string">input:</span> `examples<span class="regexp">/imagenet/</span>ilsvrc12_train_leveldb`
-<span class="keyword">for</span> testing, data <span class="string">input:</span> `examples<span class="regexp">/imagenet/</span>ilsvrc12_val_leveldb` 
-</code></pre> lay out a protocol buffer for running the solver<pre><code>in <span class="escape">`m</span>odels/bvlc_reference_caffenet/solver.prototxt<span class="escape">`.</span>    
-</code></pre></li>
-</ol>
-<hr>
-<h1 id="file_system">file system</h1><h2 id="leveldb">leveldb</h2><ol>
-<li>leveldb中数据按key/value形式存储。</li>
-<li>leveldb的使用介绍： <a href="http://zh.wikipedia.org/wiki/LevelDB" target="_blank" rel="external">http://zh.wikipedia.org/wiki/LevelDB</a><br>3.将图像以及标注信息，先经过Datum序列化成字符串，再存到leveldb数据库中。见tools/convert_imageset.cpp</li>
-<li>leveldb学习资料：   <a href="http://blog.csdn.net/hzqhbc/article/details/9367327" target="_blank" rel="external">http://blog.csdn.net/hzqhbc/article/details/9367327</a></li>
-</ol>
-<h2 id="-py_file">.py file</h2><p>\python\caffe\classifier.py:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p><code>caffe.Net</code> is the central interface for loading, configuring, and running models. caffe.Classsifier and caffe.Detector provide convenience interfaces for common tasks.<br><code>caffe.SGDSolver</code> exposes the solving interface.<br><code>caffe.io</code> handles input / output with preprocessing and protocol buffers.<br><code>caffe.draw</code> visualizes network architectures.<br>Caffe blobs are exposed as numpy ndarrays for ease-of-use and efficiency.</p>
-<p><code>callable python file:</code><br><code>classify.py</code></p>
-<pre><code>- argumen<span class="variable">t:</span>
-    <span class="built_in">input</span> image,directory <span class="built_in">or</span> npy 
-    output npy filename
-    model-def <span class="keyword">file</span>, default ../models/bvlc_reference_caffenet/deploy.prototxt
-    pretrain model -- trained model weight <span class="keyword">file</span>
-         default ../models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel
-    --gpu switch <span class="keyword">to</span> gpu <span class="built_in">mode</span> 
-    --<span class="keyword">center</span> <span class="keyword">only</span>, switch <span class="keyword">for</span> prediction from <span class="keyword">center</span> crop alone instead of averaging prediction across crops
-    -- image dim, default <span class="number">256</span>,<span class="number">256</span>
-    mean_file default caffe/imagenet/ilsvrc_2012_mean.npy
-    --<span class="built_in">input</span> scale, multiplly <span class="built_in">input</span> features by this scale <span class="keyword">to</span> <span class="keyword">finish</span> preprocessing
-    --raw scale, multiply raw <span class="built_in">input</span> by this scale before preprocessing
-    --channel_swap RGB-BGR since BGR <span class="keyword">is</span> the caffe default by way of opencv
-    --ext default jpg, image <span class="keyword">file</span> <span class="keyword">to</span> take <span class="keyword">as</span> <span class="built_in">input</span>
-    --<span class="keyword">print</span>-result, weite ourpur text <span class="built_in">or</span> serializing <span class="keyword">to</span> <span class="keyword">a</span> <span class="keyword">file</span>
-- <span class="built_in">call</span> classifier with
-&lt;!--￼<span class="number">2</span>--&gt;
-
-- Load numpy array (.npy), directory <span class="built_in">glob</span> (*.jpg), <span class="built_in">or</span> image <span class="keyword">file</span>.
-</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inputs = [caffe<span class="class">.io</span><span class="class">.load_image</span>(args.input_file)]</span><br></pre></td></tr></table></figure>
-<pre><code>-<span class="ruby"> classify <span class="keyword">and</span> store</span>
-</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">predictions = classifier.<span class="function"><span class="title">predict</span><span class="params">(inputs, not args.center_only)</span></span></span><br><span class="line">np.<span class="function"><span class="title">save</span><span class="params">(args.output_file, predictions)</span></span></span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="for_-proto_file:">for .proto file:</h2><ol>
-<li>write a .proto file</li>
-<li>compile with protoc</li>
-<li>command:<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">protoc--proto_path=IMPORT_PATH --cpp_out=DST_DIR --java_out=DST_DIR--python_out=DST_DIR path/to/file.proto</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">--proto_path 也可以简写成-I 是.proto所在的路径 输出路径： --cpp_out 要生成C++可用的头文件，分别是<span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>.pb.h（包含申明类）<span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span>.pb.cc（包含可执行类），使用的时候只要include <span class="string">"***.pb.h"</span> --java_out 生成java可用的头文件 --python_out 生成python可用的头文件，<span class="keyword">*</span><span class="keyword">*</span>_pb2.py，使用的时候import<span class="keyword">*</span><span class="keyword">*</span>_pb2.py即可 最后一个参数就是你的.proto文件完整路径。</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h1 id="type_of_prototxt">type of prototxt</h1><figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// examples/feature_extraction/imaget_val.prototxt</span><br><span class="line"><span class="keyword">define</span> <span class="title">the</span> layers</span><br></pre></td></tr></table></figure>
-<p><a href="http://htmlpreview.github.io/?https://github.com/google/leveldb/blob/master/doc/index.html" target="_blank" rel="external">http://htmlpreview.github.io/?https://github.com/google/leveldb/blob/master/doc/index.html</a><br>documentation of leveldb<br>try to run lmdb2mat but say db.Get(‘$d’ $(im_indx)) not exist?</p>
-<p>how to run plt in ssh? use xwin<br><a href="http://www.arsc.edu/arsc/knowledge-base/ssh-and-x11-forwarding-us/index.xml" target="_blank" rel="external">http://www.arsc.edu/arsc/knowledge-base/ssh-and-x11-forwarding-us/index.xml</a></p>
-<hr>
-<p>run 00classification, need:</p>
-<p>#.caffemodel file#</p>
-<p>read weights and biases for a caffemodel given the prototxt would be to just load the network in Python and read the weights.<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import caffe</span><br><span class="line"><span class="keyword">net</span> = caffe.<span class="keyword">Net</span>(&lt;prototxt-<span class="keyword">file</span>&gt;,&lt;model-<span class="keyword">file</span>&gt;,&lt;phase&gt;);</span><br></pre></td></tr></table></figure></p>
-<p>and access the params from net.params</p>
-<p>#READ DEPLOTTXT#</p>
-<h2 id="type_of_layer">type of layer</h2><p><a href="http://cs231n.github.io/convolutional-networks/" target="_blank" rel="external">http://cs231n.github.io/convolutional-networks/</a><br>QQQQQ: why need mean of image</p>
-<ul>
-<li>data</li>
-<li><p>conv1</p>
-<ul>
-<li>Just like normal Hidden Layer</li>
-<li>Connect neurons to the input in a local receptive field</li>
-<li>All neurons in a single depth slice share weights</li>
-</ul>
-</li>
-<li><p>relu</p>
-</li>
-<li>norm</li>
-<li>pool</li>
-<li>fc: fully connect</li>
-<li>drop</li>
-</ul>
-<p>Read the code! Two most important files:<br><a href="http://vision.stanford.edu/teaching/cs231n/slides/caffe_tutorial.pdf" target="_blank" rel="external">http://vision.stanford.edu/teaching/cs231n/slides/caffe_tutorial.pdf</a><br>● caffe/python/caffe/_caffe.cpp:<br>○ Exports Blob, Layer, Net, and Solver classes<br>● caffe/python/caffe/pycaffe.py<br>○ Adds extra methods to Net class</p>
-<p>name: “AlexNet”</p>
-<p>input: “data”<br>input_shape {<br>  dim: 10<br>  dim: 3<br>  dim: 227<br>  dim: 227<br>}</p>
-<hr>
-<p>layer {<br>  name: “conv1”<br>  type: “Convolution”<br>  bottom: “data”<br>  top: “conv1”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  convolution_param {<br>    num_output: 96<br>    kernel_size: 11<br>    stride: 4<br>  }</p>
-<h2 id="}">}</h2><p>layer {<br>  name: “relu1”<br>  type: “ReLU”<br>  bottom: “conv1”<br>  top: “conv1”<br>}</p>
-<hr>
-<p>layer {<br>  name: “norm1”<br>  type: “LRN”<br>  bottom: “conv1”<br>  top: “norm1”<br>  lrn_param {<br>    local_size: 5<br>    alpha: 0.0001<br>    beta: 0.75<br>  }<br>}</p>
-<hr>
-<p>layer {<br>  name: “pool1”<br>  type: “Pooling”<br>  bottom: “norm1”<br>  top: “pool1”<br>  pooling_param {<br>    pool: MAX<br>    kernel_size: 3<br>    stride: 2<br>  }<br>}</p>
-<hr>
-<p>layer {<br>  name: “pool2”<br>  type: “Pooling”<br>  bottom: “norm2”<br>  top: “pool2”<br>  pooling_param {<br>    pool: MAX<br>    kernel_size: 3<br>    stride: 2<br>  }</p>
-<h2 id="}-1">}</h2><p>…<br>layer {<br>  name: “fc7”<br>  type: “InnerProduct”<br>  bottom: “fc6”<br>  top: “fc7”<br>  param {<br>    lr_mult: 1<br>    decay_mult: 1<br>  }<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  inner_product_param {<br>    num_output: 4096<br>  }<br>}<br>…<br>  param {<br>    lr_mult: 2<br>    decay_mult: 0<br>  }<br>  inner_product_param {<br>    num_output: 1000<br>  }<br>}<br>layer {<br>  name: “prob”<br>  type: “Softmax”<br>  bottom: “fc8”<br>  top: “prob”</p>
-<h2 id="}-2">}</h2><h1 id="pipline_for_python">pipline for python</h1><p><code>\python\caffe\io.py</code>: </p>
-<ul>
-<li>conversion between datum, narray and proto(blob)</li>
-<li>preprocessing</li>
-<li>image IO</li>
-</ul>
-<p><code>\python\caffe\net_spec.py</code></p>
-<ul>
-<li><p><code>\python\caffe\draw.py</code></p>
-</li>
-<li></li>
-</ul>
-<p><code>\examples\pycaffe\caffenet.py</code></p>
-<ul>
-<li>def conv_relu, fc_relu, max_pool, caffenet(the net itself), make_net</li>
-</ul>
-<ul>
-<li>preprocessing<ul>
-<li>\python\caffe\io.py <ul>
-<li>class Transformer, </li>
-<li>oversample</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</span>
+<li>data
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/17/caffe document/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -475,7 +791,7 @@
           
             
               <a class="post-title-link" href="/2015/10/17/MLE/" itemprop="url">
-                Maximum likelihood estimator MLE
+                MLE & MAP & Bayesian Estimation
               </a>
             
           
@@ -506,7 +822,126 @@
 
       
         
-          <span itemprop="articleBody"><h2 id="least_square">least square</h2><ul>
+          <span itemprop="articleBody"><p>MLE: Maximum likelihood estimate<br>MAP: maximum a posteriori </p>
+<h1 id="MLE">MLE</h1><h2 id="difference_between_likelihood_and_probability">difference between likelihood and probability</h2><table>
+<thead>
+<tr>
+<th>likelihood</th>
+<th>probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>density</td>
+</tr>
+<tr>
+<td>hold $x$</td>
+<td>known $θ$</td>
+</tr>
+<tr>
+<td>function of $\theta$</td>
+<td>function of $x$</td>
+</tr>
+<tr>
+<td>estimate $\theta$ from given data x – MLE</td>
+</tr>
+</tbody>
+</table>
+<p>-if we have a probability model with parameters θ. and note that<br>$$<strong>p(θ|y)</strong>=\frac{<strong>p(y | θ) p(θ)</strong>}{p(x)}$$,$\$</p>
+<ul>
+<li>pack all parameters into a single vector $\theta = {\alpha,\sigma^2}$ and write the function:<br>$$f(y|x;θ)$$. (andraw suggest we write $f(y|x;θ)$ in stead of $f(y|x,θ)$ since $\theta$ is nor random)(it is said that y and $\theta$ are interchangble)<ol>
+<li>When we view $p(\mathbf{y}|X;θ)$ as a <strong>density/probability/distribution</strong> of y/ function is varying in $y$: <code>given constant values x and $\theta$ in mind and what is distribution of y?</code> – the uncertainty</li>
+<li>When we view it as <strong>a function of $\theta$ holding $X$ constant</strong>, <code>given the model relating each y^i and x^i, what is the best guess/estimate of $\theta$</code>, then it become a <strong>likelihood</strong> function of $\theta$</li>
+</ol>
+<ul>
+<li>$$L(\theta)=L(\theta;X,\mathbf{y})=p(\mathbf{y}|X;\theta)= \prod_{i=1,2,…N}p(y^{(i)}|x^{(i)};θ)$$ (pay attention to L and p)</li>
+<li>Then we turn to <code>pricipal of maximum likelihood</code> which says: <code>choose $\theta$ so as to make the data as high probability as possible!</code> then we now should choose $\theta$ to maximize $L(\theta)$<ul>
+<li>lets look into $L(\theta)$: if we assume error is iid independent and follow Guanssian distribution with $\sigma^2$, then we can know the distribution of y(same as e) in order to exspan $p(y^{(i)}|x^{(i)};θ)$ – <code>keep in mind!!</code></li>
+<li>we also take log for easier calculation which now called <code>log likelihood $l(\theta)$</code>, and trun find max to find mini of $$1/2 \sum_{i=1,2,..N}(e^(i))^2$$<ul>
+<li><em>SURPISE!</em> the form is the same as $J(\theta)$ which we generate in MSE cost function! </li>
+<li>which can be solve by gradient descent or least square</li>
+</ul>
+</li>
+<li>additionally, for two condidate $\theta_1$ and $\theta_2$, the likelihood ratio is used to measure the relative likelihood</li>
+</ul>
+</li>
+<li>commend: this view of the parameters as being <em>constant-valued but unknow</em> in taken in frequentist statistic<blockquote>
+<p>(from andrew’s notes, keep for further understand)To summarize: Under the previous probabilistic assumptions on the data, least-squares regression corresponds to finding the maximum likelihood estimate of θ. This is thus one set of assumptions under which least-squares regression can be justified as a very natural method that’s just doing maximum likelihood estimation. (Note however that the probabilistic assumptions are by no means necessary for least-squares to be a perfectly good and rational procedure, and there may—and indeed there are—other natural assumptions that can also be used to justify it.) Note also that, in our previous discussion, our final choice of θ did not depend on what was $\sigma^2$ , and indeed we’d have arrived at the same result even if $\sigma^2$ 2 were unknown. We will use this fact again later, when we talk about the exponential family and generalized linear models</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<table>
+<thead>
+<tr>
+<th>MLE</th>
+<th>MAP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>find $\theta$ maximizes $p(x</td>
+<td>θ)$</td>
+<td>view $p(θ</td>
+<td>x) 8 p(θ) p(x</td>
+<td>θ)$ then find $\theta$ that maximizes $p(θ</td>
+<td>x)$ == maximizing $p(θ) p(x</td>
+<td>θ)$</td>
+</tr>
+<tr>
+<td>comes from linear regression modle: $f(y</td>
+<td>x,\alpha,\sigma)$</td>
+<td>add regulazation(called <code>prior belief</code> in the probabilistic point of view), ie, ridge regression, we can view ridge regression as astimator of MAP</td>
+</tr>
+<tr>
+<td>dis: overfitting, explain below</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><img src="https://www.quora.com/What-is-the-difference-between-Maximum-Likelihood-ML-and-Maximum-a-Posteri-MAP-estimation" alt="get from here"> MLE have problem of overfit the data, variance of the parameter estimates is high, or put another way, that the outcome of the parameter estimate is sensitive to random variations in data (which becomes pathological with small amounts of data). To deal with this, it usually helps to add regularisation to MLE (i.e., reduce variance by introducing bias into the estimate). </p>
+</li>
+<li><p>In maximum a posteriori (MAP), this regularisation is achieved by assuming that the parameters themselves are also (in addition to the data) drawn from a random process. The prior beliefs about the parameters determine what this random process looks like.</p>
+</li>
+</ul>
+<hr>
+<h1 id="MAP">MAP</h1><ul>
+<li><p>contrasts with MLE, the <strong>maximum-a-posteriori or MAP estimate</strong>, </p>
+<ul>
+<li>which is the $\theta$ that maximizes $p(θ | x)$.  </li>
+<li>Since x is fixed, this is <strong>equivalent</strong> to maximizing $p(θ) p(x | θ)$, the product of the <strong>prior probability</strong> of θ with the likelihood of θ.</li>
+<li>the <strong>prior probability/belief</strong> is indeed the regulazation term in ridge regression, so is the prior belief is strong, then high bias and low var(data affect a little)</li>
+</ul>
+</li>
+<li><p>for an infinite amount of data, MAP gives the same result as MLE (as long as the prior is non-zero everywhere in parameter space); </p>
+</li>
+<li>for an infinitely weak prior belief (i.e., uniform prior), MAP also gives the same result as MLE.</li>
+<li>MLE can be silly, for example if we throw a coin twice, both head, then MLE asid you will always have head in the future. Bayesian have clever explain consider the assumtion that head come with 0.5 probability </li>
+<li>MAP is the foundation for Naive Bayes classifiers</li>
+<li>MAP is applied in spam filter while MLE can not</li>
+</ul>
+<hr>
+<p>in Naive Bayes classifiers, we assum: <code>features are conditionally independent</code><br>and use empirical probabilities:<br><em>prediction = argmaxC P(C = c|X = x) ∝ argmaxC P(X = x|C = c)P(C = c)</em><br>example:<br>$P(spam|words) ∝ \prod_{i=1,2..N}P(words<em>i|spam)P(spam)$<br>$P(~spam|words) ∝ \prod</em>{i=1,2..N}P(words_i|~spam)P(~spam)$<br>Whichever one’s bigger wins.</p>
+<ul>
+<li><p>dis: sampling is important, may blow up thind is we train on data mostly spam and test on mostly non-spam(our P(spam) is WRONG) – but we can perfrom cv to adviod this</p>
+</li>
+<li><p>modify NB:  joint conditional distribution</p>
+</li>
+<li>decision surface of Naive Bayes: P(c|word) = P(word|c)I(word) + P(¬word|c)I(¬word)</li>
+</ul>
+<hr>
+<h1 id="Bayesian_estimation">Bayesian estimation</h1><ul>
+<li>using Bayes’ rule, come up with a distribution of possible parameters:<br>$P(\mathbf{\theta} | \mathbf{D}) =\frac{ P(\mathbf{D}|\mathbf{\theta}) p(\mathbf{\theta})}{P(\mathbf{D})}$</li>
+<li>p(\mathbf{\theta})} is known as prior(it means we make some assumption of the parameters, or, we somehow know some fact such as the coin have 0.5 changes of getting head. but the assumption may be wrong obviously?)</li>
+<li>KEEP IN MIND: ${P(\mathbf{D})}$ is constant</li>
+<li>we need to intergral two side w.r.t $\theta$ which have high computational cost</li>
+</ul>
+<hr>
+<h2 id="probability_or_statistic">probability or statistic</h2><p>In probability, we’re given a model, and asked what kind of data we’re likely to see.<br>In statistics, we’re given data, and asked what kind of model is likely to have generated it.</p>
+<h2 id="least_square">least square</h2><ul>
 <li>The method of least squares is a standard approach in regression analysis to the <strong>approximate solution of overdetermined systems</strong>, i.e., sets of equations in which there are more equations than unknowns.</li>
 <li>if all residual are linear, then it is linear least square: </li>
 <li>The linear least-squares problem occurs in statistical regression analysis;</li>
@@ -516,13 +951,15 @@
 <li>Fisher information is a way of <strong>measuring the amount of information that an observable random variable X carries about an unknown parameter θ of a distribution that models X</strong>. Formally, it is the variance of the <strong>score</strong>, or the expected value of the observed information. </li>
 </ul>
 <h2 id="The_likelihood">The likelihood</h2><ul>
-<li>defined as the <strong>joint density or probability of the outcomes</strong>, with the roles of the values of the outcomes y and the values of the parameters θ interchanged. $p(y|x,\thelta)$, $p(\thelta|y)$</li>
+<li>defined as the <strong>joint density or probability of the outcomes</strong>, with the roles of the values of the outcomes y and the values of the parameters θ interchanged. $p(y|x,\theta)$, $p(\theta|y)$</li>
 <li><code>score function</code> = <code>derivative of the log-likelihood</code>:<ul>
-<li>find the maximum likelihood estimator, set the score function equal to zero<h3 id="maximum_likelihood_estimator">maximum likelihood estimator</h3></li>
+<li>find the maximum likelihood estimator, set the score function equal to zero</li>
 </ul>
 </li>
-<li>The maximum likelihood estimator of θ for the model given by the joint densities or probabilities $f(y;\thelta)$, with $\thelta \in Θ$, is defined <strong>as the value of θ at which the corresponding likelihood L(θ;y) attains its maximum</strong></li>
-<li>$\hat \thelta<em>{ML} = argmax</em>{\thelta} L(\thelta;y)$</li>
+</ul>
+<h3 id="maximum_likelihood_estimator">maximum likelihood estimator</h3><ul>
+<li>The maximum likelihood estimator of θ for the model given by the joint densities or probabilities $f(y;\theta)$, with $\theta \in Θ$, is defined <strong>as the value of θ at which the corresponding likelihood L(θ;y) attains its maximum</strong></li>
+<li>$\hat \theta<em>{ML} = argmax</em>{\theta} L(\theta;y)$</li>
 </ul>
 <h4 id="efficiency_of_the_maximum_likelihood_estimators">efficiency of the maximum likelihood estimators</h4><ul>
 <li>relate to asymptotic settings</li>
@@ -546,11 +983,13 @@
 </li>
 </ul>
 </li>
-<li>Instead of $L(\thelta; y,X)$ it is more convenient to work with its logarithm, called the log-likelihood – product convert into summation</li>
+<li>Instead of $L(\theta; y,X)$ it is more convenient to work with its logarithm, called the log-likelihood – product convert into summation</li>
 </ul>
 <h2 id="information_matrix/_fisher_information">information matrix/ fisher information</h2><ul>
 <li>Fisher information is used to determine the sample size with which we design an experiment; second, in the Bayesian paradigm, Fisher information is used to define a default parameter prior; finally, in the minimum description length paradigm, Fisher information is used to measure model complexity</li>
 </ul>
+<hr>
+<p>machine learning经常用到probability和statistic的解释和一些概念，感觉看起来一模一样的东西又可以有很多不同解释..如果google的话强烈推荐quora啊太良心了，如果是stackexchange的话经常会发生努力看完top回答然后下面来一个it’s totally wrong简直是人生观都要颠覆了。 </p>
 <hr>
 <ul>
 <li>任意一个函数 可以放到 ${1,x,x^2,x^3….}$所张成的函数空间，如果是有限个基的话就称为欧式空间，无穷的话 就是 Hilbert空间</li>
@@ -618,12 +1057,75 @@
 
       
         
-          <span itemprop="articleBody"><h2 id="preprocessed">preprocessed</h2><p>for input may be <em>preprocessed</em></p>
-<pre><code>-<span class="ruby"> like fixed size of the image
-</span>-<span class="ruby"> also called feature extraction
-</span>-<span class="ruby"> speed up computation
-</span>-<span class="ruby"> easier to solve problem</span>
-</code></pre><h1 id="index">index</h1><ul>
+          <span itemprop="articleBody"><p>life is so hard.</p>
+<ol>
+<li>logistic regression is not applied for regression</li>
+<li>least mean square is a rule(the update rule for gradient descent)</li>
+<li>least square is actually means: using MSE distance function, it can be solve by Gradient descent or normal equation</li>
+<li>maximum likelihood exrimate of $\theta$ is solve by minimize the negative of log-likehood function of $\theta$</li>
+<li>likehood may be view intuitively as the likelihood of what y will be given x but when talking MLE it is actually the likelihood of what parameters will be gien x (and y, or distrubution of y)</li>
+<li>sigmoid function is a magic(fourier is also a magic): $\sigma(x)’ =\sigma(x)(1-\sigma(x))$</li>
+<li>if you hold strong prior belief, you will have high bias and low variance, the world will not affect you…</li>
+<li>MLE can be really silly.. due to overfitting. <img src="https://www.quora.com/Intuitively-speaking-What-is-the-difference-between-Bayesian-Estimation-and-Maximum-Likelihood-Estimation" alt="see here"></li>
+<li>under a set of assumptions(Gaussian, independent) least squares regression could be derived as the maximum likelihood estimator </li>
+<li><h2 id="preprocessed">preprocessed</h2>for input may be <em>preprocessed</em><ul>
+<li>like fixed size of the image</li>
+<li>also called feature extraction</li>
+<li>speed up computation</li>
+<li>easier to solve problem</li>
+</ul>
+</li>
+</ol>
+<h1 id="reference_book">reference book</h1><ol>
+<li>PRML:</li>
+<li>machine learning, a probalistic approach: murphy</li>
+<li>the elements of statistical learning:HTF</li>
+<li><img src="http://cs229.stanford.edu/notes/cs229-notes1.pdf" alt="Andrew&#39;s notes"></li>
+</ol>
+<h1 id="OVERVIEW">OVERVIEW</h1><ul>
+<li>for the <code>data input type</code> we can define the learning process as supervised or unsupervised</li>
+<li>for the <code>type of prediction</code>, we can define the case as classification(discrete output) or regression(continuous output)</li>
+<li>for the <code>fitting model</code> we choose, we can have linear model(basis function expansion), or rigistic regression(not regression but for classification actually)</li>
+<li><p>analyze the model and find parameter – cost function:</p>
+<ul>
+<li><p>derectly define <code>cost function</code> based on distance such as MAE, MSE…</p>
+<ul>
+<li>whether the cost function is <code>robust</code>, ie, how they react to the <code>outlier</code> will also affect our model – statistic property</li>
+<li>whether the cost function is <code>convex</code> relate whether we can reach the minimum if we count on the gradient to solve the minimum – computational property</li>
+</ul>
+<ul>
+<li>just based on the cost function above is not enough, we can also take another approach..</li>
+</ul>
+</li>
+<li><p>define from <code>probabilistic view</code> of machine learning, we try to seek support for our modeling precess, analyze the model and tuning the model,  </p>
+<ul>
+<li><p><code>probability theory</code> can be applied during the prediction, model selection, measurement to be performed</p>
+</li>
+<li><p>for regression, we focus on the distribution of the output data or error </p>
+<ul>
+<li>by assume the error following the Gaussian distribution, the value we try to estimate/predict also follow the Gaussian distribution which take the y_prediction as mean.</li>
+</ul>
+</li>
+<li>while for classification, we take the Bayisan theorm – and then generate the likehood function</li>
+<li>we can use the joint probability assuming the data is indenpendent</li>
+</ul>
+</li>
+<li><p>WHY cost function so important:</p>
+<ul>
+<li>since that the parameter is choosen by the score return by cost function </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>consider whether the <code>parameter is fixed or changed</code> with the size of data, the model can be <code>parametric</code>(linear regression(oridinary), logistic…) or <code>nonparametric</code>(<img src="http://cs229.stanford.edu/notes/cs229-notes1.pdf" alt="Locally weighted linear regression">(only meet at andrew’s, not the linear-regress we saw),KNN)       </li>
+<li>for <code>optimation</code> numerically ie. <code>solve the minimum</code> of function in which we regard the parameter instead of the data as variable, we have: gradient descent, grid search, least square(closed form soluction, Gram matrix), newton method. for the solver, we need to consider the <code>compuration complexity</code> and <code>convexity</code><ul>
+<li>implementation issue: – see reference: non-linear programming</li>
+<li>gradient descent: feature normalization, direction(batch gradient descent, stochastic), stepsize(fixed, line-search:backtracking), convexity and converge, stopping criteria(optimal condition, positive definite)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
 <li>supervised learning<ul>
 <li>classification- discrete output</li>
 <li>regression- continues output</li>
@@ -690,6 +1192,7 @@
 <h2 id="background:_interpretation_of_probabilities">background: interpretation of probabilities</h2><h3 id="frequentist_interpretation">frequentist interpretation</h3><ul>
 <li>popular: <em>classical or frequentist way</em><ul>
 <li>the probability P of an uncertain event A, P(A) is defined by the frequency of that event based on previous observations</li>
+<li>In the frequentist this view of the world, θ is not random—it just happens to be unknown—and it’s our job to come up with statistical procedures (such as maximum likelihood) to try to estimate this parameter.(NG)</li>
 </ul>
 </li>
 </ul>
@@ -721,8 +1224,8 @@
 </ul>
 <h3 id="from_frequentist_way_of_interpretation:">from frequentist way of interpretation:</h3><ul>
 <li>parameter $\beta$ is a fixed parameter, the value is determined by ‘estimator’</li>
-<li>A widely used frequentist estimator is <em>maximum likelihood</em>, in which wis set to the value that maximizes the likelihood function </li>
-<li>ie. choosing $\beta$ s.t. probability of the observed data is maximized</li>
+<li>A widely used <code>frequentist estimator</code> is <em>maximum likelihood</em>, in which we set the value that maximizes the likelihood function </li>
+<li>ie. choosing $\beta$ s.t. probability of the observed data is maximized(seems to be the MAP estimate introduced in Murphy’s book, see below)</li>
 <li>in practice, use negative log of likelihood function = log-likelihood:= error function(monotonically decreasing)</li>
 <li><strong>One approach to determining frequentist error bars is the bootstrap</strong>, <ul>
 <li>s1: 就是在已有的dataset(size N)里面random弄出L个dataset(size N) by drawing data from 已有的dataset(抽取方式是，可以重复抽，可以有的没有被抽中)</li>
@@ -731,9 +1234,9 @@
 </li>
 <li>drawback: may lead to extreme conclusion if the dataset is bad, eg, a fair-looking coin is tossed three times and lands heads each time. in this case, we will generate parameter $\beta$ to make P(lands head) = 1   </li>
 </ul>
-<h3 id="from_Bayesian_viewpoint:">from Bayesian viewpoint:</h3><ul>
-<li>in machine learning, Bayes theorem is used to convert a priot ptobability $P(A) = P(\mathbf{\beta})$ into a porterior probability $P(A|B) = P(\mathbf{\beta}|y)$ by incorpoating the evidence provided by the observed data <ul>
-<li>for $\mathbf{\beta}$ in the polynormial curve fitting model, we can take an approach with Bayes theorem:</li>
+<h3 id="from_Bayesian_viewpoint:">from Bayesian viewpoint:</h3><p>in machine learning, Bayes theorem is used to convert a priot ptobability $P(A) = P(\mathbf{\beta})$ into a posterior probability $P(A|B) = P(\mathbf{\beta}|y)$ by incorpoating the evidence provided by the observed data </p>
+<ul>
+<li>for $\mathbf{\beta}$ in the <code>polynormial curve fitting model</code>, we can take an approach with <code>Bayes theorem</code>:</li>
 <li>$P(\mathbf{\beta} | \mathbf{y}) =\frac{ P(\mathbf{y}|\mathbf{\beta}) p(\mathbf{\beta})}{P(\mathbf{y})} $<ul>
 <li>given data {y_1,y_2,…}, we want to know the $\beta$, cant get directly. $P(\mathbf{\beta} | \mathbf{y})$:= <strong>posterior probability</strong></li>
 <li>$P(\beta)$:= prior probability; our assumption of $\beta$</li>
@@ -743,7 +1246,8 @@
 <li>not a probability distrubution, so intergral w.r.t $\beta$ not nessary = 1</li>
 </ul>
 </li>
-<li>state Bayes theorem as : <code>posterior 8 likelihood × prior</code>, consider all of these as function of parameters $\beta$</li>
+<li>state Bayes theorem as : <strong>posterior 8 likelihood × prior</strong>, consider all of these as function of parameters $\beta$<ul>
+<li>about the choice of the parameters <code>murphy have detail description in chapter3</code> but should notice that murphy have different notation for the relation above…<ul>
 <li>intergrate both side base on $\beta$: $p(y)= \integral p(y|\beta)p(\beta)d\beta$</li>
 <li>issue: particularly the need to marginalize (sum or integrate) over the whole of parameter space</li>
 </ul>
@@ -751,42 +1255,34 @@
 </ul>
 </li>
 </ul>
-<h2 id="Murphy’s_explanation_–_MAP_estimate">Murphy’s explanation – MAP estimate</h2><ul>
+</li>
+</ul>
+<h3 id="Murphy’s_explanation_–_MAP(maximum_a_posterior)_estimate">Murphy’s explanation – MAP(maximum a posterior) estimate</h3><ul>
 <li>look at probability is conditional on the test input x, as well as the training set D, and the form of model M that we use to make predictions</li>
-<li>Given a probabilistic output, we can always compute our “best guess” as to the “true label” using: </li>
+<li>Given a probabilistic output, we can always compute our “best guess” as to the “true label” using: <ul>
 <li>$\hat y = \hat f(\mathbf{x} = argmax_{c=1..C} p(y = c|\mathbf{x},D,M)$</li>
-<li>This corresponds to the most probable class label, and is called themodeof the distribution p(y|x,D); it is also known as a <em>MAP</em> estimate(MAP stands for maximum a posteriori).</li>
-<li>note that p(y|x,D) is the probrbility distribution of y given x and D (and M in case of in the situation of model selection, M should also be clearified)</li>
+<li>This corresponds to the most probable class label, and is called the mode of the distribution p(y|x,D); it is also known as a <strong>MAP estimate</strong>(maximum a posterior). </li>
+</ul>
+</li>
+<li>note that p(y|x,D) is the <code>probrbility distribution of y given x and D</code> (and in case of in the situation of model selection, M should also be clearified, write as p(y|x,D,M))</li>
 </ul>
 <hr>
-<h2 id="Murphy’s_definition_of_probabilistic_model_in_machine_learning">Murphy’s definition of probabilistic model in machine learning</h2><ul>
-<li>when defining a models, if the number of parameter is:<ol>
-<li>grow with the amount of training data :=. non-parametric model<ul>
+<h2 id="Murphy’s_definition_of_probabilistic_model_in_machine_learning">Murphy’s definition of probabilistic model in machine learning</h2><p>when defining a models, if the number of parameter is:</p>
+<ol>
+<li><p><code>grow with the amount of training data =&gt; non-parametric model</code></p>
+<ul>
 <li>flexible but computation cost high</li>
 <li>eg: KNN<ul>
 <li>KNN probabilistic model: </li>
 <li>$p(y=c|\mathbf{x},D,K) = 1/K \Sigma_{i in N_K(x,D)} II(y_i=c)$</li>
 <li>NK(x,D)are the (indices of the)Knearest points toxin DandI(e)is the indicator function </li>
-<li>issure: fail to work in high D use to below:<ul>
-<li>the curse of dimensionality (murphy ch1)</li>
+<li>issure: fail to work in high D due to <code>curse of dimensionality</code>[SEE BELOW]</li>
 </ul>
 </li>
-<li>explanation:<ul>
-<li>lets say, apply KNN to uniformly distributed points in 3 dimensional unit cube grow a hyper-cube around x untill it contain 0.5 of the data points, $V(hyper-cube)=e_3(0.5)^3=0.5$, $e_3(0.5) = 0.5^{1/3}$, </li>
-<li>for D dimension, given disired faction f, length of cube around x is $e_D(f)=f^{1/D}$</li>
 </ul>
+</li>
+<li><p><code>fixed =&gt; paramteric</code> </p>
 <ul>
-<li>$e_{10}(0.1)=0.8$: D=10, want 0.1 of the datas, length=0.8, ie, need to extend the cube 80% along each dimension around x, which means that, the ‘nearest nerighbor’ is indeed not that near since that on any dimendion, their distance can be 0.8 and the largest distance is only 1; </li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>combat by making assumption about the nature of data distribution – know as <em>inductive bias</em> embodied in parametric model</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>fixed :=&gt; paramteric <ul>
 <li>ads: fast to apply</li>
 <li>dis: strong assumption about the nature of data distribute</li>
 <li>regression<ul>
@@ -806,7 +1302,7 @@
 </ul>
 <ul>
 <li>classification:<ul>
-<li>logistic regression, ber distribute, use sigmoid function as basis function. <ul>
+<li>logistic regression, ber-distribute, use sigmoid function as basis function. <ul>
 <li>define decision rule + basi function expansion -&gt;create decision boundary </li>
 </ul>
 </li>
@@ -815,7 +1311,21 @@
 </ul>
 </li>
 </ol>
+<h3 id="the_curse_of_dimensionality_(murphy_ch1)">the curse of dimensionality (murphy ch1)</h3><ul>
+<li>KNN fail to work in high D</li>
+</ul>
+<ul>
+<li>explanation:<ul>
+<li>lets say, apply KNN to uniformly distributed points in 3 dimensional unit cube grow a hyper-cube around x untill it contain 0.5 of the data points, $V(hyper-cube)=e_3(0.5)^3=0.5$, $e_3(0.5) = 0.5^{1/3}$, </li>
+<li>for D dimension, given disired faction f, length of cube around x is $e_D(f)=f^{1/D}$</li>
+</ul>
+<ul>
+<li>$e_{10}(0.1)=0.8$: D=10, want 0.1 of the datas, length=0.8, ie, need to extend the cube 80% along each dimension around x, which means that, the ‘nearest nerighbor’ is indeed not that near since that on any dimendion, their distance can be 0.8 and the largest distance is only 1; </li>
+</ul>
 </li>
+</ul>
+<ul>
+<li>combat by making assumption about the nature of data distribution – know as <em>inductive bias</em> embodied in parametric model</li>
 </ul>
 <hr>
 <h2 id="overfitting_and_model_selection">overfitting and model selection</h2><ul>
@@ -886,6 +1396,10 @@
 </li>
 </ul>
 <hr>
+<h2 id="feature_selection">feature selection</h2><p>motivation: having too many features and some of them are actuallt invariant, feature selection is belonging to model selection as well, introduced in notes 5 of Andrew NG</p>
+<h2 id="regulazation">regulazation</h2><pre><code>- solve ill posed problem/ overfitting
+<span class="number">1.</span> when talking <span class="keyword">about</span> MLE which <span class="keyword">is</span> alway facing overfitting problem, <span class="keyword">the</span> MAP <span class="keyword">and</span> baysian estimation <span class="keyword">is</span> improving <span class="keyword">it</span> <span class="keyword">with</span> prior belif which act <span class="keyword">as</span> regulazation 
+</code></pre><hr>
 <p>regular expression help to replace the wrong mathjex:<br>eg find: (mathbf)((.))<br>replace with \1{\2}</p>
 </span>
         
@@ -1069,9 +1583,10 @@
 <li>packet size/ minimumu delay/ max delay(for a packet in # packet size)<br>  50 4.638 <em>4.386</em><br>  250 4.700 4.480<br>  500 4.764 4.574<br>  750 4.861 4.776<br>  1000 4.937 4.810<br>  1250 5.211 4.963<br>  1500 5.237 <em>5.056</em></li>
 </ul>
 </li>
+</ul>
+</li>
 <li>The propagation delay <ul>
-<li>does not depend on the packet size. It’s related to the link and, in general, does not vary (except if the link varies: cable, satellite, etc.)</li>
-<li></li>
+<li>does not depend on the packet size. It’s related to the link and, in general, does not vary (except if the link varies: cable, satellite, etc.) </li>
 </ul>
 </li>
 <li>The queuing delay <ul>
@@ -1082,16 +1597,16 @@
 <li>The transmission delay <ul>
 <li>almost proportional to the packet size; for a fixed packet size, it is constant.</li>
 <li>assume that the other delay for the mimi delay of different packet size is the same; </li>
-<li>~= difference between the minimum delays for the largest packet and the smallest packet: 5.056 - 4.386 = 0.67 [ms] for 1500-50 = 1450 byte packets, 1 Byte = 8 bits</li>
+<li>~= difference between the minimum delays for the largest packet and the smallest packet: 5.056 - 4.386 = 0.67 [ms] for 1500-50 = 1450 byte packets, 1 Byte = 8 bits<ul>
 <li><code>link throughput</code> = 8<em>1450/[0.67</em>10^(-3)] Mbps or Bit/s</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>The processing delay <ul>
 <li>can depend on the packet size, but to a much smaller degree than transmission delay; for a fixed packet size, it is reasonably constant.</li>
 <li>for packet in same size, assume the transmission+propagetion+processing delay is the same</li>
 <li>process + propage dalay ~= minimum delay among all minimum delays (usually it is the min delay for the smallest packet) = 4.386 ms</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -1132,128 +1647,13 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/17/network transport layer/" itemprop="url">
-                network transport layer
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-10-17T07:32:03+02:00" content="2015-10-17">
-            2015-10-17
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><ul>
-<li><p>two type of network app:</p>
-<ul>
-<li>client and server programs are created by different programmer, follow the rules</li>
-<li><p>.. same: client-server application</p>
-</li>
-<li><p>a transport-layer protocol provides logical communication between processesrunning on different hosts, a network-layer protocol provides logical communication between hosts</p>
-</li>
-<li>TCP congestion control prevents any one TCP connection from swamping the links and routers between communicating hosts with an excessive amount of traffic.</li>
-</ul>
-</li>
-<li>transport layer nultiplexing and demultiplexing<ul>
-<li>demultiplexing<ul>
-<li>delivering the data in a transport-layer segment to the correct socket  </li>
-</ul>
-</li>
-<li>multiplexing<ul>
-<li>gathering data, encapsulation, pass segment to network layer</li>
-<li>note that port number are examined by the transport</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>transport layer protocol<ul>
-<li>UDP<ul>
-<li>socket is identified by: dest IP + dest port num<ul>
-<li>diff source IP+port + same dest IP+port =&gt; same pocket in server</li>
-<li>The TCP segment has 20 bytes of header overhead in every segment, whereas UDP has only 8 bytes of overhead.        </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>TCP<ul>
-<li>socket is identified by: dest-IP+port num + source-IP+port </li>
-<li>have two socket in one communication:<ul>
-<li>welcome socket: common use?</li>
-<li>connection socket: for paricular client; close after server send reply</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>some abbr   <ul>
-<li>RFC: <ul>
-<li>request for comments: some standard documents    - </li>
-</ul>
-</li>
-<li>FTP:</li>
-<li>HTTP:<ul>
-<li>use TCP protocol</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+  </nav>
+
  </div>
 
         
@@ -1285,7 +1685,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1299,7 +1699,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

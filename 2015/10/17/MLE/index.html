@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="ml MLE," />
+  <meta name="keywords" content="Bayesian Estimation,MAP,MLE,machine learning,proability," />
 
 
 
@@ -39,19 +39,74 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="least square
-The method of least squares is a standard approach in regression analysis to the approximate solution of overdetermined systems, i.e., sets of equations in which there are more equations">
+<meta name="description" content="MLE: Maximum likelihood estimateMAP: maximum a posteriori 
+MLEdifference between likelihood and probability
+
+
+likelihood
+probability
+
+
+
+
+
+density
+
+
+hold $x$
+known $θ$
+
+
+function of $\theta$
+function o">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Maximum likelihood estimator MLE">
+<meta property="og:title" content="MLE & MAP & Bayesian Estimation">
 <meta property="og:url" content="http://yoursite.com/2015/10/17/MLE/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="least square
-The method of least squares is a standard approach in regression analysis to the approximate solution of overdetermined systems, i.e., sets of equations in which there are more equations">
-<meta property="og:updated_time" content="2015-10-18T18:22:07.186Z">
+<meta property="og:description" content="MLE: Maximum likelihood estimateMAP: maximum a posteriori 
+MLEdifference between likelihood and probability
+
+
+likelihood
+probability
+
+
+
+
+
+density
+
+
+hold $x$
+known $θ$
+
+
+function of $\theta$
+function o">
+<meta property="og:image" content="https://www.quora.com/What-is-the-difference-between-Maximum-Likelihood-ML-and-Maximum-a-Posteri-MAP-estimation">
+<meta property="og:updated_time" content="2015-10-21T21:26:42.749Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maximum likelihood estimator MLE">
-<meta name="twitter:description" content="least square
-The method of least squares is a standard approach in regression analysis to the approximate solution of overdetermined systems, i.e., sets of equations in which there are more equations">
+<meta name="twitter:title" content="MLE & MAP & Bayesian Estimation">
+<meta name="twitter:description" content="MLE: Maximum likelihood estimateMAP: maximum a posteriori 
+MLEdifference between likelihood and probability
+
+
+likelihood
+probability
+
+
+
+
+
+density
+
+
+hold $x$
+known $θ$
+
+
+function of $\theta$
+function o">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -63,7 +118,7 @@ The method of least squares is a standard approach in regression analysis to the
 
 
 
-  <title> Maximum likelihood estimator MLE | XXXH </title>
+  <title> MLE & MAP & Bayesian Estimation | XXXH </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -173,7 +228,7 @@ The method of least squares is a standard approach in regression analysis to the
           
           
             
-              Maximum likelihood estimator MLE
+              MLE & MAP & Bayesian Estimation
             
           
         </h1>
@@ -202,7 +257,126 @@ The method of least squares is a standard approach in regression analysis to the
       
 
       
-        <span itemprop="articleBody"><h2 id="least_square">least square</h2><ul>
+        <span itemprop="articleBody"><p>MLE: Maximum likelihood estimate<br>MAP: maximum a posteriori </p>
+<h1 id="MLE">MLE</h1><h2 id="difference_between_likelihood_and_probability">difference between likelihood and probability</h2><table>
+<thead>
+<tr>
+<th>likelihood</th>
+<th>probability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>density</td>
+</tr>
+<tr>
+<td>hold $x$</td>
+<td>known $θ$</td>
+</tr>
+<tr>
+<td>function of $\theta$</td>
+<td>function of $x$</td>
+</tr>
+<tr>
+<td>estimate $\theta$ from given data x – MLE</td>
+</tr>
+</tbody>
+</table>
+<p>-if we have a probability model with parameters θ. and note that<br>$$<strong>p(θ|y)</strong>=\frac{<strong>p(y | θ) p(θ)</strong>}{p(x)}$$,$\$</p>
+<ul>
+<li>pack all parameters into a single vector $\theta = {\alpha,\sigma^2}$ and write the function:<br>$$f(y|x;θ)$$. (andraw suggest we write $f(y|x;θ)$ in stead of $f(y|x,θ)$ since $\theta$ is nor random)(it is said that y and $\theta$ are interchangble)<ol>
+<li>When we view $p(\mathbf{y}|X;θ)$ as a <strong>density/probability/distribution</strong> of y/ function is varying in $y$: <code>given constant values x and $\theta$ in mind and what is distribution of y?</code> – the uncertainty</li>
+<li>When we view it as <strong>a function of $\theta$ holding $X$ constant</strong>, <code>given the model relating each y^i and x^i, what is the best guess/estimate of $\theta$</code>, then it become a <strong>likelihood</strong> function of $\theta$</li>
+</ol>
+<ul>
+<li>$$L(\theta)=L(\theta;X,\mathbf{y})=p(\mathbf{y}|X;\theta)= \prod_{i=1,2,…N}p(y^{(i)}|x^{(i)};θ)$$ (pay attention to L and p)</li>
+<li>Then we turn to <code>pricipal of maximum likelihood</code> which says: <code>choose $\theta$ so as to make the data as high probability as possible!</code> then we now should choose $\theta$ to maximize $L(\theta)$<ul>
+<li>lets look into $L(\theta)$: if we assume error is iid independent and follow Guanssian distribution with $\sigma^2$, then we can know the distribution of y(same as e) in order to exspan $p(y^{(i)}|x^{(i)};θ)$ – <code>keep in mind!!</code></li>
+<li>we also take log for easier calculation which now called <code>log likelihood $l(\theta)$</code>, and trun find max to find mini of $$1/2 \sum_{i=1,2,..N}(e^(i))^2$$<ul>
+<li><em>SURPISE!</em> the form is the same as $J(\theta)$ which we generate in MSE cost function! </li>
+<li>which can be solve by gradient descent or least square</li>
+</ul>
+</li>
+<li>additionally, for two condidate $\theta_1$ and $\theta_2$, the likelihood ratio is used to measure the relative likelihood</li>
+</ul>
+</li>
+<li>commend: this view of the parameters as being <em>constant-valued but unknow</em> in taken in frequentist statistic<blockquote>
+<p>(from andrew’s notes, keep for further understand)To summarize: Under the previous probabilistic assumptions on the data, least-squares regression corresponds to finding the maximum likelihood estimate of θ. This is thus one set of assumptions under which least-squares regression can be justified as a very natural method that’s just doing maximum likelihood estimation. (Note however that the probabilistic assumptions are by no means necessary for least-squares to be a perfectly good and rational procedure, and there may—and indeed there are—other natural assumptions that can also be used to justify it.) Note also that, in our previous discussion, our final choice of θ did not depend on what was $\sigma^2$ , and indeed we’d have arrived at the same result even if $\sigma^2$ 2 were unknown. We will use this fact again later, when we talk about the exponential family and generalized linear models</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<table>
+<thead>
+<tr>
+<th>MLE</th>
+<th>MAP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>find $\theta$ maximizes $p(x</td>
+<td>θ)$</td>
+<td>view $p(θ</td>
+<td>x) 8 p(θ) p(x</td>
+<td>θ)$ then find $\theta$ that maximizes $p(θ</td>
+<td>x)$ == maximizing $p(θ) p(x</td>
+<td>θ)$</td>
+</tr>
+<tr>
+<td>comes from linear regression modle: $f(y</td>
+<td>x,\alpha,\sigma)$</td>
+<td>add regulazation(called <code>prior belief</code> in the probabilistic point of view), ie, ridge regression, we can view ridge regression as astimator of MAP</td>
+</tr>
+<tr>
+<td>dis: overfitting, explain below</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><img src="https://www.quora.com/What-is-the-difference-between-Maximum-Likelihood-ML-and-Maximum-a-Posteri-MAP-estimation" alt="get from here"> MLE have problem of overfit the data, variance of the parameter estimates is high, or put another way, that the outcome of the parameter estimate is sensitive to random variations in data (which becomes pathological with small amounts of data). To deal with this, it usually helps to add regularisation to MLE (i.e., reduce variance by introducing bias into the estimate). </p>
+</li>
+<li><p>In maximum a posteriori (MAP), this regularisation is achieved by assuming that the parameters themselves are also (in addition to the data) drawn from a random process. The prior beliefs about the parameters determine what this random process looks like.</p>
+</li>
+</ul>
+<hr>
+<h1 id="MAP">MAP</h1><ul>
+<li><p>contrasts with MLE, the <strong>maximum-a-posteriori or MAP estimate</strong>, </p>
+<ul>
+<li>which is the $\theta$ that maximizes $p(θ | x)$.  </li>
+<li>Since x is fixed, this is <strong>equivalent</strong> to maximizing $p(θ) p(x | θ)$, the product of the <strong>prior probability</strong> of θ with the likelihood of θ.</li>
+<li>the <strong>prior probability/belief</strong> is indeed the regulazation term in ridge regression, so is the prior belief is strong, then high bias and low var(data affect a little)</li>
+</ul>
+</li>
+<li><p>for an infinite amount of data, MAP gives the same result as MLE (as long as the prior is non-zero everywhere in parameter space); </p>
+</li>
+<li>for an infinitely weak prior belief (i.e., uniform prior), MAP also gives the same result as MLE.</li>
+<li>MLE can be silly, for example if we throw a coin twice, both head, then MLE asid you will always have head in the future. Bayesian have clever explain consider the assumtion that head come with 0.5 probability </li>
+<li>MAP is the foundation for Naive Bayes classifiers</li>
+<li>MAP is applied in spam filter while MLE can not</li>
+</ul>
+<hr>
+<p>in Naive Bayes classifiers, we assum: <code>features are conditionally independent</code><br>and use empirical probabilities:<br><em>prediction = argmaxC P(C = c|X = x) ∝ argmaxC P(X = x|C = c)P(C = c)</em><br>example:<br>$P(spam|words) ∝ \prod_{i=1,2..N}P(words<em>i|spam)P(spam)$<br>$P(~spam|words) ∝ \prod</em>{i=1,2..N}P(words_i|~spam)P(~spam)$<br>Whichever one’s bigger wins.</p>
+<ul>
+<li><p>dis: sampling is important, may blow up thind is we train on data mostly spam and test on mostly non-spam(our P(spam) is WRONG) – but we can perfrom cv to adviod this</p>
+</li>
+<li><p>modify NB:  joint conditional distribution</p>
+</li>
+<li>decision surface of Naive Bayes: P(c|word) = P(word|c)I(word) + P(¬word|c)I(¬word)</li>
+</ul>
+<hr>
+<h1 id="Bayesian_estimation">Bayesian estimation</h1><ul>
+<li>using Bayes’ rule, come up with a distribution of possible parameters:<br>$P(\mathbf{\theta} | \mathbf{D}) =\frac{ P(\mathbf{D}|\mathbf{\theta}) p(\mathbf{\theta})}{P(\mathbf{D})}$</li>
+<li>p(\mathbf{\theta})} is known as prior(it means we make some assumption of the parameters, or, we somehow know some fact such as the coin have 0.5 changes of getting head. but the assumption may be wrong obviously?)</li>
+<li>KEEP IN MIND: ${P(\mathbf{D})}$ is constant</li>
+<li>we need to intergral two side w.r.t $\theta$ which have high computational cost</li>
+</ul>
+<hr>
+<h2 id="probability_or_statistic">probability or statistic</h2><p>In probability, we’re given a model, and asked what kind of data we’re likely to see.<br>In statistics, we’re given data, and asked what kind of model is likely to have generated it.</p>
+<h2 id="least_square">least square</h2><ul>
 <li>The method of least squares is a standard approach in regression analysis to the <strong>approximate solution of overdetermined systems</strong>, i.e., sets of equations in which there are more equations than unknowns.</li>
 <li>if all residual are linear, then it is linear least square: </li>
 <li>The linear least-squares problem occurs in statistical regression analysis;</li>
@@ -212,13 +386,15 @@ The method of least squares is a standard approach in regression analysis to the
 <li>Fisher information is a way of <strong>measuring the amount of information that an observable random variable X carries about an unknown parameter θ of a distribution that models X</strong>. Formally, it is the variance of the <strong>score</strong>, or the expected value of the observed information. </li>
 </ul>
 <h2 id="The_likelihood">The likelihood</h2><ul>
-<li>defined as the <strong>joint density or probability of the outcomes</strong>, with the roles of the values of the outcomes y and the values of the parameters θ interchanged. $p(y|x,\thelta)$, $p(\thelta|y)$</li>
+<li>defined as the <strong>joint density or probability of the outcomes</strong>, with the roles of the values of the outcomes y and the values of the parameters θ interchanged. $p(y|x,\theta)$, $p(\theta|y)$</li>
 <li><code>score function</code> = <code>derivative of the log-likelihood</code>:<ul>
-<li>find the maximum likelihood estimator, set the score function equal to zero<h3 id="maximum_likelihood_estimator">maximum likelihood estimator</h3></li>
+<li>find the maximum likelihood estimator, set the score function equal to zero</li>
 </ul>
 </li>
-<li>The maximum likelihood estimator of θ for the model given by the joint densities or probabilities $f(y;\thelta)$, with $\thelta \in Θ$, is defined <strong>as the value of θ at which the corresponding likelihood L(θ;y) attains its maximum</strong></li>
-<li>$\hat \thelta<em>{ML} = argmax</em>{\thelta} L(\thelta;y)$</li>
+</ul>
+<h3 id="maximum_likelihood_estimator">maximum likelihood estimator</h3><ul>
+<li>The maximum likelihood estimator of θ for the model given by the joint densities or probabilities $f(y;\theta)$, with $\theta \in Θ$, is defined <strong>as the value of θ at which the corresponding likelihood L(θ;y) attains its maximum</strong></li>
+<li>$\hat \theta<em>{ML} = argmax</em>{\theta} L(\theta;y)$</li>
 </ul>
 <h4 id="efficiency_of_the_maximum_likelihood_estimators">efficiency of the maximum likelihood estimators</h4><ul>
 <li>relate to asymptotic settings</li>
@@ -242,11 +418,13 @@ The method of least squares is a standard approach in regression analysis to the
 </li>
 </ul>
 </li>
-<li>Instead of $L(\thelta; y,X)$ it is more convenient to work with its logarithm, called the log-likelihood – product convert into summation</li>
+<li>Instead of $L(\theta; y,X)$ it is more convenient to work with its logarithm, called the log-likelihood – product convert into summation</li>
 </ul>
 <h2 id="information_matrix/_fisher_information">information matrix/ fisher information</h2><ul>
 <li>Fisher information is used to determine the sample size with which we design an experiment; second, in the Bayesian paradigm, Fisher information is used to define a default parameter prior; finally, in the minimum description length paradigm, Fisher information is used to measure model complexity</li>
 </ul>
+<hr>
+<p>machine learning经常用到probability和statistic的解释和一些概念，感觉看起来一模一样的东西又可以有很多不同解释..如果google的话强烈推荐quora啊太良心了，如果是stackexchange的话经常会发生努力看完top回答然后下面来一个it’s totally wrong简直是人生观都要颠覆了。 </p>
 <hr>
 <ul>
 <li>任意一个函数 可以放到 ${1,x,x^2,x^3….}$所张成的函数空间，如果是有限个基的话就称为欧式空间，无穷的话 就是 Hilbert空间</li>
@@ -260,7 +438,15 @@ The method of least squares is a standard approach in regression analysis to the
       
         <div class="post-tags">
           
-            <a href="/tags/ml-MLE/" rel="tag">#ml MLE</a>
+            <a href="/tags/Bayesian-Estimation/" rel="tag">#Bayesian Estimation</a>
+          
+            <a href="/tags/MAP/" rel="tag">#MAP</a>
+          
+            <a href="/tags/MLE/" rel="tag">#MLE</a>
+          
+            <a href="/tags/machine-learning/" rel="tag">#machine learning</a>
+          
+            <a href="/tags/proability/" rel="tag">#proability</a>
           
         </div>
       
@@ -337,7 +523,7 @@ The method of least squares is a standard approach in regression analysis to the
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -351,7 +537,7 @@ The method of least squares is a standard approach in regression analysis to the
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -379,7 +565,7 @@ The method of least squares is a standard approach in regression analysis to the
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#least_square"><span class="nav-number">1.</span> <span class="nav-text">least square</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fisher_information"><span class="nav-number">2.</span> <span class="nav-text">fisher information</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The_likelihood"><span class="nav-number">3.</span> <span class="nav-text">The likelihood</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#maximum_likelihood_estimator"><span class="nav-number">3.1.</span> <span class="nav-text">maximum likelihood estimator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#efficiency_of_the_maximum_likelihood_estimators"><span class="nav-number">3.1.1.</span> <span class="nav-text">efficiency of the maximum likelihood estimators</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#information_matrix/_fisher_information"><span class="nav-number">4.</span> <span class="nav-text">information matrix/ fisher information</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MLE"><span class="nav-number">1.</span> <span class="nav-text">MLE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#difference_between_likelihood_and_probability"><span class="nav-number">1.1.</span> <span class="nav-text">difference between likelihood and probability</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MAP"><span class="nav-number">2.</span> <span class="nav-text">MAP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bayesian_estimation"><span class="nav-number">3.</span> <span class="nav-text">Bayesian estimation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#probability_or_statistic"><span class="nav-number">3.1.</span> <span class="nav-text">probability or statistic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#least_square"><span class="nav-number">3.2.</span> <span class="nav-text">least square</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fisher_information"><span class="nav-number">3.3.</span> <span class="nav-text">fisher information</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The_likelihood"><span class="nav-number">3.4.</span> <span class="nav-text">The likelihood</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#maximum_likelihood_estimator"><span class="nav-number">3.4.1.</span> <span class="nav-text">maximum likelihood estimator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#efficiency_of_the_maximum_likelihood_estimators"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">efficiency of the maximum likelihood estimators</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#information_matrix/_fisher_information"><span class="nav-number">3.5.</span> <span class="nav-text">information matrix/ fisher information</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

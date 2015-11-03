@@ -46,11 +46,7 @@ loss
 solver
 layer catalogue
 interfaces
-data
-
-
-nets, layers and blobslayer
-layer categories: http://caffe.berkeleyvision.org/tutorial/layers">
+data">
 <meta property="og:type" content="article">
 <meta property="og:title" content="caffe document">
 <meta property="og:url" content="http://yoursite.com/2015/10/17/caffe document/index.html">
@@ -62,14 +58,10 @@ loss
 solver
 layer catalogue
 interfaces
-data
-
-
-nets, layers and blobslayer
-layer categories: http://caffe.berkeleyvision.org/tutorial/layers">
+data">
 <meta property="og:image" content="http://www.52nlp.cn/wp-content/uploads/2015/01/prml3-25.png">
 <meta property="og:image" content="http://img.ptcms.csdn.net/article/201501/22/54c07168613b6.jpg">
-<meta property="og:updated_time" content="2015-10-18T08:53:56.842Z">
+<meta property="og:updated_time" content="2015-11-03T12:00:42.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="caffe document">
 <meta name="twitter:description" content="official caffe tour
@@ -79,11 +71,7 @@ loss
 solver
 layer catalogue
 interfaces
-data
-
-
-nets, layers and blobslayer
-layer categories: http://caffe.berkeleyvision.org/tutorial/layers">
+data">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -241,9 +229,9 @@ layer categories: http://caffe.berkeleyvision.org/tutorial/layers">
 <li>solver</li>
 <li>layer catalogue</li>
 <li>interfaces</li>
-<li>data</li>
+<li>data<a id="more"></a>
+</li>
 </ul>
-<hr>
 <h1 id="nets,_layers_and_blobs">nets, layers and blobs</h1><h2 id="layer">layer</h2><ul>
 <li>layer categories: <a href="http://caffe.berkeleyvision.org/tutorial/layers.html" target="_blank" rel="external">http://caffe.berkeleyvision.org/tutorial/layers.html</a></li>
 <li>each layer have 3 computation:<ul>
@@ -404,6 +392,52 @@ layer categories: http://caffe.berkeleyvision.org/tutorial/layers">
 </ul>
 </li>
 </ul>
+<hr>
+<h1 id="how_to_build_a_new_layer:">how to build a new layer:</h1><ul>
+<li>Add a class declaration for your layer to the appropriate one of <code>common_layers.hpp</code>, <code>data_layers.hpp</code>,<code>loss_layers.hpp</code>, <code>neuron_layers.hpp</code>, or <code>vision_layers.hpp</code>. Include an inline implementation of type and the <em>Blobs() methods to specify blob number requirements. Omit the </em>_gpu declarations if you’ll only be implementing CPU code.</li>
+<li>Implement your layer in <code>layers/your_layer.cpp</code>.</li>
+<li>SetUp for initialization: reading parameters, allocating buffers, etc.<br>Forward_cpu for the function your layer computes<br>Backward_cpu for its gradient<br>(Optional) Implement the GPU versions Forward_gpu and Backward_gpu in layers/your_layer.cu.</li>
+<li>Add your layer to <code>proto/caffe.proto</code>, updating the next available ID. Also declare parameters, if needed, in this file.</li>
+<li>Make your layer createable by adding it to layer_factory.cpp.</li>
+<li>Write tests in test/test_your_layer.cpp. Use test/test_gradient_check_util.hpp to check that your Forward and Backward implementations are in numerical agreement.</li>
+</ul>
+<hr>
+<h1 id="include/caffe/vision_layers-hpp">include/caffe/vision_layers.hpp</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/blob.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/common.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/common_layers.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/data_layers.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/layer.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/loss_layers.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/neuron_layers.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/proto/caffe.pb.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> BaseConvolutionLayer: <span class="keyword">public</span> Layer&lt;Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> ConvolutionLayer: <span class="keyword">public</span> BaseConvolutionLayer&lt;Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> DeconvolutionLayer : <span class="keyword">public</span> BaseConvolutionLayer&lt;Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> Im2colLayer : <span class="keyword">public</span> Layer&lt;Dtype&gt;</span><br><span class="line"><span class="comment">// normalization</span></span><br><span class="line"><span class="keyword">class</span> LRNLayer : <span class="keyword">public</span> Layer&lt;Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> PoolingLayer : <span class="keyword">public</span> Layer&lt;Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> CuDNNPoolingLayer : <span class="keyword">public</span> PoolingLayer&lt;Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> CropLayer : <span class="keyword">public</span> Layer&lt;Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> SPPLayer : <span class="keyword">public</span> Layer&lt;Dtype&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>2015/11/1<br>add new layer: crop layer</p>
+<ol>
+<li>add <code>Crop_layers.cpp</code> to source/caffe/layers</li>
+<li>add CROP ID 40 to <code>caffe.proto</code></li>
+<li>add class croplayer to <code>visual_layer.hpp</code></li>
+<li><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/home/xizeng/proj/caff/include/caffe/vision_layers.hpp:<span class="number">536</span>:<span class="number">18</span>: error: 鈥楲ayerParameter_LayerType鈥▒ <span class="function">does not name a type</span><br><span class="line">   <span class="keyword">virtual</span> <span class="keyword">inline</span> LayerParameter_LayerType <span class="title">type</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<p>object <code>netParameter</code></p>
+<ul>
+<li>define in <code>caffe.proto</code></li>
+<li>arrtri: <code>LayerParameter</code>, <code>input</code>, <code>input_dim</code>, <code>force_backward</code>, <code>NetState</code></li>
+</ul>
+<p>blob.hpp<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/common.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/proto/caffe.pb.h"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/syncedmem.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/util/math_functions.hpp"</span></span></span><br></pre></td></tr></table></figure></p>
+<p>attribute:<br>data<em><br>diff</em><br>count<em><br>capacity</em></p>
+<h1 id="python:_module,_class_and_namespace,_and_library">python: module, class and namespace, and library</h1><h2 id="module">module</h2><p>A module is simply a file containing Python code. This code can be in the form of Python <code>classes</code>, <code>functions</code>, or just a list of <code>names</code>. Each module gets it’s own global namespaces.<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">module1 called Integer </span><br><span class="line">module2 called FloatingPoint </span><br><span class="line">both have function named <span class="function"><span class="title">add</span><span class="params">()</span></span>. </span><br><span class="line"><span class="comment">// Once you import the module into your script, </span></span><br><span class="line"><span class="comment">// you can access the names by prefixing them with the module name: </span></span><br><span class="line">FloatingPoint.<span class="function"><span class="title">add</span><span class="params">()</span></span> </span><br><span class="line">Integer.<span class="function"><span class="title">add</span><span class="params">()</span></span>.</span><br></pre></td></tr></table></figure></p>
+<p>import<br><figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#1</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> SomeModule</span></span><br><span class="line">//call by </span><br><span class="line">SomeModule.function()<span class="preprocessor"></span><br><span class="line"></span><br><span class="line">#2</span></span><br><span class="line">from SomeModule <span class="preprocessor"><span class="keyword">import</span> SomeName</span></span><br><span class="line">//no longer have <span class="keyword">to</span> use a prefix</span><br><span class="line">// in Interger.py define <span class="function"><span class="keyword">function</span> <span class="title">add</span>(</span>)</span><br><span class="line">from Interger <span class="preprocessor"><span class="keyword">import</span> add</span></span><br><span class="line">a = add(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">// but <span class="keyword">if</span> your program has an add() <span class="function"><span class="keyword">function</span></span></span><br><span class="line">// you’ll lose access <span class="keyword">to</span> the Integer’s add() <span class="function"><span class="keyword">function</span>.</span><span class="preprocessor"></span><br><span class="line"></span><br><span class="line">#3 </span></span><br><span class="line">from SomeModule <span class="preprocessor"><span class="keyword">import</span> *</span><span class="preprocessor"></span><br><span class="line"></span><br><span class="line">#4</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> SomePackage</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> scipy</span></span><br><span class="line"><span class="built_in">print</span> scipy.<span class="built_in">pi</span> + <span class="comment">'from the scipy package'</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> math</span></span><br><span class="line"><span class="built_in">print</span> math.<span class="built_in">pi</span> + <span class="comment">'from the math module'</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="namespace">namespace</h2><ul>
+<li>namespaces are just containers for mapping names to objects<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a<span class="number">_n</span>amespace = &#123;<span class="string">'name_a'</span>:<span class="keyword">object</span><span class="number">_1</span>, <span class="string">'name_b'</span>:<span class="keyword">object</span><span class="number">_2</span>, ...&#125;</span><br><span class="line">b<span class="number">_n</span>amespace = &#123;<span class="string">'name_a'</span>:<span class="keyword">object</span><span class="number">_3</span>, <span class="string">'name_b'</span>:<span class="keyword">object</span><span class="number">_4</span>, ...&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Namespaces are also searched for names inside out. This means that if there is a certain name declared in the module’s global namespace, you can reuse the name inside a function while being certain that any other function will get the global name.</p>
+<h2 id="classes">classes</h2><p>Classes and namespaces have special interactions. The only way for a class’ methods to access it’s own variables or functions (as names) is to use a reference to itself.</p>
+<p>the first argument of a method must be a ‘self’ parameter, if it to access other class attributes</p>
+<p>the module has a global namespace, the class itself does not</p>
+<p><strong>below is different from other object-oriented languages</strong><br>can def multi class in one modules<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">//</span> <span class="keyword">in</span> same python<span class="regexp">/modlues file /</span> <span class="keyword">in</span> same namespace</span><br><span class="line"><span class="built_in">global</span> data1;</span><br><span class="line"><span class="built_in">global</span> data2;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fruit</span>&#123;</span></span><br><span class="line">  <span class="regexp">//</span> define a function <span class="keyword">in</span> the <span class="class"><span class="keyword">class</span> <span class="title">and</span> <span class="title">call</span> <span class="title">the</span> <span class="title">class</span> <span class="title">object</span> <span class="title">itself</span></span></span><br><span class="line">  def add(self,color)&#123;</span><br><span class="line">    ....</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="library">library</h2><h3 id="a_very_good_command_for_exploring_library">a very good command for exploring library</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import urllib <span class="comment">// a library</span></span><br><span class="line"><span class="function"><span class="title">dir</span><span class="params">(urllib)</span></span> </span><br><span class="line"><span class="comment">// shows the modules in the library(ie the files in the urllib folder)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">help</span><span class="params">(urllib.urlopen)</span></span> </span><br><span class="line"><span class="comment">// show the detail of the modules</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="caffe">caffe</h1><p>in <code>caffe\__init__.py</code></p>
+<ul>
+<li>import the function or attributes defined in other file in the same directory</li>
+<li></li>
+</ul>
 </span>
       
     </div>
@@ -427,7 +461,7 @@ layer categories: http://caffe.berkeleyvision.org/tutorial/layers">
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/17/MLE/" rel="next">Maximum likelihood estimator MLE</a>
+              <a href="/2015/10/17/MLE/" rel="next">MLE & MAP & Bayesian Estimation</a>
             
           </div>
         </div>
@@ -489,7 +523,7 @@ layer categories: http://caffe.berkeleyvision.org/tutorial/layers">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -503,7 +537,7 @@ layer categories: http://caffe.berkeleyvision.org/tutorial/layers">
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -531,7 +565,7 @@ layer categories: http://caffe.berkeleyvision.org/tutorial/layers">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#official_caffe_tour"><span class="nav-number">1.</span> <span class="nav-text">official caffe tour</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nets,_layers_and_blobs"><span class="nav-number">2.</span> <span class="nav-text">nets, layers and blobs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#layer"><span class="nav-number">2.1.</span> <span class="nav-text">layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#definition"><span class="nav-number">2.1.1.</span> <span class="nav-text">definition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net"><span class="nav-number">2.2.</span> <span class="nav-text">net</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blob"><span class="nav-number">2.3.</span> <span class="nav-text">Blob</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#datum"><span class="nav-number">2.4.</span> <span class="nav-text">datum</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#file_system"><span class="nav-number">3.</span> <span class="nav-text">file system</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#leveldb"><span class="nav-number">3.1.</span> <span class="nav-text">leveldb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-py_file"><span class="nav-number">3.2.</span> <span class="nav-text">.py file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for_-proto_file:"><span class="nav-number">3.3.</span> <span class="nav-text">for .proto file:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#type_of_prototxt"><span class="nav-number">4.</span> <span class="nav-text">type of prototxt</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#type_of_layer"><span class="nav-number">4.1.</span> <span class="nav-text">type of layer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#}"><span class="nav-number">4.2.</span> <span class="nav-text">}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#}-1"><span class="nav-number">4.3.</span> <span class="nav-text">}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#}-2"><span class="nav-number">4.4.</span> <span class="nav-text">}</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pipline_for_python"><span class="nav-number">5.</span> <span class="nav-text">pipline for python</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#official_caffe_tour"><span class="nav-number">1.</span> <span class="nav-text">official caffe tour</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nets,_layers_and_blobs"><span class="nav-number">2.</span> <span class="nav-text">nets, layers and blobs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#layer"><span class="nav-number">2.1.</span> <span class="nav-text">layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#definition"><span class="nav-number">2.1.1.</span> <span class="nav-text">definition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net"><span class="nav-number">2.2.</span> <span class="nav-text">net</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blob"><span class="nav-number">2.3.</span> <span class="nav-text">Blob</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#datum"><span class="nav-number">2.4.</span> <span class="nav-text">datum</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#file_system"><span class="nav-number">3.</span> <span class="nav-text">file system</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#leveldb"><span class="nav-number">3.1.</span> <span class="nav-text">leveldb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-py_file"><span class="nav-number">3.2.</span> <span class="nav-text">.py file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for_-proto_file:"><span class="nav-number">3.3.</span> <span class="nav-text">for .proto file:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#type_of_prototxt"><span class="nav-number">4.</span> <span class="nav-text">type of prototxt</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#type_of_layer"><span class="nav-number">4.1.</span> <span class="nav-text">type of layer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#}"><span class="nav-number">4.2.</span> <span class="nav-text">}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#}-1"><span class="nav-number">4.3.</span> <span class="nav-text">}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#}-2"><span class="nav-number">4.4.</span> <span class="nav-text">}</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pipline_for_python"><span class="nav-number">5.</span> <span class="nav-text">pipline for python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how_to_build_a_new_layer:"><span class="nav-number">6.</span> <span class="nav-text">how to build a new layer:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#include/caffe/vision_layers-hpp"><span class="nav-number">7.</span> <span class="nav-text">include/caffe/vision_layers.hpp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python:_module,_class_and_namespace,_and_library"><span class="nav-number">8.</span> <span class="nav-text">python: module, class and namespace, and library</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#module"><span class="nav-number">8.1.</span> <span class="nav-text">module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#namespace"><span class="nav-number">8.2.</span> <span class="nav-text">namespace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#classes"><span class="nav-number">8.3.</span> <span class="nav-text">classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#library"><span class="nav-number">8.4.</span> <span class="nav-text">library</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a_very_good_command_for_exploring_library"><span class="nav-number">8.4.1.</span> <span class="nav-text">a very good command for exploring library</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#caffe"><span class="nav-number">9.</span> <span class="nav-text">caffe</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

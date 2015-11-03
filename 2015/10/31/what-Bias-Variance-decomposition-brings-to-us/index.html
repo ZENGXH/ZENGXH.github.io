@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="network," />
+  <meta name="keywords" content="machine learning," />
 
 
 
@@ -39,31 +39,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="two type of network app:
-
-client and server programs are created by different programmer, follow the rules
-.. same: client-server application
-
-a transport-layer protocol provides logical communication">
+<meta name="description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.First of all, there are several que">
 <meta property="og:type" content="article">
-<meta property="og:title" content="network transport layer">
-<meta property="og:url" content="http://yoursite.com/2015/10/17/network transport layer/index.html">
+<meta property="og:title" content="what Bias-Variance decomposition(BVD) brings to us">
+<meta property="og:url" content="http://yoursite.com/2015/10/31/what-Bias-Variance-decomposition-brings-to-us/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="two type of network app:
-
-client and server programs are created by different programmer, follow the rules
-.. same: client-server application
-
-a transport-layer protocol provides logical communication">
-<meta property="og:updated_time" content="2015-10-17T09:54:03.258Z">
+<meta property="og:description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.First of all, there are several que">
+<meta property="og:image" content="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf">
+<meta property="og:updated_time" content="2015-11-02T21:53:45.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="network transport layer">
-<meta name="twitter:description" content="two type of network app:
-
-client and server programs are created by different programmer, follow the rules
-.. same: client-server application
-
-a transport-layer protocol provides logical communication">
+<meta name="twitter:title" content="what Bias-Variance decomposition(BVD) brings to us">
+<meta name="twitter:description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.First of all, there are several que">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -75,7 +61,7 @@ a transport-layer protocol provides logical communication">
 
 
 
-  <title> network transport layer | XXXH </title>
+  <title> what Bias-Variance decomposition(BVD) brings to us | XXXH </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -185,7 +171,7 @@ a transport-layer protocol provides logical communication">
           
           
             
-              network transport layer
+              what Bias-Variance decomposition(BVD) brings to us
             
           
         </h1>
@@ -194,8 +180,8 @@ a transport-layer protocol provides logical communication">
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-10-17T07:32:03+02:00" content="2015-10-17">
-            2015-10-17
+          <time itemprop="dateCreated" datetime="2015-10-31T09:32:03+01:00" content="2015-10-31">
+            2015-10-31
           </time>
         </span>
 
@@ -214,63 +200,67 @@ a transport-layer protocol provides logical communication">
       
 
       
-        <span itemprop="articleBody"><ul>
-<li><p>two type of network app:</p>
-<ul>
-<li>client and server programs are created by different programmer, follow the rules</li>
-<li><p>.. same: client-server application</p>
-</li>
-<li><p>a transport-layer protocol provides logical communication between processesrunning on different hosts, a network-layer protocol provides logical communication between hosts</p>
-</li>
-<li>TCP congestion control prevents any one TCP connection from swamping the links and routers between communicating hosts with an excessive amount of traffic.</li>
-</ul>
-</li>
-<li>transport layer nultiplexing and demultiplexing<ul>
-<li>demultiplexing<ul>
-<li>delivering the data in a transport-layer segment to the correct socket  </li>
-</ul>
-</li>
-<li>multiplexing<ul>
-<li>gathering data, encapsulation, pass segment to network layer</li>
-<li>note that port number are examined by the transport</li>
+        <span itemprop="articleBody"><p>During project I finally gain more insight of what BVD means.<br>In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.<br>First of all, there are several question we need to pay attention to: </p>
+<h2 id="what_is_the_measurement_of_the_model_complexity?">what is the measurement of the model complexity?</h2><ul>
+<li>we may simply think that in linear regression with polynormial basis function expansion, as the degree increase, the model complecity increase. However, if the regulization is added, things change! Degree is not the only measument. when the regulization term is large, the weights are tend to zero(expect beta0), so the model is indeed simple even if the degree may be high.<ul>
+<li>in a word, when measure the complexity of the model, it is better to keep one variable(ie, the degree or the regulazation) fixed. More specifically, for linear regression, it is simply depend on degree, for ridge regression, we usually fix the degree and vary lambda.</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>transport layer protocol<ul>
-<li>UDP<ul>
-<li>socket is identified by: dest IP + dest port num<ul>
-<li>diff source IP+port + same dest IP+port =&gt; same pocket in server</li>
-<li>The TCP segment has 20 bytes of header overhead in every segment, whereas UDP has only 8 bytes of overhead.        </li>
+<h2 id="what_the_definition_of_the_bias?">what the definition of the bias?</h2><ul>
+<li>intuitively, if we mannully add our assumption(which may come from experience or the truth we know, it can be correct or wrong, benifit or harm to the model) to the model, the model will tend to depend less on the data we collect, then we will say the bias is high. The extreme case is that, we choose a large regulization term and all weights(expect beta0) go to zero, the models do not ‘listen’ to the data(the truth) and it is high bias.</li>
+<li>specifically, the definition of bias is $bias^2 = (\mu(h<em>{hypothesis}(x^*)) - f</em>{truemodel}(x^*))^2$<ul>
+<li>describe the average error of the hypothesis</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>TCP<ul>
-<li>socket is identified by: dest-IP+port num + source-IP+port </li>
-<li>have two socket in one communication:<ul>
-<li>welcome socket: common use?</li>
-<li>connection socket: for paricular client; close after server send reply</li>
+<h2 id="what_the_definition_of_variance?">what the definition of variance?</h2><ul>
+<li>def: $variance = E[(h<em>{hypothesis}(x^*) - \mu(h</em>{hypothesis}(x^*)))^2]$<ul>
+<li>it is the stability/variance of our model/hypothesis, if our model do not ‘listen’ to the data, then no matter what tranining set it use, it do not variant a lot and the value is low. On the other hand, if the model is overfitting(high complexity), then the variance is high.</li>
+<li>in other word, it describe how much $h(x^*)$ differ from others</li>
 </ul>
 </li>
 </ul>
-</li>
+<h2 id="under_what_assumption_do_we_perform_the_BVD?">under what assumption do we perform the BVD?</h2><ul>
+<li>we assume that there exist a true model, even though we can nerver generate/get it.</li>
+<li>also assume that there is some noise in the data we collect, ie $y^<em> = f(x^</em>) + e$(e: noise)<ul>
+<li>notice that under this assumption, $E(y^<em>) = f(x^</em>) = \mu(y^*)$</li>
 </ul>
 </li>
-<li>some abbr   <ul>
-<li>RFC: <ul>
-<li>request for comments: some standard documents    - </li>
+</ul>
+<h2 id="why_BVD_is_important_for_model_selecton?">why BVD is important for model selecton?</h2><ul>
+<li>the measurement of whether a model is good is based on the test error, since that we do not know the true value of the data we need to predict, we can not compute the test error directly and we need to extimate it by testing on the sample data. <ul>
+<li>the Estimation can be decomposited into three term: $bias$ + $variance^2$ + $noise^2$, <img src="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf" alt="detail"></li>
+<li>therefore the tradeoff between B and V is important</li>
 </ul>
 </li>
-<li>FTP:</li>
-<li>HTTP:<ul>
-<li>use TCP protocol</li>
 </ul>
-</li>
+<h2 id="how_the_tradeoff_happens?">how the tradeoff happens?</h2><ul>
+<li>when the complexity of the model increase, in general, the trainning error will decrease since it tend to highly fitting into the trainning set(overfitting) and the test error will increase. <ul>
+<li>Reason: when the input is away from the exact line(ie, there is some noise in the input), the output will become very different from the true value(ie, the noise will have huge impact on our prediction, also if there are noises in the trainning set, our model will be vary a lot and very different from the true model)<br>In this case, the bias is low(refer to the def of bias here), more specifically, the trainning error is ‘always’ low. </li>
 </ul>
 </li>
 </ul>
 <hr>
+<h2 id="So_how_do_we_measure_B_and_D_in_practice_??_[not_finish]">So how do we measure B and D in practice ?? [not finish]</h2><p>to get $E(h(x^<em>))$ need more than one traning set. but only one indead, so need to simulate multiplr trainning sets by </em>bootstrap repicates* ie, randomly split the sample data into trainning and test for many times with different seeds(in MATLAB)</p>
+<ul>
+<li>algorithm:</li>
+</ul>
+<ol>
+<li>given training sample S, set s seeds to split it</li>
+<li>genarate multiple hypothesis h1,h2,h3,….hs</li>
+<li>(option) determining corresponding weights w1,w2,…wL, here we view each h qually, ie. no weights for different hypothesis</li>
+<li>classify new points by $y_{pred} = h<em>i(x</em>{new})$<br>$E(h(x^<em>)) = \mu(h(x^</em>)) = mean(\sum (h_i(x^<em>)) ) = \frac{1}{s}\sum (h_i(x^</em>))$,<br>$i \in {1,2,3,…s}$</li>
+</ol>
+<p>since that<br>$bias^2 = (\mu(h(x^<em>)) - f_{truemodel}(x^</em>))^2$<br>$bias = (\mu(h(x^<em>)) - f_{truemodel}(x^</em>))$</p>
+<p>$$variance = E[(h(x^<em>) - \mu(h(x^</em>)))^2] =Var(h(x^<em>)) = Var(h(x_1^</em>)) + Var(h(x_2^<em>)) + …=  \frac{1}{s} </em>\Sum{E[(h_i(x^<em>) - \mu(h(x^</em>)))^2]}$$<br>when shown in the figure, it is the variance of different result(test error) of different seeds.</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> s = 1,2,3....</span><br><span class="line">	S = (Tr(s),<span class="keyword">Te</span>(s));</span><br><span class="line">	traning <span class="keyword">on</span> Tr(s)</span><br><span class="line">		compute errorTr(s)</span><br><span class="line">		<span class="comment">// for traning the parameters</span></span><br><span class="line">	<span class="keyword">test</span> <span class="keyword">on</span> <span class="keyword">Te</span>(s)</span><br><span class="line">		compute errorTr(s) </span><br><span class="line">		<span class="comment">// expect train(on all the sample we have) error E[(h(x^*) - y^*)^2]</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="how_to_reduce_variance:">how to reduce variance:</h1><p>bagging and other resampling technique, one typical example is random forest<br>it means we preduce many times choosing different training set and get the average prediction as the result</p>
+<hr>
+<h1 id="insight">insight</h1><ol>
+<li>bagging of a flexible(overfitting) models may reduce the variance and benift from low bias</li>
+</ol>
 </span>
       
     </div>
@@ -279,7 +269,7 @@ a transport-layer protocol provides logical communication">
       
         <div class="post-tags">
           
-            <a href="/tags/network/" rel="tag">#network</a>
+            <a href="/tags/machine-learning/" rel="tag">#machine learning</a>
           
         </div>
       
@@ -288,11 +278,13 @@ a transport-layer protocol provides logical communication">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/17/handon-networking/" rel="prev">handon-networking</a>
+              <a href="/2015/10/31/Pattern-classification-and-machine-learning/" rel="prev">Pattern classification and machine learning project I</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/19/learning theory/" rel="next">learning theory - bias-variance tradeoff</a>
             
           </div>
         </div>
@@ -396,7 +388,7 @@ a transport-layer protocol provides logical communication">
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#what_is_the_measurement_of_the_model_complexity?"><span class="nav-number">1.</span> <span class="nav-text">what is the measurement of the model complexity?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what_the_definition_of_the_bias?"><span class="nav-number">2.</span> <span class="nav-text">what the definition of the bias?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what_the_definition_of_variance?"><span class="nav-number">3.</span> <span class="nav-text">what the definition of variance?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#under_what_assumption_do_we_perform_the_BVD?"><span class="nav-number">4.</span> <span class="nav-text">under what assumption do we perform the BVD?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#why_BVD_is_important_for_model_selecton?"><span class="nav-number">5.</span> <span class="nav-text">why BVD is important for model selecton?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how_the_tradeoff_happens?"><span class="nav-number">6.</span> <span class="nav-text">how the tradeoff happens?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#So_how_do_we_measure_B_and_D_in_practice_??_[not_finish]"><span class="nav-number">7.</span> <span class="nav-text">So how do we measure B and D in practice ?? [not finish]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how_to_reduce_variance:"><span class="nav-number"></span> <span class="nav-text">how to reduce variance:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#insight"><span class="nav-number"></span> <span class="nav-text">insight</span></a></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

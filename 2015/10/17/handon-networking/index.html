@@ -57,7 +57,7 @@ an Ethernet frame[Data link layer] encapsulates an IP datagram(Internet Protocol
 an IP datagram encapulates a TCP segment(Transmiss">
 <meta property="og:image" content="http://yoursite.com/network/enc_unit.png">
 <meta property="og:image" content="http://yoursite.com/network/enc_unit2.png">
-<meta property="og:updated_time" content="2015-10-17T19:11:34.630Z">
+<meta property="og:updated_time" content="2015-10-30T19:04:39.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="handon-networking">
 <meta name="twitter:description" content="start capture:
@@ -336,9 +336,10 @@ an IP datagram encapulates a TCP segment(Transmiss">
 <li>packet size/ minimumu delay/ max delay(for a packet in # packet size)<br>  50 4.638 <em>4.386</em><br>  250 4.700 4.480<br>  500 4.764 4.574<br>  750 4.861 4.776<br>  1000 4.937 4.810<br>  1250 5.211 4.963<br>  1500 5.237 <em>5.056</em></li>
 </ul>
 </li>
+</ul>
+</li>
 <li>The propagation delay <ul>
-<li>does not depend on the packet size. It’s related to the link and, in general, does not vary (except if the link varies: cable, satellite, etc.)</li>
-<li></li>
+<li>does not depend on the packet size. It’s related to the link and, in general, does not vary (except if the link varies: cable, satellite, etc.) </li>
 </ul>
 </li>
 <li>The queuing delay <ul>
@@ -349,16 +350,16 @@ an IP datagram encapulates a TCP segment(Transmiss">
 <li>The transmission delay <ul>
 <li>almost proportional to the packet size; for a fixed packet size, it is constant.</li>
 <li>assume that the other delay for the mimi delay of different packet size is the same; </li>
-<li>~= difference between the minimum delays for the largest packet and the smallest packet: 5.056 - 4.386 = 0.67 [ms] for 1500-50 = 1450 byte packets, 1 Byte = 8 bits</li>
+<li>~= difference between the minimum delays for the largest packet and the smallest packet: 5.056 - 4.386 = 0.67 [ms] for 1500-50 = 1450 byte packets, 1 Byte = 8 bits<ul>
 <li><code>link throughput</code> = 8<em>1450/[0.67</em>10^(-3)] Mbps or Bit/s</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>The processing delay <ul>
 <li>can depend on the packet size, but to a much smaller degree than transmission delay; for a fixed packet size, it is reasonably constant.</li>
 <li>for packet in same size, assume the transmission+propagetion+processing delay is the same</li>
 <li>process + propage dalay ~= minimum delay among all minimum delays (usually it is the min delay for the smallest packet) = 4.386 ms</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -465,7 +466,7 @@ an IP datagram encapulates a TCP segment(Transmiss">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -479,7 +480,7 @@ an IP datagram encapulates a TCP segment(Transmiss">
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

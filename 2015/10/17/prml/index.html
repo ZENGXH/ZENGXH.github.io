@@ -39,37 +39,31 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="preprocessedfor input may be preprocessed
-- like fixed size of the image
-- also called feature extraction
-- speed up computation
-- easier to solve problem
-index
-supervised learning
-classification- dis">
+<meta name="description" content="life is so hard.
+
+logistic regression is not applied for regression
+least mean square is a rule(the update rule for gradient descent)
+least square is actually means: using MSE distance function, it ca">
 <meta property="og:type" content="article">
 <meta property="og:title" content="prml">
 <meta property="og:url" content="http://yoursite.com/2015/10/17/prml/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="preprocessedfor input may be preprocessed
-- like fixed size of the image
-- also called feature extraction
-- speed up computation
-- easier to solve problem
-index
-supervised learning
-classification- dis">
-<meta property="og:updated_time" content="2015-10-18T18:22:09.288Z">
+<meta property="og:description" content="life is so hard.
+
+logistic regression is not applied for regression
+least mean square is a rule(the update rule for gradient descent)
+least square is actually means: using MSE distance function, it ca">
+<meta property="og:image" content="https://www.quora.com/Intuitively-speaking-What-is-the-difference-between-Bayesian-Estimation-and-Maximum-Likelihood-Estimation">
+<meta property="og:image" content="http://cs229.stanford.edu/notes/cs229-notes1.pdf">
+<meta property="og:image" content="http://cs229.stanford.edu/notes/cs229-notes1.pdf">
+<meta property="og:updated_time" content="2015-10-21T21:26:46.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="prml">
-<meta name="twitter:description" content="preprocessedfor input may be preprocessed
-- like fixed size of the image
-- also called feature extraction
-- speed up computation
-- easier to solve problem
-index
-supervised learning
-classification- dis">
+<meta name="twitter:description" content="life is so hard.
+
+logistic regression is not applied for regression
+least mean square is a rule(the update rule for gradient descent)
+least square is actually means: using MSE distance function, it ca">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -220,12 +214,75 @@ classification- dis">
       
 
       
-        <span itemprop="articleBody"><h2 id="preprocessed">preprocessed</h2><p>for input may be <em>preprocessed</em></p>
-<pre><code>-<span class="ruby"> like fixed size of the image
-</span>-<span class="ruby"> also called feature extraction
-</span>-<span class="ruby"> speed up computation
-</span>-<span class="ruby"> easier to solve problem</span>
-</code></pre><h1 id="index">index</h1><ul>
+        <span itemprop="articleBody"><p>life is so hard.</p>
+<ol>
+<li>logistic regression is not applied for regression</li>
+<li>least mean square is a rule(the update rule for gradient descent)</li>
+<li>least square is actually means: using MSE distance function, it can be solve by Gradient descent or normal equation</li>
+<li>maximum likelihood exrimate of $\theta$ is solve by minimize the negative of log-likehood function of $\theta$</li>
+<li>likehood may be view intuitively as the likelihood of what y will be given x but when talking MLE it is actually the likelihood of what parameters will be gien x (and y, or distrubution of y)</li>
+<li>sigmoid function is a magic(fourier is also a magic): $\sigma(x)’ =\sigma(x)(1-\sigma(x))$</li>
+<li>if you hold strong prior belief, you will have high bias and low variance, the world will not affect you…</li>
+<li>MLE can be really silly.. due to overfitting. <img src="https://www.quora.com/Intuitively-speaking-What-is-the-difference-between-Bayesian-Estimation-and-Maximum-Likelihood-Estimation" alt="see here"></li>
+<li>under a set of assumptions(Gaussian, independent) least squares regression could be derived as the maximum likelihood estimator </li>
+<li><h2 id="preprocessed">preprocessed</h2>for input may be <em>preprocessed</em><ul>
+<li>like fixed size of the image</li>
+<li>also called feature extraction</li>
+<li>speed up computation</li>
+<li>easier to solve problem</li>
+</ul>
+</li>
+</ol>
+<h1 id="reference_book">reference book</h1><ol>
+<li>PRML:</li>
+<li>machine learning, a probalistic approach: murphy</li>
+<li>the elements of statistical learning:HTF</li>
+<li><img src="http://cs229.stanford.edu/notes/cs229-notes1.pdf" alt="Andrew&#39;s notes"></li>
+</ol>
+<h1 id="OVERVIEW">OVERVIEW</h1><ul>
+<li>for the <code>data input type</code> we can define the learning process as supervised or unsupervised</li>
+<li>for the <code>type of prediction</code>, we can define the case as classification(discrete output) or regression(continuous output)</li>
+<li>for the <code>fitting model</code> we choose, we can have linear model(basis function expansion), or rigistic regression(not regression but for classification actually)</li>
+<li><p>analyze the model and find parameter – cost function:</p>
+<ul>
+<li><p>derectly define <code>cost function</code> based on distance such as MAE, MSE…</p>
+<ul>
+<li>whether the cost function is <code>robust</code>, ie, how they react to the <code>outlier</code> will also affect our model – statistic property</li>
+<li>whether the cost function is <code>convex</code> relate whether we can reach the minimum if we count on the gradient to solve the minimum – computational property</li>
+</ul>
+<ul>
+<li>just based on the cost function above is not enough, we can also take another approach..</li>
+</ul>
+</li>
+<li><p>define from <code>probabilistic view</code> of machine learning, we try to seek support for our modeling precess, analyze the model and tuning the model,  </p>
+<ul>
+<li><p><code>probability theory</code> can be applied during the prediction, model selection, measurement to be performed</p>
+</li>
+<li><p>for regression, we focus on the distribution of the output data or error </p>
+<ul>
+<li>by assume the error following the Gaussian distribution, the value we try to estimate/predict also follow the Gaussian distribution which take the y_prediction as mean.</li>
+</ul>
+</li>
+<li>while for classification, we take the Bayisan theorm – and then generate the likehood function</li>
+<li>we can use the joint probability assuming the data is indenpendent</li>
+</ul>
+</li>
+<li><p>WHY cost function so important:</p>
+<ul>
+<li>since that the parameter is choosen by the score return by cost function </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>consider whether the <code>parameter is fixed or changed</code> with the size of data, the model can be <code>parametric</code>(linear regression(oridinary), logistic…) or <code>nonparametric</code>(<img src="http://cs229.stanford.edu/notes/cs229-notes1.pdf" alt="Locally weighted linear regression">(only meet at andrew’s, not the linear-regress we saw),KNN)       </li>
+<li>for <code>optimation</code> numerically ie. <code>solve the minimum</code> of function in which we regard the parameter instead of the data as variable, we have: gradient descent, grid search, least square(closed form soluction, Gram matrix), newton method. for the solver, we need to consider the <code>compuration complexity</code> and <code>convexity</code><ul>
+<li>implementation issue: – see reference: non-linear programming</li>
+<li>gradient descent: feature normalization, direction(batch gradient descent, stochastic), stepsize(fixed, line-search:backtracking), convexity and converge, stopping criteria(optimal condition, positive definite)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
 <li>supervised learning<ul>
 <li>classification- discrete output</li>
 <li>regression- continues output</li>
@@ -292,6 +349,7 @@ classification- dis">
 <h2 id="background:_interpretation_of_probabilities">background: interpretation of probabilities</h2><h3 id="frequentist_interpretation">frequentist interpretation</h3><ul>
 <li>popular: <em>classical or frequentist way</em><ul>
 <li>the probability P of an uncertain event A, P(A) is defined by the frequency of that event based on previous observations</li>
+<li>In the frequentist this view of the world, θ is not random—it just happens to be unknown—and it’s our job to come up with statistical procedures (such as maximum likelihood) to try to estimate this parameter.(NG)</li>
 </ul>
 </li>
 </ul>
@@ -323,8 +381,8 @@ classification- dis">
 </ul>
 <h3 id="from_frequentist_way_of_interpretation:">from frequentist way of interpretation:</h3><ul>
 <li>parameter $\beta$ is a fixed parameter, the value is determined by ‘estimator’</li>
-<li>A widely used frequentist estimator is <em>maximum likelihood</em>, in which wis set to the value that maximizes the likelihood function </li>
-<li>ie. choosing $\beta$ s.t. probability of the observed data is maximized</li>
+<li>A widely used <code>frequentist estimator</code> is <em>maximum likelihood</em>, in which we set the value that maximizes the likelihood function </li>
+<li>ie. choosing $\beta$ s.t. probability of the observed data is maximized(seems to be the MAP estimate introduced in Murphy’s book, see below)</li>
 <li>in practice, use negative log of likelihood function = log-likelihood:= error function(monotonically decreasing)</li>
 <li><strong>One approach to determining frequentist error bars is the bootstrap</strong>, <ul>
 <li>s1: 就是在已有的dataset(size N)里面random弄出L个dataset(size N) by drawing data from 已有的dataset(抽取方式是，可以重复抽，可以有的没有被抽中)</li>
@@ -333,9 +391,9 @@ classification- dis">
 </li>
 <li>drawback: may lead to extreme conclusion if the dataset is bad, eg, a fair-looking coin is tossed three times and lands heads each time. in this case, we will generate parameter $\beta$ to make P(lands head) = 1   </li>
 </ul>
-<h3 id="from_Bayesian_viewpoint:">from Bayesian viewpoint:</h3><ul>
-<li>in machine learning, Bayes theorem is used to convert a priot ptobability $P(A) = P(\mathbf{\beta})$ into a porterior probability $P(A|B) = P(\mathbf{\beta}|y)$ by incorpoating the evidence provided by the observed data <ul>
-<li>for $\mathbf{\beta}$ in the polynormial curve fitting model, we can take an approach with Bayes theorem:</li>
+<h3 id="from_Bayesian_viewpoint:">from Bayesian viewpoint:</h3><p>in machine learning, Bayes theorem is used to convert a priot ptobability $P(A) = P(\mathbf{\beta})$ into a posterior probability $P(A|B) = P(\mathbf{\beta}|y)$ by incorpoating the evidence provided by the observed data </p>
+<ul>
+<li>for $\mathbf{\beta}$ in the <code>polynormial curve fitting model</code>, we can take an approach with <code>Bayes theorem</code>:</li>
 <li>$P(\mathbf{\beta} | \mathbf{y}) =\frac{ P(\mathbf{y}|\mathbf{\beta}) p(\mathbf{\beta})}{P(\mathbf{y})} $<ul>
 <li>given data {y_1,y_2,…}, we want to know the $\beta$, cant get directly. $P(\mathbf{\beta} | \mathbf{y})$:= <strong>posterior probability</strong></li>
 <li>$P(\beta)$:= prior probability; our assumption of $\beta$</li>
@@ -345,7 +403,8 @@ classification- dis">
 <li>not a probability distrubution, so intergral w.r.t $\beta$ not nessary = 1</li>
 </ul>
 </li>
-<li>state Bayes theorem as : <code>posterior 8 likelihood × prior</code>, consider all of these as function of parameters $\beta$</li>
+<li>state Bayes theorem as : <strong>posterior 8 likelihood × prior</strong>, consider all of these as function of parameters $\beta$<ul>
+<li>about the choice of the parameters <code>murphy have detail description in chapter3</code> but should notice that murphy have different notation for the relation above…<ul>
 <li>intergrate both side base on $\beta$: $p(y)= \integral p(y|\beta)p(\beta)d\beta$</li>
 <li>issue: particularly the need to marginalize (sum or integrate) over the whole of parameter space</li>
 </ul>
@@ -353,42 +412,34 @@ classification- dis">
 </ul>
 </li>
 </ul>
-<h2 id="Murphy’s_explanation_–_MAP_estimate">Murphy’s explanation – MAP estimate</h2><ul>
+</li>
+</ul>
+<h3 id="Murphy’s_explanation_–_MAP(maximum_a_posterior)_estimate">Murphy’s explanation – MAP(maximum a posterior) estimate</h3><ul>
 <li>look at probability is conditional on the test input x, as well as the training set D, and the form of model M that we use to make predictions</li>
-<li>Given a probabilistic output, we can always compute our “best guess” as to the “true label” using: </li>
+<li>Given a probabilistic output, we can always compute our “best guess” as to the “true label” using: <ul>
 <li>$\hat y = \hat f(\mathbf{x} = argmax_{c=1..C} p(y = c|\mathbf{x},D,M)$</li>
-<li>This corresponds to the most probable class label, and is called themodeof the distribution p(y|x,D); it is also known as a <em>MAP</em> estimate(MAP stands for maximum a posteriori).</li>
-<li>note that p(y|x,D) is the probrbility distribution of y given x and D (and M in case of in the situation of model selection, M should also be clearified)</li>
+<li>This corresponds to the most probable class label, and is called the mode of the distribution p(y|x,D); it is also known as a <strong>MAP estimate</strong>(maximum a posterior). </li>
+</ul>
+</li>
+<li>note that p(y|x,D) is the <code>probrbility distribution of y given x and D</code> (and in case of in the situation of model selection, M should also be clearified, write as p(y|x,D,M))</li>
 </ul>
 <hr>
-<h2 id="Murphy’s_definition_of_probabilistic_model_in_machine_learning">Murphy’s definition of probabilistic model in machine learning</h2><ul>
-<li>when defining a models, if the number of parameter is:<ol>
-<li>grow with the amount of training data :=. non-parametric model<ul>
+<h2 id="Murphy’s_definition_of_probabilistic_model_in_machine_learning">Murphy’s definition of probabilistic model in machine learning</h2><p>when defining a models, if the number of parameter is:</p>
+<ol>
+<li><p><code>grow with the amount of training data =&gt; non-parametric model</code></p>
+<ul>
 <li>flexible but computation cost high</li>
 <li>eg: KNN<ul>
 <li>KNN probabilistic model: </li>
 <li>$p(y=c|\mathbf{x},D,K) = 1/K \Sigma_{i in N_K(x,D)} II(y_i=c)$</li>
 <li>NK(x,D)are the (indices of the)Knearest points toxin DandI(e)is the indicator function </li>
-<li>issure: fail to work in high D use to below:<ul>
-<li>the curse of dimensionality (murphy ch1)</li>
+<li>issure: fail to work in high D due to <code>curse of dimensionality</code>[SEE BELOW]</li>
 </ul>
 </li>
-<li>explanation:<ul>
-<li>lets say, apply KNN to uniformly distributed points in 3 dimensional unit cube grow a hyper-cube around x untill it contain 0.5 of the data points, $V(hyper-cube)=e_3(0.5)^3=0.5$, $e_3(0.5) = 0.5^{1/3}$, </li>
-<li>for D dimension, given disired faction f, length of cube around x is $e_D(f)=f^{1/D}$</li>
 </ul>
+</li>
+<li><p><code>fixed =&gt; paramteric</code> </p>
 <ul>
-<li>$e_{10}(0.1)=0.8$: D=10, want 0.1 of the datas, length=0.8, ie, need to extend the cube 80% along each dimension around x, which means that, the ‘nearest nerighbor’ is indeed not that near since that on any dimendion, their distance can be 0.8 and the largest distance is only 1; </li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>combat by making assumption about the nature of data distribution – know as <em>inductive bias</em> embodied in parametric model</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>fixed :=&gt; paramteric <ul>
 <li>ads: fast to apply</li>
 <li>dis: strong assumption about the nature of data distribute</li>
 <li>regression<ul>
@@ -408,7 +459,7 @@ classification- dis">
 </ul>
 <ul>
 <li>classification:<ul>
-<li>logistic regression, ber distribute, use sigmoid function as basis function. <ul>
+<li>logistic regression, ber-distribute, use sigmoid function as basis function. <ul>
 <li>define decision rule + basi function expansion -&gt;create decision boundary </li>
 </ul>
 </li>
@@ -417,7 +468,21 @@ classification- dis">
 </ul>
 </li>
 </ol>
+<h3 id="the_curse_of_dimensionality_(murphy_ch1)">the curse of dimensionality (murphy ch1)</h3><ul>
+<li>KNN fail to work in high D</li>
+</ul>
+<ul>
+<li>explanation:<ul>
+<li>lets say, apply KNN to uniformly distributed points in 3 dimensional unit cube grow a hyper-cube around x untill it contain 0.5 of the data points, $V(hyper-cube)=e_3(0.5)^3=0.5$, $e_3(0.5) = 0.5^{1/3}$, </li>
+<li>for D dimension, given disired faction f, length of cube around x is $e_D(f)=f^{1/D}$</li>
+</ul>
+<ul>
+<li>$e_{10}(0.1)=0.8$: D=10, want 0.1 of the datas, length=0.8, ie, need to extend the cube 80% along each dimension around x, which means that, the ‘nearest nerighbor’ is indeed not that near since that on any dimendion, their distance can be 0.8 and the largest distance is only 1; </li>
+</ul>
 </li>
+</ul>
+<ul>
+<li>combat by making assumption about the nature of data distribution – know as <em>inductive bias</em> embodied in parametric model</li>
 </ul>
 <hr>
 <h2 id="overfitting_and_model_selection">overfitting and model selection</h2><ul>
@@ -488,6 +553,10 @@ classification- dis">
 </li>
 </ul>
 <hr>
+<h2 id="feature_selection">feature selection</h2><p>motivation: having too many features and some of them are actuallt invariant, feature selection is belonging to model selection as well, introduced in notes 5 of Andrew NG</p>
+<h2 id="regulazation">regulazation</h2><pre><code>- solve ill posed problem/ overfitting
+<span class="number">1.</span> when talking <span class="keyword">about</span> MLE which <span class="keyword">is</span> alway facing overfitting problem, <span class="keyword">the</span> MAP <span class="keyword">and</span> baysian estimation <span class="keyword">is</span> improving <span class="keyword">it</span> <span class="keyword">with</span> prior belif which act <span class="keyword">as</span> regulazation 
+</code></pre><hr>
 <p>regular expression help to replace the wrong mathjex:<br>eg find: (mathbf)((.))<br>replace with \1{\2}</p>
 </span>
       
@@ -506,7 +575,7 @@ classification- dis">
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/17/MLE/" rel="prev">Maximum likelihood estimator MLE</a>
+              <a href="/2015/10/17/MLE/" rel="prev">MLE & MAP & Bayesian Estimation</a>
             
           </div>
 
@@ -574,7 +643,7 @@ classification- dis">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -588,7 +657,7 @@ classification- dis">
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -616,7 +685,7 @@ classification- dis">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#preprocessed"><span class="nav-number">1.</span> <span class="nav-text">preprocessed</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#index"><span class="nav-number"></span> <span class="nav-text">index</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear_model"><span class="nav-number">1.</span> <span class="nav-text">linear model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#probability_theory"><span class="nav-number"></span> <span class="nav-text">probability theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#background:_interpretation_of_probabilities"><span class="nav-number">1.</span> <span class="nav-text">background: interpretation of probabilities</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#frequentist_interpretation"><span class="nav-number">1.1.</span> <span class="nav-text">frequentist interpretation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bayesian_interpretation"><span class="nav-number">1.2.</span> <span class="nav-text">Bayesian interpretation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bayes_rule"><span class="nav-number">1.2.1.</span> <span class="nav-text">Bayes rule</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#different_view_of_likelihood_function"><span class="nav-number">2.</span> <span class="nav-text">different view of likelihood function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#from_frequentist_way_of_interpretation:"><span class="nav-number">2.1.</span> <span class="nav-text">from frequentist way of interpretation:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from_Bayesian_viewpoint:"><span class="nav-number">2.2.</span> <span class="nav-text">from Bayesian viewpoint:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Murphy’s_explanation_–_MAP_estimate"><span class="nav-number">3.</span> <span class="nav-text">Murphy’s explanation – MAP estimate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Murphy’s_definition_of_probabilistic_model_in_machine_learning"><span class="nav-number">4.</span> <span class="nav-text">Murphy’s definition of probabilistic model in machine learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overfitting_and_model_selection"><span class="nav-number">5.</span> <span class="nav-text">overfitting and model selection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#overfitting_in_linear_regression"><span class="nav-number">5.1.</span> <span class="nav-text">overfitting in linear regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#solution1:_shrinkage_method_/_regularization_to_fight_with_overfitting"><span class="nav-number">5.1.1.</span> <span class="nav-text">solution1: shrinkage method / regularization to fight with overfitting</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overfitting_in_KNN,"><span class="nav-number">5.2.</span> <span class="nav-text">overfitting in KNN,</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#speed-accuracy-complexity_tradeoff"><span class="nav-number">6.</span> <span class="nav-text">speed-accuracy-complexity tradeoff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#distribution"><span class="nav-number">7.</span> <span class="nav-text">distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multinomial_distribution"><span class="nav-number">7.1.</span> <span class="nav-text">multinomial distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multi-noulli"><span class="nav-number">7.2.</span> <span class="nav-text">multi-noulli</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#information_theory"><span class="nav-number">8.</span> <span class="nav-text">information theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#entropy"><span class="nav-number">8.1.</span> <span class="nav-text">entropy</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#preprocessed"><span class="nav-number">1.</span> <span class="nav-text">preprocessed</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference_book"><span class="nav-number"></span> <span class="nav-text">reference book</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OVERVIEW"><span class="nav-number"></span> <span class="nav-text">OVERVIEW</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linear_model"><span class="nav-number">1.</span> <span class="nav-text">linear model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#probability_theory"><span class="nav-number"></span> <span class="nav-text">probability theory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#background:_interpretation_of_probabilities"><span class="nav-number">1.</span> <span class="nav-text">background: interpretation of probabilities</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#frequentist_interpretation"><span class="nav-number">1.1.</span> <span class="nav-text">frequentist interpretation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bayesian_interpretation"><span class="nav-number">1.2.</span> <span class="nav-text">Bayesian interpretation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bayes_rule"><span class="nav-number">1.2.1.</span> <span class="nav-text">Bayes rule</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#different_view_of_likelihood_function"><span class="nav-number">2.</span> <span class="nav-text">different view of likelihood function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#from_frequentist_way_of_interpretation:"><span class="nav-number">2.1.</span> <span class="nav-text">from frequentist way of interpretation:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from_Bayesian_viewpoint:"><span class="nav-number">2.2.</span> <span class="nav-text">from Bayesian viewpoint:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Murphy’s_explanation_–_MAP(maximum_a_posterior)_estimate"><span class="nav-number">2.3.</span> <span class="nav-text">Murphy’s explanation – MAP(maximum a posterior) estimate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Murphy’s_definition_of_probabilistic_model_in_machine_learning"><span class="nav-number">3.</span> <span class="nav-text">Murphy’s definition of probabilistic model in machine learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the_curse_of_dimensionality_(murphy_ch1)"><span class="nav-number">3.1.</span> <span class="nav-text">the curse of dimensionality (murphy ch1)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overfitting_and_model_selection"><span class="nav-number">4.</span> <span class="nav-text">overfitting and model selection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#overfitting_in_linear_regression"><span class="nav-number">4.1.</span> <span class="nav-text">overfitting in linear regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#solution1:_shrinkage_method_/_regularization_to_fight_with_overfitting"><span class="nav-number">4.1.1.</span> <span class="nav-text">solution1: shrinkage method / regularization to fight with overfitting</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overfitting_in_KNN,"><span class="nav-number">4.2.</span> <span class="nav-text">overfitting in KNN,</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#speed-accuracy-complexity_tradeoff"><span class="nav-number">5.</span> <span class="nav-text">speed-accuracy-complexity tradeoff</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#distribution"><span class="nav-number">6.</span> <span class="nav-text">distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#multinomial_distribution"><span class="nav-number">6.1.</span> <span class="nav-text">multinomial distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multi-noulli"><span class="nav-number">6.2.</span> <span class="nav-text">multi-noulli</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#information_theory"><span class="nav-number">7.</span> <span class="nav-text">information theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#entropy"><span class="nav-number">7.1.</span> <span class="nav-text">entropy</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#feature_selection"><span class="nav-number">8.</span> <span class="nav-text">feature selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#regulazation"><span class="nav-number">9.</span> <span class="nav-text">regulazation</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
