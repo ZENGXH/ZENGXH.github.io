@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="machine learning," />
+  <meta name="keywords" content="machine learning,project," />
 
 
 
@@ -39,17 +39,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.">
+<meta name="description" content="In project I, we are given two dataset(only data without any additional message and use basic machine learning technique) for regression and classification.This notes is to mark down some of the detai">
 <meta property="og:type" content="article">
-<meta property="og:title" content="what Bias-Variance decomposition(BVD) brings to us">
-<meta property="og:url" content="http://yoursite.com/2015/10/31/what-Bias-Variance-decomposition-brings-to-us/index.html">
+<meta property="og:title" content="machine learning project I">
+<meta property="og:url" content="http://yoursite.com/2015/10/31/machine-learning-projectI/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.">
+<meta property="og:description" content="In project I, we are given two dataset(only data without any additional message and use basic machine learning technique) for regression and classification.This notes is to mark down some of the detai">
+<meta property="og:image" content="http://yoursite.com/ml/pro1.png">
 <meta property="og:image" content="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf">
-<meta property="og:updated_time" content="2015-11-03T13:55:34.235Z">
+<meta property="og:updated_time" content="2015-11-03T15:47:05.388Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="what Bias-Variance decomposition(BVD) brings to us">
-<meta name="twitter:description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.">
+<meta name="twitter:title" content="machine learning project I">
+<meta name="twitter:description" content="In project I, we are given two dataset(only data without any additional message and use basic machine learning technique) for regression and classification.This notes is to mark down some of the detai">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -61,7 +62,7 @@
 
 
 
-  <title> what Bias-Variance decomposition(BVD) brings to us | XXXH </title>
+  <title> machine learning project I | XXXH </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -171,7 +172,7 @@
           
           
             
-              what Bias-Variance decomposition(BVD) brings to us
+              machine learning project I
             
           
         </h1>
@@ -180,7 +181,7 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-10-31T09:32:03+01:00" content="2015-10-31">
+          <time itemprop="dateCreated" datetime="2015-10-31T21:32:03+01:00" content="2015-10-31">
             2015-10-31
           </time>
         </span>
@@ -200,67 +201,41 @@
       
 
       
-        <span itemprop="articleBody"><p>During project I finally gain more insight of what BVD means.<br>In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.<br><a id="more"></a></p>
-<p>First of all, there are several question we need to pay attention to: </p>
-<h2 id="what_is_the_measurement_of_the_model_complexity?">what is the measurement of the model complexity?</h2><ul>
-<li>we may simply think that in linear regression with polynormial basis function expansion, as the degree increase, the model complecity increase. However, if the regulization is added, things change! Degree is not the only measument. when the regulization term is large, the weights are tend to zero(expect beta0), so the model is indeed simple even if the degree may be high.<ul>
-<li>in a word, when measure the complexity of the model, it is better to keep one variable(ie, the degree or the regulazation) fixed. More specifically, for linear regression, it is simply depend on degree, for ridge regression, we usually fix the degree and vary lambda.</li>
-</ul>
-</li>
-</ul>
-<h2 id="what_the_definition_of_the_bias?">what the definition of the bias?</h2><ul>
-<li>intuitively, if we mannully add our assumption(which may come from experience or the truth we know, it can be correct or wrong, benifit or harm to the model) to the model, the model will tend to depend less on the data we collect, then we will say the bias is high. The extreme case is that, we choose a large regulization term and all weights(expect beta0) go to zero, the models do not ‘listen’ to the data(the truth) and it is high bias.</li>
-<li>specifically, the definition of bias is $bias^2 = (\mu(h<em>{hypothesis}(x^*)) - f</em>{truemodel}(x^*))^2$<ul>
-<li>describe the average error of the hypothesis</li>
-</ul>
-</li>
-</ul>
-<h2 id="what_the_definition_of_variance?">what the definition of variance?</h2><ul>
-<li>def: $variance = E[(h<em>{hypothesis}(x^*) - \mu(h</em>{hypothesis}(x^*)))^2]$<ul>
-<li>it is the stability/variance of our model/hypothesis, if our model do not ‘listen’ to the data, then no matter what tranining set it use, it do not variant a lot and the value is low. On the other hand, if the model is overfitting(high complexity), then the variance is high.</li>
-<li>in other word, it describe how much $h(x^*)$ differ from others</li>
-</ul>
-</li>
-</ul>
-<h2 id="under_what_assumption_do_we_perform_the_BVD?">under what assumption do we perform the BVD?</h2><ul>
-<li>we assume that there exist a true model, even though we can nerver generate/get it.</li>
-<li>also assume that there is some noise in the data we collect, ie $y^<em> = f(x^</em>) + e$(e: noise)<ul>
-<li>notice that under this assumption, $E(y^<em>) = f(x^</em>) = \mu(y^*)$</li>
-</ul>
-</li>
-</ul>
-<h2 id="why_BVD_is_important_for_model_selecton?">why BVD is important for model selecton?</h2><ul>
-<li>the measurement of whether a model is good is based on the test error, since that we do not know the true value of the data we need to predict, we can not compute the test error directly and we need to extimate it by testing on the sample data. <ul>
-<li>the Estimation can be decomposited into three term: $bias$ + $variance^2$ + $noise^2$, <img src="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf" alt="detail"></li>
-<li>therefore the tradeoff between B and V is important</li>
-</ul>
-</li>
-</ul>
-<h2 id="how_the_tradeoff_happens?">how the tradeoff happens?</h2><ul>
-<li>when the complexity of the model increase, in general, the trainning error will decrease since it tend to highly fitting into the trainning set(overfitting) and the test error will increase. <ul>
-<li>Reason: when the input is away from the exact line(ie, there is some noise in the input), the output will become very different from the true value(ie, the noise will have huge impact on our prediction, also if there are noises in the trainning set, our model will be vary a lot and very different from the true model)<br>In this case, the bias is low(refer to the def of bias here), more specifically, the trainning error is ‘always’ low. </li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="So_how_do_we_measure_B_and_D_in_practice_??_[not_finish]">So how do we measure B and D in practice ?? [not finish]</h2><p>to get $E(h(x^<em>))$ need more than one traning set. but only one indead, so need to simulate multiplr trainning sets by </em>bootstrap repicates* ie, randomly split the sample data into trainning and test for many times with different seeds(in MATLAB)</p>
+        <span itemprop="articleBody"><p>In project I, we are given two dataset(only data without any additional message and use basic machine learning technique) for regression and classification.<br>This notes is to mark down some of the detail of the project for reference<br><a id="more"></a></p>
+<p>In both of the dataset, there are (x_train, y_train) pair and x_test which is left for us to make prediction. Both of the x_train in two dataset are in high dimension(71 and 37 respectively). We need to perform data analysis, feature processing and model selection on the dataset. Also noticed that we are not provided any description on the data, ie, the data do not have any semantic meaning for us. </p>
+<h1 id="regression">regression</h1><h2 id="data_description:">data description:</h2><p>x_train: 2800x71 dimension, ie, 2800 samples in 71 dimension<br>y_train: 2800x1<br>x_test: 1200x71, ie there are 1200 input for the predition</p>
+<h1 id="classification">classification</h1><h2 id="data_description:-1">data description:</h2><p>x_train: 1500x37 dimension<br>y_train: 1500 binary {-1,1}<br>x_test: 800x37</p>
+<p>comment: </p>
 <ul>
-<li>algorithm:</li>
+<li>projectI 做完的感觉的就是，数据在手里的时候，很多theory的东西都fail了.比如说degree增大的时候lambda反而更小了，test error不是永远比train error小的。 bias variance analysis感觉用来解释error分布还是说得通的。但是lambda就很说不通…lambda的取值不太稳定感觉还是有点tricky.</li>
+<li>这次的regression和classification都用了model split的方法，都是有一两个feature分布很典型，regression里用到了先做classification分成三个model再做regression的方法，error从500+一直降到了个位数。开心得晚上差点就通宵了。</li>
+<li>dummy encoding用在两个dataset上面都是没什么效果。就是feature selection这种东西真的是很难有通用的方法啊。实践出真知，不同dataset用的方法不同。</li>
+<li>machine learning的modelz在用的时候一定要记得assumption. fit the assumption can be another way to improve the model. for example logistic regression假设是input is gaussian分布的但是实际上input可以很极端很skew。所以处理数据的时候可以采用让data尽量高斯的方法（like boxcox）这一次就是…在feature transformation的时候很愚蠢的问了句为什么要让他高斯啊…啊真的是…然后output为什么不能使-1 1要是0和1..就是 要动脑啊</li>
+<li>data visulization也是很重要，这一次两个model的split都是看出来的。当然看的方法也很重要，like<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">scatter</span><span class="params">(y_train,X_train(:,i)</span></span>) <span class="comment">//就可以很好的看出两者关系（当然很可能是看不出关系的）</span></span><br><span class="line"><span class="function"><span class="title">histogram</span><span class="params">(X_train(:,i)</span></span>,<span class="number">60</span>) <span class="comment">//view the distribution of features</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>刚开始看的方法不好结果就是看了一天都没有看出什么来</p>
+<ul>
+<li>要放弃暴力调参多动脑…开始的时候暴力了一天都没有很大提升然后一直很upset后来跟着师姐才开始慢慢摸着路，总之就是不能只看最后出来的那个结果，得到的数据还是要plot出来分析一下原因</li>
+<li>贴一下分model的图，for regression, it is obviously that the value of feature 12 and feature48 is related to output value. for classification, the value of feature 35 is not related to output value obviously but it is shown that there are two model(we can interprete as dataset collected for two group of people/area…something like that) <img src="/ml/pro1.png" alt=""></li>
+<li>还有就是师姐太厉害了要在这里膜拜一下！</li>
+</ul>
+<p>Below is what I planned to do at the beginning of the project.<br>Later I found things do not happen as what I expect.. So just keep it as .. histogry.<br>I found the most important things should be: </p>
+<h3 id="First_apply_simple_model-">First apply simple model.</h3><h4 id="Then_really_look_at_the_data_plot!_such_as_histogram_and_scatter">Then really look at the data plot! such as histogram and scatter</h4><hr>
 <ol>
-<li>given training sample S, set s seeds to split it</li>
-<li>genarate multiple hypothesis h1,h2,h3,….hs</li>
-<li>(option) determining corresponding weights w1,w2,…wL, here we view each h qually, ie. no weights for different hypothesis</li>
-<li>classify new points by $y_{pred} = h<em>i(x</em>{new})$<br>$E(h(x^<em>)) = \mu(h(x^</em>)) = mean(\sum (h_i(x^<em>)) ) = \frac{1}{s}\sum (h_i(x^</em>))$,<br>$i \in {1,2,3,…s}$</li>
-</ol>
-<p>since that<br>$bias^2 = (\mu(h(x^<em>)) - f_{truemodel}(x^</em>))^2$<br>$bias = (\mu(h(x^<em>)) - f_{truemodel}(x^</em>))$</p>
-<p>$$variance = E[(h(x^<em>) - \mu(h(x^</em>)))^2] =Var(h(x^<em>)) = Var(h(x_1^</em>)) + Var(h(x_2^<em>)) + …=  \frac{1}{s} </em>\Sum{E[(h_i(x^<em>) - \mu(h(x^</em>)))^2]}$$<br>when shown in the figure, it is the variance of different result(test error) of different seeds.</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> s = 1,2,3....</span><br><span class="line">	S = (Tr(s),<span class="keyword">Te</span>(s));</span><br><span class="line">	traning <span class="keyword">on</span> Tr(s)</span><br><span class="line">		compute errorTr(s)</span><br><span class="line">		<span class="comment">// for traning the parameters</span></span><br><span class="line">	<span class="keyword">test</span> <span class="keyword">on</span> <span class="keyword">Te</span>(s)</span><br><span class="line">		compute errorTr(s) </span><br><span class="line">		<span class="comment">// expect train(on all the sample we have) error E[(h(x^*) - y^*)^2]</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="how_to_reduce_variance:">how to reduce variance:</h1><p>bagging and other resampling technique, one typical example is random forest<br>it means we preduce many times choosing different training set and get the average prediction as the result</p>
-<hr>
-<h1 id="insight">insight</h1><ol>
-<li>bagging of a flexible(overfitting) models may reduce the variance and benift from low bias</li>
+<li><p>Exploratory data analysis: to learn about the characteristics of the data.<br>To have a general idea of the data, there are several things we can do:<br>1) try to plot the data to view the distribution of the data<br>2) try to use linear regression to fit the dataset(it is better to choose with the simplest approach as the start point)<br>3) base on what we find on step1 and step2, it is time to perform some feature processing on the dataset, <img src="" alt="Why feature processing is so important"><br>4) test on different models, it can be: a. linear regression with basis function expansion(polynormial is one the most simplest one, it can also be some special function such as sigmoid, sin, cos, exp and so on). b. as the complexity of the model increase, overfitting may arise, so we may consider perform regulization on the model, ie, try to penalize the weights, in this case, we can try ridge regression which use l2 regulization. (Notice that we can also use l1 regulization, however, according to what I read, people said that l2 is more stable then l1 while l1 can penalized the weights of the unuseful features to zero significantlt which may be helpful for us to figure the relation or information the features. However I have not look into the detail and proof yet, just mentioned here for future reference)<br>5) for the regulazation part, cross validation can be perform for parameters choice. another information cross validation can provide is the stability of our model, ie, if the performance/test error/train error have large variance on different cross fold, it may means the models are not that stable(my guess…), since that the performance is highly depend on the training data we choose. (overfitting with high variance? <em>not sure</em>) and<br>6) <img src="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf" alt="bias-variance analysis"> ie, estimate the true test error by decomposite it into bias + variance part. and model comparision</p>
+</li>
+<li><p>Feature processing: cleaning your input and ouput variables, i.e. rescaling, transformation, removing outliers etc.</p>
+</li>
+<li><p>Applying methods and visualizing.<br> least square - regression without penelized</p>
+<pre><code>worked <span class="keyword">or</span> <span class="keyword">not</span> worked
+reason?
+what <span class="keyword">is</span> beta, what beta shows us? <span class="keyword">the</span> weight?
+</code></pre><p> ridge regression - how to choose lambda</p>
+<pre><code>corss-validation
+</code></pre></li>
+<li>Determining whether a method overfits or underfits.</li>
+<li>Cross-validation to estimate test errors.</li>
 </ol>
 </span>
       
@@ -272,6 +247,8 @@
           
             <a href="/tags/machine-learning/" rel="tag">#machine learning</a>
           
+            <a href="/tags/project/" rel="tag">#project</a>
+          
         </div>
       
 
@@ -279,13 +256,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/31/machine-learning-projectI/" rel="prev">machine learning project I</a>
+              <a href="/2015/11/02/Generalized-linear-model/" rel="prev">Generalized linear model</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/25/computer_vision/" rel="next">computer_vision</a>
+              <a href="/2015/10/31/what-Bias-Variance-decomposition-brings-to-us/" rel="next">what Bias-Variance decomposition(BVD) brings to us</a>
             
           </div>
         </div>
@@ -389,7 +366,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#what_is_the_measurement_of_the_model_complexity?"><span class="nav-number">1.</span> <span class="nav-text">what is the measurement of the model complexity?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what_the_definition_of_the_bias?"><span class="nav-number">2.</span> <span class="nav-text">what the definition of the bias?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what_the_definition_of_variance?"><span class="nav-number">3.</span> <span class="nav-text">what the definition of variance?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#under_what_assumption_do_we_perform_the_BVD?"><span class="nav-number">4.</span> <span class="nav-text">under what assumption do we perform the BVD?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#why_BVD_is_important_for_model_selecton?"><span class="nav-number">5.</span> <span class="nav-text">why BVD is important for model selecton?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how_the_tradeoff_happens?"><span class="nav-number">6.</span> <span class="nav-text">how the tradeoff happens?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#So_how_do_we_measure_B_and_D_in_practice_??_[not_finish]"><span class="nav-number">7.</span> <span class="nav-text">So how do we measure B and D in practice ?? [not finish]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how_to_reduce_variance:"><span class="nav-number"></span> <span class="nav-text">how to reduce variance:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#insight"><span class="nav-number"></span> <span class="nav-text">insight</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#regression"><span class="nav-number">1.</span> <span class="nav-text">regression</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#data_description:"><span class="nav-number">1.1.</span> <span class="nav-text">data description:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#classification"><span class="nav-number">2.</span> <span class="nav-text">classification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#data_description:-1"><span class="nav-number">2.1.</span> <span class="nav-text">data description:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#First_apply_simple_model-"><span class="nav-number">2.1.1.</span> <span class="nav-text">First apply simple model.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Then_really_look_at_the_data_plot!_such_as_histogram_and_scatter"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Then really look at the data plot! such as histogram and scatter</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

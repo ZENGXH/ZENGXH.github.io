@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="machine learning," />
+  <meta name="keywords" content="caffe," />
 
 
 
@@ -39,17 +39,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="In project I, we are given two dataset for regression and classification. In both of the dataset, there are (x_train, y_train) pair and x_test which is left for us to make prediction. Both of the x_tr">
+<meta name="description" content="I am current working on four caffe models for detection, classification and segmentation.This is served as an log file.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pattern classification and machine learning project I">
-<meta property="og:url" content="http://yoursite.com/2015/10/31/Pattern-classification-and-machine-learning/index.html">
+<meta property="og:title" content="Currently working on...[keep updating]">
+<meta property="og:url" content="http://yoursite.com/2015/11/02/Current-work/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="In project I, we are given two dataset for regression and classification. In both of the dataset, there are (x_train, y_train) pair and x_test which is left for us to make prediction. Both of the x_tr">
-<meta property="og:image" content="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf">
-<meta property="og:updated_time" content="2015-11-02T21:52:58.563Z">
+<meta property="og:description" content="I am current working on four caffe models for detection, classification and segmentation.This is served as an log file.">
+<meta property="og:updated_time" content="2015-11-03T15:47:17.302Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pattern classification and machine learning project I">
-<meta name="twitter:description" content="In project I, we are given two dataset for regression and classification. In both of the dataset, there are (x_train, y_train) pair and x_test which is left for us to make prediction. Both of the x_tr">
+<meta name="twitter:title" content="Currently working on...[keep updating]">
+<meta name="twitter:description" content="I am current working on four caffe models for detection, classification and segmentation.This is served as an log file.">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -61,7 +60,7 @@
 
 
 
-  <title> Pattern classification and machine learning project I | XXXH </title>
+  <title> Currently working on...[keep updating] | XXXH </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -171,7 +170,7 @@
           
           
             
-              Pattern classification and machine learning project I
+              Currently working on...[keep updating]
             
           
         </h1>
@@ -180,8 +179,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-10-31T21:32:03+01:00" content="2015-10-31">
-            2015-10-31
+          <time itemprop="dateCreated" datetime="2015-11-02T21:44:43+01:00" content="2015-11-02">
+            2015-11-02
           </time>
         </span>
 
@@ -200,28 +199,41 @@
       
 
       
-        <span itemprop="articleBody"><p>In project I, we are given two dataset for regression and classification. In both of the dataset, there are (x_train, y_train) pair and x_test which is left for us to make prediction. Both of the x_train in two dataset are in high dimension(71 and 37 respectively). We need to perform data analysis, feature processing and model selection on the dataset. Also noticed that we are not provided any description on the data, ie, the data do not have any semantic meaning for us. </p>
-<h2 id="This_notes_is_to_mark_down_the_detail_of_the_project_for_reference">This notes is to mark down the detail of the project for reference</h2><h1 id="regression">regression</h1><h2 id="data_description:">data description:</h2><p>x_train: 2800x71 dimension, ie, 2800 samples in 71 dimension<br>y_train: 2800x1<br>x_test: 1200x71, ie there are 1200 input for the predition</p>
-<h1 id="classification">classification</h1><h2 id="data_description:-1">data description:</h2><p>x_train: 1500x37 dimension<br>y_train: 1500 binary {-1,1}<br>x_test: 800x37</p>
-<p>comment: projectI 做完的感觉的就是，数据在手里的时候，很多theory的东西都fail了.比如说degree增大的时候lambda反而更小了，test error不是永远比train error小的。 logistic regression假设是input 是gaussian分布的但是实际上input可以很极端很skew。bias variance analysis倒还好，感觉用来解释error分布还是说得通的。但是lambda就很说不通…lambda的取值不太稳定感觉还是有点tricky.<br>这次的regression和classification都用了model split的方法，都是有一两个feature分布很典型，regression里用到了先做classification分成三个model再做regression的方法，error从500+一直降到了个位数。开心得晚上差点就通宵了。<br>还有dummy encoding用在两个dataset上面都是没什么效果。就是feature selection这种东西真的是很难有通用的方法啊。还有就是师姐太厉害了要在这里膜拜一下！</p>
-<p>Below is what I planned to do at the beginning of the project.<br>Later I found that the most important things should be: </p>
-<h3 id="First_apply_simple_model-">First apply simple model.</h3><h4 id="Then_really_look_at_the_data_plot!_such_as_histogram_and_scatter">Then really look at the data plot! such as histogram and scatter</h4><hr>
-<ol>
-<li>Exploratory data analysis: to learn about the characteristics of the data.<br>To have a general idea of the data, there are several things we can do:<br>1) try to plot the data to view the distribution of the data<br>2) try to use linear regression to fit the dataset(it is better to choose with the simplest approach as the start point)<br>3) base on what we find on step1 and step2, it is time to perform some feature processing on the dataset, <img src="" alt="Why feature processing is so important"><br>4) test on different models, it can be: a. linear regression with basis function expansion(polynormial is one the most simplest one, it can also be some special function such as sigmoid, sin, cos, exp and so on). b. as the complexity of the model increase, overfitting may arise, so we may consider perform regulization on the model, ie, try to penalize the weights, in this case, we can try ridge regression which use l2 regulization. (Notice that we can also use l1 regulization, however, according to what I read, people said that l2 is more stable then l1 while l1 can penalized the weights of the unuseful features to zero significantlt which may be helpful for us to figure the relation or information the features. However I have not look into the detail and proof yet, just mentioned here for future reference)<br>5) for the regulazation part, cross validation can be perform for parameters choice. another information cross validation can provide is the stability of our model, ie, if the performance/test error/train error have large variance on different cross fold, it may means the models are not that stable(my guess…), since that the performance is highly depend on the training data we choose. (overfitting with high variance? <em>not sure</em>) and<br>6) <img src="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf" alt="bias-variance analysis"> ie, estimate the true test error by decomposite it into bias + variance part. and model comparision</li>
-</ol>
-<ol>
-<li><p>Feature processing: cleaning your input and ouput variables, i.e. rescaling, transformation, removing outliers etc.</p>
+        <span itemprop="articleBody"><p>I am current working on four caffe models for detection, classification and segmentation.<br>This is served as an log file.<br><a id="more"></a></p>
+<p>for different net: parameter+h -&gt; mat<br>    for diff image: layers</p>
+<ul>
+<li><p>Models used by the VGG team in ILSVRC-2014<br>  for classification, imagenet 1000 categories<br>  check the classification result for cate</p>
 </li>
-<li><p>Applying methods and visualizing.<br> least square - regression without penelized</p>
-<pre><code>worked <span class="keyword">or</span> <span class="keyword">not</span> worked
-reason?
-what <span class="keyword">is</span> beta, what beta shows us? <span class="keyword">the</span> weight?
-</code></pre><p> ridge regression - how to choose lambda</p>
-<pre><code>corss-validation
+<li><p>GoogLeNet GPU implementation from Princeton.<br>  for classification, imagenet 1000 categories</p>
+</li>
+<li><p>CNN Models for Salient Object Subitizing.</p>
+<pre><code>- AlexNet_SalObjSub<span class="class">.caffemodel</span>
+./scripts/download_model_from_gist<span class="class">.sh</span> <span class="number">0585</span>ed9428dc5222981f
+http:<span class="comment">//www.cs.bu.edu/groups/ivc/data/SOS/AlexNet_SalObjSub.caffemodel</span>
+</code></pre><p>  any image</p>
+<ul>
+<li>visuilization</li>
+</ul>
+</li>
+<li><p>Fully Convolutional Semantic Segmentation Models (FCN-Xs)<br><code>fcn-32s-pascal</code><br>  for segmentation, pascal voc 20 categories</p>
+<pre><code><span class="keyword">*</span><span class="keyword">*</span>FCN-8s PASCAL<span class="keyword">*</span><span class="keyword">*</span>: three stream, 8 pixel prediction stride version
+    ./scripts/download_model_from_gist.sh 91eece041c19ff8968ee
+    http://dl.caffe.berkeleyvision.org/fcn-8s-pascal.caffemodel
+<span class="keyword">*</span><span class="keyword">*</span>FCN-32s PASCAL<span class="keyword">*</span><span class="keyword">*</span>: three stream, 32 pixel prediction stride version
+    ./scripts/download_model_from_gist.sh ac410cad48a088710872
+    wget http://dl.caffe.berkeleyvision.org/fcn-32s-pascal.caffemodel
+</code></pre><ul>
+<li>visuilization</li>
+</ul>
+</li>
+<li><p>Conditional Random Fields as Recurrent Neural Networks<br><code>bvlc_reference_rcnn_ilsvrc13</code><br>  for segmentation, pascal voc 20 categories</p>
+<pre><code>.<span class="regexp">/scripts/</span>download_model_from_gist.sh a7e397abbda52c0b90323c23ab95bdeabee90a98
+<span class="string">http:</span><span class="comment">//goo.gl/j7PrPZ</span>
 </code></pre></li>
-<li>Determining whether a method overfits or underfits.</li>
-<li>Cross-validation to estimate test errors.</li>
-</ol>
+</ul>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">download model: </span><br><span class="line">	./scripts/download_model_from_gist.sh &lt;gist_id&gt; &lt;&gt;</span><br><span class="line"><span class="comment">	// download model metadata, archiecture, solver configuration</span></span><br><span class="line">download .caffemodel <span class="built_in">file</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># move things up a dirextory</span></span><br><span class="line">find . -mindepth <span class="number">1</span> -maxdepth <span class="number">1</span> -exec mv -t.. <span class="comment">-- &#123;&#125; +</span></span><br></pre></td></tr></table></figure>
+<p>Test on<br>PASCAL 20 categories:</p>
+<p>Aeroplanes<br>Bicycles<br>Birds<br>Boats<br>Bottles<br>Buses<br>Cars<br>Cats<br>Chairs<br>Cows<br>Dining tables<br>Dogs<br>Horses<br>Motorbikes<br>People<br>Potted plants<br>Sheep<br>Sofas<br>Trains<br>TV/Monitors</p>
 </span>
       
     </div>
@@ -230,7 +242,7 @@ what <span class="keyword">is</span> beta, what beta shows us? <span class="keyw
       
         <div class="post-tags">
           
-            <a href="/tags/machine-learning/" rel="tag">#machine learning</a>
+            <a href="/tags/caffe/" rel="tag">#caffe</a>
           
         </div>
       
@@ -243,7 +255,7 @@ what <span class="keyword">is</span> beta, what beta shows us? <span class="keyw
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/31/what-Bias-Variance-decomposition-brings-to-us/" rel="next">what Bias-Variance decomposition(BVD) brings to us</a>
+              <a href="/2015/11/02/Generalized-linear-model/" rel="next">Generalized linear model</a>
             
           </div>
         </div>
@@ -305,7 +317,7 @@ what <span class="keyword">is</span> beta, what beta shows us? <span class="keyw
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -319,7 +331,7 @@ what <span class="keyword">is</span> beta, what beta shows us? <span class="keyw
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -347,7 +359,7 @@ what <span class="keyword">is</span> beta, what beta shows us? <span class="keyw
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#This_notes_is_to_mark_down_the_detail_of_the_project_for_reference"><span class="nav-number">1.</span> <span class="nav-text">This notes is to mark down the detail of the project for reference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#regression"><span class="nav-number"></span> <span class="nav-text">regression</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#data_description:"><span class="nav-number">1.</span> <span class="nav-text">data description:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#classification"><span class="nav-number"></span> <span class="nav-text">classification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#data_description:-1"><span class="nav-number">1.</span> <span class="nav-text">data description:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#First_apply_simple_model-"><span class="nav-number">1.1.</span> <span class="nav-text">First apply simple model.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Then_really_look_at_the_data_plot!_such_as_histogram_and_scatter"><span class="nav-number">1.1.1.</span> <span class="nav-text">Then really look at the data plot! such as histogram and scatter</span></a></li></ol></li></ol></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

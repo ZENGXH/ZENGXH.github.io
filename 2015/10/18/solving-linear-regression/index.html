@@ -30,7 +30,7 @@
 
 
 
-  <meta name="keywords" content="machine learning," />
+  <meta name="keywords" content="gradient descent,least square,machine learning,solver," />
 
 
 
@@ -39,17 +39,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.">
+<meta name="description" content="Linear regression is the basis of machine learning.Basically, to compute the linear regression model, usually we will first look at the cost and try to minimize it. Gradient descent/ Follow the gradie">
 <meta property="og:type" content="article">
-<meta property="og:title" content="what Bias-Variance decomposition(BVD) brings to us">
-<meta property="og:url" content="http://yoursite.com/2015/10/31/what-Bias-Variance-decomposition-brings-to-us/index.html">
+<meta property="og:title" content="solving linear regression">
+<meta property="og:url" content="http://yoursite.com/2015/10/18/solving-linear-regression/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.">
-<meta property="og:image" content="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf">
-<meta property="og:updated_time" content="2015-11-03T13:55:34.235Z">
+<meta property="og:description" content="Linear regression is the basis of machine learning.Basically, to compute the linear regression model, usually we will first look at the cost and try to minimize it. Gradient descent/ Follow the gradie">
+<meta property="og:image" content="http://ocw.mit.edu/courses/sloan-school-of-management/15-084j-nonlinear-programming-spring-2004/lecture-notes/lec5_steep_desce.pdf">
+<meta property="og:updated_time" content="2015-11-03T15:55:08.943Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="what Bias-Variance decomposition(BVD) brings to us">
-<meta name="twitter:description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.">
+<meta name="twitter:title" content="solving linear regression">
+<meta name="twitter:description" content="Linear regression is the basis of machine learning.Basically, to compute the linear regression model, usually we will first look at the cost and try to minimize it. Gradient descent/ Follow the gradie">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -61,7 +61,7 @@
 
 
 
-  <title> what Bias-Variance decomposition(BVD) brings to us | XXXH </title>
+  <title> solving linear regression | XXXH </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -171,7 +171,7 @@
           
           
             
-              what Bias-Variance decomposition(BVD) brings to us
+              solving linear regression
             
           
         </h1>
@@ -180,8 +180,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2015-10-31T09:32:03+01:00" content="2015-10-31">
-            2015-10-31
+          <time itemprop="dateCreated" datetime="2015-10-18T22:04:32+02:00" content="2015-10-18">
+            2015-10-18
           </time>
         </span>
 
@@ -200,68 +200,154 @@
       
 
       
-        <span itemprop="articleBody"><p>During project I finally gain more insight of what BVD means.<br>In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.<br><a id="more"></a></p>
-<p>First of all, there are several question we need to pay attention to: </p>
-<h2 id="what_is_the_measurement_of_the_model_complexity?">what is the measurement of the model complexity?</h2><ul>
-<li>we may simply think that in linear regression with polynormial basis function expansion, as the degree increase, the model complecity increase. However, if the regulization is added, things change! Degree is not the only measument. when the regulization term is large, the weights are tend to zero(expect beta0), so the model is indeed simple even if the degree may be high.<ul>
-<li>in a word, when measure the complexity of the model, it is better to keep one variable(ie, the degree or the regulazation) fixed. More specifically, for linear regression, it is simply depend on degree, for ridge regression, we usually fix the degree and vary lambda.</li>
+        <span itemprop="articleBody"><p>Linear regression is the basis of machine learning.<br>Basically, to compute the linear regression model, usually we will first look at the cost and try to minimize it. Gradient descent/ Follow the gradient is a general appraoch. And there are two slovers for the optimization problem: least square &amp; normal equation.<br><a id="more"></a></p>
+<table>
+<thead>
+<tr>
+<th>least square using Gradient descent</th>
+<th>least square using normal equation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>convergent order = 1, linear convergent</td>
+<td></td>
+</tr>
+<tr>
+<td>minimize function of $\alpha$ iteratively, search algorithm</td>
+<td>directly</td>
+</tr>
+<tr>
+<td>cal gradient, step by step: update rule, which is call ‘least mean squares/LMS update rule’</td>
+<td>set first derivative = 0, generate normal equation -&gt; closed form solution: $\theta = (X^TX)^{−1}X^T \mathbf{y}$</td>
+</tr>
+<tr>
+<td>may or may not the whole set of data</td>
+<td>need whoe set of data</td>
+</tr>
+<tr>
+<td></td>
+<td>ill condition matrix happens</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>batch</th>
+<th>stochastic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>direction caled based on all of the data</td>
+<td>caled take randomly take one pair of data</td>
+</tr>
+<tr>
+<td>convex, promise to reach global minimum</td>
+<td>close to global minimum but can not reach</td>
+</tr>
+<tr>
+<td>high computation cost, can be modified by ‘rocking’</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Gradient_descent">Gradient descent</h1><ul>
+<li>a common solver in machine learning:</li>
+<li>offline learning: having a batch of data, optimaze the equation(average loss, called rish in frequentist decision theory) base on all the data – batch gradient descent</li>
+<li>online learning: having a stream of data, update the estimate with new coming data</li>
+</ul>
+<p>##BATCH GRADIENT DESCENT(offline learning)</p>
+<ul>
+<li>one parameter: (singularle variable function optimization) $\beta^{(k+1)} \gets \beta^{(k)} - \alpha  \frac{\partial \mathcal{L}(\beta)^{(k)}}{\partial \beta}$ （stepsize $\alpha$ is hard to determine mannully）</li>
+<li>multi-parameter:(multivariable function optimization) $\mathbf{\beta}^{(k+1)} \gets \mathbf{\beta}^{(k)} - \alpha  \frac{\partial \mathcal{L}(\mathbf{\beta})^{(k)}}{\partial \mathbf{\beta}}$<br>= $\mathbf{\beta}^{(k)} - \alpha  \nabla \mathcal{L}(\mathbf{\beta})^{(k)} $</li>
+<li>dis: require large memory<ul>
+<li>a trick to speed up: <code>rocking</code> pass data forward-backward</li>
 </ul>
 </li>
+<li>ads: could reach global minimum</li>
 </ul>
-<h2 id="what_the_definition_of_the_bias?">what the definition of the bias?</h2><ul>
-<li>intuitively, if we mannully add our assumption(which may come from experience or the truth we know, it can be correct or wrong, benifit or harm to the model) to the model, the model will tend to depend less on the data we collect, then we will say the bias is high. The extreme case is that, we choose a large regulization term and all weights(expect beta0) go to zero, the models do not ‘listen’ to the data(the truth) and it is high bias.</li>
-<li>specifically, the definition of bias is $bias^2 = (\mu(h<em>{hypothesis}(x^*)) - f</em>{truemodel}(x^*))^2$<ul>
-<li>describe the average error of the hypothesis</li>
-</ul>
-</li>
-</ul>
-<h2 id="what_the_definition_of_variance?">what the definition of variance?</h2><ul>
-<li>def: $variance = E[(h<em>{hypothesis}(x^*) - \mu(h</em>{hypothesis}(x^*)))^2]$<ul>
-<li>it is the stability/variance of our model/hypothesis, if our model do not ‘listen’ to the data, then no matter what tranining set it use, it do not variant a lot and the value is low. On the other hand, if the model is overfitting(high complexity), then the variance is high.</li>
-<li>in other word, it describe how much $h(x^*)$ differ from others</li>
-</ul>
-</li>
-</ul>
-<h2 id="under_what_assumption_do_we_perform_the_BVD?">under what assumption do we perform the BVD?</h2><ul>
-<li>we assume that there exist a true model, even though we can nerver generate/get it.</li>
-<li>also assume that there is some noise in the data we collect, ie $y^<em> = f(x^</em>) + e$(e: noise)<ul>
-<li>notice that under this assumption, $E(y^<em>) = f(x^</em>) = \mu(y^*)$</li>
-</ul>
-</li>
-</ul>
-<h2 id="why_BVD_is_important_for_model_selecton?">why BVD is important for model selecton?</h2><ul>
-<li>the measurement of whether a model is good is based on the test error, since that we do not know the true value of the data we need to predict, we can not compute the test error directly and we need to extimate it by testing on the sample data. <ul>
-<li>the Estimation can be decomposited into three term: $bias$ + $variance^2$ + $noise^2$, <img src="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf" alt="detail"></li>
-<li>therefore the tradeoff between B and V is important</li>
-</ul>
-</li>
-</ul>
-<h2 id="how_the_tradeoff_happens?">how the tradeoff happens?</h2><ul>
-<li>when the complexity of the model increase, in general, the trainning error will decrease since it tend to highly fitting into the trainning set(overfitting) and the test error will increase. <ul>
-<li>Reason: when the input is away from the exact line(ie, there is some noise in the input), the output will become very different from the true value(ie, the noise will have huge impact on our prediction, also if there are noises in the trainning set, our model will be vary a lot and very different from the true model)<br>In this case, the bias is low(refer to the def of bias here), more specifically, the trainning error is ‘always’ low. </li>
-</ul>
-</li>
+<h2 id="stochastic_gradient_descent">stochastic gradient descent</h2><ul>
+<li>choose random pair in hte traning set and take a step, </li>
 </ul>
 <hr>
-<h2 id="So_how_do_we_measure_B_and_D_in_practice_??_[not_finish]">So how do we measure B and D in practice ?? [not finish]</h2><p>to get $E(h(x^<em>))$ need more than one traning set. but only one indead, so need to simulate multiplr trainning sets by </em>bootstrap repicates* ie, randomly split the sample data into trainning and test for many times with different seeds(in MATLAB)</p>
-<ul>
-<li>algorithm:</li>
+<p>implement issue</p>
+<h3 id="direction_selection">direction selection</h3><ul>
+<li>beside choosing the step size, we can also choose the direction, originally we use the steepest-descent methos which is follow the gradient direction, but this way is usually have a low convergent order + numerically not convergent there are other direction can be use – more general descent methods</li>
+<li>say direction $p^k$, gradient: $\nabla f(\mathbf{\beta})$, the requirement for the p is :$\nabla f(\mathbf{\beta}) ^T p^k &lt; 0 $(in the nearly opposite direction)</li>
+</ul>
+<h3 id="convergence_of_the_method_-_analysis_of_gradient_descend">convergence of the method - analysis of gradient descend</h3><ul>
+<li><code>when is guaranteed for the method to converge?</code> ?: $\mathcal{L}(\beta^{(k)})$ is continuous differentiable in the bounded set {$\beta | \mathcal{L}(\beta) &lt; \mathcal{L}(\beta_0)$} – refer the [convergent theorem][1]<ul>
+<li>convex function have only one global minimun(all local minima are also global minimum); strictly convex function have unique global minimum; </li>
+<li>sequence {$\nabla \mathcal{L}(\beta^{(k)})$} </li>
+</ul>
+</li>
+<li><code>convergent order</code> , <code>linear convergent</code> , <code>convergent constant</code> [see here][2] <ul>
+<li><strong>meaning of convergent constant in gradient descend:</strong> if =0.1, then te itration gain 0.1 of accuracy in the <code>optimal objective function value</code> each round, if =0.9, need $0.9^{22}$, ie 22 round<ul>
+<li>convergent constant small is better, even both in linear convergent, different c.c can means huge diff. performance</li>
+<li>cal $cc = (\frac {\lambda<em>{max} - \lambda</em>{min}}{\lambda<em>{max} + \lambda</em>{min}})^2$ <img src="http://ocw.mit.edu/courses/sloan-school-of-management/15-084j-nonlinear-programming-spring-2004/lecture-notes/lec5_steep_desce.pdf" alt="see here"></li>
+</ul>
+</li>
+<li>convergent rate can be increase by <code>feature scaling/data normalization/prepossing</code>, methods can be rescaling, standarization, or scling to unit length. <ul>
+<li>standarization: x = (x - mean(x))/var(x)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>if the problem is see here quadratic optimization problem , the model can be </li>
+<li>QP: minimize $f(x) := 1/2 x^T Q x + c^T x$ which is a ellipse and Q is symmetry matrix, in this case, eigenvalue is the radius of the ellipse and <em>the convergent constant depends very much on the ratio of the largest to the smallest eigenvalue of the Hessian matrix H(x) at the optimal soluction $x^</em>$<em> <em>*we want the ratio to be small, that is , nearly 1</em></em> </li>
+<li>ratio of largest to smallest eigenvalue = <strong>condition number</strong> of the matrix</li>
+</ul>
+<h3 id="Stopping_criteria_-_optimality_conditions">Stopping criteria - optimality conditions</h3><ol>
+<li>first derivative = 0</li>
+<li>second deri. positive definite. <code>what is this mean?</code></li>
+</ol>
+<h3 id="step-size_selection:_$\alpha$">step-size selection: $\alpha$</h3><ul>
+<li>requirement:  <strong>Convergence</strong> to a local minimum is guaranteed only when $\alpha$ &lt; $\alpha<em>{min}$ where $\alpha</em>{min}$ is a fxed constant that depends on the problem. </li>
+<li>$\alpha$ can be different each iteration(decreasing) or fixed<ul>
+<li>we may hope $\alpha$ decrease as it approach the minimum, however, it can not simply decrease rach iteration otherwise it may not converge to the minimum, so we should besed on the value of each iteration to decide whether decrease or keep – automatically selection<br>method to find the locally optimal step size:<br>1.Exact Line Search: $\alpha^k$ is picked to minimize a function of $\alpha^{k}$ knowing x and d: $ = arg min_{\alpha}h(\alpha)= f(x^k + \alpha p^k)$ =&gt; usable, not cost effective</li>
+</ul>
+</li>
 </ul>
 <ol>
-<li>given training sample S, set s seeds to split it</li>
-<li>genarate multiple hypothesis h1,h2,h3,….hs</li>
-<li>(option) determining corresponding weights w1,w2,…wL, here we view each h qually, ie. no weights for different hypothesis</li>
-<li>classify new points by $y_{pred} = h<em>i(x</em>{new})$<br>$E(h(x^<em>)) = \mu(h(x^</em>)) = mean(\sum (h_i(x^<em>)) ) = \frac{1}{s}\sum (h_i(x^</em>))$,<br>$i \in {1,2,3,…s}$</li>
+<li>Inexact line search:</li>
 </ol>
-<p>since that<br>$bias^2 = (\mu(h(x^<em>)) - f_{truemodel}(x^</em>))^2$<br>$bias = (\mu(h(x^<em>)) - f_{truemodel}(x^</em>))$</p>
-<p>$$variance = E[(h(x^<em>) - \mu(h(x^</em>)))^2] =Var(h(x^<em>)) = Var(h(x_1^</em>)) + Var(h(x_2^<em>)) + …=  \frac{1}{s} </em>\Sum{E[(h_i(x^<em>) - \mu(h(x^</em>)))^2]}$$<br>when shown in the figure, it is the variance of different result(test error) of different seeds.</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> s = 1,2,3....</span><br><span class="line">	S = (Tr(s),<span class="keyword">Te</span>(s));</span><br><span class="line">	traning <span class="keyword">on</span> Tr(s)</span><br><span class="line">		compute errorTr(s)</span><br><span class="line">		<span class="comment">// for traning the parameters</span></span><br><span class="line">	<span class="keyword">test</span> <span class="keyword">on</span> <span class="keyword">Te</span>(s)</span><br><span class="line">		compute errorTr(s) </span><br><span class="line">		<span class="comment">// expect train(on all the sample we have) error E[(h(x^*) - y^*)^2]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>bisection algorithm to soling the equation: $h’(\alpha)=0$<ul>
+<li>s1: i=0, al=0,au=$\hat{a}$; s2: a = (al+au)/2; s3: if h’(a)&gt;0, au=a,k++, else, al=a,k++; stop whrn h’(a)=0</li>
+</ul>
+</li>
+<li>line-search method: used to set step-size automatically: <code>backtracking</code><ul>
+<li>[MIT nonlinear programming][3] </li>
+<li>[line-search notes][4]  </li>
+<li>backtracking (Armijo) line search:<ul>
+<li>in a word, reduce step size after making sure that value of f is smaller than before</li>
+<li>1) $\alpha^{(0)} = \alpha_{init}$ was given $l=0$, 2) if $f(x^k + a^{(l)}p^k) “&lt;” f^k$, i) set $\alpha^{(l+1)} = t\alpha^{(l)} $ t in (0,1) is fixed and ii) increment l by 1  3)set $\alpha^k = \alpha{(l)}$ – prevent step size getting too small before approach the solution but it does not prevent step to be too long – improve by tighten the requirement for “&lt;” see the notes for modification and termination</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <hr>
-<h1 id="how_to_reduce_variance:">how to reduce variance:</h1><p>bagging and other resampling technique, one typical example is random forest<br>it means we preduce many times choosing different training set and get the average prediction as the result</p>
+<h1 id="comment_on_gradient_descent:">comment on gradient descent:</h1><p>as along as the cost function is convex and the first derivative is continuous, the gradient descent method is guaranteed to reach the global minimum (ie, convergent). But the fact is that gradent descent have problem with vally shape optimizaton, in which case the ratio of the maximal and minimal eigenvalues of X is large, the number of iterations to reduce the optimality cap can be very large, <a href="http://ocw.mit.edu/courses/sloan-school-of-management/15-084j-nonlinear-programming-spring-2004/lecture-notes/lec5_steep_desce.pdf" target="_blank" rel="external">http://ocw.mit.edu/courses/sloan-school-of-management/15-084j-nonlinear-programming-spring-2004/lecture-notes/lec5_steep_desce.pdf</a>, here shows that when the ratio vary from 1 to 100, the number of iterations vary from 10 to 2310,(mention that the convergent constant from 0.0023 t0 0.99, for what it means ,refer above)<br><strong>conclusion</strong>: steepest descent convergence rate is very sensitive to the eigenvalue ratio<br>which is saying that the features are not normalized well<br>speed of convergence of gradient descent depends on the<br>perfrom: feature scaling </p>
 <hr>
-<h1 id="insight">insight</h1><ol>
-<li>bagging of a flexible(overfitting) models may reduce the variance and benift from low bias</li>
-</ol>
+<ul>
+<li>Lipschitz function:<ul>
+<li>a function with bounded first derivative</li>
+</ul>
+</li>
+</ul>
+<h4 id="condition_number">condition number</h4><ul>
+<li><em><code>condition number</code> measure how easy it is to invert a matrix</em><ul>
+<li>condition number of $\mathbf{A} = \parallel\mathbf{A^T}\parallel\times \parallel \mathbf{A} \parallel$ [link: ==][1] $\parallel \mathbf{A^{-1}} \parallel \parallel \mathbf{A} \parallel = \frac{\sigma<em>{max} (\mathbf{A})}{\sigma</em>{min} (\mathbf{A})}$</li>
+<li>matrix norms: a way of sizing up a matrix, a small change to a matrix can change the norm in a great scale</li>
+<li>large condition number of $\mathbf{A}$<br>= ill-conditioned/ill-posed problem<br>= inaccurate result<br>= hard to invert </li>
+<li>view condition number as error multiplier of solution of linear system $\mathbf{A}x = b$</li>
+</ul>
+</li>
+<li>One way that systems of equations can be made better conditioned is to fix things so that all the rows have largest elements that are about the same size - (normalization)</li>
+<li>for an invertible matrix:<br>$\Delta b$ is the error of the collected data<br>$\mathbf{x^<em>}$ is the solution of the system<br>$\mathbf{A}x = b + \Delta b$<br>$\mathbf{x} = \mathbf{A^{-1}} (\mathbf{b} + \Delta \mathbf{b}) = \mathbf{A^{-1}} \mathbf{b} + \mathbf{A^{-1}} \Delta \mathbf{b} = \mathbf{x^</em>} + \mathbf{A^{-1}} \Delta \mathbf{b}$<br>intuitively, if $A$ is small then $A^{-1}$ is large</li>
+</ul>
 </span>
       
     </div>
@@ -270,7 +356,13 @@
       
         <div class="post-tags">
           
+            <a href="/tags/gradient-descent/" rel="tag">#gradient descent</a>
+          
+            <a href="/tags/least-square/" rel="tag">#least square</a>
+          
             <a href="/tags/machine-learning/" rel="tag">#machine learning</a>
+          
+            <a href="/tags/solver/" rel="tag">#solver</a>
           
         </div>
       
@@ -279,13 +371,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/31/machine-learning-projectI/" rel="prev">machine learning project I</a>
+              <a href="/2015/10/19/learning theory/" rel="prev">learning theory - bias-variance tradeoff</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/25/computer_vision/" rel="next">computer_vision</a>
+              <a href="/2015/10/18/useful-git-command/" rel="next">useful git command</a>
             
           </div>
         </div>
@@ -389,7 +481,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#what_is_the_measurement_of_the_model_complexity?"><span class="nav-number">1.</span> <span class="nav-text">what is the measurement of the model complexity?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what_the_definition_of_the_bias?"><span class="nav-number">2.</span> <span class="nav-text">what the definition of the bias?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what_the_definition_of_variance?"><span class="nav-number">3.</span> <span class="nav-text">what the definition of variance?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#under_what_assumption_do_we_perform_the_BVD?"><span class="nav-number">4.</span> <span class="nav-text">under what assumption do we perform the BVD?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#why_BVD_is_important_for_model_selecton?"><span class="nav-number">5.</span> <span class="nav-text">why BVD is important for model selecton?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how_the_tradeoff_happens?"><span class="nav-number">6.</span> <span class="nav-text">how the tradeoff happens?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#So_how_do_we_measure_B_and_D_in_practice_??_[not_finish]"><span class="nav-number">7.</span> <span class="nav-text">So how do we measure B and D in practice ?? [not finish]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how_to_reduce_variance:"><span class="nav-number"></span> <span class="nav-text">how to reduce variance:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#insight"><span class="nav-number"></span> <span class="nav-text">insight</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradient_descent"><span class="nav-number">1.</span> <span class="nav-text">Gradient descent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stochastic_gradient_descent"><span class="nav-number">1.1.</span> <span class="nav-text">stochastic gradient descent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#direction_selection"><span class="nav-number">1.1.1.</span> <span class="nav-text">direction selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#convergence_of_the_method_-_analysis_of_gradient_descend"><span class="nav-number">1.1.2.</span> <span class="nav-text">convergence of the method - analysis of gradient descend</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stopping_criteria_-_optimality_conditions"><span class="nav-number">1.1.3.</span> <span class="nav-text">Stopping criteria - optimality conditions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-size_selection:_$\alpha$"><span class="nav-number">1.1.4.</span> <span class="nav-text">step-size selection: $\alpha$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comment_on_gradient_descent:"><span class="nav-number">2.</span> <span class="nav-text">comment on gradient descent:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#condition_number"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">condition number</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

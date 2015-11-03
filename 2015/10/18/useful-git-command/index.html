@@ -39,22 +39,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="markdown some useful git command in case…NEVER ADD BIG FILE&amp;gt;100M OTHERWISE YOU WILL DIE….
-
-if your want to push your local branch to remote repo12345678910111213141516171819202122232425262728293031">
+<meta name="description" content="markdown some useful git command from my experience in case…including:push your local branch to remote repobuild up our work after git clone othersadd and commit when in the right branch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="useful git command">
 <meta property="og:url" content="http://yoursite.com/2015/10/18/useful-git-command/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="markdown some useful git command in case…NEVER ADD BIG FILE&amp;gt;100M OTHERWISE YOU WILL DIE….
-
-if your want to push your local branch to remote repo12345678910111213141516171819202122232425262728293031">
-<meta property="og:updated_time" content="2015-11-02T22:07:11.508Z">
+<meta property="og:description" content="markdown some useful git command from my experience in case…including:push your local branch to remote repobuild up our work after git clone othersadd and commit when in the right branch">
+<meta property="og:updated_time" content="2015-11-03T14:45:24.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="useful git command">
-<meta name="twitter:description" content="markdown some useful git command in case…NEVER ADD BIG FILE&amp;gt;100M OTHERWISE YOU WILL DIE….
-
-if your want to push your local branch to remote repo12345678910111213141516171819202122232425262728293031">
+<meta name="twitter:description" content="markdown some useful git command from my experience in case…including:push your local branch to remote repobuild up our work after git clone othersadd and commit when in the right branch">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -205,7 +199,8 @@ if your want to push your local branch to remote repo123456789101112131415161718
       
 
       
-        <span itemprop="articleBody"><p>markdown some useful git command in case…<br>NEVER ADD BIG FILE&gt;100M OTHERWISE YOU WILL DIE….</p>
+        <span itemprop="articleBody"><p>markdown some useful git command from my experience in case…<br>including:<br>push your local branch to remote repo<br>build up our work after git clone others<br>add and commit when in the right branch<br><a id="more"></a></p>
+<p>NEVER ADD BIG FILE&gt;100M OTHERWISE YOU WILL DIE….</p>
 <ul>
 <li>if your want to push your local branch to remote repo<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">// if you <span class="operator"><span class="keyword">update</span> origin(remote) branch somewhere <span class="keyword">else</span>, want <span class="keyword">to</span> <span class="keyword">fetch</span> the <span class="keyword">update</span></span><br><span class="line">git <span class="keyword">fetch</span></span><br><span class="line">// <span class="keyword">then</span> can perform <span class="keyword">merge</span></span><br><span class="line"></span><br><span class="line">// very useful <span class="keyword">to</span> <span class="keyword">check</span> the branch infomation <span class="keyword">for</span> remote</span><br><span class="line">// another one <span class="keyword">is</span></span><br><span class="line">git <span class="keyword">show</span>-<span class="keyword">ref</span></span><br><span class="line"><span class="string">"""</span><br><span class="line">de2138ba78c41d27f7c3ce96da6693833c35774d refs/heads/ft2mat</span><br><span class="line">d56dd7b77591ef21b7a21ed7cb3e2ee91b542d22 refs/heads/xh</span><br><span class="line">d56dd7b77591ef21b7a21ed7cb3e2ee91b542d22 refs/remotes/origin/HEAD</span><br><span class="line">75a02a5638c7fabd77be176898ec25f24e5c7816 refs/remotes/origin/features</span><br><span class="line">51553de1b544a7dde3e0e17607c3ca1038401525 refs/remotes/origin/workLocal</span><br><span class="line">d56dd7b77591ef21b7a21ed7cb3e2ee91b542d22 refs/remotes/origin/xh</span><br><span class="line">"""</span></span><br><span class="line">// it means that, <span class="keyword">now</span> we have <span class="keyword">local</span> branch <span class="string">`ft2mat`</span> but it <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">in</span> the remote repo, <span class="keyword">in</span> this <span class="keyword">case</span>, we <span class="keyword">are</span> <span class="keyword">not</span> able <span class="keyword">to</span> <span class="string">`push origin/ft2mat`</span> since the repo ft2mat does <span class="keyword">not</span> exist</span><br><span class="line">// you will meet:</span><br><span class="line"># fatal: <span class="string">'origin/ft2mat'</span> does <span class="keyword">not</span> appear <span class="keyword">to</span> be a git repository</span><br><span class="line"># fatal: Could <span class="keyword">not</span> <span class="keyword">read</span> <span class="keyword">from</span> remote repository.</span><br><span class="line"></span><br><span class="line">// <span class="keyword">then</span> run:</span><br><span class="line">$ git push <span class="comment">--all -u</span></span><br><span class="line"></span><br><span class="line">// <span class="keyword">show</span> <span class="keyword">ref</span>:</span><br><span class="line">$ git <span class="keyword">show</span>-<span class="keyword">ref</span></span><br><span class="line"><span class="string">"""</span><br><span class="line">de2138ba78c41d27f7c3ce96da6693833c35774d refs/heads/ft2mat</span><br><span class="line">d56dd7b77591ef21b7a21ed7cb3e2ee91b542d22 refs/heads/xh</span><br><span class="line">d56dd7b77591ef21b7a21ed7cb3e2ee91b542d22 refs/remotes/origin/HEAD</span><br><span class="line">75a02a5638c7fabd77be176898ec25f24e5c7816 refs/remotes/origin/features</span><br><span class="line">de2138ba78c41d27f7c3ce96da6693833c35774d refs/remotes/origin/ft2mat</span><br><span class="line">51553de1b544a7dde3e0e17607c3ca1038401525 refs/remotes/origin/workLocal</span><br><span class="line">d56dd7b77591ef21b7a21ed7cb3e2ee91b542d22 refs/remotes/origin/xh</span><br><span class="line">"""</span></span><br><span class="line">// <span class="keyword">now</span> we can </span><br><span class="line">$ git push origin ft2mat</span><br><span class="line"></span><br><span class="line">!done</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -232,7 +227,7 @@ if your want to push your local branch to remote repo123456789101112131415161718
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/19/read-caffe/" rel="prev">read caffe</a>
+              <a href="/2015/10/18/solving-linear-regression/" rel="prev">solving linear regression</a>
             
           </div>
 
@@ -300,7 +295,7 @@ if your want to push your local branch to remote repo123456789101112131415161718
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -314,7 +309,7 @@ if your want to push your local branch to remote repo123456789101112131415161718
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
