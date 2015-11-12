@@ -1,0 +1,701 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="machine learning," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="course notes: pattern classification and machine learning @EPFL, Switzerland">
+<meta property="og:type" content="article">
+<meta property="og:title" content="course notes machine learning">
+<meta property="og:url" content="http://yoursite.com/2015/11/10/course-notes-machine-learning/index.html">
+<meta property="og:site_name" content="XXXH">
+<meta property="og:description" content="course notes: pattern classification and machine learning @EPFL, Switzerland">
+<meta property="og:image" content="https://www.zybuluo.com/xxh/note/187073">
+<meta property="og:updated_time" content="2015-11-11T21:37:15.438Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="course notes machine learning">
+<meta name="twitter:description" content="course notes: pattern classification and machine learning @EPFL, Switzerland">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+
+
+  <title> course notes machine learning | XXXH </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">XXXH</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              course notes machine learning
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-11-10T21:44:43+01:00" content="2015-11-10">
+            2015-11-10
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/machine-learning/" itemprop="url" rel="index">
+                  <span itemprop="name">machine learning</span>
+                </a>
+              </span>
+
+              
+              
+                , 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/machine-learning/courses/" itemprop="url" rel="index">
+                  <span itemprop="name">courses</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>course notes: pattern classification and machine learning @EPFL, Switzerland<br><a id="more"></a></p>
+<h1 id="linear_regression">linear regression</h1><p>simple, multiple</p>
+<h1 id="regression">regression</h1><p>base function expansion: polynormial =&gt; generated features</p>
+<h1 id="cost_function">cost function</h1><p>desire: 1. to be symmetric 2. penalize large and very large mistakes<br>statistical(outliers, <img src="https://www.zybuluo.com/xxh/note/187073" alt="robust statistic">) and computational(convexity) tradeoff</p>
+<ul>
+<li>MSE</li>
+<li>MAE<ul>
+<li>in general many global minimum but not differentiate everywhere and no local minimum</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Huber loss<ul>
+<li>more robust to outliers,</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Tukeys bisquare loss<ul>
+<li>ideal for working with outliers, but not differentiate and not convex</li>
+</ul>
+</li>
+</ul>
+<h1 id="Gradient_descent">Gradient descent</h1><p>learning<br>: given cost function, find $\beta$ minimize the cost<br>: learing posted as optimization</p>
+<h2 id="optimization_method">optimization method</h2><h3 id="1-_grid_search">1. grid search</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">presudo-<span class="tag">code</span>: <span class="function"><span class="title">O</span><span class="params">(x^D * NDD)</span></span>, x is <span class="function"><span class="title">length</span><span class="params">(beta0)</span></span></span><br><span class="line"><span class="keyword">for</span> i1 = <span class="number">1</span>: <span class="function"><span class="title">length</span><span class="params">(beta0)</span></span></span><br><span class="line">    <span class="keyword">for</span> i2 = <span class="number">1</span>: <span class="function"><span class="title">length</span><span class="params">(beta1)</span></span></span><br><span class="line">        <span class="keyword">for</span> i3 = <span class="number">1</span>:<span class="function"><span class="title">length</span><span class="params">(beta2)</span></span></span><br><span class="line">            ...</span><br><span class="line">                e = y - tX*[beta0,beta1..] <span class="comment">//O(NDD) </span></span><br><span class="line">                <span class="function"><span class="title">cost</span><span class="params">(i1,i2,i3,...)</span></span> = e<span class="string">' * e * (1/N) //O(1DD)</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-_gradient_descent:_batch_vs_stochastic">2. gradient descent: batch vs stochastic</h3><p>examples when the cost function is MSE<br>implementation issue<br>: stopping criteria - convergence assessment</p>
+<ul>
+<li>positive defininely hessian<br>: step size: line search<br>: feature normailzation - gradient descent sensitive to ill-condictioning<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">presudo-code: using MSE <span class="keyword">as</span> cost function: O(NDi(steps))</span><br><span class="line"><span class="keyword">for</span> i=1:maxIeters</span><br><span class="line">    <span class="keyword">e</span> = y - tX*beta <span class="comment">// O(ND)</span></span><br><span class="line">    <span class="keyword">g</span> = -(1/<span class="keyword">N</span>) * tX' *<span class="keyword">e</span> <span class="comment">//  O(DN)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="SGD_in_neural_network:_learning_rate_lr(~0-001)_and_momentumn(~0-9)">SGD in neural network: learning rate lr(~0.001) and momentumn(~0.9)</h4><p>hyparameter<br>batch size</p>
+<h3 id="3-_Least_square">3. Least square</h3><h4 id="normal_equaction,_close_form_solution">normal equaction, close form solution</h4><p>if use MSE as cost function:<br>g = -(1/N) <em> tX’ \</em>(y - tX*beta) = 0<br>close form: tX*beta=y, beta=inv(tX’ tX)tX y<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">beta=<span class="function"><span class="title">inv</span><span class="params">(tX<span class="string">' tX)tX'</span> y //O(DNN+D^<span class="number">3</span>+DDN+DNN)</span></span></span><br><span class="line"><span class="comment">// in matlab</span></span><br><span class="line">beta = <span class="function"><span class="title">pinv</span><span class="params">(tX<span class="string">'*tX)\*(tX'</span>\*y)</span></span> <span class="comment">//O(DNN+D^3+DNN+DD)</span></span><br><span class="line">beta = (tX<span class="string">' \* tX) \ (tX * y)</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="Maximum_likelihood">Maximum likelihood</h1><h2 id="Assume:_data_is_generated_from_a_probability_distribution">Assume: data is generated from a probability distribution</h2><h3 id="assume_follow_guassian_distribution_+_independent_~~_MSE">assume follow guassian distribution + independent ~~ MSE</h3><h4 id="likelihood_of_observing_y_given_X_and_beta:_p(y|X,_beta)">likelihood of observing y given X and beta: p(y|X, beta)</h4><p>take log =&gt; log-likelihood<br>maximize likelihood function(guassian dist) = minimize MSE cost function</p>
+<h4 id="maximum_likehood_estimator_-_least_square">maximum likehood estimator - least square</h4><p>another interpre: find the model under which the observed data is most likely to have been generated from </p>
+<h5 id="properites_of_mle">properites of mle</h5><p>?consistent under some condition<br>asymptotically normal,  (fisher information)<br>efficient, achieves Cramor-Rao lower bound</p>
+<h3 id="assume_follow_Laplace_distribution_~~_MAE">assume follow Laplace distribution ~~ MAE</h3><hr>
+<h1 id="overfitting">overfitting</h1><h2 id="Occams_Razor:_simpler_is_better">Occams Razor: simpler is better</h2><h2 id="regulizarion">regulizarion</h2><h2 id="shrinkage,_weight_decay,_early_stopping">shrinkage, weight decay, early stopping </h2><h1 id="ridge_regression_-_fight_overfitting_-_as_MAP_estimator">ridge regression - fight overfitting - as MAP estimator</h1><p>extend linear model: nonlinear basis function<br>$cost = L(\beta) + \lamba/2N \sum{beta_j}^2$<br>$g:= 1/N * (tX’())$</p>
+<h2 id="Maximum_a_posteriori_estimate">Maximum a posteriori estimate</h2><p>estimate the maximum of the product of likelihood and prior</p>
+<h1 id="cross_validation">cross validation</h1><h2 id="generalization_error">generalization error</h2><hr>
+<h1 id="Bias_variance_Decomposition">Bias variance Decomposition</h1><p>train error<br>in-sample test error<br>test error<br>expected test error = noise variance + bias + …</p>
+<hr>
+<h1 id="classification">classification</h1><h1 id="logistic_regression">logistic regression</h1><h2 id="probabilistic_model:_bernouly_distribution">probabilistic model: bernouly distribution</h2><p>generate distribution/probability of y: p(y|sigmoid(X,beta),lambda(if penalized)) (then take log, get L(beta)), maximize it.<br>$L’=tX’ [sigmoid(tX *\beta) - y]$<br>not able to get normal equation<br>=&gt; cant use least square<br>=&gt; use gradient descent or newton method</p>
+<h2 id="convexity">convexity</h2><p>hessian: H(beta) = tX’ S tX (if penalize, + lamba I<em>D)<br>S: diagonal, $entry</em>{nn} =\sigma(..)[1-\sigma(..)]_n$</p>
+<hr>
+<h1 id="Generalized_linear_model">Generalized linear model</h1><h2 id="exponential_family_distribution">exponential family distribution</h2><p>bernoulli distribution, gaussian dist</p>
+<h3 id="properties:_$A’(\ada)=\mu$,_$A’’(\ada)=\sigma$">properties: $A’(\ada)=\mu$, $A’’(\ada)=\sigma$</h3><h2 id="maximum_log-likelihood_estimate_for_exponential_family_distribution">maximum log-likelihood estimate for exponential family distribution</h2><p>=&gt; normal equtaion: $X^T[g^{-1}(\ada)-y]$</p>
+<hr>
+<h1 id="curse_of_dimensionality">curse of dimensionality</h1></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/machine-learning/" rel="tag">#machine learning</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/10/review-linear-algreba/" rel="prev">review linear algebra</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/02/Current-work/" rel="next">Currently working on...[keep updating]</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/xx.jpg" alt="XXXH" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">XXXH</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ZENGXH" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/xiao-xiao-hui-49" target="_blank">zhihu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="4650xh@gmail.com" target="_blank">email</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linear_regression"><span class="nav-number">1.</span> <span class="nav-text">linear regression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#regression"><span class="nav-number">2.</span> <span class="nav-text">regression</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cost_function"><span class="nav-number">3.</span> <span class="nav-text">cost function</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradient_descent"><span class="nav-number">4.</span> <span class="nav-text">Gradient descent</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#optimization_method"><span class="nav-number">4.1.</span> <span class="nav-text">optimization method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_grid_search"><span class="nav-number">4.1.1.</span> <span class="nav-text">1. grid search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_gradient_descent:_batch_vs_stochastic"><span class="nav-number">4.1.2.</span> <span class="nav-text">2. gradient descent: batch vs stochastic</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SGD_in_neural_network:_learning_rate_lr(~0-001)_and_momentumn(~0-9)"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">SGD in neural network: learning rate lr(~0.001) and momentumn(~0.9)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_Least_square"><span class="nav-number">4.1.3.</span> <span class="nav-text">3. Least square</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#normal_equaction,_close_form_solution"><span class="nav-number">4.1.3.1.</span> <span class="nav-text">normal equaction, close form solution</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Maximum_likelihood"><span class="nav-number">5.</span> <span class="nav-text">Maximum likelihood</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Assume:_data_is_generated_from_a_probability_distribution"><span class="nav-number">5.1.</span> <span class="nav-text">Assume: data is generated from a probability distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#assume_follow_guassian_distribution_+_independent_~~_MSE"><span class="nav-number">5.1.1.</span> <span class="nav-text">assume follow guassian distribution + independent ~~ MSE</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#likelihood_of_observing_y_given_X_and_beta:_p(y|X,_beta)"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">likelihood of observing y given X and beta: p(y|X, beta)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#maximum_likehood_estimator_-_least_square"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">maximum likehood estimator - least square</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#properites_of_mle"><span class="nav-number">5.1.1.2.1.</span> <span class="nav-text">properites of mle</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#assume_follow_Laplace_distribution_~~_MAE"><span class="nav-number">5.1.2.</span> <span class="nav-text">assume follow Laplace distribution ~~ MAE</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#overfitting"><span class="nav-number">6.</span> <span class="nav-text">overfitting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Occams_Razor:_simpler_is_better"><span class="nav-number">6.1.</span> <span class="nav-text">Occams Razor: simpler is better</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#regulizarion"><span class="nav-number">6.2.</span> <span class="nav-text">regulizarion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shrinkage,_weight_decay,_early_stopping"><span class="nav-number">6.3.</span> <span class="nav-text">shrinkage, weight decay, early stopping </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ridge_regression_-_fight_overfitting_-_as_MAP_estimator"><span class="nav-number">7.</span> <span class="nav-text">ridge regression - fight overfitting - as MAP estimator</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Maximum_a_posteriori_estimate"><span class="nav-number">7.1.</span> <span class="nav-text">Maximum a posteriori estimate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cross_validation"><span class="nav-number">8.</span> <span class="nav-text">cross validation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#generalization_error"><span class="nav-number">8.1.</span> <span class="nav-text">generalization error</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bias_variance_Decomposition"><span class="nav-number">9.</span> <span class="nav-text">Bias variance Decomposition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#classification"><span class="nav-number">10.</span> <span class="nav-text">classification</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#logistic_regression"><span class="nav-number">11.</span> <span class="nav-text">logistic regression</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#probabilistic_model:_bernouly_distribution"><span class="nav-number">11.1.</span> <span class="nav-text">probabilistic model: bernouly distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#convexity"><span class="nav-number">11.2.</span> <span class="nav-text">convexity</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Generalized_linear_model"><span class="nav-number">12.</span> <span class="nav-text">Generalized linear model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#exponential_family_distribution"><span class="nav-number">12.1.</span> <span class="nav-text">exponential family distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#properties:_$A’(\ada)=\mu$,_$A’’(\ada)=\sigma$"><span class="nav-number">12.1.1.</span> <span class="nav-text">properties: $A’(\ada)=\mu$, $A’’(\ada)=\sigma$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maximum_log-likelihood_estimate_for_exponential_family_distribution"><span class="nav-number">12.2.</span> <span class="nav-text">maximum log-likelihood estimate for exponential family distribution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#curse_of_dimensionality"><span class="nav-number">13.</span> <span class="nav-text">curse of dimensionality</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XXXH</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

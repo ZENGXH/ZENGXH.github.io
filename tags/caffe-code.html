@@ -1,0 +1,515 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content=",," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="common.hpp - define Caffe class12// The main singleton of Caffe class and encapsulates the boost and CUDA random number// generation function, providing a unified interface.
+? what is classnamecaffeis">
+<meta property="og:type" content="website">
+<meta property="og:title" content="caffe code">
+<meta property="og:url" content="http://yoursite.com/tags/caffe-code.html">
+<meta property="og:site_name" content="XXXH">
+<meta property="og:description" content="common.hpp - define Caffe class12// The main singleton of Caffe class and encapsulates the boost and CUDA random number// generation function, providing a unified interface.
+? what is classnamecaffeis">
+<meta property="og:image" content="http://yoursite.com/caffe/caffe_layer.png">
+<meta property="og:updated_time" content="2015-11-11T21:39:37.376Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="caffe code">
+<meta name="twitter:description" content="common.hpp - define Caffe class12// The main singleton of Caffe class and encapsulates the boost and CUDA random number// generation function, providing a unified interface.
+? what is classnamecaffeis">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+
+
+  <title>
+  
+
+  
+    caffe code | XXXH
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">XXXH</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+    
+      <a id="more"></a>
+<h1 id="common-hpp_-_define_Caffe_class">common.hpp - define <code>Caffe</code> class</h1><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// The main singleton <span class="operator">of</span> Caffe class <span class="operator">and</span> encapsulates <span class="operator">the</span> boost <span class="operator">and</span> CUDA <span class="built_in">random</span> <span class="built_in">number</span><span class="comment"></span><br><span class="line">// generation function, providing a unified interface.</span></span><br></pre></td></tr></table></figure>
+<p>? what is <code>classname</code>caffe<code>is namespace</code>Caffe<code>is class
+    method related to the setting of mode(gpu,cpu....)
+    subclass:</code>RNG`</p>
+<h1 id="syncedmen-hpp">syncedmen.hpp</h1><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># <span class="keyword">include</span> common.hpp</span></span><br></pre></td></tr></table></figure>
+<p>caffe syncedmen 程序 用来管理内存分配，和GPU和CPU之间的同步</p>
+<h1 id="caffe-protocol">caffe.protocol</h1><p>id decide the print order</p>
+<h1 id="caffe-pb-h">caffe.pb.h</h1><p>class:<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">namespace caffe&#123;</span><br><span class="line">    class <span class="type">BlobShape</span><span class="decorator">&#123;...&#125;</span></span><br><span class="line">    class <span class="type">BlobProto</span><span class="decorator">&#123;...&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"># proto file</span><br><span class="line">    package caffe</span><br><span class="line">    msg <span class="keyword">BlobShape: </span>dim</span><br><span class="line">    msg <span class="keyword">BlobProto:</span><br><span class="line"></span>        repeated <span class="preprocessor">data</span>, diff</span><br><span class="line">        <span class="keyword">BlobShape </span>shape(dimension of <span class="keyword">blob)</span><br><span class="line"></span>        num, channels, height, width</span><br><span class="line">    msg <span class="keyword">BlobProtoVector:</span><br><span class="line"></span>        repeated <span class="keyword">BlobProto</span><br><span class="line"></span>    msg Datum:</span><br><span class="line">        channels, height, width, <span class="preprocessor">data</span>, label,</span><br><span class="line"></span><br><span class="line">    msg FillerParameter: mean, std // of the Gaussian filler</span><br><span class="line">    msg NetParameter: </span><br><span class="line">        name, input, </span><br><span class="line">        <span class="keyword">BlobShape </span>input_shape</span><br><span class="line">        <span class="keyword">bool </span>force_backward </span><br><span class="line">        // force every layer run <span class="keyword">backward </span>operation or not</span><br><span class="line">        </span><br><span class="line">        NetState state: phase, level, <span class="keyword">and </span>stage</span><br><span class="line">        LayerParameter layer</span><br><span class="line"></span><br><span class="line">    msg SolverParameter </span><br><span class="line">    msg SolverState </span><br><span class="line">    msg NetState</span><br><span class="line">    msg NetStateRule</span><br><span class="line">    msg ParamSpec // Specifies training parameters </span><br><span class="line"></span><br><span class="line">    msg LayerParameter:</span><br><span class="line">        <span class="keyword">string </span>name, type, <span class="keyword">bottom, </span>top</span><br><span class="line">        Phase phase // train or test</span><br><span class="line">        float loss_weight</span><br><span class="line">        ParamSpec param // Specifies training parameters</span><br><span class="line">        <span class="keyword">BlobProto </span><span class="keyword">blobs </span>// The <span class="keyword">blobs </span>containing the numeric parameters of the layer</span><br><span class="line">        ....Parameter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    msg ConvolutionParameter </span><br><span class="line">        unint32 num_output, </span><br><span class="line">        <span class="keyword">bool </span><span class="keyword">bias_term</span><br><span class="line"></span>        unit32 pad, kernel_size, <span class="keyword">stride</span><br><span class="line"></span>        FillerParameter weight_filler, <span class="keyword">bias_filler</span><br><span class="line"></span></span><br><span class="line">    msg DataParameter</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Blob-hpp">Blob.hpp</h1><p>defind template class <code>Blob</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> common.hpp</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> caffe.pb.h</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> syncedmen.hpp</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> math_functions.hpp</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> caffe&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Dtype&gt;</span><br><span class="line">    <span class="keyword">class</span> Blob&#123;</span><br><span class="line">        <span class="keyword">public</span>: </span><br><span class="line">            <span class="comment">// access member function</span></span><br><span class="line">            data_(), diff_(), count_(<span class="number">0</span>), capacity_(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">protected</span>:</span><br><span class="line">            <span class="comment">// variable</span></span><br><span class="line">          <span class="built_in">shared_ptr</span>&lt;SyncedMemory&gt; data_, diff_, shape_data_;</span><br><span class="line">            <span class="comment">// SyncedMemory object have attribute; cpu_data</span></span><br><span class="line">            <span class="comment">// blob-&gt;cpu_data, blob-&gt;mutable_cpu_data (type: double* )</span></span><br><span class="line">          <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; shape_;</span><br><span class="line">          <span class="keyword">int</span> count_;</span><br><span class="line">          <span class="keyword">int</span> capacity_;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span>:</span><br><span class="line">            blob can share its pointer with others</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="layer_factory-hpp">layer_factory.hpp</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="id">#include</span> common<span class="class">.hpp</span></span><br><span class="line"><span class="id">#include</span> caffe<span class="class">.pb</span><span class="class">.h</span></span><br></pre></td></tr></table></figure>
+<p>define <code>Layer</code> <code>LayerResitry</code> template class<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> LayerRegistry&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="keyword">typedef</span> <span class="built_in">shared_ptr</span>&lt;Layer&lt;Dtype&gt; &gt; (*Creator)(<span class="keyword">const</span> LayerParameter&amp;);</span><br><span class="line">  <span class="keyword">typedef</span> <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="built_in">string</span>, Creator&gt; CreatorRegistry;</span><br><span class="line"></span><br><span class="line">  <span class="preprocessor"># method:</span></span><br><span class="line">  CreateLayer </span><br><span class="line">    input:  LayerParameter</span><br><span class="line">    output: registry[type](param)  </span><br><span class="line">                type：<span class="built_in">shared_ptr</span>&lt;Layer&lt;Dtype&gt; &gt;</span><br><span class="line"></span><br><span class="line">  AddCreator(<span class="built_in">string</span>, Creator)&#123;</span><br><span class="line">    CreatorRegistry&amp; registry = Registry(); </span><br><span class="line">    registry[type] = creator; </span><br><span class="line">    <span class="comment">// creator is map</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> LayerRegisterer &#123;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  LayerRegisterer(<span class="keyword">const</span> <span class="built_in">string</span>&amp; type,</span><br><span class="line">                  <span class="built_in">shared_ptr</span>&lt;Layer&lt;Dtype&gt; &gt; (*creator)(<span class="keyword">const</span> LayerParameter&amp;))&#123;</span><br><span class="line">    LayerRegistry&lt;Dtype&gt;::AddCreator(type, creator);   </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#define <span class="type">REGISTER_LAYER_CLASS</span>(<span class="typedef"><span class="keyword">type</span>) </span></span><br><span class="line">    template &lt;typename <span class="type">Dtype</span>&gt;   </span><br><span class="line">    shared_ptr&lt;<span class="type">Layer</span>&lt;<span class="type">Dtype</span>&gt; &gt; <span class="type">Creator_</span>##<span class="typedef"><span class="keyword">type</span>##<span class="type">Layer</span><span class="container">(const <span class="type">LayerParameter</span>&amp; param)</span>  </span></span><br><span class="line">    &#123;     </span><br><span class="line">        return shared_ptr&lt;<span class="type">Layer</span>&lt;<span class="type">Dtype</span>&gt; &gt;(new <span class="typedef"><span class="keyword">type</span>##<span class="type">Layer</span>&lt;<span class="type">Dtype</span>&gt;<span class="container">(param)</span>);  </span></span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">        <span class="type">REGISTER_LAYER_CREATOR</span>(<span class="typedef"><span class="keyword">type</span>, <span class="type">Creator_</span>##<span class="keyword">type</span>##<span class="type">Layer</span>)</span></span><br></pre></td></tr></table></figure>
+<p>用来向layer_factory注册DataLayer的构造方法，方便直接通过层的名称（Data）直接获取层的对象</p>
+<h1 id="LayerFactory-cpp">LayerFactory.cpp</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Get convolution layer according to param.convolution_param().engine. return a pointer point the Layer&lt;Dtype&gt;</span></span><br><span class="line"><span class="comment">// convolution_param is field of msg LayerParameter, type: msg  ConvolutionParameter</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Dtype&gt;</span><br><span class="line"><span class="built_in">shared_ptr</span>&lt;Layer&lt;Dtype&gt; &gt; GetConvolutionLayer(<span class="keyword">const</span> LayerParameter&amp; param)&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// after get the pointer:</span></span><br><span class="line">REGISTER_LAYER_CREATOR(Convolution, GetConvolutionLayer);</span><br></pre></td></tr></table></figure>
+<p>register ;ayer: convol, relu, sigmoid, softmax, tanh, python(if has)</p>
+<h1 id="layer-hpp">layer.hpp</h1><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/blob.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/common.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/layer_factory.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/proto/caffe.pb.h"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/util/device_alternate.hpp"</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="caffe/caffe_layer.png" alt=""> from: <a href="http://imbinwang.github.io/blog/inside-caffe-code-layer/" target="_blank" rel="external">http://imbinwang.github.io/blog/inside-caffe-code-layer/</a></p>
+<h2 id="Layer_(base_class)">Layer (base class)</h2><ul>
+<li><p>constructor:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explicit <span class="function"><span class="title">Layer</span><span class="params">(const LayerParameter&amp; param)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>setup layer:</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">   <span class="keyword">*</span> <span class="comment">@brief Implements common layer setup functionality.</span></span><br><span class="line">   <span class="keyword">*</span></span><br><span class="line">   <span class="keyword">*</span> <span class="comment">@param bottom the preshaped input blobs</span></span><br><span class="line">   <span class="keyword">*</span> <span class="comment">@param top</span></span><br><span class="line">   <span class="keyword">*</span>     the allocated but unshaped output blobs, to be shaped by Reshape</span><br><span class="line">   <span class="keyword">*</span></span><br><span class="line">   <span class="keyword">*</span> Checks that the number of bottom and top blobs is correct.</span><br><span class="line">   <span class="keyword">*</span> Calls LayerSetUp to do special layer setup for individual layer types,</span><br><span class="line">   <span class="keyword">*</span> followed by Reshape to set up sizes of top blobs and internal buffers.</span><br><span class="line">   <span class="keyword">*</span> Sets up the loss weight multiplier blobs for any non-zero loss weights.</span><br><span class="line">   <span class="keyword">*</span> This method may not be overridden.</span><br><span class="line">   <span class="keyword">*</span>/</span><br><span class="line">  void SetUp(const vector<span class="variable">&lt;Blob&lt;Dtype&gt;</span><span class="keyword">*</span>&gt;&amp; bottom,</span><br><span class="line">      const vector<span class="variable">&lt;Blob&lt;Dtype&gt;</span><span class="keyword">*</span>&gt;&amp; top) &#123;</span><br><span class="line">    InitMutex();</span><br><span class="line">    CheckBlobCounts(bottom, top);</span><br><span class="line">    LayerSetUp(bottom, top);</span><br><span class="line">    Reshape(bottom, top);</span><br><span class="line">    SetLossWeights(top);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /<span class="keyword">*</span><span class="keyword">*</span></span><br><span class="line">   <span class="keyword">*</span> <span class="comment">@brief Does layer-specific setup: your layer should implement this function</span></span><br><span class="line">   <span class="keyword">*</span>        as well as Reshape.</span><br><span class="line">   <span class="keyword">*</span></span><br><span class="line">   <span class="keyword">*</span> <span class="comment">@param bottom</span></span><br><span class="line">   <span class="keyword">*</span>     the preshaped input blobs, whose data fields store the input data for</span><br><span class="line">   <span class="keyword">*</span>     this layer</span><br><span class="line">   <span class="keyword">*</span> <span class="comment">@param top</span></span><br><span class="line">   <span class="keyword">*</span>     the allocated but unshaped output blobs</span><br><span class="line">   <span class="keyword">*</span></span><br><span class="line">   <span class="keyword">*</span> This method should do one-time layer specific setup. This includes reading</span><br><span class="line">   <span class="keyword">*</span> and processing relevent parameters from the <span class="variable">&lt;code&gt;</span>layer_param_<span class="variable">&lt;/code&gt;</span>.</span><br><span class="line">   <span class="keyword">*</span> Setting up the shapes of top blobs and internal buffers should be done in</span><br><span class="line">   <span class="keyword">*</span> <span class="variable">&lt;code&gt;</span>Reshape<span class="variable">&lt;/code&gt;</span>, which will be called before the forward pass to</span><br><span class="line">   <span class="keyword">*</span> adjust the top blob sizes.</span><br><span class="line">   <span class="keyword">*</span>/</span><br><span class="line">  virtual void LayerSetUp(const vector<span class="variable">&lt;Blob&lt;Dtype&gt;</span><span class="keyword">*</span>&gt;&amp; bottom,</span><br><span class="line">      const vector<span class="variable">&lt;Blob&lt;Dtype&gt;</span><span class="keyword">*</span>&gt;&amp; top) &#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>protect variable</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The protobuf that stores the layer parameters</span></span><br><span class="line">LayerParameter layer_param_; </span><br><span class="line"></span><br><span class="line">Phase phase_; <span class="comment">//TRAIN or TEST </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// The vector that stores the learnable parameters as a set of blobs.</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">shared_ptr</span>&lt;Blob&lt;Dtype&gt; &gt; &gt; blobs_;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Vector indicating whether to compute the diff of each param blob.</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; param_propagate_down_;</span><br><span class="line"></span><br><span class="line"><span class="comment">// The vector that indicates whether each top blob has a non-zero weight in</span></span><br><span class="line"><span class="comment">//  the objective function.</span></span><br><span class="line"><span class="built_in">vector</span>&lt;Dtype&gt; loss_;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>protect method</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Forward wrappers(calling `Forward_cpu`). You should implement the cpu and</span></span><br><span class="line"><span class="comment">// gpu specific implementations instead, and should not change these</span></span><br><span class="line"><span class="comment">// functions.</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Dtype&gt;</span><br><span class="line"><span class="keyword">inline</span> Dtype Layer&lt;Dtype&gt;::Forward(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom,</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">vector</span>&lt;Blob&lt;Dtype&gt;*&gt;&amp; top)</span><br><span class="line"></span><br><span class="line">similarly: <span class="keyword">for</span> Backward</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** @brief Using the CPU device, compute the layer output. */</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Forward_cpu</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom,</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">vector</span>&lt;Blob&lt;Dtype&gt;*&gt;&amp; top)</span> </span>= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * @brief Using the CPU device, compute the gradients for any parameters and</span><br><span class="line"> *        for the bottom blobs if propagate_down is true.</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Backward_cpu</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;Blob&lt;Dtype&gt;*&gt;&amp; top,</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&amp; propagate_down,</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">vector</span>&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom)</span> </span>= <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>access member function<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">shared_ptr</span>&lt;Blob&lt;Dtype&gt; &gt; &gt;&amp; blobs() &#123;</span><br><span class="line">  <span class="keyword">return</span> blobs_;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">const</span> LayerParameter&amp; <span class="title">layer_param</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> layer_param_; &#125;</span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">ToProto</span><span class="params">(LayerParameter* param, <span class="keyword">bool</span> write_diff = <span class="literal">false</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">type</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> <span class="string">""</span>; &#125;</span><br><span class="line"><span class="comment">// some methods returns the information of the blobs</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h1 id="Neuron_layers-hpp">Neuron_layers.hpp</h1><ul>
+<li>An interface for layers that take one blob as input (@f$ x @f$)</li>
+<li>and produce one equally-sized blob as output (@f$ y @f$), where</li>
+<li>each element of the output depends only on the corresponding input</li>
+<li>element.</li>
+</ul>
+<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;typename Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> NeuronLayer : <span class="keyword">public</span> Layer&lt;Dtype&gt; &#123;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  explicit NeuronLayer(<span class="keyword">const</span> LayerParameter&amp; param)</span><br><span class="line">     : Layer&lt;Dtype&gt;(param) &#123;&#125;</span><br><span class="line">  virtual <span class="keyword">void</span> Reshape(<span class="keyword">const</span> vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom,</span><br><span class="line">      <span class="keyword">const</span> vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; top);</span><br><span class="line"></span><br><span class="line">  virtual inline <span class="keyword">int</span> ExactNumBottomBlobs() <span class="keyword">const</span> &#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</span><br><span class="line">  virtual inline <span class="keyword">int</span> ExactNumTopBlobs() <span class="keyword">const</span> &#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="BaseconvLayers_(derived_of_Layer)">BaseconvLayers (derived of Layer)</h1><h2 id="ConvolutionLayer_()">ConvolutionLayer ()</h2><p><a href="http://caffe.berkeleyvision.org/doxygen/classcaffe_1_1ConvolutionLayer.html" target="_blank" rel="external">http://caffe.berkeleyvision.org/doxygen/classcaffe_1_1ConvolutionLayer.html</a></p>
+<hr>
+<h1 id="Data_layers-hpp">Data_layers.hpp</h1><h2 id="batch">batch</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// template class Batch</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> Batch &#123;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  Blob&lt;Dtype&gt; data_, label_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="BaseDataLayer_(derived_class_from_Layer)">BaseDataLayer (derived class from Layer)</h2><p>provide base for data layers that feed blobs to the net<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> BaseDataLayer : <span class="keyword">public</span> Layer&lt;Dtype&gt;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>method is basically all those in upper class <code>Layer</code></li>
+<li>protect variable:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">  TransformationParameter transform_param_;</span><br><span class="line">  <span class="built_in">shared_ptr</span>&lt;DataTransformer&lt;Dtype&gt; &gt; data_transformer_;</span><br><span class="line">  <span class="keyword">bool</span> output_labels_;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="MemoryDataLayer_(derived_class_from_BaseDataLayer)">MemoryDataLayer (derived class from BaseDataLayer)</h3><p>Provides data to the Net from memory.</p>
+<ul>
+<li>protect<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int batch_size_, channels_, height_, width_, size_<span class="comment">;</span></span><br><span class="line"> Dtype* data_, labels_<span class="comment">;</span></span><br><span class="line"> int n_<span class="comment">;</span></span><br><span class="line"> size_t pos_<span class="comment">;</span></span><br><span class="line"> Blob&lt;Dtype&gt; added_data_, added_label_<span class="comment">;</span></span><br><span class="line"> bool has_new_data_<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="BasePrefetchingDataLayer_(derived_class_from_BaseDataLayer)">BasePrefetchingDataLayer (derived class from BaseDataLayer)</h3><ul>
+<li><p>public member function</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LayerSetup </span><br><span class="line">Forward_cpu</span><br><span class="line">Backward_cpu</span><br><span class="line">// every class inheritancing <span class="escape">`L</span>ayer<span class="escape">` </span>must have</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>protect</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">load_batch</span><span class="params">(Batch&lt;Dtype&gt;* batch)</span> </span>= <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="DataLayer_(derived_class_from_BasePrefetchingDataLayer)">DataLayer (derived class from BasePrefetchingDataLayer)</h4><ul>
+<li>public member:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">explicit</span> <span class="title">DataLayer</span><span class="params">(<span class="keyword">const</span> LayerParameter&amp; param)</span></span>;</span><br><span class="line"><span class="keyword">virtual</span> ~DataLayer();</span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">DataLayerSetUp</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom,</span><br><span class="line">      <span class="keyword">const</span> <span class="built_in">vector</span>&lt;Blob&lt;Dtype&gt;*&gt;&amp; top)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="imageDataLayer_(derived_class_from_BasePrefetchingDataLayer)">imageDataLayer (derived class from BasePrefetchingDataLayer)</h4><p>Provides data to the Net from image files.</p>
+<h4 id="windowDataLayer_(derived_class_from_BasePrefetchingDataLayer)">windowDataLayer (derived class from BasePrefetchingDataLayer)</h4><p>Provides data to the Net from windows of images files, specified<br> by a window data file.</p>
+<h2 id="DummyDataLayer_(derived_class_from_Layer)">DummyDataLayer (derived class from Layer)</h2><p>Provides data to the Net generated by a Filler<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Dtype&gt;</span><br><span class="line"><span class="keyword">class</span> DummyDataLayer : <span class="keyword">public</span> Layer&lt;Dtype&gt; &#123;</span><br></pre></td></tr></table></figure></p>
+<h2 id="HDF5DataLayer_(derived_class_from_Layer)">HDF5DataLayer (derived class from Layer)</h2><p>Provides data to the Net from HDF5 files.</p>
+<h2 id="HDF5OutputLayer_(derived_class_from_Layer)">HDF5OutputLayer (derived class from Layer)</h2><p>Write blobs to disk as HDF5 files.</p>
+<hr>
+<h1 id="net-hpp">net.hpp</h1><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/blob.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/common.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/layer.hpp"</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"caffe/proto/caffe.pb.h"</span></span></span><br></pre></td></tr></table></figure>
+<p>Connects Layer%s together into a directed acyclic graph (DAG)specified by a NetParameter.</p>
+<p>define Net template class</p>
+<ul>
+<li><p>constructor: </p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//    input <span class="escape">`N</span>etParameter&amp; <span class="escape">` </span>(<span class="literal">and</span> <span class="escape">` </span>Net* root_net<span class="escape">`)</span></span><br><span class="line"><span class="label">//    or input:</span> <span class="escape">`s</span>tring&amp; param_file<span class="escape">`,</span> Phase phase (<span class="literal">and</span> <span class="escape">` </span>Net* root_net<span class="escape">`)</span></span><br><span class="line"></span><br><span class="line">// Init <span class="literal">a</span> net</span><br><span class="line">template &lt;typename Dtype&gt;</span><br><span class="line"><span class="label">void Net&lt;Dtype&gt;::</span>Init(const NetParameter&amp; in_param)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>method:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// for an already initialized net(i.e trained before, have the parameter already):</span></span><br><span class="line">CopyTrainedLayerFrom(<span class="keyword">const</span> NetParameter&amp; param);</span><br><span class="line">CopyTrainedLayerFrom(<span class="keyword">const</span> <span class="built_in">string</span> trained_filename);</span><br><span class="line"> <span class="comment">// called by caffe.test: </span></span><br><span class="line"> <span class="comment">// `caffe_net.CopyTrainedLayersFrom(FLAGS_iterations)`</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// <span class="keyword">access</span> member <span class="function"><span class="keyword">function</span></span></span><br><span class="line"><span class="keyword">return</span> </span><br><span class="line"><span class="keyword">name</span>, layer_names, blob_names, blobs, layers .....</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">vector</span>&lt;Blob&lt;Dtype&gt;*&gt;&amp; Forward(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;Blob&lt;Dtype&gt;* &gt; &amp; bottom, Dtype* loss = <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">Forward</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; input_blob_protos, Dtype* loss = <span class="literal">NULL</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// return network name</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> cost <span class="built_in">string</span>&amp; <span class="title">name</span><span class="params">()</span> <span class="keyword">const</span></span>&#123;<span class="keyword">return</span> name_&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>protect member:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> name_ <span class="comment">// network name</span></span><br><span class="line">Phase phaes_ <span class="comment">// TRAIN or TEST</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h1 id="solver-hpp">solver.hpp</h1><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> net.hpp</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>create new namespace <code>SolverAction</code></p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="string">`SolverAction`</span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Enum</span>&#123;</span></span><br><span class="line">        <span class="constant">NONE</span> = <span class="number">0</span>;<span class="constant">STOP</span> = <span class="number">1</span>;<span class="constant">SNAPSHOT</span>=<span class="number">2</span> </span><br><span class="line">        /<span class="regexp">/ signal effect, -- caffe::SolverAction</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>define <code>Solver</code> template classs<br>: contructor: input SolverParameter or param_file(string) + root_solver(pointer to Solver)<br>: method</p>
+</li>
+<li><p>declare protected:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SolverParameter param_;</span><br><span class="line"><span class="keyword">int</span> iter_;</span><br><span class="line"><span class="keyword">int</span> current_step_;</span><br><span class="line"><span class="built_in">shared_ptr</span>&lt;Net&lt;Dtype&gt; &gt; net_;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">shared_ptr</span>&lt;Net&lt;Dtype&gt; &gt; &gt; test_net_;</span><br><span class="line"></span><br><span class="line">Solver* <span class="keyword">const</span> root_solver_; <span class="comment">// holds root nets,</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>call RegisterBrewFunction(function)<br>: input a function <code>int train(){.....}</code><br>: <code>RegisterBrewFunction</code> is defined in Caffe.cpp<br>…</p>
+</li>
+</ol>
+<hr>
+<h1 id="caffe-cpp">caffe.cpp</h1><h2 id="main">main</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># SetUsageMessage</span><span class="comment"></span><br><span class="line">// caffe/tools/caffe.cpp</span></span><br><span class="line">caffe &lt;<span class="command"><span class="keyword">command</span>&gt; &lt;<span class="title">args</span>&gt;\<span class="title">n</span>\<span class="title">n</span></span></span><br><span class="line">&lt;<span class="command"><span class="keyword">command</span>&gt;: <span class="title">train</span>, <span class="title">test</span>, <span class="title">device_query</span>, <span class="title">time</span></span></span><br><span class="line">GetBrewFunction(argv[<span class="number">1</span>]);<span class="comment"> // access g_brew_map</span></span><br><span class="line"><span class="comment"># GlobalInit</span></span><br></pre></td></tr></table></figure>
+<p><code>g_brew_map</code><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// g_brew_map:</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">std</span>::<span class="built_in">map</span>&lt;caffe::<span class="built_in">string</span>, BrewFunction&gt; BrewMap;</span><br><span class="line">BrewMap g_brew_map;</span><br></pre></td></tr></table></figure></p>
+<p><code>BrewFunction</code> a pointer to int</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef int <span class="list">(<span class="keyword">*BrewFunction</span>)</span><span class="list">()</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h2 id="void_CopyLayers">void CopyLayers</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Load the weights from the specified caffemodel(s) into the train and</span></span><br><span class="line"><span class="comment">// test nets.</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CopyLayers</span><span class="params">(caffe::Solver&lt;<span class="keyword">float</span>&gt;* solver, <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; model_list)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; model_names;</span><br><span class="line">  boost::split(model_names, model_list, boost::is_any_of(<span class="string">","</span>) );</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; model_names.size(); ++i) &#123;</span><br><span class="line">    LOG(INFO) &lt;&lt; <span class="string">"Finetuning from "</span> &lt;&lt; model_names[i];</span><br><span class="line">    solver-&gt;net()-&gt;CopyTrainedLayersFrom(model_names[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; solver-&gt;test_nets().size(); ++j) &#123;</span><br><span class="line">      solver-&gt;test_nets()[j]-&gt;CopyTrainedLayersFrom(model_names[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="int_train">int train</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">caffe:</span><span class="symbol">:SolverParameter</span> solver_param;</span><br><span class="line"><span class="symbol">caffe:</span><span class="symbol">:ReadProtoFromTextFileOrDie</span>(<span class="constant">FLAGS_solver,</span> &amp;solver_param);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">shared_ptr&lt;<span class="symbol">caffe:</span><span class="symbol">:Solver&lt;float&gt;</span> &gt;solver(<span class="symbol">caffe:</span><span class="symbol">:GetSolver&lt;float&gt;</span>(solver_param)); </span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span>  </span><br><span class="line">solver-&gt;<span class="constant">SetActionFunction(</span>signal_handler.<span class="constant">GetActionFunction(</span>));</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> <span class="constant">Starting Optimization </span></span><br><span class="line">    solver-&gt;<span class="constant">Solve(</span>);</span><br></pre></td></tr></table></figure>
+<p>solver<br>: a pointer to caff::Solver<br>: read the filename(string), get SolverParameter <code>param</code>, </p>
+<p>signal_handler<br>: <code>SignalHandler</code> object, defined in <code>solver.hpp</code><br>：method: GetActionFunction</p>
+<p>: <code>SignalHandler</code> is specific class defined in <code>Signal_handler.h</code>, specify what action to take when a signal is received</p>
+<ul>
+<li>constructor: input: <code>SolverAction::Enum SIGHT_action</code> and <code>SolverAction::Enum SIGHUP_action</code> </li>
+<li>method: ActionCallback GetActionFunction()</li>
+</ul>
+<h3 id="Caffe_-cpp">Caffe_.cpp</h3><h4 id="cmd">cmd</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="function"><span class="title">caffe_</span><span class="params">(<span class="string">'get_solver'</span>,solver_file)</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="cmd_in_matlab">cmd in matlab</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">caffe_</span><span class="params">(api_command, arg1, arg2)</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="get_solver">get_solver</h4><p>create a pointer <code>solver</code> point to object(class <code>Solver</code>)<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new <span class="symbol">caffe:</span><span class="symbol">:SGDSolver&lt;float&gt;</span>(solver_file)</span><br></pre></td></tr></table></figure></p>
+<h2 id="int_test()">int test()</h2><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">load: <span class="type">FLAGS_model</span>(model definition) <span class="keyword">and</span> <span class="type">FLAGS_weights</span>(model wights)</span><br><span class="line">// <span class="type">set</span> divice id <span class="keyword">and</span> mode</span><br><span class="line">// instantiate caffe_net <span class="keyword">object</span> by model definition:</span><br><span class="line"><span class="type">Net</span>&lt;<span class="type">float</span>&gt; caffe_net(<span class="type">FLAGS_model</span>, caffe::<span class="type">TEST</span>)</span><br><span class="line"></span><br><span class="line">// copy model weights</span><br><span class="line">caffe_net.<span class="type">CopyTrainedLayersFrom</span>(<span class="type">FLAGS_iterations</span>)</span><br><span class="line"></span><br><span class="line">// data structure go through the test process:</span><br><span class="line">vector&lt;<span class="type">Blob</span>&lt;<span class="type">float</span>&gt;* &gt; bottom_vec;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; test_score_output_id;</span><br><span class="line">vector&lt;<span class="type">float</span>&gt; test_score;</span><br><span class="line"></span><br><span class="line">    // <span class="keyword">for</span> each iteration run</span><br><span class="line">    caffe_net.forward</span><br><span class="line">        // <span class="type">Run</span> forward <span class="keyword">using</span> a <span class="type">set</span> <span class="keyword">of</span> bottom blobs, <span class="keyword">and</span> <span class="keyword">return</span> the <span class="literal">result</span>.</span><br><span class="line">        // <span class="keyword">const</span> vector&lt;<span class="type">Blob</span>&lt;<span class="type">Dtype</span>&gt;*&gt;&amp; <span class="type">Forward</span>(<span class="keyword">const</span> vector&lt;<span class="type">Blob</span>&lt;<span class="type">Dtype</span>&gt;* &gt; &amp; bottom,<span class="type">Dtype</span>* loss = <span class="type">NULL</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="python_interface">python interface</h1><h1 id="_caffe-cpp">_caffe.cpp</h1><p>define namespace: caffe<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># net <span class="function"><span class="keyword">constructor</span></span><br><span class="line"><span class="comment">// constructor, read parameter file and phase(int), return net object</span></span><br><span class="line"><span class="title">Net_Init</span> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="title">Net_Init_Load</span> </span><br><span class="line"><span class="comment">// load parameter file, pretrain model and phase</span></span><br><span class="line"></span><br><span class="line"><span class="title">Net_Save</span></span></span><br></pre></td></tr></table></figure></p>
+<p>? shared_ptr<net<dtype> &gt;<br>? phase</net<dtype></p>
+<p>class:<br>SolverParameter</p>
+
+    
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/xx.jpg" alt="XXXH" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">XXXH</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ZENGXH" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/xiao-xiao-hui-49" target="_blank">zhihu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="4650xh@gmail.com" target="_blank">email</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XXXH</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

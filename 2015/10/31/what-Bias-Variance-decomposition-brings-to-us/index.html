@@ -39,17 +39,20 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.">
+<meta name="description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.
+&quot;&amp;gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="what Bias-Variance decomposition(BVD) brings to us">
 <meta property="og:url" content="http://yoursite.com/2015/10/31/what-Bias-Variance-decomposition-brings-to-us/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.">
+<meta property="og:description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.
+&quot;&amp;gt;">
 <meta property="og:image" content="http://web.engr.oregonstate.edu/~tgd/classes/534/slides/part9.pdf">
-<meta property="og:updated_time" content="2015-11-03T13:55:34.235Z">
+<meta property="og:updated_time" content="2015-11-11T21:36:31.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="what Bias-Variance decomposition(BVD) brings to us">
-<meta name="twitter:description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.">
+<meta name="twitter:description" content="During project I finally gain more insight of what BVD means.In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.
+&quot;&amp;gt;">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -200,7 +203,48 @@
       
 
       
-        <span itemprop="articleBody"><p>During project I finally gain more insight of what BVD means.<br>In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.<br><a id="more"></a></p>
+        <span itemprop="articleBody"><p>During project I finally gain more insight of what BVD means.<br>In the following I will briefly introduce what is BVD and the commend in parathesis is my point of view.</p>
+<h2 id="<!-_more_->"><a id="more"></a></h2><p>summary for svd for least square:</p>
+<ul>
+<li>reduce variance of least square fit<ul>
+<li>try get more training examples</li>
+<li>apply ridge regression<ul>
+<li>penalized parameter, higher bias while lower variance</li>
+</ul>
+</li>
+<li>try smaller set of features<ul>
+<li>add bias</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>reduce model bias of LS<ul>
+<li>Increase the number of features, perhaps using transformations.<ul>
+<li>increase complexity - more fitting, meas of hypothesis closer to truth</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>reduce the estimation-bias of LS<ul>
+<li>try get more traning examples - ?</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>more fitting, less bias</li>
+<li>Adding more basis functions to a linear regression model<ul>
+<li>decrease model bias</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>As we increase the number of splits K, the variance of the estimate of test error will be smaller</li>
+</ul>
+<hr>
 <p>First of all, there are several question we need to pay attention to: </p>
 <h2 id="what_is_the_measurement_of_the_model_complexity?">what is the measurement of the model complexity?</h2><ul>
 <li>we may simply think that in linear regression with polynormial basis function expansion, as the degree increase, the model complecity increase. However, if the regulization is added, things change! Degree is not the only measument. when the regulization term is large, the weights are tend to zero(expect beta0), so the model is indeed simple even if the degree may be high.<ul>
@@ -210,7 +254,7 @@
 </ul>
 <h2 id="what_the_definition_of_the_bias?">what the definition of the bias?</h2><ul>
 <li>intuitively, if we mannully add our assumption(which may come from experience or the truth we know, it can be correct or wrong, benifit or harm to the model) to the model, the model will tend to depend less on the data we collect, then we will say the bias is high. The extreme case is that, we choose a large regulization term and all weights(expect beta0) go to zero, the models do not ‘listen’ to the data(the truth) and it is high bias.</li>
-<li>specifically, the definition of bias is $bias^2 = (\mu(h<em>{hypothesis}(x^*)) - f</em>{truemodel}(x^*))^2$<ul>
+<li>specifically, the definition of bias is<br>$bias^2 = (\mu(h<em>{hypothesis}(x^*)) - f</em>{truemodel}(x^*))^2$<ul>
 <li>describe the average error of the hypothesis</li>
 </ul>
 </li>
@@ -223,9 +267,18 @@
 </li>
 </ul>
 <h2 id="under_what_assumption_do_we_perform_the_BVD?">under what assumption do we perform the BVD?</h2><ul>
-<li>we assume that there exist a true model, even though we can nerver generate/get it.</li>
-<li>also assume that there is some noise in the data we collect, ie $y^<em> = f(x^</em>) + e$(e: noise)<ul>
-<li>notice that under this assumption, $E(y^<em>) = f(x^</em>) = \mu(y^*)$</li>
+<li>we assume that there exist a true model $f$, even though we can nerver generate/get it.</li>
+<li>also assume that there is some noise in the data we collect, </li>
+<li>ie $y^* = f(x^*) + e$ (e: noise)<ul>
+<li>notice that under this assumption, </li>
+<li>$E(y^*) = f(x^*) = \mu(y^*)$</li>
+</ul>
+</li>
+</ul>
+<h2 id="expected_prediction_error">expected prediction error</h2><ul>
+<li>prediction error: <ul>
+<li>$(true value - predict value)^2$</li>
+<li>$[y^* - h(x^*)]^2$</li>
 </ul>
 </li>
 </ul>
@@ -243,7 +296,7 @@
 </li>
 </ul>
 <hr>
-<h2 id="So_how_do_we_measure_B_and_D_in_practice_??_[not_finish]">So how do we measure B and D in practice ?? [not finish]</h2><p>to get $E(h(x^<em>))$ need more than one traning set. but only one indead, so need to simulate multiplr trainning sets by </em>bootstrap repicates* ie, randomly split the sample data into trainning and test for many times with different seeds(in MATLAB)</p>
+<h2 id="So_how_do_we_measure_B_and_D_in_practice_??_[not_finish]">So how do we measure B and D in practice ?? [not finish]</h2><p>to get $E(h(x^*))$ need more than one traning set. but only one indead, so need to simulate multiplr trainning sets by <em>bootstrap repicates</em> ie, randomly split the sample data into trainning and test for many times with different seeds(in MATLAB)</p>
 <ul>
 <li>algorithm:</li>
 </ul>
@@ -251,10 +304,10 @@
 <li>given training sample S, set s seeds to split it</li>
 <li>genarate multiple hypothesis h1,h2,h3,….hs</li>
 <li>(option) determining corresponding weights w1,w2,…wL, here we view each h qually, ie. no weights for different hypothesis</li>
-<li>classify new points by $y_{pred} = h<em>i(x</em>{new})$<br>$E(h(x^<em>)) = \mu(h(x^</em>)) = mean(\sum (h_i(x^<em>)) ) = \frac{1}{s}\sum (h_i(x^</em>))$,<br>$i \in {1,2,3,…s}$</li>
+<li>classify new points by $y_{pred} = h<em>i(x</em>{new})$<br>$E(h(x^*)) = \mu(h(x^*)) = mean(\sum (h_i(x^*)) ) = \frac{1}{s}\sum (h_i(x^*))$,<br>$i \in {1,2,3,…s}$</li>
 </ol>
-<p>since that<br>$bias^2 = (\mu(h(x^<em>)) - f_{truemodel}(x^</em>))^2$<br>$bias = (\mu(h(x^<em>)) - f_{truemodel}(x^</em>))$</p>
-<p>$$variance = E[(h(x^<em>) - \mu(h(x^</em>)))^2] =Var(h(x^<em>)) = Var(h(x_1^</em>)) + Var(h(x_2^<em>)) + …=  \frac{1}{s} </em>\Sum{E[(h_i(x^<em>) - \mu(h(x^</em>)))^2]}$$<br>when shown in the figure, it is the variance of different result(test error) of different seeds.</p>
+<p>since that<br>$bias^2 = (\mu(h(x^*)) - f<em>{truemodel}(x^<em>))^2$<br>$bias = (\mu(h(x^\</em>)) - f</em>{truemodel}(x^*))$</p>
+<p>$$variance = E[(h(x^*) - \mu(h(x^*)))^2] =Var(h(x^*)) = Var(h(x_1^*)) + Var(h(x_2^*)) + …=  \frac{1}{s} *\Sum{E[(h_i(x^*) - \mu(h(x^*)))^2]}$$<br>when shown in the figure, it is the variance of different result(test error) of different seeds.</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> s = 1,2,3....</span><br><span class="line">	S = (Tr(s),<span class="keyword">Te</span>(s));</span><br><span class="line">	traning <span class="keyword">on</span> Tr(s)</span><br><span class="line">		compute errorTr(s)</span><br><span class="line">		<span class="comment">// for traning the parameters</span></span><br><span class="line">	<span class="keyword">test</span> <span class="keyword">on</span> <span class="keyword">Te</span>(s)</span><br><span class="line">		compute errorTr(s) </span><br><span class="line">		<span class="comment">// expect train(on all the sample we have) error E[(h(x^*) - y^*)^2]</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="how_to_reduce_variance:">how to reduce variance:</h1><p>bagging and other resampling technique, one typical example is random forest<br>it means we preduce many times choosing different training set and get the average prediction as the result</p>
@@ -347,21 +400,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -371,6 +424,20 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ZENGXH" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/xiao-xiao-hui-49" target="_blank">zhihu</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="4650xh@gmail.com" target="_blank">email</a>
+              </span>
+            
           
         </div>
 
@@ -389,7 +456,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#what_is_the_measurement_of_the_model_complexity?"><span class="nav-number">1.</span> <span class="nav-text">what is the measurement of the model complexity?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what_the_definition_of_the_bias?"><span class="nav-number">2.</span> <span class="nav-text">what the definition of the bias?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what_the_definition_of_variance?"><span class="nav-number">3.</span> <span class="nav-text">what the definition of variance?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#under_what_assumption_do_we_perform_the_BVD?"><span class="nav-number">4.</span> <span class="nav-text">under what assumption do we perform the BVD?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#why_BVD_is_important_for_model_selecton?"><span class="nav-number">5.</span> <span class="nav-text">why BVD is important for model selecton?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how_the_tradeoff_happens?"><span class="nav-number">6.</span> <span class="nav-text">how the tradeoff happens?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#So_how_do_we_measure_B_and_D_in_practice_??_[not_finish]"><span class="nav-number">7.</span> <span class="nav-text">So how do we measure B and D in practice ?? [not finish]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how_to_reduce_variance:"><span class="nav-number"></span> <span class="nav-text">how to reduce variance:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#insight"><span class="nav-number"></span> <span class="nav-text">insight</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#<!-_more_->"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what_is_the_measurement_of_the_model_complexity?"><span class="nav-number">2.</span> <span class="nav-text">what is the measurement of the model complexity?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what_the_definition_of_the_bias?"><span class="nav-number">3.</span> <span class="nav-text">what the definition of the bias?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what_the_definition_of_variance?"><span class="nav-number">4.</span> <span class="nav-text">what the definition of variance?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#under_what_assumption_do_we_perform_the_BVD?"><span class="nav-number">5.</span> <span class="nav-text">under what assumption do we perform the BVD?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expected_prediction_error"><span class="nav-number">6.</span> <span class="nav-text">expected prediction error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#why_BVD_is_important_for_model_selecton?"><span class="nav-number">7.</span> <span class="nav-text">why BVD is important for model selecton?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how_the_tradeoff_happens?"><span class="nav-number">8.</span> <span class="nav-text">how the tradeoff happens?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#So_how_do_we_measure_B_and_D_in_practice_??_[not_finish]"><span class="nav-number">9.</span> <span class="nav-text">So how do we measure B and D in practice ?? [not finish]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how_to_reduce_variance:"><span class="nav-number"></span> <span class="nav-text">how to reduce variance:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#insight"><span class="nav-number"></span> <span class="nav-text">insight</span></a></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
