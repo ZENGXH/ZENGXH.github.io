@@ -238,6 +238,73 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/19/learning theory/" itemprop="url">
+                learning theory - bias-variance tradeoff
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-10-19T21:32:03+02:00" content="2015-10-19">
+            2015-10-19
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>some terminology in learning theory.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/19/learning theory/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/18/solving-linear-regression/" itemprop="url">
                 solving linear regression
               </a>
@@ -454,74 +521,6 @@
           
           
             
-              <a class="post-title-link" href="/2015/10/17/protocal-buffer/" itemprop="url">
-                protocol buffer
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-10-17T21:44:43+02:00" content="2015-10-17">
-            2015-10-17
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>doc from:<br><a href="https://developers.google.com/protocol-buffers/docs/cpptutorial" target="_blank" rel="external">https://developers.google.com/protocol-buffers/docs/cpptutorial</a></p>
-<p>compilation:<br>for <code>.proto</code> file:<br>protoc -I=$SRC_DIR –cpp_out=$DST_DIR $SRC_DIR/addressbook.proto</p>
-<p>for <code>.cpp</code> file:</p>
-<p>#include “…pb.h”<br> g++ tutorial/readAddressbook.cpp tutorial/addressbook.pb.cc -o ./tutorial/read -lprotobuf</p>
-<h1 id="proto-buffer">proto.buffer</h1><p>package .. =&gt; namespace<br>    message .. =&gt; class in the namespace<br>    some const and enum, basic function</p>
-<h2 id="-pb-h_file">.pb.h file</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in proto file</span></span><br><span class="line">package tutorial</span><br><span class="line">message Person &#123;</span><br><span class="line">    ....</span><br><span class="line">    <span class="comment">// declare field:`field_type field_name` </span></span><br><span class="line">    <span class="comment">// eg. id, email, phone, name</span></span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">    message PhoneNumber</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message AddressBook&#123;</span><br><span class="line">    Person ..name_of_variable</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in proto.h file</span></span><br><span class="line"><span class="keyword">namespace</span> tutorial&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// declare some methods and variables, and class</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">class</span> AddressBook</span><br><span class="line">    <span class="keyword">class</span> Person</span><br><span class="line">    <span class="keyword">class</span> Person_PhoneNumber</span><br><span class="line"></span><br><span class="line">    <span class="comment">// definition:</span></span><br><span class="line">    <span class="keyword">class</span> Person&#123;</span><br><span class="line">      <span class="keyword">public</span>:</span><br><span class="line">        ....</span><br><span class="line">        <span class="comment">// implements message --------</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/** standard message methods:</span><br><span class="line">        * check or manipulate the entire msg</span><br><span class="line">        **/</span></span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">IsInitialized</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// checks if all required field is set</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">DebugString</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// return useful msg for debug</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">CopyFrom</span><span class="params">(<span class="keyword">const</span> Person&amp; from)</span></span>; <span class="comment">// overwrites the message with the given message's values.</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Clear</span><span class="params">()</span></span>;: clears all the elements back to the empty state.</span><br><span class="line">            </span><br><span class="line">        <span class="comment">// nested types ----------</span></span><br><span class="line">         <span class="keyword">typedef</span> ...</span><br><span class="line"></span><br><span class="line">        <span class="comment">// accesssors ----- methods for each field of msg Person declared in .proto file</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// required int32 id = 2</span></span><br><span class="line">        <span class="preprocessor"># id</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">has_id</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear_id</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> kIdFieldNumber = <span class="number">2</span>; <span class="comment">// id</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> int32_t <span class="title">id</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">set_id</span><span class="params">(int32_t value)</span></span>; </span><br><span class="line">        <span class="comment">// type int only have the most basic method:`has_`, `clear_`, `set_`</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// required string email = 3</span></span><br><span class="line">        <span class="preprocessor"># email: methods for email: `has_`, `clear_`, `set_`, mutable</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">has_email</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear_email</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> kEmailFieldNumber = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">inline</span> <span class="keyword">const</span> ::<span class="built_in">std</span>::<span class="function"><span class="built_in">string</span>&amp; <span class="title">email</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">set_email</span><span class="params">(<span class="keyword">const</span> ::<span class="built_in">std</span>::<span class="built_in">string</span>&amp; value)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">set_email</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* value)</span></span>;</span><br><span class="line">        <span class="keyword">inline</span> ::<span class="built_in">std</span>::<span class="function"><span class="built_in">string</span>* <span class="title">mutable_email</span><span class="params">()</span></span>; <span class="comment">// spetial method for `string`</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// define in subMsg `PhoneNumber` repreated ? phone = 4;</span></span><br><span class="line">        <span class="comment">// repeated .tutotial.Person.PhoneNumber phone = 4;</span></span><br><span class="line">        <span class="preprocessor"># phone: methods for phone: size</span></span><br><span class="line">        <span class="comment">// _size, clear_, id method:</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">phone_size</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// spetial method for `repeated`</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear_phone</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> kPhoneFieldNumber = <span class="number">4</span>;</span><br><span class="line">        <span class="comment">// constructor </span></span><br><span class="line">        <span class="keyword">inline</span> <span class="keyword">const</span> ::google::protobuf::RepeatedPtrField&lt; ::tutorial::Person_PhoneNumber &gt;&amp; phone() <span class="keyword">const</span>;</span><br><span class="line">        <span class="comment">// mutable_, add_</span></span><br><span class="line">        <span class="keyword">inline</span> ::google::protobuf::RepeatedPtrField&lt; ::tutorial::Person_PhoneNumber &gt;* mutable_phone();</span><br><span class="line">        <span class="keyword">inline</span> <span class="keyword">const</span> ::tutorial::<span class="function">Person_PhoneNumber&amp; <span class="title">phone</span><span class="params">(<span class="keyword">int</span> index)</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="keyword">inline</span> ::tutorial::<span class="function">Person_PhoneNumber* <span class="title">mutable_phone</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">        <span class="keyword">inline</span> ::tutorial::<span class="function">Person_PhoneNumber* <span class="title">add_phone</span><span class="params">()</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">private</span>:</span><br><span class="line">       ....</span><br><span class="line">       <span class="comment">// end class</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="-cpp_file">.cpp file</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"addressbook.pb.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// initial</span></span><br><span class="line">    tutrorial::AddressBook address_book;</span><br><span class="line">    <span class="comment">// class AddressBook have field person, type: msg Person</span></span><br><span class="line">    <span class="comment">// therefore have method: `add_person`</span></span><br><span class="line">    PromptForAddress(address_book.add_person())</span><br><span class="line"></span><br><span class="line">    <span class="comment">// address_book.add_person() is a pointer to object of class Person</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PromptForAddress</span><span class="params">(tutorial::Person* person)</span></span>&#123;</span><br><span class="line">    person-&gt;set_id(<span class="number">2</span>);</span><br><span class="line">    tutorial::Person::PhoneNumber* phone_number = person-&gt;add_phone();</span><br><span class="line">    phone_number-&gt;set_number(number);</span><br><span class="line">    phone_number-&gt;set_type(tutorial::Person::MOBILE);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
               <a class="post-title-link" href="/2015/10/17/Digital-image-processing/" itemprop="url">
                 Digital Image Processing
               </a>
@@ -575,6 +574,74 @@
               Read more &raquo;
             </a>
           </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/17/protocal-buffer/" itemprop="url">
+                protocol buffer
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2015-10-17T21:44:43+02:00" content="2015-10-17">
+            2015-10-17
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>doc from:<br><a href="https://developers.google.com/protocol-buffers/docs/cpptutorial" target="_blank" rel="external">https://developers.google.com/protocol-buffers/docs/cpptutorial</a></p>
+<p>compilation:<br>for <code>.proto</code> file:<br>protoc -I=$SRC_DIR –cpp_out=$DST_DIR $SRC_DIR/addressbook.proto</p>
+<p>for <code>.cpp</code> file:</p>
+<p>#include “…pb.h”<br> g++ tutorial/readAddressbook.cpp tutorial/addressbook.pb.cc -o ./tutorial/read -lprotobuf</p>
+<h1 id="proto-buffer">proto.buffer</h1><p>package .. =&gt; namespace<br>    message .. =&gt; class in the namespace<br>    some const and enum, basic function</p>
+<h2 id="-pb-h_file">.pb.h file</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in proto file</span></span><br><span class="line">package tutorial</span><br><span class="line">message Person &#123;</span><br><span class="line">    ....</span><br><span class="line">    <span class="comment">// declare field:`field_type field_name` </span></span><br><span class="line">    <span class="comment">// eg. id, email, phone, name</span></span><br><span class="line">    ......</span><br><span class="line"></span><br><span class="line">    message PhoneNumber</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">message AddressBook&#123;</span><br><span class="line">    Person ..name_of_variable</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// in proto.h file</span></span><br><span class="line"><span class="keyword">namespace</span> tutorial&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// declare some methods and variables, and class</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">class</span> AddressBook</span><br><span class="line">    <span class="keyword">class</span> Person</span><br><span class="line">    <span class="keyword">class</span> Person_PhoneNumber</span><br><span class="line"></span><br><span class="line">    <span class="comment">// definition:</span></span><br><span class="line">    <span class="keyword">class</span> Person&#123;</span><br><span class="line">      <span class="keyword">public</span>:</span><br><span class="line">        ....</span><br><span class="line">        <span class="comment">// implements message --------</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">/** standard message methods:</span><br><span class="line">        * check or manipulate the entire msg</span><br><span class="line">        **/</span></span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">IsInitialized</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// checks if all required field is set</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">DebugString</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// return useful msg for debug</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">CopyFrom</span><span class="params">(<span class="keyword">const</span> Person&amp; from)</span></span>; <span class="comment">// overwrites the message with the given message's values.</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Clear</span><span class="params">()</span></span>;: clears all the elements back to the empty state.</span><br><span class="line">            </span><br><span class="line">        <span class="comment">// nested types ----------</span></span><br><span class="line">         <span class="keyword">typedef</span> ...</span><br><span class="line"></span><br><span class="line">        <span class="comment">// accesssors ----- methods for each field of msg Person declared in .proto file</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// required int32 id = 2</span></span><br><span class="line">        <span class="preprocessor"># id</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">has_id</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear_id</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> kIdFieldNumber = <span class="number">2</span>; <span class="comment">// id</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> int32_t <span class="title">id</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">set_id</span><span class="params">(int32_t value)</span></span>; </span><br><span class="line">        <span class="comment">// type int only have the most basic method:`has_`, `clear_`, `set_`</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// required string email = 3</span></span><br><span class="line">        <span class="preprocessor"># email: methods for email: `has_`, `clear_`, `set_`, mutable</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">has_email</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear_email</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> kEmailFieldNumber = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">inline</span> <span class="keyword">const</span> ::<span class="built_in">std</span>::<span class="function"><span class="built_in">string</span>&amp; <span class="title">email</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">set_email</span><span class="params">(<span class="keyword">const</span> ::<span class="built_in">std</span>::<span class="built_in">string</span>&amp; value)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">set_email</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* value)</span></span>;</span><br><span class="line">        <span class="keyword">inline</span> ::<span class="built_in">std</span>::<span class="function"><span class="built_in">string</span>* <span class="title">mutable_email</span><span class="params">()</span></span>; <span class="comment">// spetial method for `string`</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// define in subMsg `PhoneNumber` repreated ? phone = 4;</span></span><br><span class="line">        <span class="comment">// repeated .tutotial.Person.PhoneNumber phone = 4;</span></span><br><span class="line">        <span class="preprocessor"># phone: methods for phone: size</span></span><br><span class="line">        <span class="comment">// _size, clear_, id method:</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">phone_size</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// spetial method for `repeated`</span></span><br><span class="line">        <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear_phone</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> kPhoneFieldNumber = <span class="number">4</span>;</span><br><span class="line">        <span class="comment">// constructor </span></span><br><span class="line">        <span class="keyword">inline</span> <span class="keyword">const</span> ::google::protobuf::RepeatedPtrField&lt; ::tutorial::Person_PhoneNumber &gt;&amp; phone() <span class="keyword">const</span>;</span><br><span class="line">        <span class="comment">// mutable_, add_</span></span><br><span class="line">        <span class="keyword">inline</span> ::google::protobuf::RepeatedPtrField&lt; ::tutorial::Person_PhoneNumber &gt;* mutable_phone();</span><br><span class="line">        <span class="keyword">inline</span> <span class="keyword">const</span> ::tutorial::<span class="function">Person_PhoneNumber&amp; <span class="title">phone</span><span class="params">(<span class="keyword">int</span> index)</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="keyword">inline</span> ::tutorial::<span class="function">Person_PhoneNumber* <span class="title">mutable_phone</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">        <span class="keyword">inline</span> ::tutorial::<span class="function">Person_PhoneNumber* <span class="title">add_phone</span><span class="params">()</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">private</span>:</span><br><span class="line">       ....</span><br><span class="line">       <span class="comment">// end class</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="-cpp_file">.cpp file</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">"addressbook.pb.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// initial</span></span><br><span class="line">    tutrorial::AddressBook address_book;</span><br><span class="line">    <span class="comment">// class AddressBook have field person, type: msg Person</span></span><br><span class="line">    <span class="comment">// therefore have method: `add_person`</span></span><br><span class="line">    PromptForAddress(address_book.add_person())</span><br><span class="line"></span><br><span class="line">    <span class="comment">// address_book.add_person() is a pointer to object of class Person</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PromptForAddress</span><span class="params">(tutorial::Person* person)</span></span>&#123;</span><br><span class="line">    person-&gt;set_id(<span class="number">2</span>);</span><br><span class="line">    tutorial::Person::PhoneNumber* phone_number = person-&gt;add_phone();</span><br><span class="line">    phone_number-&gt;set_number(number);</span><br><span class="line">    phone_number-&gt;set_type(tutorial::Person::MOBILE);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></span>
         
       
     </div>
@@ -832,77 +899,6 @@
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/17/reading-of-machine-learning/" itemprop="url">
-                readning of mechine leaning
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          Posted on
-          <time itemprop="dateCreated" datetime="2015-10-17T21:32:03+02:00" content="2015-10-17">
-            2015-10-17
-          </time>
-        </span>
-
-        
-
-        
-          
-        
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h1 id="reference_book_I_am_currently_reading…">reference book I am currently reading…</h1><ol>
-<li>PRML</li>
-<li>machine learning, a probalistic approach: murphy</li>
-<li>the elements of statistical learning:HTF</li>
-<li><img src="http://cs229.stanford.edu/notes/cs229-notes1.pdf" alt="Andrew&#39;s notes">
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/10/17/reading-of-machine-learning/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -941,7 +937,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -955,7 +951,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

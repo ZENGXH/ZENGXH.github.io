@@ -45,7 +45,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/11/15/install-lua/index.html">
 <meta property="og:site_name" content="XXXH">
 <meta property="og:description" content="在没有sudo的权限下怎么装lua的….">
-<meta property="og:updated_time" content="2015-11-15T20:29:13.656Z">
+<meta property="og:updated_time" content="2015-11-18T20:04:35.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="install lua">
 <meta name="twitter:description" content="在没有sudo的权限下怎么装lua的….">
@@ -220,15 +220,16 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -R -O http:<span class="comment">//www.lua.org/ftp/lua-5.3.1.tar.gz</span></span><br><span class="line">tar zxf lua-<span class="number">5.3</span><span class="number">.1</span>.tar.gz</span><br><span class="line">cd lua-<span class="number">5.3</span><span class="number">.1</span></span><br><span class="line">make linux test</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>cd lua folder, run <code>make linux</code><br>error: #<realine readline.h=""> not found<br>sol: download readline from:</realine></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -R -O http:<span class="comment">//git.savannah.gnu.org/cgit/readline.git/snapshot/readline-master.tar.gz</span></span><br><span class="line">rename to realine</span><br><span class="line">tar zxf xxx<span class="class">.tar</span><span class="class">.gz</span></span><br><span class="line">cd realine</span><br><span class="line">./configure</span><br><span class="line">./make</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<hr>
-<p>curl -R -O <a href="http://git.savannah.gnu.org/cgit/readline.git/snapshot/readline-master.tar.gz" target="_blank" rel="external">http://git.savannah.gnu.org/cgit/readline.git/snapshot/readline-master.tar.gz</a><br>rename to realine<br>tar zxf xxx.tar.gz<br>cd realine<br>./configure<br>./make<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">add path to src/<span class="string">makefile:</span></span><br><span class="line">CC = ... -I<span class="regexp">/path/</span>to<span class="regexp">/ -L/</span>path<span class="regexp">/to/</span>readline <span class="comment">//lish</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add path to src/<span class="string">makefile:</span></span><br><span class="line">CC = ... -I<span class="regexp">/path/</span>to<span class="regexp">/ -L/</span>path<span class="regexp">/to/</span>readline <span class="comment">//lish</span></span><br></pre></td></tr></table></figure>
 <ol>
 <li>make lua again<br>error: symbol “tputs” and …. undefined.<br>sol: <a href="http://blog.csdn.net/billfeller/article/details/40351891" target="_blank" rel="external">http://blog.csdn.net/billfeller/article/details/40351891</a><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in <span class="escape">`l</span>inuxs<span class="escape">` </span>change SYSLIBS add -lncurses</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>done. </p>
+<p>also<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ldconfig -p <span class="string">| grep libnurses</span></span><br></pre></td></tr></table></figure></p>
 </span>
       
     </div>
@@ -250,11 +251,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2015/11/22/EM/" rel="prev">EM in GMM and in general</a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/10/course-notes-machine-learning/" rel="next">course notes machine learning</a>
+              <a href="/2015/11/10/review-linear-algreba/" rel="next">review linear algebra</a>
             
           </div>
         </div>
@@ -316,7 +319,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -330,7 +333,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
