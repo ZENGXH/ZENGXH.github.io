@@ -39,18 +39,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="$\bata = X^T \alpha$$&quot;&amp;gt;kernel function $k(x_i, x_j) = (x_i)^T (x_j) = &amp;lt;x_i, x_j=&quot;&quot;&amp;gt;$&amp;lt;/x_i,&amp;gt;here $x_i$ is the ith row of $ X\in R^(N * D) $, ie, it is the ith data point
+<meta name="description" content="$\ta = X^T \alpha$$&quot;&amp;gt;kernel function $k(x_i, x_j) = (x_i)^T (x_j) = \&amp;lt;x_i, x_j\=&quot;&quot;&amp;gt;$&amp;lt;/x_i,&amp;gt;here $x_i$ is the ith row of $ X\in R^(N * D) $, ie, it is the ith data point
 ie, gram matrix: $K = XX^T$ and">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kernel method">
 <meta property="og:url" content="http://yoursite.com/2015/11/25/kernel method/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="$\bata = X^T \alpha$$&quot;&amp;gt;kernel function $k(x_i, x_j) = (x_i)^T (x_j) = &amp;lt;x_i, x_j=&quot;&quot;&amp;gt;$&amp;lt;/x_i,&amp;gt;here $x_i$ is the ith row of $ X\in R^(N * D) $, ie, it is the ith data point
+<meta property="og:description" content="$\ta = X^T \alpha$$&quot;&amp;gt;kernel function $k(x_i, x_j) = (x_i)^T (x_j) = \&amp;lt;x_i, x_j\=&quot;&quot;&amp;gt;$&amp;lt;/x_i,&amp;gt;here $x_i$ is the ith row of $ X\in R^(N * D) $, ie, it is the ith data point
 ie, gram matrix: $K = XX^T$ and">
-<meta property="og:updated_time" content="2015-11-26T22:20:52.620Z">
+<meta property="og:updated_time" content="2015-11-29T07:38:10.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kernel method">
-<meta name="twitter:description" content="$\bata = X^T \alpha$$&quot;&amp;gt;kernel function $k(x_i, x_j) = (x_i)^T (x_j) = &amp;lt;x_i, x_j=&quot;&quot;&amp;gt;$&amp;lt;/x_i,&amp;gt;here $x_i$ is the ith row of $ X\in R^(N * D) $, ie, it is the ith data point
+<meta name="twitter:description" content="$\ta = X^T \alpha$$&quot;&amp;gt;kernel function $k(x_i, x_j) = (x_i)^T (x_j) = \&amp;lt;x_i, x_j\=&quot;&quot;&amp;gt;$&amp;lt;/x_i,&amp;gt;here $x_i$ is the ith row of $ X\in R^(N * D) $, ie, it is the ith data point
 ie, gram matrix: $K = XX^T$ and">
 
 
@@ -218,7 +218,7 @@ ie, gram matrix: $K = XX^T$ and">
 
       
         <span itemprop="articleBody"><a id="more"></a>
-<h1 id="$\bata_=_X^T_\alpha$">$\bata = X^T \alpha$</h1><h1 id="kernel_function_$k(x_i,_x_j)_=_(x_i)^T_(x_j)_=_<x_i,_x_j>$">kernel function $k(x_i, x_j) = (x_i)^T (x_j) = <x_i, x_j="">$</x_i,></h1><p>here $x_i$ is the ith row of $ X\in R^(N * D) $, ie, it is the ith data point</p>
+<h1 id="$\ta_=_X^T_\alpha$">$\<base>ta = X^T \alpha$</h1><h1 id="kernel_function_$k(x_i,_x_j)_=_(x_i)^T_(x_j)_=_\<x_i,_x_j\>$">kernel function $k(x_i, x_j) = (x_i)^T (x_j) = \<x_i, x_j\="">$</x_i,></h1><p>here $x_i$ is the ith row of $ X\in R^(N * D) $, ie, it is the ith data point</p>
 <p>ie, gram matrix: $K = XX^T$ and $K_{ij} = k(x_i, x_j)$ is the inner product of the i and j th data point(row).</p>
 <p>$x \in R^D$<br><del>$k(\mathbf{x},\mathbf{x’}) \in R^{F x F}$ F is number of basic,<br>say if $\phi(x) = x$, then k in size[1, 1], if $\phi(x) = [x x^2]$ then k in size [2, 2]</del></p>
 <p>$k(\mathbf{x},\mathbf{x’}) \in R^{1 x 1}$<br>eg: $\phi(x) = [cos(x) sin(x) x^2]^T = (cos(x), sin(x), x^2) \in R^3$<br>$k(\mathbf{x1},\mathbf{x2}) = &lt;\phi(x1), \phi(x2)&gt; = &lt;[cos(x1) sin(x1) x1^2]^T, [cos(x2) sin(x2) x2^2]^T&gt; = \sum_i \phi_i(x1)*\phi_i(x2)$</p>
@@ -340,14 +340,6 @@ ie, gram matrix: $K = XX^T$ and">
                 <a href="https://github.com/ZENGXH" target="_blank">github</a>
               </span>
             
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/xiao-xiao-hui-49" target="_blank">zhihu</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="4650xh@gmail.com" target="_blank">email</a>
-              </span>
-            
           
         </div>
 
@@ -366,7 +358,7 @@ ie, gram matrix: $K = XX^T$ and">
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#$\bata_=_X^T_\alpha$"><span class="nav-number">1.</span> <span class="nav-text">$\bata = X^T \alpha$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kernel_function_$k(x_i,_x_j)_=_(x_i)^T_(x_j)_=_<x_i,_x_j>$"><span class="nav-number">2.</span> <span class="nav-text">kernel function $k(x_i, x_j) = (x_i)^T (x_j) = $</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#notes"><span class="nav-number">2.1.</span> <span class="nav-text">notes</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#$\ta_=_X^T_\alpha$"><span class="nav-number">1.</span> <span class="nav-text">$\ta = X^T \alpha$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kernel_function_$k(x_i,_x_j)_=_(x_i)^T_(x_j)_=_\<x_i,_x_j\>$"><span class="nav-number">2.</span> <span class="nav-text">kernel function $k(x_i, x_j) = (x_i)^T (x_j) = \$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#notes"><span class="nav-number">2.1.</span> <span class="nav-text">notes</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

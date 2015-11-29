@@ -51,7 +51,7 @@ solving SVM withLagranga Dual function for optimationKernel for feature transfor
 <meta property="og:image" content="http://research.microsoft.com/pubs/67119/svmtutorial.pdf">
 <meta property="og:image" content="http://cs229.stanford.edu/materials/smo.pdf">
 <meta property="og:image" content="http://yoursite.com/./ml/smo.png">
-<meta property="og:updated_time" content="2015-11-29T07:33:32.074Z">
+<meta property="og:updated_time" content="2015-11-29T07:39:36.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVM">
 <meta name="twitter:description" content="SVM:1) in the case that data can be seperable2) un-seperabel data need l1 regulazation
@@ -240,7 +240,7 @@ solving SVM withLagranga Dual function for optimationKernel for feature transfor
 </ul>
 <p>in the final function, we can find x shown in the form $x^T x$, therefore we can use kernel function to substitude it</p>
 <p>to solv the dual function + constrains, we use SMO algorithm, which is fix n-1 $\lambda_i$ and then optimize the function of $\lambda_1$ $\lambda_2$(randam picked) =&gt; generate a quadratic function of $\lambda_1$ after substitution</p>
-<h1 id="un_seperable">un seperable</h1><h2 id="introduce_slack_variable_$\xi$:">introduce slack variable $\xi$:</h2><p>$$[ \xi = \begin{cases}<br>    0       &amp; \quad \text{if }  y_n - (w^T + b) &gt;= 1 \<br>    quad \text{dist-to-line: r=1}  = |y_n - (w^T + b)| &amp; \quad \text{if } n \text{ is classi.wrong or too close to the plane}\<br>  \end{cases}<br>] $$<br>the idea is that, we allow wrong classification, but these point should pay for it. ie, they should increase the $g(w)$ (add term to it, therefore need to set the weight factor C) which we are trying to minimize<br>as for the points classi. right, we ignore it, just like the seperable case</p>
+<h1 id="un_seperable">un seperable</h1><h2 id="introduce_slack_variable_$\xi$:">introduce slack variable $\xi$:</h2><p>$$[ \xi = \begin{cases} 0 &amp; \quad \text{if }  y_n - (w^T + b) &gt;= 1 \quad \text{dist-to-line: r=1}  = |y_n - (w^T + b)| &amp; \quad \text{if } n \text{ is classi.wrong or too close to the plane}\ \end{cases} ] $$<br>the idea is that, we allow wrong classification, but these point should pay for it. ie, they should increase the $g(w)$ (add term to it, therefore need to set the weight factor C) which we are trying to minimize<br>as for the points classi. right, we ignore it, just like the seperable case</p>
 <p>it can also view as an l1 regulazation, when this term finaly shows as $C\sum \xi_i$. later we will find that setting value of C as weight introduce a trafe off between ignoring the wrong-class.data and exsuring that most example have function margin at least 1 </p>
 <h1 id="maximize_margin">maximize margin</h1><p>we perfrom the same steps as seperable case and finaly generate a function of C (as weight factor) and set of lagrange mutiplers $\alpha_i$</p>
 <p>notice that in the whole procedure, x can be substitude as $\Phi$ ie. transformation of x, by $\k(a,b) = \Phi(a)^T \Phi(b)$ we can skip the step of definiin the phi function and use kernel trickly.</p>
@@ -364,14 +364,6 @@ solving SVM withLagranga Dual function for optimationKernel for feature transfor
             
               <span class="links-of-author-item">
                 <a href="https://github.com/ZENGXH" target="_blank">github</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://www.zhihu.com/xiao-xiao-hui-49" target="_blank">zhihu</a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="4650xh@gmail.com" target="_blank">email</a>
               </span>
             
           
