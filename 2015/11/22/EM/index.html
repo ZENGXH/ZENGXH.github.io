@@ -39,18 +39,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="the things is all about: when we try to use MLE for optimation of the marginal distribution x. which is difficult to solve + x in a joint distribution with r(from graphic model: summing joint dist get">
+<meta name="description" content="when we try to approace by MLE for optimation of the marginal distribution x. which is difficult to solve &amp;amp; x in a joint distribution with r (from graphic model: summing joint dist(x, y) get margi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EM in GMM and in general">
 <meta property="og:url" content="http://yoursite.com/2015/11/22/EM/index.html">
 <meta property="og:site_name" content="XXXH">
-<meta property="og:description" content="the things is all about: when we try to use MLE for optimation of the marginal distribution x. which is difficult to solve + x in a joint distribution with r(from graphic model: summing joint dist get">
-<meta property="og:image" content="http://yoursite.com/../ml/gmm_1.png">
-<meta property="og:image" content="http://yoursite.com/../ml/gmm_2.png">
-<meta property="og:updated_time" content="2015-11-22T20:46:32.979Z">
+<meta property="og:description" content="when we try to approace by MLE for optimation of the marginal distribution x. which is difficult to solve &amp;amp; x in a joint distribution with r (from graphic model: summing joint dist(x, y) get margi">
+<meta property="og:image" content="http://yoursite.com/./ml/gmm_1.png">
+<meta property="og:image" content="http://yoursite.com/./ml/gmm_2.png">
+<meta property="og:updated_time" content="2015-11-29T06:29:18.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM in GMM and in general">
-<meta name="twitter:description" content="the things is all about: when we try to use MLE for optimation of the marginal distribution x. which is difficult to solve + x in a joint distribution with r(from graphic model: summing joint dist get">
+<meta name="twitter:description" content="when we try to approace by MLE for optimation of the marginal distribution x. which is difficult to solve &amp;amp; x in a joint distribution with r (from graphic model: summing joint dist(x, y) get margi">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -216,9 +216,9 @@
       
 
       
-        <span itemprop="articleBody"><p>the things is all about: when we try to use MLE for optimation of the marginal distribution x. which is difficult to solve + x in a joint distribution with r(from graphic model: summing joint dist get marginal dist). then we trun to optimaze the joing distribution. and we try to marginalize/kick r (consider as latent variable) out and make our life easier<br>to solve the problem we need to use EM as solver.<br>my implementaion of EM algo: </p>
-<h2 id="<!-more->"><a id="more"></a></h2><p><img src="../ml/gmm_1.png" alt=""><br><img src="../ml/gmm_2.png" alt=""></p>
-<h1 id="k_means_-_online_learning">k means - online learning</h1><h3 id="define_cost:_‘distortion_measure’:">define cost: ‘distortion measure’:</h3><p>for each x_n, cal dist(x_n,rn), sum up to be J<br>(r_n is the groupk x_n assighed to)<br>$$J = \sum_n \sum<em>k r</em>{nk} |x_n - \mu_k|^2$$<br>goal: given k, xn, minimize J wrt parameter $\mu_k$ and $r_nk$<br>since that they are depend to each other, need to optimatize in two step, no close form<br>algo:<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">randomly initialize <span class="variable">$&#123;</span>\mu_k&#125;<span class="variable">$,</span> assigh rnk <span class="keyword">for</span> each point, by minimize dist(x_n, rn)</span><br><span class="line">having rn <span class="keyword">for</span> all points, minimize <span class="constant">J </span>by take derivative wrt <span class="variable">$\</span>mu_k<span class="variable">$ </span><span class="keyword">and</span> update <span class="variable">$\</span>mu_k<span class="variable">$</span><br><span class="line"></span>repeat</span><br></pre></td></tr></table></figure></p>
+        <span itemprop="articleBody"><p>when we try to approace by MLE for optimation of the marginal distribution x. which is difficult to solve &amp; x in a joint distribution with r (from graphic model: summing joint dist(x, y) get marginal dist). then we trun to optimaze the joing distribution. and we try to marginalize/kick out r (consider as latent variable) out and make our life easier<br>to solve the problem we need to use EM as solver.<br>my implementaion of EM algo: </p>
+<h2 id="<!-more->"><a id="more"></a></h2><p><img src="./ml/gmm_1.png" alt=""><br><img src="./ml/gmm_2.png" alt=""></p>
+<h1 id="k_means_-_online_learning">k means - online learning</h1><h3 id="define_cost:_‘distortion_measure’:">define cost: ‘distortion measure’:</h3><p>for each $x_n$, cal $dist(x_n,rn)$, sum up to be $J$<br>(r_n indicate the groupk x_n assighed to)<br>$$J = \sum_n \sum<em>k r</em>{nk} |x_n - \mu_k|^2$$<br>goal: given k, xn, minimize J w.r.t parameter $\mu_k$ and $r_nk$<br>since that they are depend to each other, need to optimatize in two step, ie. no close form<br>algo:<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">randomly initialize <span class="variable">$&#123;</span>\mu_k&#125;<span class="variable">$,</span> assigh rnk <span class="keyword">for</span> each point, by minimize dist(x_n, rn)</span><br><span class="line">having rn <span class="keyword">for</span> all points, minimize <span class="constant">J </span>by take derivative wrt <span class="variable">$\</span>mu_k<span class="variable">$ </span><span class="keyword">and</span> update <span class="variable">$\</span>mu_k<span class="variable">$</span><br><span class="line"></span>repeat</span><br></pre></td></tr></table></figure></p>
 <h1 id="GMM:">GMM:</h1><h2 id="START_FROM_GRAPHIC_MODEL">START FROM GRAPHIC MODEL</h2><p>binary variable {r_k} generated from <strong>multinomial distribution $Mult(r|\pi)$ $\pi &amp; r \in R ^k$ is a vector here</strong> and assume p(x|r_k) is gaussian distribution<br>by graphic model, sum of joint distribution x,r for all possible state of latent variable r gives the marginal distribution of x. to maximize the marginal distribution of x, we can instead maximize the sum of( product of( the joing distribution x,r with marginal distribution of r)) – which define our cost function, (in this case, we say that we marginalize the latent variable out!)</p>
 <p>as usual, we minimize the cost function, in this case, we have three parameters are they are depent on each other, no close form can derived, we use EM algo to find the solution.</p>
 <p>the general idea is that, we first (random) initialize two of them, and then cal the third one, then cal another one by fix two again.</p>
@@ -229,7 +229,7 @@
 <h1 id="EM">EM</h1><p>we mention that EM can not only works for GMM, it can apply generally to other MLE form joing distribution.(ie, in this case, p(x|r_k) may not be gaussian distribution)</p>
 <p>consider the cost is depend on x(given),z,\theta<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">initialize <span class="string">\theta(random)</span></span><br><span class="line"><span class="attribute">E</span>: expectation, since z unknow, taking expection <span class="keyword">and</span> <span class="keyword">then</span> optimate p(z|x,<span class="string">\theta)</span></span><br><span class="line">(like taking mean <span class="keyword">of</span> each cluster <span class="keyword">in</span> kmean)</span><br><span class="line">M : maximization, now we have z, <span class="keyword">by</span> minimizing cost <span class="keyword">function</span> wrt <span class="string">\theta,</span> we can update <span class="string">\theta</span></span><br></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="below_is_some_fragments">below is some fragments</h2><ul>
+<h2 id="below_is_some_knowledge_fragments">below is some knowledge fragments</h2><ul>
 <li>probability density function $p(X|\mu, \sigma)$<br>intergrate pdf get cdf</li>
 </ul>
 <h1 id="multivariable_gaussian_distribution">multivariable gaussian distribution</h1><p>pdf:<br>$X-N(\mu, \Sigma)$</p>
@@ -262,14 +262,19 @@
 </ul>
 <h3 id="for_each_$\mu_k$">for each $\mu_k$</h3><p>$$\partial L / \partial \mu_k = \sum_n  \frac{\pi_k N(x|\mu_k,\Sigma_k)}{\sum_k \pi_k N(x|\mu_k,\Sigma_k)} * \partial exp() / \partial \mu_k= 0$$</p>
 <p>$$\frac{\pi_k N(x|\mu_k,\Sigma_k)}{\sum_k \pi_k N(x|\mu_k,\Sigma<em>k)} = p</em>{nk}$$</p>
-<p>$$\partial exp() / \partial \mu_k = \Sigma_k(x_n - \mu_k)$$</p>
-<p><strong>TARGET1:——-&gt;&gt;</strong><br>$$\mu_k = \frac {\sum<em>n (p</em>{nk} x_n)} {\sum<em>n p</em>{nk}}$$</p>
-<p>$N_k := \sum<em>n {p</em>{nk}} $ : effective # points assigned to cluster k</p>
-<p><strong>TARGET2:——-&gt;&gt;</strong><br>$$\pi_k = N_k/N = \sum<em>n {p</em>{nk}} / N$$</p>
-<h3 id="for_each_$\Sigma_k$">for each $\Sigma_k$</h3><p><strong>TARGET3:——-&gt;&gt;</strong><br>$$\Sigma_k = \frac {\sum<em>n (p</em>{nk} (x-\mu)(x-\mu)^T)}{\sum<em>n p</em>{nk}}$$</p>
+<p>$$\partial exp(..) / \partial \mu_k = \Sigma_k(x_n - \mu_k)$$</p>
+<p><strong>TARGET1:——-&gt;&gt;</strong></p>
+<p>$$\mu_k = \frac {\sum<em>n (p</em>{nk} x_n)} {\sum<em>n p</em>{nk}}$$</p>
+<p>def: $N_k = \sum<em>n {p</em>{nk}} $ : effective # points assigned to cluster k</p>
+<p><strong>TARGET2:——-&gt;&gt;</strong></p>
+<p>$$\pi_k = N_k/N = \sum<em>n {p</em>{nk}} / N$$</p>
+<h3 id="for_each_$\Sigma_k$">for each $\Sigma_k$</h3><p><strong>TARGET3:——-&gt;&gt;</strong></p>
+<p>$$\Sigma_k = \frac {\sum<em>n (p</em>{nk} (x-\mu)(x-\mu)^T)}{\sum<em>n p</em>{nk}}$$</p>
 <h4 id="bayes_view_point">bayes view point</h4><hr>
 <h3 id="marginal_distribution_$p(\mathbf{r})$">marginal distribution $p(\mathbf{r})$</h3><p>$r \in R^k$<br>the kth entry = 1, ie belong to kth group:</p>
-<h4 id="prior_probality">prior probality</h4><p>$$p(r) = \pi_k,if: r_k = 1$$<br>compactly, notice that only one $r_j = 1$<br>$$p(\mathbf{r}) = \prod_k p(r_k = 1)=\prod_k \pi_k^{r_k}$$</p>
+<h4 id="prior_probality">prior probality</h4><p>$$p(r) = \pi_k,if: r_k = 1$$ </p>
+<p>compactly, notice that only one $r_j = 1$ </p>
+<p>$$p(\mathbf{r}) = \prod_k p(r_k = 1)=\prod_k \pi_k^{r_k}$$</p>
 <hr>
 <h3 id="conditional_distribution_$p(x|r)$">conditional distribution $p(x|r)$</h3><p>know x belong to kth group, the distribution of x<br>$$p(x|r_k=1) = N(x|\mu_k,\Sigma_k)$$<br>compactly:<br>$$p(x|r) = \prod_k N(x|\mu_k,\Sigma_k)^{r_k}$$</p>
 <hr>
@@ -333,6 +338,8 @@
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/25/kernel method/" rel="prev">kernel method</a>
             
           </div>
 
@@ -400,21 +407,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -456,7 +463,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#<!-more->"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#k_means_-_online_learning"><span class="nav-number"></span> <span class="nav-text">k means - online learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#define_cost:_‘distortion_measure’:"><span class="nav-number">0.1.</span> <span class="nav-text">define cost: ‘distortion measure’:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GMM:"><span class="nav-number"></span> <span class="nav-text">GMM:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#START_FROM_GRAPHIC_MODEL"><span class="nav-number">1.</span> <span class="nav-text">START FROM GRAPHIC MODEL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#relation_to_k_means"><span class="nav-number">2.</span> <span class="nav-text">relation to k means</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#attention,_dont_mix_up_the_complete_data_likelihhod_and_the_imcomplete_data(x)_likelihood"><span class="nav-number">3.</span> <span class="nav-text">attention, dont mix up the complete data likelihhod and the imcomplete data(x) likelihood</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EM"><span class="nav-number"></span> <span class="nav-text">EM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#below_is_some_fragments"><span class="nav-number">1.</span> <span class="nav-text">below is some fragments</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#multivariable_gaussian_distribution"><span class="nav-number"></span> <span class="nav-text">multivariable gaussian distribution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#multi_gaussian_models"><span class="nav-number"></span> <span class="nav-text">multi gaussian models</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gaussiam_Mixtrue_Distribution"><span class="nav-number"></span> <span class="nav-text">Gaussiam Mixtrue Distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for_each_$\mu_k$"><span class="nav-number">0.1.</span> <span class="nav-text">for each $\mu_k$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for_each_$\Sigma_k$"><span class="nav-number">0.2.</span> <span class="nav-text">for each $\Sigma_k$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bayes_view_point"><span class="nav-number">0.2.1.</span> <span class="nav-text">bayes view point</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#marginal_distribution_$p(\mathbf{r})$"><span class="nav-number">0.3.</span> <span class="nav-text">marginal distribution $p(\mathbf{r})$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prior_probality"><span class="nav-number">0.3.1.</span> <span class="nav-text">prior probality</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditional_distribution_$p(x|r)$"><span class="nav-number">0.4.</span> <span class="nav-text">conditional distribution $p(x|r)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#joint_distribution_$p(x,r)$"><span class="nav-number">0.5.</span> <span class="nav-text">joint distribution $p(x,r)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#marginal_distribution_of_x_$p(x)$"><span class="nav-number">0.6.</span> <span class="nav-text">marginal distribution of x $p(x)$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#posterior_probability_$p(rk=1|x)_=_p{nk}_=_\gamma(r_k)$"><span class="nav-number">0.6.1.</span> <span class="nav-text">posterior probability $p(rk=1|x) = p{nk} = \gamma(r_k)$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generate_MLE_problem_for_GMM_modles"><span class="nav-number">1.</span> <span class="nav-text">generate MLE problem for GMM modles</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notes_on_how_to_cal_the_gradient_and_the_minimum:"><span class="nav-number">1.1.</span> <span class="nav-text">notes on how to cal the gradient and the minimum:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem_of_GMM"><span class="nav-number">1.2.</span> <span class="nav-text">problem of GMM</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#<!-more->"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#k_means_-_online_learning"><span class="nav-number"></span> <span class="nav-text">k means - online learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#define_cost:_‘distortion_measure’:"><span class="nav-number">0.1.</span> <span class="nav-text">define cost: ‘distortion measure’:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GMM:"><span class="nav-number"></span> <span class="nav-text">GMM:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#START_FROM_GRAPHIC_MODEL"><span class="nav-number">1.</span> <span class="nav-text">START FROM GRAPHIC MODEL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#relation_to_k_means"><span class="nav-number">2.</span> <span class="nav-text">relation to k means</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#attention,_dont_mix_up_the_complete_data_likelihhod_and_the_imcomplete_data(x)_likelihood"><span class="nav-number">3.</span> <span class="nav-text">attention, dont mix up the complete data likelihhod and the imcomplete data(x) likelihood</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EM"><span class="nav-number"></span> <span class="nav-text">EM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#below_is_some_knowledge_fragments"><span class="nav-number">1.</span> <span class="nav-text">below is some knowledge fragments</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#multivariable_gaussian_distribution"><span class="nav-number"></span> <span class="nav-text">multivariable gaussian distribution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#multi_gaussian_models"><span class="nav-number"></span> <span class="nav-text">multi gaussian models</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gaussiam_Mixtrue_Distribution"><span class="nav-number"></span> <span class="nav-text">Gaussiam Mixtrue Distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for_each_$\mu_k$"><span class="nav-number">0.1.</span> <span class="nav-text">for each $\mu_k$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for_each_$\Sigma_k$"><span class="nav-number">0.2.</span> <span class="nav-text">for each $\Sigma_k$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bayes_view_point"><span class="nav-number">0.2.1.</span> <span class="nav-text">bayes view point</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#marginal_distribution_$p(\mathbf{r})$"><span class="nav-number">0.3.</span> <span class="nav-text">marginal distribution $p(\mathbf{r})$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prior_probality"><span class="nav-number">0.3.1.</span> <span class="nav-text">prior probality</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conditional_distribution_$p(x|r)$"><span class="nav-number">0.4.</span> <span class="nav-text">conditional distribution $p(x|r)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#joint_distribution_$p(x,r)$"><span class="nav-number">0.5.</span> <span class="nav-text">joint distribution $p(x,r)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#marginal_distribution_of_x_$p(x)$"><span class="nav-number">0.6.</span> <span class="nav-text">marginal distribution of x $p(x)$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#posterior_probability_$p(rk=1|x)_=_p{nk}_=_\gamma(r_k)$"><span class="nav-number">0.6.1.</span> <span class="nav-text">posterior probability $p(rk=1|x) = p{nk} = \gamma(r_k)$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generate_MLE_problem_for_GMM_modles"><span class="nav-number">1.</span> <span class="nav-text">generate MLE problem for GMM modles</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notes_on_how_to_cal_the_gradient_and_the_minimum:"><span class="nav-number">1.1.</span> <span class="nav-text">notes on how to cal the gradient and the minimum:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#problem_of_GMM"><span class="nav-number">1.2.</span> <span class="nav-text">problem of GMM</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
