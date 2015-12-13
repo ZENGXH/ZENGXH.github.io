@@ -384,7 +384,7 @@
       
         
           <span itemprop="articleBody"><a id="more"></a>
-<h1 id="$\ta_=_X^T_\alpha$">$\<base>ta = X^T \alpha$</h1><h1 id="kernel_function_$k(x_i,_x_j)_=_(x_i)^T_(x_j)_=_\<x_i,_x_j\>$">kernel function $k(x_i, x_j) = (x_i)^T (x_j) = \<x_i, x_j\="">$</x_i,></h1><p>here $x_i$ is the ith row of $ X\in R^(N * D) $, ie, it is the ith data point</p>
+<h1 id="$\eta_=_X^T_\alpha$">$\eta = X^T \alpha$</h1><h1 id="kernel_function_$k(x_i,_x_j)_=_(x_i)^T_(x_j)_=_\<x_i,_x_j>$">kernel function $k(x_i, x_j) = (x_i)^T (x_j) = \<x_i, x_j="">$</x_i,></h1><p>here $x_i$ is the ith row of $ X\in R^(N * D) $, ie, it is the ith data point</p>
 <p>ie, gram matrix: $K = XX^T$ and $K_{ij} = k(x_i, x_j)$ is the inner product of the i and j th data point(row).</p>
 <p>$x \in R^D$<br><del>$k(\mathbf{x},\mathbf{x’}) \in R^{F x F}$ F is number of basic,<br>say if $\phi(x) = x$, then k in size[1, 1], if $\phi(x) = [x x^2]$ then k in size [2, 2]</del></p>
 <p>$k(\mathbf{x},\mathbf{x’}) \in R^{1 x 1}$<br>eg: $\phi(x) = [cos(x) sin(x) x^2]^T = (cos(x), sin(x), x^2) \in R^3$<br>$k(\mathbf{x1},\mathbf{x2}) = &lt;\phi(x1), \phi(x2)&gt; = &lt;[cos(x1) sin(x1) x1^2]^T, [cos(x2) sin(x2) x2^2]^T&gt; = \sum_i \phi_i(x1)*\phi_i(x2)$</p>
@@ -468,7 +468,7 @@
 
       
         
-          <p>when we try to approace by MLE for optimation of the marginal distribution x. which is difficult to solve &amp; x in a joint distribution with r (from graphic model: summing joint dist(x, y) get marginal dist). then we trun to optimaze the joing distribution. and we try to marginalize/kick out r (consider as latent variable) out and make our life easier<br>to solve the problem we need to use EM as solver.<br>my implementaion of EM algo: </p>
+          <p>When we try to use MLE to maximize <strong>marginal distribution</strong> of x. which is difficult to solve &amp; x in a joint distribution with r (from graphic model: summing joint dist(x, y) get marginal dist).<br>We trun to optimaze the <strong>joing distribution</strong>. and we try to marginalize/kick out r (consider as latent variable) out and make our life easier<br>to solve the problem we need to use EM as solver.<br>my implementaion of EM algo: </p>
 <h2 id="<!-more->">
           <div class="post-more-link text-center">
             <a class="btn" href="/2015/11/22/EM/#more" rel="contents">
